@@ -30,6 +30,11 @@
     <script src="admin/AdminDashboardDesign/jquery/jquery.js"></script>
   	<script src="admin/AdminDashboardDesign/jquery/jquery-ui.js"></script>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#example').DataTable();
+	} );
+</script>
 
   		
   </head>
@@ -44,7 +49,7 @@
 	              <!-- Logo -->
 	              <div class="logo">
 	                 
-	                 <a href="http://localhost:8000/home"><img src="admin/AdminDashboardDesign/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
+	                 <a href="http://localhost:8000/guidancehome"><img src="admin/AdminDashboardDesign/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
 	              </div>
 	           </div>
 	           
@@ -85,10 +90,10 @@
 	                         </a>
 	                         <!-- Sub menu -->
 	                         <ul>
-	                            <li><a href="#">Home</a></li>
+	                            <li><a href="http://localhost:8000/guidancehome">Home</a></li>
 	                            <li><a href="#">About</a></li>
 	                            <li><a href="#">Support</a></li>
-	                            <li><a href="http://localhost:8000/adminlogout">Logout</a></li>
+	                            <li><a href="http://localhost:8000/guidancelogout">Logout</a></li>
 	                        </ul>
 	                    </li>
 	                    <li><a href="#"><i class="glyphicon glyphicon-calendar"></i>School Calendar</a></li>
@@ -98,7 +103,7 @@
 		  	
 		  	<div class="col-md-10">
 		  		<div class="panel-heading" style="background-color:#89333c;">
-			        <h3 class="panel-title" style="color:#fdca00">{{ $guidance['department'] }}</h3>
+			        <h2 class="panel-title" style="color:#fdca00"><b>{{ $guidance['department'] }}</b></h2>
 				</div>
 				<script src="dashboard/js/tabs.js" ></script>
 
@@ -111,7 +116,63 @@
 						</ul>
 						
 						<div id="tabs-1">
-							
+						
+							<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+						    
+						        <thead>
+						            <tr>
+						                <th>Name</th>
+						                <th>School Year</th>
+						                <th>Semister</th>
+						                <th>Course Enrolled</th>
+						                <th>Previous Course</th>
+						                <th>Previous School</th>
+						                <th>Status</th>
+						                <th>&nbsp;</th>
+						            </tr>
+						        </thead>
+						        <tfoot>
+						            <tr>
+						                <th>Name</th>
+						                <th>School Year</th>
+						                <th>Semister</th>
+						                <th>Course Enrolled</th>
+						                <th>Previous Course</th>
+						                <th>Previous School</th>
+						                <th>Status</th>
+						                <th>&nbsp;</th>
+						            </tr>
+						        </tfoot>
+						        <tbody>
+							       
+								    <?php
+								    foreach($students as $student)
+								    {
+								    	$userid=$student->userid;
+								    ?>
+								        <tr>
+								        	<td>{{ $student->firstname.' '.$student->middlename.' '.$student->lastname }}</td>
+								        	<td>{{ $student->schoolyear }}</td>
+								        	<td>{{ $student->semester }}</td>
+								        	<td>{{ $student->tocourse }}</td>
+								        	<td>{{ $student->fromcourse }}</td>
+								            <td>{{ $student->fromschool }}</td>
+								            <td>{{ $student->steps_status }}</td>
+								            <td>
+								            <form method="post" action="/guidanceviewstudent">
+								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
+								                <input type="submit" name="open" value="Open" >
+								            </form>
+								            </td>
+								        </tr>
+								    <?php
+								    	$userid="";
+								    }
+								    ?>   
+							    </tbody>
+							</table>
+				  		
+				  			
 						</div> <!-- End of tabs-1 -->
 						<div id="tabs-2">
 							<div class="row">
@@ -223,6 +284,8 @@
 	<script src="admin/AdminDashboardDesign/vendors/datatables/js/jquery.dataTables.min.js"></script>
 	<script src="admin/AdminDashboardDesign/vendors/datatables/dataTables.bootstrap.js"></script>
 	<script src="admin/AdminDashboardDesign/js/tables.js"></script>
+
+
 
 	
   </body>

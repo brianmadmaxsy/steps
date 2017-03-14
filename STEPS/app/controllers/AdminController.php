@@ -64,7 +64,14 @@ class AdminController extends BaseController{
 		
 		if($guidance!="")
 		{
-			return View::make('GuidanceAdminDashboard.GuidanceAdminHome')->with('guidance',$guidance);
+			$students = DB::table('student')
+			->leftJoin('examschedule','student.userid','=','examschedule.userid')
+			->leftJoin('entranceexam','student.userid','=','entranceexam.userid')
+			->leftJoin('results','student.userid','=','results.userid')
+			->get();
+
+			$examschedulelist = ExamScheduleListModel::all();
+			return View::make('GuidanceAdminDashboard.GuidanceAdminHome')->with('guidance',$guidance)->with('students',$students)->with('examschedulelist',$examschedulelist);
 		}
 		else{
 			return Redirect::intended('http://localhost:8000/adminlogin');

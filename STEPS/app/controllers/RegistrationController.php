@@ -127,7 +127,7 @@ class RegistrationController extends BaseController{
 				$results->IQTest="";
 				$results->MathTest="";
 				$results->EnglishTest="";
-				$results->status="";
+				$results->status="false";
 				$results->save();
 
 				//Step5 interview
@@ -136,7 +136,7 @@ class RegistrationController extends BaseController{
 				$interview->userid=$userid;
 				$interview->schedule="";
 				$interview->sao_username="";
-				$interview->status="";
+				$interview->status="false";
 				$interview->save();
 
 

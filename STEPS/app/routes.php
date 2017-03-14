@@ -40,14 +40,26 @@ Route::get('/oashome',array('uses'=>'AdminController@admin_oas_home'));
 Route::get('/guidancehome',array('uses'=>'AdminController@admin_guidance_home'));
 //End of Admin Controller Routes
 
-//Steps Controller Routes
+
+
+
+/*Steps Controller Routes*/
+
+//College Steps
 Route::post('/evaluate',array('uses'=>'StepsController@evaluate'));
 Route::post('/evaluation',array('uses'=>'StepsController@evaluation'));
+//End of College Steps
 
+//SAO Steps
 Route::post('/requirements',array('uses'=>'StepsController@requirements'));
 Route::post('/submitrequirements',array('uses'=>'StepsController@submit_requirements'));
 Route::post('/submittedrequirements',array('uses'=>'StepsController@submitted_requirements'));
 
+Route::post('/interview',array('uses'=>'StepsController@interview'));
+//End of SAO Steps
+
+
+//OAS Steps
 Route::post('/oasviewstudent',array('uses'=>'StepsController@oas_view_student'));
 
 Route::post('/payment',array('uses'=>'StepsController@view_payment'));
@@ -59,6 +71,13 @@ Route::post('/claimidentification', array('uses'=>'StepsController@claimed_ident
 Route::post('/examscheduling',array('uses'=>'StepsController@exam_scheduling'));
 Route::post('/oasscheduleexam',array('uses'=>'StepsController@oas_schedule_exam'));
 Route::post('/studentscheduleexam',array('uses'=>'StepsController@student_schedule_exam'));
-//End of Steps Controller Routes
+//End of OAS Steps
+
+//Guidance Steps
+Route::post('/guidanceviewstudent',array('uses'=>'StepsController@guidance_view_student'));
+Route::post('/postresults',array('uses'=>'StepsController@post_exam_results'));
+//End of Guidance Steps
+
+/*End of Steps Controller Routes*/
 
 

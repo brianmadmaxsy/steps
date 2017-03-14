@@ -30,24 +30,24 @@
     <script src="admin/AdminDashboardDesign/jquery/jquery.js"></script>
   	<script src="admin/AdminDashboardDesign/jquery/jquery-ui.js"></script>
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-			    $('#example').DataTable();
-			} );
-		</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#example').DataTable();
+	} );
+</script>
+	
+	<style type="text/css">
+		.back_to_admin_page{
+			color:blue;
+			margin-left:10px;
+			text-decoration: none;
+		}
+		.back_to_admin_page:hover{
+			color:blue;
 			
-		<style type="text/css">
-			.back_to_admin_page{
-				color:blue;
-				margin-left:10px;
-				text-decoration: none;
-			}
-			.back_to_admin_page:hover{
-				color:blue;
-				
-			}
-		</style>
-		
+		}
+	</style>
+  		
   </head>
   <body>
 
@@ -60,7 +60,7 @@
 	              <!-- Logo -->
 	              <div class="logo">
 	                 
-	                 <a href="http://localhost:8000/saohome"><img src="admin/AdminDashboardDesign/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
+	                 <a href="http://localhost:8000/guidancehome"><img src="admin/AdminDashboardDesign/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
 	              </div>
 	           </div>
 	           
@@ -72,7 +72,7 @@
 	                  <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
 	                    <ul class="nav navbar-nav">
 	                      <li class="dropdown">
-	                        <a href="http://localhost:8000/collegelogout"><b><font color="#fdca00">Logout</font><!-- class="dropdown-toggle" data-toggle="dropdown" <b class="caret"> --></b></a>
+	                        <a href="http://localhost:8000/guidancelogout"><b><font color="#fdca00">Logout</font><!-- class="dropdown-toggle" data-toggle="dropdown" <b class="caret"> --></b></a>
 	                        <!--
 	                        <ul class="dropdown-menu animated fadeInUp">
 	                          <li><a href="profile.html">Settings</a></li>
@@ -101,10 +101,10 @@
 	                         </a>
 	                         <!-- Sub menu -->
 	                         <ul>
-	                            <li><a href="http://localhost:8000/saohome">Home</a></li>
+	                            <li><a href="http://localhost:8000/guidancehome">Home</a></li>
 	                            <li><a href="#">About</a></li>
 	                            <li><a href="#">Support</a></li>
-	                            <li><a href="http://localhost:8000/saologout">Logout</a></li>
+	                            <li><a href="http://localhost:8000/guidancelogout">Logout</a></li>
 	                        </ul>
 	                    </li>
 	                    <li><a href="#"><i class="glyphicon glyphicon-calendar"></i>School Calendar</a></li>
@@ -114,7 +114,7 @@
 		  	
 		  	<div class="col-md-10">
 		  		<div class="panel-heading" style="background-color:#89333c;">
-			        <h3 class="panel-title" style="color:#fdca00"><b>{{ $sao['department'] }}</b></h3>
+			        <h3 class="panel-title" style="color:#fdca00"><b>{{ $guidance['department'] }}</b></h3>
 				</div>
 				<div class="content-box-large" >
 					<div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
@@ -182,51 +182,118 @@
 						                    </tr>
 						                    <tr>
 						                    	<td>Status</td>
-						                    	<td class="alert alert-warning">{{ ucfirst($student['steps_status']) }}</td>
+						                    	<?php
+						                    	if($student['steps_status']=="payment")
+						                    	{
+						                    	?>
+						                    		<td class="alert alert-warning">{{ ucfirst($student['steps_status']) }}</td>
+						                    	<?php
+						                    	}
+						                    	else
+						                    	{
+												?>
+													<td class="alert alert-success">{{ ucfirst($student['steps_status']) }}</td>
+						                    	<?php
+						                    	}
+						                    	?>
 						                    </tr>
-						                     
+						                    	
 						                </tbody>
 						            </table>
-						            
-						            <table>
-						            	<tr>
-						            		<td colspan="2"><h3>Entrance Examination Results</h3></td>
-						            	</tr>
-						            	<tr>
-						            		<td>&nbsp;</td>
-						            	</tr>
-						            	<tr>
-						            		<td width="150"><h4>IQ Test</h4></td>
-						            		<td><h4><b>{{ $results['IQTest'] }}</b></h4></td>
-						            	</tr>
-						            	<tr>
-						            		<td width="150"><h4>Math Test</h4></td>
-						            		<td><h4><b>{{ $results['MathTest'] }}</b></h4></td>
-						            	</tr>
-						            	<tr>
-						            		<td width="150"><h4>English Test</h4></td>
-						            		<td><h4><b>{{ $results['EnglishTest'] }}</b></h4></td>
-						            	</tr>
-						            	<tr>
-						            		<td width="150"><h4><font color="green">Facilitator</font></h4></td>
-						            		<td><h4><b>{{ $results['guidance_username'] }}</b></h4></td>
-						            	</tr>
-						            </table>
 
-						            
-
-											<div style="margin-top:10px;">
-											<form method="post" action="/submittedrequirements">
-												<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
-												<input type="hidden" name="get_sao_username" value="{{ $sao['username'] }}">
-												<input type="submit" name="submitted_button" class="btn btn-success btn-lg" value="Approve">
-												<input type="submit" name="submitted_button" class="btn btn-danger btn-lg" value="Decline">
-												
-											</form>
-												
-											</div>
-							          	  
-						          	<a href="http://localhost:8000/saohome" class="back_to_admin_page">Back to Admin Page...</a>
+						            <?php
+						            if($student['steps_status']=="EntranceExam" && $results['status']=="false")
+						            {
+						            ?>
+						            <form method="post" action="/postresults">
+							            <table>
+							            	<tr>
+							            		<td colspan="2"><h3>Entrance Exam Schedule <b>{{ $examschedule['schedule'] }}</b></h3></td>
+							            		
+							            	</tr>
+							            	<tr>
+							            		<td colspan="2">&nbsp;</td>
+							            	</tr>
+							            	<tr>
+							            		<td colspan="2"><h4><b>Results</b></h4></td>
+							            	</tr>
+							            	<tr>
+							            		<td width="150"><h4>IQ Test</h4></td>
+							            		<td>
+							            			<?php
+							            				if($results['status']=='false')
+							            				{
+							            			?>
+							            				<input type="text" name="iqtest" required="" value="">
+							            			<?php
+							            				}
+							            				else
+							            				{
+							            			?>
+							            				{{ $results['IQTest'] }}
+							            			<?php
+							            				}
+							            			?>
+							            		</td>
+							            	</tr>
+							            	<tr>
+							            		<td width="150"><h4>Math Test</h4></td>
+							            		<td>
+							            			<?php
+							            				if($results['status']=='false')
+							            				{
+							            			?>
+							            				<input type="text" name="mathtest" required="" value="">
+							            			<?php
+							            				}
+							            				else
+							            				{
+							            			?>
+							            				{{ $results['MathTest'] }}
+							            			<?php
+							            				}
+							            			?>
+							            		</td>
+							            	</tr>
+							            	<tr>
+							            		<td width="150"><h4>English</h4></td>
+							            		<td>
+							            			<?php
+							            				if($results['status']=='false')
+							            				{
+							            			?>
+							            				<input type="text" name="englishtest" required="" value="">
+							            			<?php
+							            				}
+							            				else
+							            				{
+							            			?>
+							            				{{ $results['EnglishTest'] }}
+							            			<?php
+							            				}
+							            			?>
+							            		</td>
+							            	</tr>
+							            	<tr>
+							            		<td>&nbsp;</td>
+							            	</tr>
+							            	<tr>
+							            		<td colspan="2">
+						          					<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
+								          			<input type="hidden" name="get_guidance_username" value="{{ $guidance['username'] }}">
+								          			<input type="submit" name="postresultsbutton" class="btn btn-success btn-lg" value="Post Results">
+													
+						          				</td>
+							            	</tr>
+							            	<tr>
+							            		<td>&nbsp;</td>
+							            	</tr>
+							            </table>
+							        </form>    
+						            <?php
+						            }
+						            ?>
+						          	<a href="http://localhost:8000/guidancehome" class="back_to_admin_page">Back to Admin Page...</a>  
 						        </div><!-- col-md-8 col-lg-8-->
 						    </div><!--class row-->
 						    
@@ -270,8 +337,6 @@
 	<script src="admin/AdminDashboardDesign/vendors/datatables/js/jquery.dataTables.min.js"></script>
 	<script src="admin/AdminDashboardDesign/vendors/datatables/dataTables.bootstrap.js"></script>
 	<script src="admin/AdminDashboardDesign/js/tables.js"></script>
-
-
 
 
 
