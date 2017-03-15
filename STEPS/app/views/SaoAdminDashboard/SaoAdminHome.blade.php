@@ -159,7 +159,7 @@
 								            <td>{{ $student->fromschool }}</td>
 								            <td>{{ $student->steps_status }}</td>
 								            <td>
-								            <form method="post" <?php if($student->steps_status=="requirements"){ ?> action="/requirements"<?php } elseif($student->steps_status=="interview"){ ?> action="/interview" <?php }else{ ?> action="/requirements" <?php } ?> >
+								            <form method="post" <?php if($student->steps_status=="requirements"){ ?> action="/requirements"<?php } elseif($student->steps_status=="interview"){ ?> action="/interview" <?php }elseif($student->steps_status=="Officially Enrolled"){ ?> action="/interview" <?php }else{ ?> action="/requirements" <?php } ?> >
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="open" value="Open" >
 								            </form>

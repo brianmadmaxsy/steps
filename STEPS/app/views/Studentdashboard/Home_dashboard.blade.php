@@ -690,18 +690,20 @@
 																		</tr>
 																		    
 																		<tr>
-																		    <td colspan="2"><font color="red">Note: Please proceed to Students Affair Office for your interview schedule.</font></td>
+																		    <td colspan="2" class="alert alert-info"><h4>Note: Please proceed to Students Affair Office for your interview</h4></td>
 																		</tr>
 																		
 																	</table>
 
 																	<table style="margin:10px 0px 0px 0px">
+																		<!--
 																		<tr>
 																			<td colspan="2" width="300" class="alert alert-info">
-																				<h3>Schedule For Interview : TBA </h3>
+																				<h3>Be on time at Students Affair Office, they are waiting for you!</h3>
 																			</td>
 																			
 																		</tr>
+																		-->
 																		<tr>
 																		    <td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
 																		</tr>
@@ -716,7 +718,7 @@
 															</div>
 														<?php
 														}
-														elseif($student['steps_status']=="Official")
+														elseif($student['steps_status']=="Officially Enrolled")
 														{
 														?>	
 															
@@ -725,8 +727,8 @@
 															    <h1>Thank You for using STEPS!</h1>
 															    <p>It's our honor to serve and guide you to the right path. You may now enroll in CIT-University. Once again, thank you! :)</p>
 															</div>
-															<p>This is some text.</p>
-															<p>This is another text.</p>
+															<p><a href="#">CIT-University Handbook</a></p>
+															<p><a href="#">CIT-University News</a></p>
 															
 														<?php
 														}

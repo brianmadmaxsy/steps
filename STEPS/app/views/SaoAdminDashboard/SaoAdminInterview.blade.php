@@ -184,7 +184,19 @@
 						                    	<td>Status</td>
 						                    	<td class="alert alert-warning">{{ ucfirst($student['steps_status']) }}</td>
 						                    </tr>
-						                     
+						                    <?php
+						                    if($interview['interview_comment']!="" && $interview['status']=="true")
+						                    {
+						                    ?>
+							                    <tr>
+							                    	<td><b>Interview Feedback</b></td>
+							                    	<td class="alert alert-info">
+														{{ $interview['interview_comment'] }}
+							                    	</td>
+							                    </tr>
+						                    <?php
+						                	}
+						                    ?> 
 						                </tbody>
 						            </table>
 						            
@@ -213,19 +225,60 @@
 						            	</tr>
 						            </table>
 
-						            
+						            <?php
+									if($student['steps_status']=="Officially Enrolled" && $interview['status']=="true")
+									{
+									?>
+						            <div style="margin-top:10px;">
+						            	<table>
+						            		<tr>
+												<td colspan="2"><h3>Interview</h3></td>
+											</tr>
+											<tr>
+												<td width="150"><h4><b>Interview Feedback</b></h4></td>
+												<td class="alert alert-success"><h4>{{ $interview['interview_comment'] }}</h4></td>
+											</tr>
+											<tr>
+												<td>&nbsp;</td>
+											</tr>
+						            	</table>
+						            </div>
+						            <?php
+									}
+									else
+									{
+									?>
+										<div style="margin-top:10px;">
+										<form method="post" action="/sao_interview_post">
+											<table>
+												<tr>
+													<td colspan="2"><h3>Interview</h3></td>
+												</tr>
+												<tr>
+													<td width="150">Interview Feedback</td>
+													<td><textarea name="comment" class="form-control" placeholder="Textarea" rows="5" style="width:500px;"></textarea></td>
+												</tr>
 
-											<div style="margin-top:10px;">
-											<form method="post" action="/submittedrequirements">
-												<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
-												<input type="hidden" name="get_sao_username" value="{{ $sao['username'] }}">
-												<input type="submit" name="submitted_button" class="btn btn-success btn-lg" value="Approve">
-												<input type="submit" name="submitted_button" class="btn btn-danger btn-lg" value="Decline">
-												
-											</form>
-												
-											</div>
-							          	  
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td colspan="2">
+														<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
+														<input type="hidden" name="get_sao_username" value="{{ $sao['username'] }}">
+														<input type="submit" name="interview_button" class="btn btn-success btn-lg" value="Approve">
+														<input type="submit" name="interview_button" class="btn btn-danger btn-lg" value="Decline">
+													</td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+											</table>		
+										</form>
+										</div>
+							        <?php
+							    	}
+							        ?> 	  
 						          	<a href="http://localhost:8000/saohome" class="back_to_admin_page">Back to Admin Page...</a>
 						        </div><!-- col-md-8 col-lg-8-->
 						    </div><!--class row-->

@@ -137,6 +137,7 @@ class RegistrationController extends BaseController{
 				$interview->schedule="";
 				$interview->sao_username="";
 				$interview->status="false";
+				$interview->interview_comment="";
 				$interview->save();
 
 

@@ -20,6 +20,7 @@ Interview
 -schedule
 -sao_username
 -status (true,false)
+-interview_comment
 		*/
 		Schema::create('Interview',function($table){
 			$table->increments('id');
@@ -28,6 +29,7 @@ Interview
 			$table->string('schedule');
 			$table->string('sao_username');
 			$table->string('status');
+			$table->string('interview_comment');
 			$table->timestamps();
 		});
 	}

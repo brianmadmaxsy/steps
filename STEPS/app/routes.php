@@ -56,6 +56,7 @@ Route::post('/submitrequirements',array('uses'=>'StepsController@submit_requirem
 Route::post('/submittedrequirements',array('uses'=>'StepsController@submitted_requirements'));
 
 Route::post('/interview',array('uses'=>'StepsController@interview'));
+Route::post('/sao_interview_post',array('uses'=>'StepsController@sao_interview_post'));
 //End of SAO Steps
 
 
