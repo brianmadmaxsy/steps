@@ -200,6 +200,7 @@
 						                </tbody>
 						            </table>
 						            
+
 						            <table>
 						            	<tr>
 						            		<td colspan="2"><h3>Entrance Examination Results</h3></td>
@@ -224,7 +225,119 @@
 						            		<td><h4><b>{{ $results['guidance_username'] }}</b></h4></td>
 						            	</tr>
 						            </table>
+						        <?php
+						        if($requirements['NSO']=="false" || $requirements['COT']=="false" || $requirements['GM']=="false" || $requirements['TOR']=="false" || $requirements['RF']=="false")
+								{	//If requirements are not complete but steps_status is Interview
+						        ?>
+						        	<form method="post" action="/submitrequirements">
+										<table>
+											<tr>
+						          				<td colspan="2"><h3 style="color:green;">Incomplete Requirements</h3></td>
+						          			</tr>
+						          			<?php
+											if($requirements['NSO']=="false")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">
+												    	<label>NSO Birth Certificate</label>
+												    	
+												    </td>
+												    <td>
+												    	<input type="checkbox" name="nso" value="nso">
+												    </td>
 
+												</tr>
+											<?php
+											}
+											?>
+
+											<?php
+											if($requirements['COT']=="false")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">
+												    	<label>Certificate of Transfer</label>
+												    	
+												    </td>
+												    <td>
+												    	<input type="checkbox" name="cot" value="cot">
+												    </td>
+												</tr>
+											<?php
+											}
+											?>
+
+											<?php
+											if($requirements['GM']=="false")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">
+												    	<label>Good Moral Certificate</label>
+												    	
+												    </td>
+												    <td>
+												    	<input type="checkbox" name="gm" value="gm">
+												    </td>
+												</tr>
+											<?php
+											}
+											?>
+
+											<?php
+											if($requirements['TOR']=="false")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">
+												    	<label>Transcript of Records (TOR) </label>
+												    </td>
+												    <td>
+												    	<input type="checkbox" name="tor" value="tor">
+												    </td>
+												</tr>
+											<?php
+											}
+											?>
+
+											<?php
+											if($requirements['RF']=="false")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">
+												    	<label>CIT University Residency Form</label>
+												    	
+												    </td>
+												    <td>
+												    	<input type="checkbox" name="rf" value="rf">
+												    </td>
+												</tr>
+											<?php
+											}
+											?>	
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+												<tr>
+													<td colspan="2">
+														<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
+														<input type="hidden" name="get_sao_username" value="{{ $sao['username'] }}">
+														<input type="submit" name="submit" value="Submit Requirement/s">
+													</td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+												</tr>
+										</table>
+									</form>
+						        <?php
+						    	}
+						    	else
+						    	{
+						        ?>    
 						            <?php
 									if($student['steps_status']=="Officially Enrolled" && $interview['status']=="true")
 									{
@@ -278,7 +391,11 @@
 										</div>
 							        <?php
 							    	}
-							        ?> 	  
+							        ?>
+
+							    <?php
+								}
+							    ?>     	  
 						          	<a href="http://localhost:8000/saohome" class="back_to_admin_page">Back to Admin Page...</a>
 						        </div><!-- col-md-8 col-lg-8-->
 						    </div><!--class row-->

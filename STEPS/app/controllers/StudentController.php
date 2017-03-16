@@ -29,7 +29,8 @@ class StudentController extends BaseController{
 			//select all requirements
 			$requirements= RequirementsModel::where('userid','=',$student['userid'])->first();
 			$examschedule= ExamScheduleModel::where('userid','=',$student['userid'])->first();
-			return View::make('Studentdashboard.Home_dashboard')->with('student',$student)->with('requirements',$requirements)->with('examschedule',$examschedule);
+			$results = ResultsModel::where('userid','=',$student['userid'])->first();
+			return View::make('Studentdashboard.Home_dashboard')->with('student',$student)->with('requirements',$requirements)->with('examschedule',$examschedule)->with('results',$results);
 		}
 		
 				//print_r($student);

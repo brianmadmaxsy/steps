@@ -36,6 +36,7 @@ Requirements
 			$table->string('GM');
 			$table->string('TOR');
 			$table->string('RF');
+			$table->string('requirements_comment');
 			$table->string('status');
 			$table->timestamps();
 		});

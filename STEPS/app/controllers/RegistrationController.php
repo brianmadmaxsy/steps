@@ -89,6 +89,7 @@ class RegistrationController extends BaseController{
 				$requirements->GM="false";
 				$requirements->TOR="false";
 				$requirements->RF="false";
+				$requirements->requirements_comment="";
 				$requirements->status="false";
 				$requirements->save();
 

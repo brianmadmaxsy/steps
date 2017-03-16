@@ -678,15 +678,15 @@
 																		</tr>
 																		<tr>
 																		    <td width="150"><h4>IQ Test: </h4></td>
-																		    <td><h4>Above Average</h4></td>
+																		    <td><h4>{{ $results['IQTest'] }}</h4></td>
 																		</tr>
 																		<tr>
 																		    <td width="150"><h4>Math Test: </h4></td>
-																		    <td><h4>Above Average</h4></td>
+																		    <td><h4>{{ $results['MathTest'] }}</h4></td>
 																		</tr>
 																		<tr>
 																		    <td width="150"><h4>English Test: </h4></td>
-																		    <td><h4>Above Average</h4></td>
+																		    <td><h4>{{ $results['EnglishTest'] }}</h4></td>
 																		</tr>
 																		    
 																		<tr>

@@ -121,10 +121,11 @@ class StepsController extends BaseController{
 		if($button=="Approve")
 		{
 			$userid=Input::get('get_userid');
+			$comment=Input::get('requirements_comment');
 			$sao_username=Input::get('get_sao_username');
 
 			$requirements=RequirementsModel::where('userid',$userid);
-			$requirements->update(['status'=>'true','sao_username'=>$sao_username]);
+			$requirements->update(['status'=>'true','requirements_comment'=>$comment,'sao_username'=>$sao_username]);
 			$studentid="17-".rand (1000 , 9999)."-".rand(100,999);
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'payment','studentid'=>$studentid]);
@@ -163,11 +164,11 @@ class StepsController extends BaseController{
 		$sao=Session::get('sess_admin_sao_arr');
 		$sao=unserialize(serialize($sao));
 
-
+		$requirements=RequirementsModel::where('userid','=',$userid)->first();
 		$results=ResultsModel::where('userid','=',$userid)->first();
 		$student=StudentModel::where('userid','=',$userid)->first();
 		$interview=InterviewModel::where('userid','=',$userid)->first();
-		return View::make('SaoAdminDashboard.SaoAdminInterview')->with('sao',$sao)->with('student',$student)->with('results',$results)->with('interview',$interview);
+		return View::make('SaoAdminDashboard.SaoAdminInterview')->with('sao',$sao)->with('requirements',$requirements)->with('student',$student)->with('results',$results)->with('interview',$interview);
 	}
 
 	public function sao_interview_post()
