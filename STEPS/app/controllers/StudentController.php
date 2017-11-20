@@ -16,6 +16,26 @@ class StudentController extends BaseController{
 		
 	}
 
+	public function about()
+	{
+		return View::make('Website.Website_about');
+	}
+
+	public function activities()
+	{
+		return View::make('Website.Website_activities');
+	}
+
+	public function facility()
+	{
+		return View::make('Website.Website_facility');
+	}
+
+	public function contact()
+	{
+		return View::make('Website.Website_contact');
+	}
+
 	public function student_home() //Displays the STEPS dashboard home
 	{
 		

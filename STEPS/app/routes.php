@@ -12,32 +12,44 @@
 */
 
 
-//Login Controller Routes
-Route::get('/logout',array('uses'=>'LoginController@student_logout'));
-Route::post('/login',array('uses'=>'LoginController@student_login'));
-Route::get('/adminlogin',array('uses'=>'LoginController@admin_login_display'));
-Route::post('/adminloginpost',array('uses'=>'LoginController@admin_login_post'));
-Route::get('/collegelogout',array('uses'=>'LoginController@college_logout'));
-Route::get('/saologout',array('uses'=>'LoginController@sao_logout'));
-Route::get('/oaslogout',array('uses'=>'LoginController@oas_logout'));
-Route::get('/guidancelogout',array('uses'=>'LoginController@guidance_logout'));
+//Login Controller Routes for Student
+	Route::get('/logout',array('uses'=>'LoginController@student_logout'));
+	Route::post('/login',array('uses'=>'LoginController@student_login'));
+
+//Login Controller Routes for admin
+	Route::get('/adminlogin',array('uses'=>'LoginController@admin_login_display'));
+	Route::post('/adminloginpost',array('uses'=>'LoginController@admin_login_post'));
+	Route::get('/collegelogout',array('uses'=>'LoginController@college_logout'));
+	Route::get('/saologout',array('uses'=>'LoginController@sao_logout'));
+	Route::get('/oaslogout',array('uses'=>'LoginController@oas_logout'));
+	Route::get('/guidancelogout',array('uses'=>'LoginController@guidance_logout'));
 //End of LoginController Routes
 
 //Registration Controller Routes
-Route::post('/register',array('uses'=>'RegistrationController@student_register'));
-Route::post('/adminregister',array('uses'=>'RegistrationController@admin_register'));
+	Route::post('/register',array('uses'=>'RegistrationController@student_register'));
+	Route::post('/adminregister',array('uses'=>'RegistrationController@admin_register'));
 //End of Registration Controller Routes
 
-//Student Controller Routes
-Route::get('/',array('uses'=>'StudentController@index'));
-Route::get('/home',array('before'=>'auth', 'uses'=>'StudentController@student_home'));
+//Student Controller Routes (Main Website and Student Dashboard)
+	//Website
+	Route::get('/',array('uses'=>'StudentController@index'));
+	Route::get('/about',array('uses'=>'StudentController@about'));
+	Route::get('/facility',array('uses'=>'StudentController@facility'));
+	Route::get('/activities',array('uses'=>'StudentController@activities'));
+	Route::get('/contact',array('uses'=>'StudentController@contact'));
+	
+	//Student Dashboard
+	Route::get('/home',array('before'=>'auth', 'uses'=>'StudentController@student_home'));
 //End of Student Controller Routes
 
+
+
+
 //Admin Controller Routes
-Route::get('/collegehome',array('uses'=>'AdminController@admin_college_home'));
-Route::get('/saohome',array('uses'=>'AdminController@admin_sao_home'));
-Route::get('/oashome',array('uses'=>'AdminController@admin_oas_home'));
-Route::get('/guidancehome',array('uses'=>'AdminController@admin_guidance_home'));
+	Route::get('/collegehome',array('uses'=>'AdminController@admin_college_home'));
+	Route::get('/saohome',array('uses'=>'AdminController@admin_sao_home'));
+	Route::get('/oashome',array('uses'=>'AdminController@admin_oas_home'));
+	Route::get('/guidancehome',array('uses'=>'AdminController@admin_guidance_home'));
 //End of Admin Controller Routes
 
 

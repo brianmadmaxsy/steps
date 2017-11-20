@@ -68,6 +68,7 @@ class RegistrationController extends BaseController{
 				$studentDB->fromschool=$fromschool;
 				$studentDB->department=$department;
 				$studentDB->steps_status="evaluation";
+				$studentDB->step_number=1;
 				$studentDB->save();
 
 				$evaluation=new EvaluationModel;

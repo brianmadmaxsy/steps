@@ -26,7 +26,7 @@ class StepsController extends BaseController{
 			$evaluation=EvaluationModel::where('userid',$userid);
 			$evaluation->update(['evaluator_name'=>$evaluator_name,'comment'=>$comment,'status'=>'true']);
 			$student=StudentModel::where('userid',$userid);
-			$student->update(['steps_status'=>'requirements']);
+			$student->update(['steps_status'=>'requirements','step_number'=>2]);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
 			Session::put('sess_student_arr',$student);
@@ -128,7 +128,7 @@ class StepsController extends BaseController{
 			$requirements->update(['status'=>'true','requirements_comment'=>$comment,'sao_username'=>$sao_username]);
 			$studentid="17-".rand (1000 , 9999)."-".rand(100,999);
 			$student=StudentModel::where('userid',$userid);
-			$student->update(['steps_status'=>'payment','studentid'=>$studentid]);
+			$student->update(['steps_status'=>'payment','studentid'=>$studentid,'step_number'=>3]);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
 			Session::put('sess_student_arr',$student);
@@ -158,58 +158,7 @@ class StepsController extends BaseController{
 		}
 	}
 
-	public function interview()
-	{
-		$userid=Input::get('get_userid');
-		$sao=Session::get('sess_admin_sao_arr');
-		$sao=unserialize(serialize($sao));
-
-		$requirements=RequirementsModel::where('userid','=',$userid)->first();
-		$results=ResultsModel::where('userid','=',$userid)->first();
-		$student=StudentModel::where('userid','=',$userid)->first();
-		$interview=InterviewModel::where('userid','=',$userid)->first();
-		return View::make('SaoAdminDashboard.SaoAdminInterview')->with('sao',$sao)->with('requirements',$requirements)->with('student',$student)->with('results',$results)->with('interview',$interview);
-	}
-
-	public function sao_interview_post()
-	{
-		$button=Input::get('interview_button');
-
-		if($button=="Approve")
-		{
-			$comment=Input::get('comment');
-			$userid=Input::get('get_userid');
-			$sao_username=Input::get('get_sao_username');
-
-			$interview=InterviewModel::where('userid',$userid);
-			$interview->update(['sao_username'=>$sao_username,'status'=>'true','interview_comment'=>$comment]);
-			$student=StudentModel::where('userid',$userid);
-			$student->update(['steps_status'=>'Officially Enrolled']);
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
-
-			$admin = AdminModel::where('username','=',$sao_username)->first();
-			Session::put('sess_admin_sao_arr',$admin);
-
-
-			return Redirect::intended('http://localhost:8000/saohome');
-		}
-		elseif($button=="Decline")
-		{
-			$userid=Input::get('get_userid');
-			$sao_username=Input::get('get_sao_username');
-
-			$student=StudentModel::where('userid',$userid);
-			$student->update(['steps_status'=>'declined']);
-
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
-
-			$admin = AdminModel::where('username','=',$sao_username)->first();
-			Session::put('sess_admin_sao_arr',$admin);
-			return Redirect::intended('http://localhost:8000/saohome');
-		}
-	}
+	
 
 	//OAS Steps method
 	public function oas_view_student()
@@ -245,7 +194,7 @@ class StepsController extends BaseController{
 			$payment=PaymentModel::where('userid',$userid);
 			$payment->update(['paymentreceiptnum'=>$receiptnumber,'receivedpayment'=>'true','oas_username'=>$oas_username]);
 			$student=StudentModel::where('userid',$userid);
-			$student->update(['steps_status'=>'identification']);
+			$student->update(['steps_status'=>'identification','step_number'=>4]);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
 			Session::put('sess_student_arr',$student);
@@ -296,7 +245,7 @@ class StepsController extends BaseController{
 			$identification=IdentificationModel::where('userid',$userid);
 			$identification->update(['getIdentification'=>'true','oas_username'=>$oas_username]);
 			$student=StudentModel::where('userid',$userid);
-			$student->update(['steps_status'=>'ExamScheduling']);
+			$student->update(['steps_status'=>'ExamScheduling','step_number'=>5]);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
 			Session::put('sess_student_arr',$student);
@@ -348,7 +297,7 @@ class StepsController extends BaseController{
 			$examschedule=ExamScheduleModel::where('userid',$userid);
 			$examschedule->update(['schedule'=>$schedule]);
 			$student=StudentModel::where('userid',$userid);
-			$student->update(['steps_status'=>'EntranceExam']);
+			$student->update(['steps_status'=>'EntranceExam','step_number'=>6]);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
 			Session::put('sess_student_arr',$student);
@@ -385,7 +334,7 @@ class StepsController extends BaseController{
 		$examschedule=ExamScheduleModel::where('userid',$userid);
 		$examschedule->update(['schedule'=>$schedule]);
 		$student=StudentModel::where('userid',$userid);
-		$student->update(['steps_status'=>'EntranceExam']);
+		$student->update(['steps_status'=>'EntranceExam','step_number'=>6]);
 
 		
 		
@@ -443,7 +392,7 @@ class StepsController extends BaseController{
 		$entranceexam->update(['guidance_username'=>$guidance_username,'status'=>'true']);
 
 		$student=StudentModel::where('userid',$userid);
-		$student->update(['steps_status'=>'interview']);
+		$student->update(['steps_status'=>'interview','step_number'=>7]);
 
 		$student = StudentModel::where('userid','=',$userid)->first();
 		Session::put('sess_student_arr',$student);
@@ -451,6 +400,59 @@ class StepsController extends BaseController{
 		$admin = AdminModel::where('username','=',$guidance_username)->first();
 		Session::put('sess_admin_guidance_arr',$admin);
 		return Redirect::intended('http://localhost:8000/guidancehome');
+	}
+
+	public function interview()
+	{
+		$userid=Input::get('get_userid');
+		$sao=Session::get('sess_admin_sao_arr');
+		$sao=unserialize(serialize($sao));
+
+		$requirements=RequirementsModel::where('userid','=',$userid)->first();
+		$results=ResultsModel::where('userid','=',$userid)->first();
+		$student=StudentModel::where('userid','=',$userid)->first();
+		$interview=InterviewModel::where('userid','=',$userid)->first();
+		return View::make('SaoAdminDashboard.SaoAdminInterview')->with('sao',$sao)->with('requirements',$requirements)->with('student',$student)->with('results',$results)->with('interview',$interview);
+	}
+
+	public function sao_interview_post()
+	{
+		$button=Input::get('interview_button');
+
+		if($button=="Approve")
+		{
+			$comment=Input::get('comment');
+			$userid=Input::get('get_userid');
+			$sao_username=Input::get('get_sao_username');
+
+			$interview=InterviewModel::where('userid',$userid);
+			$interview->update(['sao_username'=>$sao_username,'status'=>'true','interview_comment'=>$comment]);
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'Officially Enrolled','step_number'=>8]);
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$sao_username)->first();
+			Session::put('sess_admin_sao_arr',$admin);
+
+
+			return Redirect::intended('http://localhost:8000/saohome');
+		}
+		elseif($button=="Decline")
+		{
+			$userid=Input::get('get_userid');
+			$sao_username=Input::get('get_sao_username');
+
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'declined']);
+
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$sao_username)->first();
+			Session::put('sess_admin_sao_arr',$admin);
+			return Redirect::intended('http://localhost:8000/saohome');
+		}
 	}
 }//End of StepsController class
 ?>

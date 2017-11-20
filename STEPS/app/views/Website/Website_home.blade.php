@@ -95,7 +95,7 @@ Session::flush();
 					<span class="icon-bar"></span>
 				  </button>
 					<div class="logo">
-						<a href="#"><img src="website/images/STEPS.jpg" class="img-responsive" /></a>
+						<a href="http://localhost:8000/"><img src="website/images/STEPS.jpg" class="img-responsive" /></a>
 					</div>
 				</div>
 
@@ -103,11 +103,11 @@ Session::flush();
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<nav>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.html"><span data-hover="Home">Home</span></a></li>
-							<li><a href="about.html"><span data-hover="About">About</span></a></li>
-							<li><a href="timbers.html"><span data-hover="Timbers">Faculty</span></a></li>
-							<li><a href="enquiries.html"><span data-hover="Enquiries">Activities</span></a></li>
-							 <li><a  href="contact.html"><span data-hover="Contact">Contact</span></a></li>
+							<li class="active"><a href="http://localhost:8000/"><span data-hover="Home">Home</span></a></li>
+							<li><a href="http://localhost:8000/about"><span data-hover="About">About</span></a></li>
+							<li><a href="http://localhost:8000/facility"><span data-hover="Timbers">Facility</span></a></li>
+							<li><a href="http://localhost:8000/activities"><span data-hover="Enquiries">Activities</span></a></li>
+							 <li><a  href="http://localhost:8000/contact"><span data-hover="Contact">Contact</span></a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 						        <!-- <li><p class="navbar-text">Already have an account?</p></li> -->
@@ -117,35 +117,31 @@ Session::flush();
 										<li>
 											 <div class="row">
 													<div class="col-md-12">
-														Login via
-														<div class="social-buttons">
-															<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-															
-															<a href="#" class="btn btn-google"><i class="fa fa-google"></i> Google</a>
-														</div>
-						                                or
-														 <form class="form" role="form" method="post" action="/login" accept-charset="UTF-8" id="login-nav">
-																<div class="form-group">
-																	 <label class="sr-only" for="exampleInputEmail2">Username</label>
-																	 <input name="login_username" type="text" class="form-control" id="exampleInputEmail2" placeholder="Username" required>
-																</div>
-																<div class="form-group">
-																	 <label class="sr-only" for="exampleInputPassword2">Password</label>
-																	 <input name="login_password" type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-						                                             <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-																</div>
-																<div class="form-group">
-																	 <input type="submit" class="btn btn-primary btn-block" name="login" value="Sign In">
-																</div>
-																<div class="checkbox">
-																	 <label>
-																	 <input type="checkbox"> keep me logged-in
-																	 </label>
-																</div>
-														 </form>
+														<h4 style="color:#89343b;">Login to STEPS</h4>
+														<div style="margin-top:5px;">
+															 <form class="form" role="form" method="post" action="/login" accept-charset="UTF-8" id="login-nav">
+																	<div class="form-group">
+																		 <label class="sr-only" for="exampleInputEmail2">Username</label>
+																		 <input name="login_username" type="text" class="form-control" id="exampleInputEmail2" placeholder="Username" required>
+																	</div>
+																	<div class="form-group">
+																		 <label class="sr-only" for="exampleInputPassword2">Password</label>
+																		 <input name="login_password" type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+							                                             <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+																	</div>
+																	<div class="form-group">
+																		 <input type="submit" class="btn btn-primary btn-block" name="login" value="Sign In" style="background-color: #89343b; border:1px solid #89343b;">
+																	</div>
+																	<div class="checkbox">
+																		 <label>
+																		 <input type="checkbox"> keep me logged-in
+																		 </label>
+																	</div>
+															 </form>
+														</div> 
 													</div>
 													<div class="bottom text-center">
-														New here ? <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><b>Sign Up Now!</b></a>
+														New here ? <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="background-color:#89343b; border: 1px solid #89343b;"><b>Sign Up Now!</b></a>
 													</div>
 											 </div>
 										</li>
@@ -363,17 +359,17 @@ Session::flush();
 		<div data-lazy-background="website/images/banner.jpg" class="banner">
 			<div class="container">
 				<div class="banner-info">
-					<h3>Center of Excellence!</h3>
-					<p>In 2007, CIT was awarded by the Commission on Higher Education as Center of Excellence in Information Technology Education, one out of nine schools in the Philippines.</p>
-					<p>In 2006, Government Recognition for the Master in Computer Science was granted by CHED.</p>
+					<h3>Student and Teachers friendly</h3>
+					<p>CIT University maintained a student and teachers friendly environment for a better facility to learn</p>
 				</div>
 			</div>
 		</div>
 		<div data-lazy-background="website/images/banner1.jpg" class="banner2">
 			<div class="container">
 				<div class="banner-info">
-					<h3>Student and Teachers friendly</h3>
-					<p>CIT University maintained a student and teachers friendly environment for a better facility to learn</p>
+					<h3>Center of Excellence!</h3>
+					<p>In 2007, CIT was awarded by the Commission on Higher Education as Center of Excellence in Information Technology Education, one out of nine schools in the Philippines.</p>
+					<p>In 2006, Government Recognition for the Master in Computer Science was granted by CHED.</p>
 				</div>
 			</div>
 		</div>
@@ -451,10 +447,10 @@ Session::flush();
 						<div class="col-md-4 services-grid">
 							<div class="service">
 									<div class="left-grid">
-										<i class="glyphicon glyphicon-globe" aria-hidden="true"></i>
+										<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
 									</div>
 								<div class="right-grid">
-									<h4>Decking concrete </h4>
+									<h4>Student Monitoring</h4>
 									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
 								</div>
 								<div class="clearfix"></div>
@@ -463,10 +459,10 @@ Session::flush();
 						<div class="col-md-4 services-grid">
 							<div class="service">
 									<div class="left-grid">
-										<i class="glyphicon glyphicon-star" aria-hidden="true"></i>
+										<i class="glyphicon glyphicon-list" aria-hidden="true"></i>
 									</div>
 								<div class="right-grid">
-									<h4>Decking concrete </h4>
+									<h4>Enrollment Guidance</h4>
 									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
 								</div>
 								<div class="clearfix"></div>
@@ -475,10 +471,10 @@ Session::flush();
 						<div class="col-md-4 services-grid">
 							<div class="service">
 									<div class="left-grid">
-									<i class="glyphicon glyphicon-fire" aria-hidden="true"></i>
+									<i class="glyphicon glyphicon-th-large" aria-hidden="true"></i>
 									</div>
 								<div class="right-grid">
-									<h4>Decking concrete </h4>
+									<h4>Web Portal</h4>
 									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
 								</div>
 								<div class="clearfix"></div>
@@ -490,10 +486,10 @@ Session::flush();
 						<div class="col-md-4 services-grid">
 							<div class="service">
 									<div class="left-grid">
-										<i class="glyphicon glyphicon-cog" aria-hidden="true"></i>
+										<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
 									</div>
 								<div class="right-grid">
-									<h4>Decking concrete</h4>
+									<h4>News and WhatsUp</h4>
 									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
 								</div>
 								<div class="clearfix"></div>
@@ -502,10 +498,10 @@ Session::flush();
 						<div class="col-md-4 services-grid">
 							<div class="service">
 									<div class="left-grid">
-										<i class="glyphicon glyphicon-leaf" aria-hidden="true"></i>
+										<i class="glyphicon glyphicon-calendar" aria-hidden="true"></i>
 									</div>
 								<div class="right-grid">
-									<h4>Decking concrete</h4>
+									<h4>School Events</h4>
 									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
 								</div>
 								<div class="clearfix"></div>
@@ -514,10 +510,10 @@ Session::flush();
 						<div class="col-md-4 services-grid">
 							<div class="service">
 									<div class="left-grid">
-									<i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
+									<i class="glyphicon glyphicon-phone" aria-hidden="true"></i>
 									</div>
 								<div class="right-grid">
-									<h4>Decking concrete</h4>
+									<h4>Mobile Responsive</h4>
 									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
 								</div>
 								<div class="clearfix"></div>
@@ -691,7 +687,7 @@ Session::flush();
 						<div class="col-md-6 development">
 								<h3 class="tittle1">Video Instruction</h3>
 								<div class="embed-responsive embed-responsive-4by3">
-									<iframe src="https://www.youtube.com/embed/wqK580Hy1kQ" allowfullscreen></iframe>
+									<iframe src="https://www.youtube.com/embed/bKSdZJavesM" allowfullscreen></iframe>
 								</div>
 						</div>
 						<div class="clearfix"></div>
@@ -700,6 +696,10 @@ Session::flush();
 			</div>
 			
 		</div>
-		
+		<div class="copy-section">
+			<div class="container">
+					<p>&copy; 2017 STEPS . All rights reserved | Design by <a href="#">STEPS CIT-University</a></p>
+			</div>
+		</div>
 </body>
 </html>

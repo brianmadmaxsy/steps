@@ -205,26 +205,43 @@
 								<div class="col-md-10">
 						        	<div class="card" style="border: 1px solid  #eee;/*box-shadow: 5px 5px 5px #eee;*/ border-radius: 5px;">
 							            <ul class="nav nav-tabs" role="tablist">
+							                <!--
 							                <li role="presentation" class="active"><a href="#home1" aria-controls="home" role="tab" data-toggle="tab">STEPS</a></li>
-							                <li role="presentation"><a href="#profile1" aria-controls="profile" role="tab" data-toggle="tab">Log</a></li>
-							                
+											-->
+							                <?php if($student['step_number']==1 OR 1<=$student['step_number'] AND $student['step_number']<=8){ ?><li <?php if($student['step_number']==1){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step1">STEP 1</a></li><?php } ?>
+
+										    <?php if($student['step_number']==2 OR 2<=$student['step_number'] AND $student['step_number']<=8){ ?><li <?php if($student['step_number']==2){ echo 'class="active"'; } if($student['step_number']!=2 AND $requirements['NSO']=="true" AND $requirements['COT']=="true" AND $requirements['GM']=="true" AND $requirements['TOR']=="true" AND $requirements['RF']=="true"){ echo  'style="background-color: #52be80;"'; }else{ echo 'style="background-color: #cd6155;"'; } ?>><a data-toggle="tab" href="#step2">STEP 2</a></li><?php } ?>
+
+										    <?php if($student['step_number']==3 OR 3<=$student['step_number'] AND $student['step_number']<=8){ ?><li <?php if($student['step_number']==3){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step3">STEP 3</a></li><?php } ?>
+
+										    <?php if($student['step_number']==4 OR 4<=$student['step_number'] AND $student['step_number']<=8){ ?><li <?php if($student['step_number']==4){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step4">STEP 4</a></li><?php } ?>
+
+										    <?php if($student['step_number']==5 OR 5<=$student['step_number'] AND $student['step_number']<=8){ ?><li <?php if($student['step_number']==5){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step5">STEP 5</a></li><?php } ?>
+
+										    <?php if($student['step_number']==6 OR 6<=$student['step_number'] AND $student['step_number']<=8){ ?><li <?php if($student['step_number']==6){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step6">STEP 6</a></li><?php } ?>
+
+										    <?php if($student['step_number']==7 OR 7<=$student['step_number'] AND $student['step_number']<=8){ ?><li <?php if($student['step_number']==7){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step7">STEP 7</a></li><?php } ?>
+
+										    <?php if($student['step_number']==8 OR 8<=$student['step_number'] AND $student['step_number']<=8){ ?><li <?php if($student['step_number']==8){ echo 'class="active"'; } ?>><a data-toggle="tab" href="#step8">STEP 8</a></li><?php } ?>
 							            </ul>
 
 							            <!-- Tab panes -->
 							                <div class="tab-content" style="height:auto;">
-							                    <div role="tabpanel" class="tab-pane active" id="home1">
-							                    	<div class="row">
-												    	<div class="col-md-1"></div>
-												    	<div class="col-md-10" style="height:auto;">
-												    	<?php
-												    	if(strtolower($student['steps_status'])=="evaluation")
-												    	{
-														?>
-												    		<div id="step1and1_div">
+
+							                	<?php 
+											    if($student['step_number']==1 OR 1<$student['step_number'] AND $student['step_number']<=8)
+											    {
+											    ?>
+											    <?php if($student['step_number']==1){ ?><div id="step1" class="tab-pane active"> <?php } else{ ?> <div id="step1" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+														<div class="col-md-1"></div>
+														<div class="col-md-10" style="height:auto;">
+														
+															<div id="step1and1_div">
 														        <label class="control-label" id="step_label">Step 1</label>
-														        <label class="control-label" id="step_name_label">Application</label>
+														        <label class="control-label" id="step_name_label">Evaluation</label>
 														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
-												  					<div class="panel-title">College Evaluation</div>
+																		<div class="panel-title">College Evaluation</div>
 																	
 																	<div class="panel-options">
 																		
@@ -268,16 +285,28 @@
 																	</table>
 																</div>
 															</div>
-														<?php
-														}
-														elseif(strtolower($student['steps_status'])=="requirements")
-														{
-														?>
-															<div id="step1and2_div">
-														        <label class="control-label" id="step_label">Step 1</label>
+														</div>
+														<div class="col-md-1"></div>			
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==2 OR 1<$student['step_number'] AND $student['step_number']<=8)
+											    {
+											    ?>
+											    <?php if($student['step_number']==2){ ?><div id="step2" class="tab-pane active"> <?php } else{ ?> <div id="step2" class="tab-pane fade"> <?php } ?>
+											      	<div class="row">
+											      		<div class="col-md-1"></div>
+											      		<div class="col-md-10">
+											      			<div id="step1and2_div">
+														        <label class="control-label" id="step_label">Step 2</label>
 														        <label class="control-label" id="step_name_label">Application</label>
 														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
-												  					<div class="panel-title">Requirements</div>
+																		<div class="panel-title">Requirements</div>
 																	
 																	<div class="panel-options">
 																		
@@ -436,16 +465,29 @@
 																	</table>
 																</div>
 															</div>
-														<?php
-														}
-														elseif(strtolower($student['steps_status'])=="payment")
-														{
-														?>
-															<div id="step2and1_div">
-																<label class="control-label" id="step_label">Step 2</label>
+											      		</div>
+											      		<div class="col-md-1"></div>
+											      		
+											      	</div>
+											    </div> <!--End of div id="step2"-->
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==3 OR 1<$student['step_number'] AND $student['step_number']<=8)
+											    {
+											    ?>
+											    <?php if($student['step_number']==3){ ?><div id="step3" class="tab-pane active"> <?php } else{ ?> <div id="step3" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+											    			<div id="step2and1_div">
+																<label class="control-label" id="step_label">Step 3</label>
 														        <label class="control-label" id="step_name_label">Accounting</label>
 														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
-												  					<div class="panel-title">Payment</div>
+																		<div class="panel-title">Payment</div>
 																	
 																	<div class="panel-options">
 																		
@@ -495,18 +537,28 @@
 																	</table>
 																</div>
 															</div>
-														<?php
-														}
-														elseif(strtolower($student['steps_status'])=="identification")
-														{
-														?>
+											    		</div>
+											    		<div class="col-md-1"></div>
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
 
-															
-															<div id="step3and1_div">
-														        <label class="control-label" id="step_label">Step 3</label>
+
+											    <?php 
+											    if($student['step_number']==4 OR 1<$student['step_number'] AND $student['step_number']<=8)
+											    {
+											    ?>
+											    <?php if($student['step_number']==4){ ?><div id="step4" class="tab-pane active"> <?php } else{ ?> <div id="step4" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+											    			<div id="step3and1_div">
+														        <label class="control-label" id="step_label">Step 4</label>
 														        <label class="control-label" id="step_name_label">OAS</label>
 														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
-												  					<div class="panel-title">Student Identification</div>
+																		<div class="panel-title">Student Identification</div>
 																	
 																	<div class="panel-options">
 																		
@@ -546,18 +598,29 @@
 																	</table>
 																</div>
 															</div>
-														<?php
-														}
-														elseif($student['steps_status']=="ExamScheduling")
-														{
-														?>
+											    		</div>
+											    		<div class="col-md-1"></div>
+											    		
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
 
 
-															<div id="step3and2_div">
-														        <label class="control-label" id="step_label">Step 3</label>
+											    <?php 
+											    if($student['step_number']==5 OR 1<$student['step_number'] AND $student['step_number']<=8)
+											    {
+											    ?>
+											    <?php if($student['step_number']==5){ ?><div id="step5" class="tab-pane active"> <?php } else{ ?> <div id="step5" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+													    	<div id="step3and2_div">
+														        <label class="control-label" id="step_label">Step 5</label>
 														        <label class="control-label" id="step_name_label">OAS</label>
 														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
-												  					<div class="panel-title">Entrance Exam Scheduling</div>
+																		<div class="panel-title">Entrance Exam Scheduling</div>
 																	
 																	<div class="panel-options">
 																		
@@ -570,19 +633,39 @@
 																		    <tr>
 																		    	<td width="200" height="50"><b>Choose your Schedule</b></td>
 																		    	<td height="50">
+																		    		<?php
+																		    		if($examschedule['schedule']=="")
+																		    		{
+																		    		?>
 																		    		<select name="schedule" style="height:40px; border:1px solid #D8D8D8; border-radius:5px;">
 																					    <option>03/27/17 09:00AM-11:00PM</option>
 																					    <option>03/27/17 01:00PM-03:00PM</option>
 																					    <option>03/27/17 03:00AM-05:00PM</option>
 																					</select>
+																					<?php
+																					}
+																					else
+																					{
+																					?>
+																						<b>{{ $examschedule['schedule'] }}</b>
+																					<?php
+																					}
+																					?>
 																				</td>
 																		    </tr>
+																		    <?php
+																		    if($examschedule['schedule']=="")
+																		    {
+																		    ?>
 																		    <tr>
 																		    	<td colspan="2">
 																		    		<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
 																		    		<input type="submit" name="submit_schedule" value="Submit Schedule" class="btn btn-success">
 																		    	</td>
 																		    </tr>
+																		    <?php
+																			}
+																		    ?>
 																		</table>
 																	</form>
 
@@ -602,16 +685,28 @@
 																	</table>
 																</div>
 															</div>
-														<?php
-														}
-														elseif($student['steps_status']=="EntranceExam")
-														{
-														?>
-															<div id="step4and1_div">
-														        <label class="control-label" id="step_label">Step 4</label>
+														</div>
+														<div class="col-md-1"></div>
+													</div>
+												</div>
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==6 OR 1<$student['step_number'] AND $student['step_number']<=8)
+											    {
+											    ?>
+											    <?php if($student['step_number']==6){ ?><div id="step6" class="tab-pane active"> <?php } else{ ?> <div id="step6" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+											    			<div id="step4and1_div">
+														        <label class="control-label" id="step_label">Step 6</label>
 														        <label class="control-label" id="step_name_label">Entrance Exam</label>
 														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
-												  					<div class="panel-title">Entrance Examination</div>
+																		<div class="panel-title">Entrance Examination</div>
 																	
 																	<div class="panel-options">
 																		
@@ -650,18 +745,29 @@
 																	</table>
 																</div>
 															</div>
-															
-														<?php
-														}
-														elseif($student['steps_status']=="interview")
-														{
-														?>
-															
-															<div id="step5and1_div">
-														        <label class="control-label" id="step_label">Step 5</label>
+											    		</div>
+											    		<div class="col-md-1"></div>
+											    		
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==7 OR 1<$student['step_number'] AND $student['step_number']<=8)
+											    {
+											    ?>
+											    <?php if($student['step_number']==7){ ?><div id="step7" class="tab-pane active"> <?php } else{ ?> <div id="step7" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+											    			<div id="step5and1_div">
+														        <label class="control-label" id="step_label">Step 7</label>
 														        <label class="control-label" id="step_name_label">Interview</label>
 														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
-												  					<div class="panel-title">Interview</div>
+																		<div class="panel-title">Interview</div>
 																	
 																	<div class="panel-options">
 																		
@@ -716,62 +822,38 @@
 																	</table>
 													  			</div>
 															</div>
-														<?php
-														}
-														elseif($student['steps_status']=="Officially Enrolled")
-														{
-														?>	
-															
-															
-															<div class="jumbotron">
+											    		</div>
+											    		<div class="col-md-1"></div>
+											    		
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==8 OR 1<$student['step_number'] AND $student['step_number']<=8)
+											    {
+											    ?>
+											    <?php if($student['step_number']==8){ ?><div id="step8" class="tab-pane active"> <?php } else{ ?> <div id="step8" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+											    			<div class="jumbotron">
 															    <h1>Thank You for using STEPS!</h1>
 															    <p>It's our honor to serve and guide you to the right path. You may now enroll in CIT-University. Once again, thank you! :)</p>
 															</div>
 															<p><a href="#">CIT-University Handbook</a></p>
 															<p><a href="#">CIT-University News</a></p>
-															
-														<?php
-														}
-														?>
-														</div>
-												    	<div class="col-md-1"></div>
-												    	
-												    </div><!--class row-->
-										    	</div>
-							                    <div role="tabpanel" class="tab-pane activity" id="profile1">
-							                    	<table class="table">
-													  <thead>
-													    <tr>
-													      <th>#</th>
-													      <th>Event</th>
-													      <th>Description</th>
-													      <th>Date&Time</th>
-													    </tr>
-													  </thead>
-													  <tbody>
-													    <tr>
-													      <th scope="row">1</th>
-													      <td>Mark</td>
-													      <td>Otto</td>
-													      <td>@mdo</td>
-													    </tr>
-													    <tr>
-													      <th scope="row">2</th>
-													      <td>Jacob</td>
-													      <td>Thornton</td>
-													      <td>@fat</td>
-													    </tr>
-													    <tr>
-													      <th scope="row">3</th>
-													      <td>Larry</td>
-													      <td>the Bird</td>
-													      <td>@twitter</td>
-													    </tr>
-													  </tbody>
-													</table>
-
-							                    </div>
-							                    
+											    		</div>
+											    		<div class="col-md-1"></div>
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
+												
 							                </div><!--End of tab content-->
 							        </div> <!--end of class="card" -->  
 						        </div>
