@@ -145,11 +145,11 @@ class RegistrationController extends BaseController{
 
 
 				//return View::make('website.website_home')->with('message','<script language="javascript">'.'alert("Thank you for registering to STEPS! You may now login to your account!")'.'</script>');
-				$message='<script language="javascript">'.'alert("Thank you for registering to STEPS! You may now login to your account!")'.'</script>';
-
-				Session::put('message',$message);
+				
 
 				//return Redirect::intended('http://localhost:8000')->with('message','<script language="javascript">'.'alert("Thank you for registering to STEPS! You may now login to your account!")'.'</script>');
+				$message="registration successful";
+				Session::put('message',$message);
 				return Redirect::intended('http://localhost:8000');
 			}
 			else{

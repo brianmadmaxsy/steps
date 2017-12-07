@@ -1,9 +1,4 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,13 +69,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </script>
 
 <body>
-<?php 
-
+<?php
 $message=Session::get('message');
-$msg = unserialize(serialize($message));
-echo $msg; 
-Session::flush();
-
+if($message!="" AND $message=="user not found")
+{
+?>
+<div class="alert alert-danger">
+	<strong>Login Error: </strong>Account not found!
+</div>
+<?php
+}
+else if($message!="" AND $message=="registration successful")
+{
+?>
+<div class="alert alert-success">
+	<strong>Registration Successful: </strong>Thank you for registering!
+</div>
+<?php
+}
+Session::forget('message');
 ?>
 <!-- header -->
 	<div class="header">
@@ -116,8 +123,8 @@ Session::flush();
 									<ul id="login-dp" class="dropdown-menu">
 										<li>
 											 <div class="row">
-													<div class="col-md-12">
-														<h4 style="color:#89343b;">Login to STEPS</h4>
+											 		<div class="col-md-12">
+														<h4 style="color:#89343b; size:5;"><b>Login to STEPS</b></h4>
 														<div style="margin-top:5px;">
 															 <form class="form" role="form" method="post" action="/login" accept-charset="UTF-8" id="login-nav">
 																	<div class="form-group">

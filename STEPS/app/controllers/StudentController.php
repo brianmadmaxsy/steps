@@ -7,7 +7,7 @@ class StudentController extends BaseController{
 
 		if($student=="")
 		{
-			return View::make('Website.Website_home')->with('message','');
+			return View::make('Website.Website_home');
 		}
 		else if($student!="")
 		{

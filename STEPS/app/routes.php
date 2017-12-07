@@ -13,17 +13,23 @@
 
 
 //Login Controller Routes for Student
-	Route::get('/logout',array('uses'=>'LoginController@student_logout'));
 	Route::post('/login',array('uses'=>'LoginController@student_login'));
-
 //Login Controller Routes for admin
 	Route::get('/adminlogin',array('uses'=>'LoginController@admin_login_display'));
 	Route::post('/adminloginpost',array('uses'=>'LoginController@admin_login_post'));
-	Route::get('/collegelogout',array('uses'=>'LoginController@college_logout'));
-	Route::get('/saologout',array('uses'=>'LoginController@sao_logout'));
-	Route::get('/oaslogout',array('uses'=>'LoginController@oas_logout'));
-	Route::get('/guidancelogout',array('uses'=>'LoginController@guidance_logout'));
 //End of LoginController Routes
+
+
+
+//Logout Controller for Student
+	Route::get('/logout',array('uses'=>'LogoutController@student_logout'));
+//Logout Controller for Admin
+	Route::get('/collegelogout',array('uses'=>'LogoutController@college_logout'));
+	Route::get('/saologout',array('uses'=>'LogoutController@sao_logout'));
+	Route::get('/oaslogout',array('uses'=>'LogoutController@oas_logout'));
+	Route::get('/guidancelogout',array('uses'=>'LogoutController@guidance_logout'));
+	
+
 
 //Registration Controller Routes
 	Route::post('/register',array('uses'=>'RegistrationController@student_register'));
@@ -42,9 +48,6 @@
 	Route::get('/home',array('before'=>'auth', 'uses'=>'StudentController@student_home'));
 //End of Student Controller Routes
 
-
-
-
 //Admin Controller Routes
 	Route::get('/collegehome',array('uses'=>'AdminController@admin_college_home'));
 	Route::get('/saohome',array('uses'=>'AdminController@admin_sao_home'));
@@ -58,37 +61,37 @@
 /*Steps Controller Routes*/
 
 //College Steps
-Route::post('/evaluate',array('uses'=>'StepsController@evaluate'));
-Route::post('/evaluation',array('uses'=>'StepsController@evaluation'));
+Route::post('/evaluate',array('uses'=>'CollegeController@evaluate'));
+Route::post('/evaluation',array('uses'=>'CollegeController@evaluation'));
 //End of College Steps
 
 //SAO Steps
-Route::post('/requirements',array('uses'=>'StepsController@requirements'));
-Route::post('/submitrequirements',array('uses'=>'StepsController@submit_requirements'));
-Route::post('/submittedrequirements',array('uses'=>'StepsController@submitted_requirements'));
+Route::post('/requirements',array('uses'=>'SaoController@requirements'));
+Route::post('/submitrequirements',array('uses'=>'SaoController@submit_requirements'));
+Route::post('/submittedrequirements',array('uses'=>'SaoController@submitted_requirements'));
 
-Route::post('/interview',array('uses'=>'StepsController@interview'));
-Route::post('/sao_interview_post',array('uses'=>'StepsController@sao_interview_post'));
+Route::post('/interview',array('uses'=>'SaoController@interview'));
+Route::post('/sao_interview_post',array('uses'=>'SaoController@sao_interview_post'));
 //End of SAO Steps
 
 
 //OAS Steps
-Route::post('/oasviewstudent',array('uses'=>'StepsController@oas_view_student'));
+Route::post('/oasviewstudent',array('uses'=>'OasController@oas_view_student'));
 
-Route::post('/payment',array('uses'=>'StepsController@view_payment'));
-Route::post('/receivepayment',array('uses'=>'StepsController@receive_payment'));
+Route::post('/payment',array('uses'=>'OasController@view_payment'));
+Route::post('/receivepayment',array('uses'=>'OasController@receive_payment'));
 
-Route::post('/identification',array('uses'=>'StepsController@get_identification'));
-Route::post('/claimidentification', array('uses'=>'StepsController@claimed_identification'));
+Route::post('/identification',array('uses'=>'OasController@get_identification'));
+Route::post('/claimidentification', array('uses'=>'OasController@claimed_identification'));
 
-Route::post('/examscheduling',array('uses'=>'StepsController@exam_scheduling'));
-Route::post('/oasscheduleexam',array('uses'=>'StepsController@oas_schedule_exam'));
-Route::post('/studentscheduleexam',array('uses'=>'StepsController@student_schedule_exam'));
+Route::post('/examscheduling',array('uses'=>'OasController@exam_scheduling'));
+Route::post('/oasscheduleexam',array('uses'=>'OasController@oas_schedule_exam'));
+Route::post('/studentscheduleexam',array('uses'=>'OasController@student_schedule_exam'));
 //End of OAS Steps
 
 //Guidance Steps
-Route::post('/guidanceviewstudent',array('uses'=>'StepsController@guidance_view_student'));
-Route::post('/postresults',array('uses'=>'StepsController@post_exam_results'));
+Route::post('/guidanceviewstudent',array('uses'=>'GuidanceController@guidance_view_student'));
+Route::post('/postresults',array('uses'=>'GuidanceController@post_exam_results'));
 //End of Guidance Steps
 
 /*End of Steps Controller Routes*/
