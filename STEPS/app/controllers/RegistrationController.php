@@ -43,8 +43,13 @@ class RegistrationController extends BaseController{
 				$department="";
 			}
 
-			if($password==$cpassword)
+			if(StudentModel::where('username','=',$username)->exists())
 			{
+				$message="username already existed";
+				Session::put('message',$message);
+				return Redirect::intended('http://localhost:8000');
+			}
+			else{
 				$studentDB=new StudentModel;
 				$studentDB->userid=$userid;
 				$studentDB->studentid="";
@@ -151,14 +156,7 @@ class RegistrationController extends BaseController{
 				$message="registration successful";
 				Session::put('message',$message);
 				return Redirect::intended('http://localhost:8000');
-			}
-			else{
-				//return View::make('website.website_home')->with('message','<script language="javascript">'.'alert("Both Password did not match!")'.'</script>');
-				//return Redirect::intended('http://localhost:8000')->with('message','<script language="javascript">'.'alert("Both Password did not match!")'.'</script>');
-
-				$message='<script language="javascript">'.'alert("Both Password did not match!")'.'</script>';
-				Session::put('message',$message);
-				return Redirect::intended('http://localhost:8000');
+				
 			}
 			
 		}

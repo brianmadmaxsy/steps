@@ -58,11 +58,49 @@
 		var pass2=document.getElementById("password2").value;
 		var pass1=document.getElementById("password1").value;
 		if(pass1!=pass2)
-			document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+			document.getElementById("password2").setCustomValidity("Both Passwords Don't Match");
 		else
 			document.getElementById("password2").setCustomValidity('');	 
 		//empty string means no validation error
 		}
+	</script>
+
+	<script type="text/javascript">
+	$(document).ready(function()
+	{    
+		$("#name").keyup(function()
+		{		
+			var name = $(this).val();	
+			
+			if(name.length > 3)
+			{		
+				$("#result").html('checking...');
+				
+				/*$.post("username-check.php", $("#reg-form").serialize())
+					.done(function(data){
+					$("#result").html(data);
+				});*/
+				
+				$.ajax({
+					
+					type : 'POST',
+					url  : 'username-check.php',
+					data : $(this).serialize(),
+					success : function(data)
+							  {
+						         $("#result").html(data);
+						      }
+					});
+					return false;
+				
+			}
+			else
+			{
+				$("#result").html('');
+			}
+		});
+		
+	});
 	</script>
 	
 
@@ -89,6 +127,14 @@ else if($message!="" AND $message=="registration successful")
 	<strong>Registration Successful: </strong>Thank you for registering!
 </div>
 <?php
+}
+else if($message!="" AND $message=="username already existed")
+{
+?>
+<div class="alert alert-danger">
+	<strong>Registration Failed: </strong>Username already existed!
+</div>
+<?php	
 }
 Session::forget('message');
 ?>
@@ -198,8 +244,8 @@ Session::forget('message');
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Username</label>
-					    <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johndoe123" required="">
-					    
+					    <input type="text" name="username" class="form-control" id="name" aria-describedby="emailHelp" placeholder="johndoe123" required="">
+					    <span id="result"></span>
 					</div>
 					
 					<div class="form-group">
