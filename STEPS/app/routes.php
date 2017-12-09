@@ -36,6 +36,8 @@
 	Route::post('/adminregister',array('uses'=>'RegistrationController@admin_register'));
 //End of Registration Controller Routes
 
+
+
 //Student Controller Routes (Main Website and Student Dashboard)
 	//Website
 	Route::get('/',array('uses'=>'StudentController@index'));
@@ -43,10 +45,12 @@
 	Route::get('/facility',array('uses'=>'StudentController@facility'));
 	Route::get('/activities',array('uses'=>'StudentController@activities'));
 	Route::get('/contact',array('uses'=>'StudentController@contact'));
-	
 	//Student Dashboard
 	Route::get('/home',array('before'=>'auth', 'uses'=>'StudentController@student_home'));
+	Route::post('/editstudentprofile',array('uses'=>'StudentController@editstudentprofile'));
 //End of Student Controller Routes
+
+
 
 //Admin Controller Routes
 	Route::get('/collegehome',array('uses'=>'AdminController@admin_college_home'));

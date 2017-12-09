@@ -106,6 +106,7 @@
 	                            <li><a href="#">Home</a></li>
 	                            <li><a href="#">About</a></li>
 	                            <li><a href="#">Support</a></li>
+	                            <li><a href="#">Settings</a></li>
 	                            <li><a href="http://localhost:8000/logout">Logout</a></li>
 	                        </ul>
 	                    </li>
@@ -135,7 +136,7 @@
 							  	<div class="col-md-10">
 								    <div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
 							            <div class="panel-heading" style="background-color:#fefefe; border:none;">
-							              	<h3 class="panel-title" style="color:black">{{ $student['firstname']." ".$student['lastname'] }} </h3>
+							              	<h2 class="panel-title" style="color:black;"><b>{{ $student['firstname']." ".$student['lastname'] }} </b></h2>
 							              	<div class="panel-options">
 							              		<a href="#" data-rel="reload" style="color:black" title="View Profile"><i class="glyphicon glyphicon-user"></i></a>
 												<a href="#" data-rel="reload" style="color:black" title="Edit Profile" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-cog"></i></a>
@@ -223,39 +224,39 @@
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           			<span aria-hidden="true">&times;</span>
         		</button>
-        		<h4 class="modal-title" id="myModalLabel">Sign up STEPS</h4>
+        		<h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
       		</div>
-      		<form method="post" action="/register">
+      		<form method="post" action="/editstudentprofile">
 		    <div class="modal-body">
 		      	
 					<div class="form-group">
 					    <label for="exampleInputEmail1">First Name</label>
-					    <input type="text" name="firstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John" required="" value="{{ $student['firstname'] }}">
+					    <input type="text" name="editfirstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John" required="" value="{{ $student['firstname'] }}">
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Middle Name</label>
-					    <input type="text" name="middlename" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Moe" required="" value="{{ $student['middlename'] }}">
+					    <input type="text" name="editmiddlename" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Moe" required="" value="{{ $student['middlename'] }}">
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Last Name</label>
-					    <input type="text" name="lastname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Doe" required="" value="{{ $student['lastname'] }}">
+					    <input type="text" name="editlastname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Doe" required="" value="{{ $student['lastname'] }}">
 					    
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Email Address</label>
-					    <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johnmoedoe@mail.com" required="" value="{{ $student['email'] }}">
+					    <input type="text" name="editemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johnmoedoe@mail.com" required="" value="{{ $student['email'] }}">
 					    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 					</div>
 					
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Birth Date</label>
-					    <input type="text" name="birthplace" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Los Angeles California, USA" required="" value="{{ $student['birthdate'] }}">
+					    <input type="text" name="editbirthdate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Los Angeles California, USA" required="" value="{{ $student['birthdate'] }}">
 					    
 					</div>
 
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Birth Place</label>
-					    <input type="text" name="birthplace" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Los Angeles California, USA" required="" value="{{ $student['birthplace'] }}">
+					    <input type="text" name="editbirthplace" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Los Angeles California, USA" required="" value="{{ $student['birthplace'] }}">
 					    
 					</div>
 					<div class="form-group">
@@ -263,7 +264,7 @@
 							<tr>
 								<td>
 									{{ Form::label('gender-label', 'Gender', array('class' => '')) }}
-			                        <select name="gender" class="birthfield" required="">
+			                        <select name="editgender" class="birthfield" required="">
 			                        	<option value="Male"  <?php if($student['gender']=="Male"){ echo 'selected=""'; } ?>>Male</option>
 										<option value="Female" <?php if($student['gender']=="Female"){ echo 'selected=""'; } ?>>Female</option>
 									</select>
@@ -273,7 +274,7 @@
 								</td>
 								<td>
 									<label for="exampleInputEmail1">Civil Status</label>
-									<select name="civilstatus" class="birthfield" required="">
+									<select name="editcivilstatus" class="birthfield" required="">
 			                        	<option value="Single" <?php if($student['civilstatus']=="Single"){ echo 'selected=""'; } ?>>Single</option>
 										<option value="Married" <?php if($student['civilstatus']=="Married"){ echo 'selected=""'; } ?>>Married</option>
 										<option value="Separated" <?php if($student['civilstatus']=="Separated"){ echo 'selected=""'; } ?>>Separated</option>
@@ -287,32 +288,32 @@
 					
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Contact</label>
-					    <input type="text" name="contact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="101223487553" required="" value="{{ $student['contact'] }}">
+					    <input type="text" name="editcontact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="101223487553" required="" value="{{ $student['contact'] }}">
 					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Home Address</label>
-					    <input type="text" name="homeaddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $student['homeaddress'] }}">
+					    <input type="text" name="edithomeaddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $student['homeaddress'] }}">
 					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Provincial Address</label>
-					    <input type="text" name="provincialaddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $student['provincialaddress'] }}">
+					    <input type="text" name="editprovincialaddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $student['provincialaddress'] }}">
 					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Term Entered</label>
-					    <input type="text" name="year-entered" class="semester-class" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="School Year (ex. 2017)" style="border-radius:2px;" required="" value="{{ $student['schoolyear'] }}">
-					    <select name="semester" class="semester-class" required="">
-			                <option value="1st Semister" <?php if($student['semester']=="1st Semister"){ echo 'selected=""'; } ?>>1st Semister</option>
-							<option value="2nd Semister" <?php if($student['semester']=="2nd Semister"){ echo 'selected=""'; } ?>>2nd Semister</option>
+					    <input type="text" name="edityear-entered" class="semester-class" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="School Year (ex. 2017)" style="border-radius:2px;" required="" value="{{ $student['schoolyear'] }}">
+					    <select name="editsemester" class="semester-class" required="">
+			                <option value="1st Semester" <?php if($student['semester']=="1st Semester"){ echo 'selected=""'; } ?>>1st Semester</option>
+							<option value="2nd Semester" <?php if($student['semester']=="2nd Semester"){ echo 'selected=""'; } ?>>2nd Semester</option>
 							<option value="Summer" <?php if($student['semester']=="Summer"){ echo 'selected=""'; } ?>>Summer</option>
 							
 						</select>
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Course To Enroll</label>
-					    <select name="tocourse" class="semester-class" style="width:100%;" required="">
+					    <select name="edittocourse" class="semester-class" style="width:100%;" required="">
 					    	<option value="" selected="">Choose a course</option>
 			                <option value="Bachelors of Science in Computer Science" <?php if($student['tocourse']=="Bachelors of Science in Computer Science"){ echo 'selected=""'; } ?>>Bachelors of Science in Computer Science</option>
 							<option value="Bachelors of Science in Information Technology" <?php if($student['tocourse']=="Bachelors of Science in Information Technology"){ echo 'selected=""'; } ?>>Bachelors of Science in Information Technology</option>
@@ -321,23 +322,23 @@
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Previous Course</label>
-					    <select name="fromcourse" class="semester-class" style="width:100%;" required="">
+					    <select name="editfromcourse" class="semester-class" style="width:100%;" required="">
 					    	<option value="" selected="">Choose a course</option>
 			                <option value="Bachelors of Science in Computer Science" <?php if($student['fromcourse']=="Bachelors of Science in Computer Science"){ echo 'selected=""'; } ?>>Bachelors of Science in Computer Science</option>
 							<option value="Bachelors of Science in Information Technology" <?php if($student['fromcourse']=="Bachelors of Science in Information Technology"){ echo 'selected=""'; } ?>>Bachelors of Science in Information Technology</option>
-							
 						</select>
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Previous School</label>
-					    <input type="text" name="fromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="" value="{{ $student['fromschool'] }}">
+					    <input type="text" name="editfromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="" value="{{ $student['fromschool'] }}">
 					    <small id="emailHelp" class="form-text text-muted">Kindly state the name of your previous school</small>
 					</div>
 				
 		    </div>
 		    <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        <input type="submit" class="btn btn-primary" value="Sign Up" name="signup">
+		        <input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
+		        <input type="submit" class="btn btn-primary" value="Save" name="editstudentprofilebutton">
 		    </div>
 		    </form>
     	</div>

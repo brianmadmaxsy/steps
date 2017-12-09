@@ -369,8 +369,8 @@ Session::forget('message');
 					    <label for="exampleInputEmail1">Term Entered</label>
 					    <input type="text" name="year-entered" class="semester-class" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="School Year (ex. 2017)" style="border-radius:2px;" required="">
 					    <select name="semester" class="semester-class" required="">
-			                <option value="1st Semister">1st Semister</option>
-							<option value="2nd Semister">2nd Semister</option>
+			                <option value="1st Semester">1st Semester</option>
+							<option value="2nd Semester">2nd Semester</option>
 							<option value="Summer">Summer</option>
 							
 						</select>
