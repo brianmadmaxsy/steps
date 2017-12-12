@@ -4,9 +4,10 @@
         <meta charset="UTF-8" />
         <title>STEPS Administrator</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        
+        <script type="text/javascript" src="admin/LoginRegister/js/jquery-2.1.4.min.js"></script>
         
         <link rel="shortcut icon" href="../favicon.ico"> 
+
         <link rel="stylesheet" type="text/css" href="admin/LoginRegister/css/master.css" />
         <link rel="stylesheet" type="text/css" href="admin/LoginRegister/css/content.css" />
 		<link rel="stylesheet" type="text/css" href="admin/LoginRegister/css/animate-custom.css" />
@@ -30,6 +31,45 @@
                           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
             }
         </style>
+
+        <script type="text/javascript">
+        $(document).ready(function()
+        {    
+            $("#uname").keyup(function()
+            {       
+                var name = $(this).val();   
+                
+                if(name.length > 1)
+                {       
+                    $("#result").html('checking...');
+                    
+                    /*$.post("username-check.php", $("#reg-form").serialize())
+                        .done(function(data){
+                        $("#result").html(data);
+                    });*/
+                    
+                    $.ajax({
+                        
+                        type : 'POST',
+                        url  : 'checkadminusername.php',
+                        data : $(this).serialize(),
+                        success : function(data)
+                                  {
+                                     $("#result").html(data);
+                                  }
+                        });
+                        return false;
+                    
+                }
+                else
+                {
+                    $("#result").html('');
+                }
+            });
+            
+        });
+        </script>
+        
     </head>
     <body>
         <div class="container">
@@ -62,8 +102,8 @@
                                     <input type="submit" name="submit" value="Login" /> 
 								</p>
                                 <p class="change_link">  
-									<font color="#85363c">Not a member yet ?</font>
-									<a href="#toregister" class="to_register" style="color:#85363c;">Join us</a>
+									<font color="#85363c">Register as University Administrator</font>
+									<a href="#toregister" class="to_register" style="color:#85363c;">Sign Up</a>
 								</p>
                             </form>
                         </div> <!-- End of Login form -->
@@ -82,10 +122,12 @@
                                 <p> 
                                     <label for="usernamesignup" class="uname" data-icon="u" style="color:#85363c;" >Last Name</label>
                                     <input id="usernamesignup" name="lastname" required="required" type="text" placeholder="ex. Doe" />
+
                                 </p>
                                 <p> 
                                     <label for="usernamesignup" class="uname" data-icon="u" style="color:#85363c;" >Username</label>
-                                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="mysuperusername690" />
+                                    <input id="uname" name="username" required="required" type="text" placeholder="mysuperusername690" />
+                                    <span id="result"></span>
                                 </p>
                                 <p> 
                                     <label for="passwordsignup" class="youpasswd" data-icon="p" style="color:#85363c;" >Password </label>
