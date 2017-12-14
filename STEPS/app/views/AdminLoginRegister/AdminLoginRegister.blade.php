@@ -72,6 +72,31 @@
         
     </head>
     <body>
+        <?php
+        $display_message="";
+        $message=Session::get('adminmessage');
+        if($message!="" AND $message=="user not found")
+        {
+            $display_message="<font color='red'>"."Login Error: Administrator account not found!"."</font>";
+        }
+        else if($message!="" AND $message=="registration successful")
+        {
+            $display_message="<font color='green'>"."Admin Registration Successful!"."</font>";
+        }
+        else if($message!="" AND $message=="username already existed")
+        {
+            $display_message="<font color='red'>"."Username already existed!"."</font>";
+        }
+        else if($message!="" AND $message=="thank you for using steps")
+        {
+            $display_message="<font color='green'>"."Thank You for using STEPS!"."</font>";
+        }
+        else
+        {
+            $display_message="<font color='green'>"."Welcome to STEPS Administrator!"."</font>";
+        }
+        Session::forget('adminmessage');
+        ?>
         <div class="container">
             
             <section>				
@@ -84,7 +109,7 @@
                             <form method="post" action="/adminloginpost"> 
                                 <div id="login_logo"><img src="Admin/LoginRegister/images/STEPS_logo.png" /></div> 
                                 <p>
-                                    {{ $message }}
+                                    {{ $display_message }}
                                 </p>
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" style="color:#85363c;" >Username</label>

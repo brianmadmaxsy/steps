@@ -110,7 +110,7 @@
 			  	<div class="content-box-large" >
 				  	<div id="tabs">
 						<ul>
-							<li><a href="#tabs-1">STEPS</a></li>
+							<li><a href="#tabs-1">Transferees</a></li>
 						    <li><a href="#tabs-2">Account</a></li>
 						    
 						</ul>

@@ -35,7 +35,7 @@ class LoginController extends BaseController{
 
 		if($admin=="")
 		{
-			return View::make('AdminLoginRegister.AdminLoginRegister')->with('message','<font color="green">'.'Welcome to STEPS Administrator'.'</font>');
+			return View::make('AdminLoginRegister.AdminLoginRegister');
 		}
 		else
 		{
@@ -83,7 +83,10 @@ class LoginController extends BaseController{
 				
 			}
 			else{
-				return View::make('AdminLoginRegister.AdminLoginRegister')->with('message','<font color="red">'.'Account did not exist!'.'</font>');
+				//admin user not found
+				$message='user not found';
+				Session::put('adminmessage',$message);
+				return Redirect::intended('/adminlogin');
 			}
 		}
 		catch(Exception $e)

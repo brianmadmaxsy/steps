@@ -136,6 +136,14 @@ else if($message!="" AND $message=="username already existed")
 </div>
 <?php	
 }
+else if($message!="" AND $message=="thank you for using steps")
+{
+?>
+<div class="alert alert-success">
+	Thank you for using STEPS! Come back soon!
+</div>
+<?php
+}
 Session::forget('message');
 ?>
 <!-- header -->
