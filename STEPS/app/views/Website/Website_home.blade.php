@@ -232,15 +232,18 @@ Session::forget('message');
 
 <!-- Modal for registration -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<form method="post" action="/register">
   	<div class="modal-dialog" role="document">
+    	
     	<div class="modal-content">
+    		
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           			<span aria-hidden="true">&times;</span>
         		</button>
         		<h4 class="modal-title" id="myModalLabel">Sign up STEPS</h4>
       		</div>
-      		<form method="post" action="/register">
+      		
 		    <div class="modal-body">
 		      	
 					<div class="form-group">
@@ -400,16 +403,16 @@ Session::forget('message');
 					    </select>
 					</div>
 					
-					<div id="Freshmen" style="display: none">
+					<div id="Freshmen" style="display: none;">
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Secondary School</label>
-						    <input type="text" name="freshmen_fromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="">
+						    <input type="text" name="freshmen_fromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles">
 						    <small id="emailHelp" class="form-text text-muted">Kindly state the name of your previous school</small>
 						</div>
 
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Course To Enroll</label>
-						    <select name="freshmen_tocourse" class="semester-class" style="width:100%;" required="">
+						    <select name="freshmen_tocourse" class="semester-class" style="width:100%;">
 						    	<option value="" selected="">Choose a course</option>
 				                <option value="Bachelors of Science in Computer Science">Bachelors of Science in Computer Science</option>
 								<option value="Bachelors of Science in Information Technology">Bachelors of Science in Information Technology</option>
@@ -418,10 +421,10 @@ Session::forget('message');
 						</div>
 					</div><!--End of div id="Freshmen" -->
 
-					<div id="Transferee" style="display: none">	
+					<div id="Transferee" style="display:none;">	
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Course To Enroll</label>
-						    <select name="tocourse" class="semester-class" style="width:100%;" required="">
+						    <select name="tocourse" class="semester-class" style="width:100%;">
 						    	<option value="" selected="">Choose a course</option>
 				                <option value="Bachelors of Science in Computer Science">Bachelors of Science in Computer Science</option>
 								<option value="Bachelors of Science in Information Technology">Bachelors of Science in Information Technology</option>
@@ -430,7 +433,7 @@ Session::forget('message');
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Previous Course</label>
-						    <select name="fromcourse" class="semester-class" style="width:100%;" required="">
+						    <select name="fromcourse" class="semester-class" style="width:100%;">
 						    	<option value="" selected="">Choose a course</option>
 				                <option value="Bachelors of Science in Computer Science">Bachelors of Science in Computer Science</option>
 								<option value="Bachelors of Science in Information Technology">Bachelors of Science in Information Technology</option>
@@ -439,27 +442,56 @@ Session::forget('message');
 						</div>
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Previous School</label>
-						    <input type="text" name="fromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="">
+						    <input type="text" name="fromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles">
 						    <small id="emailHelp" class="form-text text-muted">Kindly state the name of your previous school</small>
 						</div>
 					</div>
 					
-					<div id="Graduate" style="display: none">
+					<div id="Graduate" style="display:none;">
 						Graduate
 					</div>
-					
-					
-		    </div>
+			</div>
 
 		    <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		        <input type="submit" class="btn btn-primary" value="Sign Up" name="signup">
 		    </div>
-		    </form>
+		    
     	</div>
-  	</div>
+    </div>
+  	</form>
 </div>
-
+<!--
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#studenttype").change(function(){
+            $( "select option:selected").each(function(){
+                
+                if($(this).attr("value")=="Transferee"){
+                    $("#Freshmen").hide();
+	            	$("#Graduate").hide();
+	                $("#Transferee").show();
+                }
+                else if($(this).attr("value")=="Freshmen"){
+                    $("#Transferee").hide();
+	            	$("#Graduate").hide();
+	                $("#Freshmen").show();
+                }
+                else if($(this).attr("value")=="Graduate"){
+                    $("#Freshmen").hide();
+	            	$("#Transferee").hide();
+	                $("#Graduate").show();
+                }
+                else{
+                	$("#Freshmen").hide();
+	            	$("#Graduate").hide();
+	                $("#Transferee").hide();
+                }
+            });
+        }).change();
+    });
+</script>
+-->
 <script type="text/javascript">
     $(function () {
         $("#studenttype").change(function () {
@@ -490,6 +522,7 @@ Session::forget('message');
         });
     });
 </script>
+
 <!--End of Modal for registration -->
 
 <!-- banner -->
