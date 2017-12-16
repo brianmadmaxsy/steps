@@ -18,8 +18,11 @@
 	<link href="website/css/owl.carousel.css" rel="stylesheet">
 	<!--css-->
 
+	
 	<!-- js -->
 	<script type="text/javascript" src="website/js/jquery-2.1.4.min.js"></script>
+
+	
 	<script src="website/js/bootstrap.min.js"></script>
 	<!-- //js -->
 
@@ -102,8 +105,11 @@
 		
 	});
 	</script>
-	
 
+
+
+	
+	
 	
 </head>
 
@@ -383,31 +389,68 @@ Session::forget('message');
 							
 						</select>
 					</div>
+					
 					<div class="form-group">
-					    <label for="exampleInputEmail1">Course To Enroll</label>
-					    <select name="tocourse" class="semester-class" style="width:100%;" required="">
-					    	<option value="" selected="">Choose a course</option>
-			                <option value="Bachelors of Science in Computer Science">Bachelors of Science in Computer Science</option>
-							<option value="Bachelors of Science in Information Technology">Bachelors of Science in Information Technology</option>
-							
-						</select>
+						<label for="exampleInputEmail1">Student Type</label>
+						<select id="studenttype" name="studenttype" class="birthfield">
+							<option value="" selected="">Choose...</option>
+					        <option value="Freshmen">Freshmen</option>
+					        <option value="Transferee">Transferee</option>
+					        <option value="Graduate">Graduate</option>
+					    </select>
 					</div>
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Previous Course</label>
-					    <select name="fromcourse" class="semester-class" style="width:100%;" required="">
-					    	<option value="" selected="">Choose a course</option>
-			                <option value="Bachelors of Science in Computer Science">Bachelors of Science in Computer Science</option>
-							<option value="Bachelors of Science in Information Technology">Bachelors of Science in Information Technology</option>
-							
-						</select>
+					
+					<div id="Freshmen" style="display: none">
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Secondary School</label>
+						    <input type="text" name="freshmen_fromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="">
+						    <small id="emailHelp" class="form-text text-muted">Kindly state the name of your previous school</small>
+						</div>
+
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Course To Enroll</label>
+						    <select name="freshmen_tocourse" class="semester-class" style="width:100%;" required="">
+						    	<option value="" selected="">Choose a course</option>
+				                <option value="Bachelors of Science in Computer Science">Bachelors of Science in Computer Science</option>
+								<option value="Bachelors of Science in Information Technology">Bachelors of Science in Information Technology</option>
+								
+							</select>
+						</div>
+					</div><!--End of div id="Freshmen" -->
+
+					<div id="Transferee" style="display: none">	
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Course To Enroll</label>
+						    <select name="tocourse" class="semester-class" style="width:100%;" required="">
+						    	<option value="" selected="">Choose a course</option>
+				                <option value="Bachelors of Science in Computer Science">Bachelors of Science in Computer Science</option>
+								<option value="Bachelors of Science in Information Technology">Bachelors of Science in Information Technology</option>
+								
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Previous Course</label>
+						    <select name="fromcourse" class="semester-class" style="width:100%;" required="">
+						    	<option value="" selected="">Choose a course</option>
+				                <option value="Bachelors of Science in Computer Science">Bachelors of Science in Computer Science</option>
+								<option value="Bachelors of Science in Information Technology">Bachelors of Science in Information Technology</option>
+								
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Previous School</label>
+						    <input type="text" name="fromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="">
+						    <small id="emailHelp" class="form-text text-muted">Kindly state the name of your previous school</small>
+						</div>
 					</div>
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Previous School</label>
-					    <input type="text" name="fromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="">
-					    <small id="emailHelp" class="form-text text-muted">Kindly state the name of your previous school</small>
+					
+					<div id="Graduate" style="display: none">
+						Graduate
 					</div>
-				
+					
+					
 		    </div>
+
 		    <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		        <input type="submit" class="btn btn-primary" value="Sign Up" name="signup">
@@ -416,6 +459,37 @@ Session::forget('message');
     	</div>
   	</div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#studenttype").change(function () {
+
+        	if ($(this).val() == "Transferee")
+            {
+            	$("#Freshmen").hide();
+            	$("#Graduate").hide();
+                $("#Transferee").show();
+            } 
+            else if ($(this).val() == "Freshmen")
+            {
+            	$("#Transferee").hide();
+            	$("#Graduate").hide();
+                $("#Freshmen").show();
+            }
+            else if ($(this).val() == "Graduate")
+            {
+            	$("#Freshmen").hide();
+            	$("#Transferee").hide();
+                $("#Graduate").show();
+            }
+            else {
+            	$("#Freshmen").hide();
+            	$("#Graduate").hide();
+                $("#Transferee").hide();
+            }
+        });
+    });
+</script>
 <!--End of Modal for registration -->
 
 <!-- banner -->
@@ -766,4 +840,7 @@ Session::forget('message');
 			</div>
 		</div>
 </body>
+
+	
+
 </html>
