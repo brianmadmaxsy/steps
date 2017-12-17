@@ -35,6 +35,11 @@
 	    $('#example').DataTable();
 	} );
 </script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#example2').DataTable();
+	} );
+</script>
 
   		
   </head>
@@ -110,8 +115,9 @@
 			  	<div class="content-box-large" >
 				  	<div id="tabs">
 						<ul>
-							<li><a href="#tabs-1">STEPS</a></li>
-						    <li><a href="#tabs-2">Account</a></li>
+							<li><a href="#tabs-1">Transferee</a></li>
+							<li><a href="#tabs-2">Freshmen</a></li>
+						    <li><a href="#tabs-3">Account</a></li>
 						    
 						</ul>
 						
@@ -146,7 +152,7 @@
 						        <tbody>
 							       
 								    <?php
-								    foreach($students as $student)
+								    foreach($transfereestudents as $student)
 								    {
 								    	$userid=$student->userid;
 								    ?>
@@ -175,6 +181,62 @@
 				  			
 						</div> <!-- End of tabs-1 -->
 						<div id="tabs-2">
+						
+							<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+						    
+						        <thead>
+						            <tr>
+						                <th>Name</th>
+						                <th>School Year</th>
+						                <th>Semister</th>
+						                <th>Course To Enroll</th>
+						                <th>High School</th>
+						                <th>Status</th>
+						                <th>&nbsp;</th>
+						            </tr>
+						        </thead>
+						        <tfoot>
+						            <tr>
+						                <th>Name</th>
+						                <th>School Year</th>
+						                <th>Semister</th>
+						                <th>Course To Enroll</th>
+						                <th>High School</th>
+						                <th>Status</th>
+						                <th>&nbsp;</th>
+						            </tr>
+						        </tfoot>
+						        <tbody>
+							       
+								    <?php
+								    foreach($freshmenstudents as $student)
+								    {
+								    	$userid=$student->userid;
+								    ?>
+								        <tr>
+								        	<td>{{ $student->firstname.' '.$student->middlename.' '.$student->lastname }}</td>
+								        	<td>{{ $student->schoolyear }}</td>
+								        	<td>{{ $student->semester }}</td>
+								        	<td>{{ $student->tocourse }}</td>
+								            <td>{{ $student->highschool }}</td>
+								            <td>{{ $student->steps_status }}</td>
+								            <td>
+								            <form method="post" <?php if($student->steps_status=="payment"){ ?> action="/payment" <?php }elseif($student->steps_status=="identification"){ ?> action="/identification" <?php }elseif($student->steps_status=="ExamScheduling"){ ?> action="/examscheduling "<?php }else{ ?> action="/oasviewstudent" <?php } ?> >
+								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
+								                <input type="submit" name="open" value="Open" >
+								            </form>
+								            </td>
+								        </tr>
+								    <?php
+								    	$userid="";
+								    }
+								    ?>   
+							    </tbody>
+							</table>
+				  		
+				  			
+						</div> <!-- End of tabs-2 -->
+						<div id="tabs-3">
 							<div class="row">
 						  		<div class="col-md-1">
 						  			<!--no content just to provide space -->
@@ -245,7 +307,7 @@
 							  		<!--no content just to provide space -->
 							  	</div>
 							</div><!--row-->
-						</div><!--End of tabs-2 -->
+						</div><!--End of tabs-3 -->
 
 						
 					</div><!--End of tabs -->

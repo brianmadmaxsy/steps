@@ -47,7 +47,8 @@
 	Route::get('/contact',array('uses'=>'StudentController@contact'));
 	//Student Dashboard
 	Route::get('/home',array('before'=>'auth', 'uses'=>'StudentController@student_home'));
-	Route::post('/editstudentprofile',array('uses'=>'StudentController@editstudentprofile'));
+	Route::post('/edittransfereeprofile',array('uses'=>'StudentController@edit_transferee_profile'));
+	Route::post('/editfreshmenprofile',array('uses'=>'StudentController@edit_freshmen_profile'));
 //End of Student Controller Routes
 
 

@@ -10,12 +10,21 @@ class AdminController extends BaseController{
 		if($college!="")
 		{
 			
-			$students = DB::table('student')
+			$transfereestudents = DB::table('student')
+			->leftJoin('transferee', 'student.userid', '=', 'transferee.userid')
             ->leftJoin('evaluation', 'student.userid', '=', 'evaluation.userid')
             ->where('student.department','=',$college['department'])
+            ->where('student.studenttype','=','Transferee')
+            ->get();
+
+            $freshmenstudents = DB::table('student')
+			->leftJoin('freshmen', 'student.userid', '=', 'freshmen.userid')
+            ->leftJoin('evaluation', 'student.userid', '=', 'evaluation.userid')
+            ->where('student.department','=',$college['department'])
+            ->where('student.studenttype','=','Freshmen')
             ->get();
             
-			return View::make('CollegeAdminDashboard.CollegeAdminHome')->with('college',$college)->with('students',$students);
+			return View::make('CollegeAdminDashboard.CollegeAdminHome')->with('college',$college)->with('transfereestudents',$transfereestudents)->with('freshmenstudents',$freshmenstudents);
 		}
 		else{
 			return Redirect::intended('http://localhost:8000/adminlogin');
@@ -28,12 +37,21 @@ class AdminController extends BaseController{
 
 		if($sao!="")
 		{
-			$students = DB::table('student')
-			->leftJoin('requirements','student.userid','=','requirements.userid')
+			$transfereestudents = DB::table('student')
+			->leftJoin('transferee', 'student.userid', '=', 'transferee.userid')
+			->leftJoin('transferee_requirements','student.userid','=','transferee_requirements.userid')
 			->leftJoin('interview','student.userid','=','interview.userid')
+			->where('student.studenttype','=','Transferee')
 			->get();
 
-			return View::make('SaoAdminDashboard.SaoAdminHome')->with('sao',$sao)->with('students',$students);
+			$freshmenstudents = DB::table('student')
+			->leftJoin('freshmen', 'student.userid', '=', 'freshmen.userid')
+			->leftJoin('transferee_requirements','student.userid','=','transferee_requirements.userid')
+			->leftJoin('interview','student.userid','=','interview.userid')
+			->where('student.studenttype','=','Freshmen')
+			->get();
+
+			return View::make('SaoAdminDashboard.SaoAdminHome')->with('sao',$sao)->with('transfereestudents',$transfereestudents)->with('freshmenstudents',$freshmenstudents);
 		}
 		else{
 			return Redirect::intended('http://localhost:8000/adminlogin');
@@ -46,12 +64,24 @@ class AdminController extends BaseController{
 
 		if($oas!="")
 		{
-			$students = DB::table('student')
+			$transfereestudents = DB::table('student')
+			->leftJoin('transferee', 'student.userid', '=', 'transferee.userid')
 			->leftJoin('payment','student.userid','=','payment.userid')
 			->leftJoin('identification','student.userid','=','identification.userid')
 			->leftJoin('examschedule','student.userid','=','examschedule.userid')
+			->where('student.studenttype','=','Transferee')
 			->get();
-			return View::make('OasAdminDashboard.OasAdminHome')->with('oas',$oas)->with('students',$students);
+
+			$freshmenstudents = DB::table('student')
+			->leftJoin('freshmen', 'student.userid', '=', 'freshmen.userid')
+			->leftJoin('payment','student.userid','=','payment.userid')
+			->leftJoin('identification','student.userid','=','identification.userid')
+			->leftJoin('examschedule','student.userid','=','examschedule.userid')
+			->where('student.studenttype','=','Freshmen')
+			->get();
+
+
+			return View::make('OasAdminDashboard.OasAdminHome')->with('oas',$oas)->with('transfereestudents',$transfereestudents)->with('freshmenstudents',$freshmenstudents);
 		}
 		else{
 			return Redirect::intended('http://localhost:8000/adminlogin');
@@ -64,14 +94,24 @@ class AdminController extends BaseController{
 		
 		if($guidance!="")
 		{
-			$students = DB::table('student')
+			$transfereestudents = DB::table('student')
+			->leftJoin('transferee', 'student.userid', '=', 'transferee.userid')
 			->leftJoin('examschedule','student.userid','=','examschedule.userid')
 			->leftJoin('entranceexam','student.userid','=','entranceexam.userid')
 			->leftJoin('results','student.userid','=','results.userid')
+			->where('student.studenttype','=','Transferee')
+			->get();
+
+			$freshmenstudents = DB::table('student')
+			->leftJoin('freshmen', 'student.userid', '=', 'freshmen.userid')
+			->leftJoin('examschedule','student.userid','=','examschedule.userid')
+			->leftJoin('entranceexam','student.userid','=','entranceexam.userid')
+			->leftJoin('results','student.userid','=','results.userid')
+			->where('student.studenttype','=','Freshmen')
 			->get();
 
 			$examschedulelist = ExamScheduleListModel::all();
-			return View::make('GuidanceAdminDashboard.GuidanceAdminHome')->with('guidance',$guidance)->with('students',$students)->with('examschedulelist',$examschedulelist);
+			return View::make('GuidanceAdminDashboard.GuidanceAdminHome')->with('guidance',$guidance)->with('transfereestudents',$transfereestudents)->with('freshmenstudents',$freshmenstudents)->with('examschedulelist',$examschedulelist);
 		}
 		else{
 			return Redirect::intended('http://localhost:8000/adminlogin');

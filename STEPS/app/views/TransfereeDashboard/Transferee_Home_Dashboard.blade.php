@@ -191,11 +191,11 @@
 										                    </tr>
 										                    <tr>
 										                        <td>Course to Enroll</td>
-										                        <td>{{ $student['tocourse'] }}</td>
+										                        <td>{{ $transferee['tocourse'] }}</td>
 										                    </tr>
 										                    <tr>
 										                        <td>Previous School</td>
-										                        <td>{{ $student['fromschool'] }}</td>
+										                        <td>{{ $transferee['fromschool'] }}</td>
 										                    </tr>
 										                    <tr>
 										                    	<td>Status</td>
@@ -226,7 +226,7 @@
         		</button>
         		<h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
       		</div>
-      		<form method="post" action="/editstudentprofile">
+      		<form method="post" action="/edittransfereeprofile">
 		    <div class="modal-body">
 		      	
 					<div class="form-group">
@@ -315,8 +315,8 @@
 					    <label for="exampleInputEmail1">Course To Enroll</label>
 					    <select name="edittocourse" class="semester-class" style="width:100%;" required="">
 					    	<option value="" selected="">Choose a course</option>
-			                <option value="Bachelors of Science in Computer Science" <?php if($student['tocourse']=="Bachelors of Science in Computer Science"){ echo 'selected=""'; } ?>>Bachelors of Science in Computer Science</option>
-							<option value="Bachelors of Science in Information Technology" <?php if($student['tocourse']=="Bachelors of Science in Information Technology"){ echo 'selected=""'; } ?>>Bachelors of Science in Information Technology</option>
+			                <option value="Bachelors of Science in Computer Science" <?php if($transferee['tocourse']=="Bachelors of Science in Computer Science"){ echo 'selected=""'; } ?>>Bachelors of Science in Computer Science</option>
+							<option value="Bachelors of Science in Information Technology" <?php if($transferee['tocourse']=="Bachelors of Science in Information Technology"){ echo 'selected=""'; } ?>>Bachelors of Science in Information Technology</option>
 							
 						</select>
 					</div>
@@ -324,13 +324,13 @@
 					    <label for="exampleInputEmail1">Previous Course</label>
 					    <select name="editfromcourse" class="semester-class" style="width:100%;" required="">
 					    	<option value="" selected="">Choose a course</option>
-			                <option value="Bachelors of Science in Computer Science" <?php if($student['fromcourse']=="Bachelors of Science in Computer Science"){ echo 'selected=""'; } ?>>Bachelors of Science in Computer Science</option>
-							<option value="Bachelors of Science in Information Technology" <?php if($student['fromcourse']=="Bachelors of Science in Information Technology"){ echo 'selected=""'; } ?>>Bachelors of Science in Information Technology</option>
+			                <option value="Bachelors of Science in Computer Science" <?php if($transferee['fromcourse']=="Bachelors of Science in Computer Science"){ echo 'selected=""'; } ?>>Bachelors of Science in Computer Science</option>
+							<option value="Bachelors of Science in Information Technology" <?php if($transferee['fromcourse']=="Bachelors of Science in Information Technology"){ echo 'selected=""'; } ?>>Bachelors of Science in Information Technology</option>
 						</select>
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Previous School</label>
-					    <input type="text" name="editfromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="" value="{{ $student['fromschool'] }}">
+					    <input type="text" name="editfromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="" value="{{ $transferee['fromschool'] }}">
 					    <small id="emailHelp" class="form-text text-muted">Kindly state the name of your previous school</small>
 					</div>
 				

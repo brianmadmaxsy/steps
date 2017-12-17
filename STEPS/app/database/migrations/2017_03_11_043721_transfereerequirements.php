@@ -26,7 +26,7 @@ Requirements
 -status
 
 		*/
-		Schema::create('Requirements',function($table){
+		Schema::create('transferee_requirements',function($table){
 			$table->increments('id');
 			$table->string('requirementsid');
 			$table->string('userid');

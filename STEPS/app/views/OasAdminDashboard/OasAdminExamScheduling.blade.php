@@ -174,11 +174,11 @@
 						                    </tr>
 						                    <tr>
 						                        <td>Course to Enroll</td>
-						                        <td>{{ $student['tocourse'] }}</td>
+						                        <td>{{ $transferee['tocourse'] }}</td>
 						                    </tr>
 						                    <tr>
 						                        <td>Previous School</td>
-						                        <td>{{ $student['fromschool'] }}</td>
+						                        <td>{{ $transferee['fromschool'] }}</td>
 						                    </tr>
 						                    <tr>
 						                    	<td>Status</td>
@@ -216,7 +216,7 @@
 							            	<tr>
 							            		<td colspan="2">
 						          					<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
-								          			
+								          			<input type="hidden" name="get_oas_username" value="{{ $oas['username'] }}">
 								          			<input type="submit" name="chooseschedulebutton" class="btn btn-success btn-lg" value="Choose Schedule">
 													<input type="submit" name="chooseschedulebutton" class="btn btn-danger btn-lg" value="Decline">
 						          				</td>

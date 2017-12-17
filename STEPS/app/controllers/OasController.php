@@ -9,7 +9,8 @@ class OasController extends BaseController{
 		$oas=unserialize(serialize($oas));
 
 		$student=StudentModel::where('userid','=',$userid)->first();
-		return View::make('OasAdminDashboard.OasAdminViewStudent')->with('oas',$oas)->with('student',$student);
+		$transferee=TransfereeModel::where('userid','=',$userid)->first();
+		return View::make('OasAdminDashboard.OasAdminViewStudent')->with('oas',$oas)->with('student',$student)->with('transferee',$transferee);
 	}
 	public function view_payment()
 	{
@@ -18,9 +19,10 @@ class OasController extends BaseController{
 		$oas=unserialize(serialize($oas));
 
 		$student=StudentModel::where('userid','=',$userid)->first();
+		$transferee=TransfereeModel::where('userid','=',$userid)->first();
 		$payment=PaymentModel::where('userid','=',$userid)->first();
 
-		return View::make('OasAdminDashboard.OasAdminPayment')->with('oas',$oas)->with('student',$student)->with('payment',$payment);
+		return View::make('OasAdminDashboard.OasAdminPayment')->with('oas',$oas)->with('student',$student)->with('transferee',$transferee)->with('payment',$payment);
 	}
 	public function receive_payment()
 	{
@@ -69,9 +71,10 @@ class OasController extends BaseController{
 		$oas=unserialize(serialize($oas));
 
 		$student=StudentModel::where('userid','=',$userid)->first();
+		$transferee=TransfereeModel::where('userid','=',$userid)->first();
 		$identification=IdentificationModel::where('userid','=',$userid)->first();
 
-		return View::make('OasAdminDashboard.OasAdminIdentification')->with('oas',$oas)->with('student',$student)->with('identification',$identification);
+		return View::make('OasAdminDashboard.OasAdminIdentification')->with('oas',$oas)->with('student',$student)->with('transferee',$transferee)->with('identification',$identification);
 	}
 	public function claimed_identification()
 	{
@@ -120,9 +123,10 @@ class OasController extends BaseController{
 		$oas=unserialize(serialize($oas));
 
 		$student=StudentModel::where('userid','=',$userid)->first();
+		$transferee=TransfereeModel::where('userid','=',$userid)->first();
 		$examschedule=ExamScheduleModel::where('userid','=',$userid)->first();
 
-		return View::make('OasAdminDashboard.OasAdminExamScheduling')->with('oas',$oas)->with('student',$student)->with('examschedule',$examschedule);
+		return View::make('OasAdminDashboard.OasAdminExamScheduling')->with('oas',$oas)->with('student',$student)->with('transferee',$transferee)->with('examschedule',$examschedule);
 	}
 
 	public function oas_schedule_exam() //SAO personnel schedules an exam for student

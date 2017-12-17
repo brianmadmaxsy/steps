@@ -11,10 +11,11 @@ class GuidanceController extends BaseController{
 		$guidance=unserialize(serialize($guidance));
 
 		$student=StudentModel::where('userid','=',$userid)->first();
+		$transferee=TransfereeModel::where('userid','=',$userid)->first();
 		$examschedule=ExamScheduleModel::where('userid','=',$userid)->first();
 		$results=ResultsModel::where('userid','=',$userid)->first();
 		$entranceexam=EntranceExamModel::where('userid','=',$userid)->first();
-		return View::make('GuidanceAdminDashboard.GuidanceAdminViewStudent')->with('guidance',$guidance)->with('student',$student)->with('examschedule',$examschedule)->with('results',$results)->with('entranceexam',$entranceexam);
+		return View::make('GuidanceAdminDashboard.GuidanceAdminViewStudent')->with('guidance',$guidance)->with('student',$student)->with('transferee',$transferee)->with('examschedule',$examschedule)->with('results',$results)->with('entranceexam',$entranceexam);
 	}
 
 	public function post_exam_results()

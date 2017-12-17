@@ -13,6 +13,18 @@ class LoginController extends BaseController{
 		{
 			$student = StudentModel::where('username','=',$username)->first();
 			Session::put('sess_student_arr',$student);
+			
+			if($student['studenttype']=="Transferee")
+			{
+				$transferee = TransfereeModel::where('userid','=',$student['userid'])->first();
+				Session::put('sess_transferee_arr',$transferee);
+			}
+			else if($student['studenttype']=="Freshmen")
+			{
+				$freshmen = FreshmenModel::where('userid','=',$student['userid'])->first();
+				Session::put('sess_freshmen_arr',$freshmen);
+			}
+			
 			return Redirect::intended('/home');
 		}
 		else

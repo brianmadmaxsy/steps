@@ -53,10 +53,8 @@ class CreateStudentTable extends Migration {
 			$table->string('provincialaddress');
 			$table->string('schoolyear');
 			$table->string('semester');
-			$table->string('tocourse');
-			$table->string('fromcourse');
-			$table->string('fromschool');
 			$table->string('department');
+			$table->string('studenttype');
 			$table->string('steps_status');
 			$table->integer('step_number');
 			$table->rememberToken();

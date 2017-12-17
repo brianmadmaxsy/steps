@@ -27,21 +27,40 @@ class RegistrationController extends BaseController{
 
 			$year_entered=Input::get('year-entered');
 			$semester=Input::get('semester');
-
-			$tocourse=Input::get('tocourse');
-			$fromcourse=Input::get('fromcourse');
-			$fromschool=Input::get('fromschool');
+			$studenttype=Input::get('studenttype');
 
 			$userid=bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM))."-".$username;
 
-			$department="";
-			if($tocourse=="Bachelors of Science in Information Technology" || $tocourse=="Bachelors of Science in Computer Science")
+			if($studenttype=="Transferee")
 			{
-				$department="College of Computer Science";
-			}
-			else{
+				$tocourse=Input::get('tocourse');
+				$fromcourse=Input::get('fromcourse');
+				$fromschool=Input::get('fromschool');
+
 				$department="";
+				if($tocourse=="Bachelors of Science in Information Technology" || $tocourse=="Bachelors of Science in Computer Science")
+				{
+					$department="College of Computer Science";
+				}
+				else{
+					$department="";
+				}
 			}
+			else if($studenttype=="Freshmen")
+			{
+				$freshmen_highschool=Input::get('freshmen_highschool');
+				$freshmen_tocourse=Input::get('freshmen_tocourse');
+
+				$department="";
+				if($freshmen_tocourse=="Bachelors of Science in Information Technology" || $freshmen_tocourse=="Bachelors of Science in Computer Science")
+				{
+					$department="College of Computer Science";
+				}
+				else{
+					$department="";
+				}
+			}
+			
 
 			if(StudentModel::where('username','=',$username)->exists())
 			{
@@ -68,84 +87,105 @@ class RegistrationController extends BaseController{
 				$studentDB->provincialaddress=$provincialaddress;
 				$studentDB->schoolyear=$year_entered;
 				$studentDB->semester=$semester;
-				$studentDB->tocourse=$tocourse;
-				$studentDB->fromcourse=$fromcourse;
-				$studentDB->fromschool=$fromschool;
-				$studentDB->department=$department;
-				$studentDB->steps_status="evaluation";
-				$studentDB->step_number=1;
+				$studentDB->studenttype=$studenttype;
+
+				if($studenttype=="Freshmen")
+				{
+					$freshmenDB=new FreshmenModel;
+					$freshmenDB->userid=$userid;
+					$freshmenDB->highschool=$freshmen_highschool;
+					$freshmenDB->tocourse=$freshmen_tocourse;
+					$freshmenDB->save();
+				} //end of if($studenttype=="Freshmen")
+				else if($studenttype=="Transferee")
+				{
+					$transfereeDB=new TransfereeModel;
+					$transfereeDB->userid=$userid;
+					$transfereeDB->tocourse=$tocourse;
+					$transfereeDB->fromcourse=$fromcourse;
+					$transfereeDB->fromschool=$fromschool;
+					$transfereeDB->save();
+
+					$evaluation=new EvaluationModel;
+					$evaluation->evaluationid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."evaluation";
+					$evaluation->userid=$userid;
+					$evaluation->evaluator_name="";
+					$evaluation->course=$tocourse;
+					$evaluation->department=$department;
+					$evaluation->status="false";
+					$evaluation->comment="";
+					$evaluation->save();
+
+					$transferee_requirements=new TransfereeRequirementsModel;
+					$transferee_requirements->requirementsid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."evaluation";
+					$transferee_requirements->userid=$userid;
+					$transferee_requirements->sao_username="";
+					$transferee_requirements->NSO="false";
+					$transferee_requirements->COT="false";
+					$transferee_requirements->GM="false";
+					$transferee_requirements->TOR="false";
+					$transferee_requirements->RF="false";
+					$transferee_requirements->requirements_comment="";
+					$transferee_requirements->status="false";
+					$transferee_requirements->save();
+
+					$payment=new PaymentModel;
+					$payment->paymentid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."payment";
+					$payment->userid=$userid;
+					$payment->oas_username="";
+					$payment->paymentreceiptnum="";
+					$payment->receivedpayment="false";
+					$payment->save();
+
+					$identification=new IdentificationModel;
+					$identification->userid=$userid;
+					$identification->oas_username="";
+					$identification->getIdentification="false";
+					$identification->save();
+
+					$examschedule=new ExamScheduleModel;
+					$examschedule->examscheduleid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."examschedule";
+					$examschedule->userid=$userid;
+					$examschedule->schedule="";
+					$examschedule->save();
+
+					$entranceexam=new EntranceExamModel;
+					$entranceexam->entranceexamid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."exam";
+					$entranceexam->userid=$userid;
+					$entranceexam->guidance_username="";
+					$entranceexam->schedule="";
+					$entranceexam->status="false";
+					$entranceexam->save();
+
+					$results=new ResultsModel;
+					$results->resultid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."results";
+					$results->userid=$userid;
+					$results->guidance_username="";
+					$results->IQTest="";
+					$results->MathTest="";
+					$results->EnglishTest="";
+					$results->status="false";
+					$results->save();
+
+					//Step5 interview
+					$interview=new InterviewModel;
+					$interview->interviewid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."interview";
+					$interview->userid=$userid;
+					$interview->schedule="";
+					$interview->sao_username="";
+					$interview->status="false";
+					$interview->interview_comment="";
+					$interview->save();
+
+					$studentDB->department=$department;
+					$studentDB->steps_status="evaluation";
+					$studentDB->step_number=1;
+				} //end of else if($studenttype=="Transferee")
+				
+				
 				$studentDB->save();
 
-				$evaluation=new EvaluationModel;
-				$evaluation->evaluationid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."evaluation";
-				$evaluation->userid=$userid;
-				$evaluation->evaluator_name="";
-				$evaluation->course=$tocourse;
-				$evaluation->department=$department;
-				$evaluation->status="false";
-				$evaluation->comment="";
-				$evaluation->save();
-
-				$requirements=new RequirementsModel;
-				$requirements->requirementsid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."evaluation";
-				$requirements->userid=$userid;
-				$requirements->sao_username="";
-				$requirements->NSO="false";
-				$requirements->COT="false";
-				$requirements->GM="false";
-				$requirements->TOR="false";
-				$requirements->RF="false";
-				$requirements->requirements_comment="";
-				$requirements->status="false";
-				$requirements->save();
-
-				$payment=new PaymentModel;
-				$payment->paymentid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."payment";
-				$payment->userid=$userid;
-				$payment->oas_username="";
-				$payment->paymentreceiptnum="";
-				$payment->receivedpayment="false";
-				$payment->save();
-
-				$identification=new IdentificationModel;
-				$identification->userid=$userid;
-				$identification->oas_username="";
-				$identification->getIdentification="false";
-				$identification->save();
-
-				$examschedule=new ExamScheduleModel;
-				$examschedule->examscheduleid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."examschedule";
-				$examschedule->userid=$userid;
-				$examschedule->schedule="";
-				$examschedule->save();
-
-				$entranceexam=new EntranceExamModel;
-				$entranceexam->entranceexamid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."exam";
-				$entranceexam->userid=$userid;
-				$entranceexam->guidance_username="";
-				$entranceexam->schedule="";
-				$entranceexam->status="false";
-				$entranceexam->save();
-
-				$results=new ResultsModel;
-				$results->resultid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."results";
-				$results->userid=$userid;
-				$results->guidance_username="";
-				$results->IQTest="";
-				$results->MathTest="";
-				$results->EnglishTest="";
-				$results->status="false";
-				$results->save();
-
-				//Step5 interview
-				$interview=new InterviewModel;
-				$interview->interviewid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."interview";
-				$interview->userid=$userid;
-				$interview->schedule="";
-				$interview->sao_username="";
-				$interview->status="false";
-				$interview->interview_comment="";
-				$interview->save();
+				
 
 
 

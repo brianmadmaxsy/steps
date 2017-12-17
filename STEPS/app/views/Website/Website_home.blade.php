@@ -75,7 +75,7 @@
 		{		
 			var name = $(this).val();	
 			
-			if(name.length > 3)
+			if(name.length > 1)
 			{		
 				$("#result").html('checking...');
 				
@@ -406,7 +406,7 @@ Session::forget('message');
 					<div id="Freshmen" style="display: none;">
 						<div class="form-group">
 						    <label for="exampleInputEmail1">Secondary School</label>
-						    <input type="text" name="freshmen_fromschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles">
+						    <input type="text" name="freshmen_highschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles">
 						    <small id="emailHelp" class="form-text text-muted">Kindly state the name of your previous school</small>
 						</div>
 

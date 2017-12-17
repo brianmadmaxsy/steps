@@ -8,9 +8,10 @@ class CollegeController extends BaseController{
 		$college=unserialize(serialize($college));
 
 		$student=StudentModel::where('userid','=',$userid)->first();
+		$transferee=TransfereeModel::where('userid','=',$userid)->first();
 		$evaluation=EvaluationModel::where('userid','=',$userid)->first();
 
-		return View::make('CollegeAdminDashboard.CollegeAdminEvaluation')->with('college',$college)->with('student',$student)->with('evaluation',$evaluation);
+		return View::make('CollegeAdminDashboard.CollegeAdminEvaluation')->with('college',$college)->with('student',$student)->with('transferee',$transferee)->with('evaluation',$evaluation);
 		//echo $userid;
 	}
 	public function evaluation()
