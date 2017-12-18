@@ -182,7 +182,7 @@
 						</div> <!-- End of tabs-1 -->
 						<div id="tabs-2">
 						
-							<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<table id="example2" class="table table-striped table-bordered" cellspacing="0" width="100%">
 						    
 						        <thead>
 						            <tr>
@@ -221,7 +221,7 @@
 								            <td>{{ $student->highschool }}</td>
 								            <td>{{ $student->steps_status }}</td>
 								            <td>
-								            <form method="post" <?php if($student->steps_status=="payment"){ ?> action="/payment" <?php }elseif($student->steps_status=="identification"){ ?> action="/identification" <?php }elseif($student->steps_status=="ExamScheduling"){ ?> action="/examscheduling "<?php }else{ ?> action="/oasviewstudent" <?php } ?> >
+								            <form method="post" action="/oasgetfreshmenuserid">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="open" value="Open" >
 								            </form>

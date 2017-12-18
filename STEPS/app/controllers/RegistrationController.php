@@ -31,37 +31,7 @@ class RegistrationController extends BaseController{
 
 			$userid=bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM))."-".$username;
 
-			if($studenttype=="Transferee")
-			{
-				$tocourse=Input::get('tocourse');
-				$fromcourse=Input::get('fromcourse');
-				$fromschool=Input::get('fromschool');
-
-				$department="";
-				if($tocourse=="Bachelors of Science in Information Technology" || $tocourse=="Bachelors of Science in Computer Science")
-				{
-					$department="College of Computer Science";
-				}
-				else{
-					$department="";
-				}
-			}
-			else if($studenttype=="Freshmen")
-			{
-				$freshmen_highschool=Input::get('freshmen_highschool');
-				$freshmen_tocourse=Input::get('freshmen_tocourse');
-
-				$department="";
-				if($freshmen_tocourse=="Bachelors of Science in Information Technology" || $freshmen_tocourse=="Bachelors of Science in Computer Science")
-				{
-					$department="College of Computer Science";
-				}
-				else{
-					$department="";
-				}
-			}
 			
-
 			if(StudentModel::where('username','=',$username)->exists())
 			{
 				$message="username already existed";
@@ -91,14 +61,103 @@ class RegistrationController extends BaseController{
 
 				if($studenttype=="Freshmen")
 				{
+					$freshmen_highschool=Input::get('freshmen_highschool');
+					$freshmen_tocourse=Input::get('freshmen_tocourse');
+
+					$department="";
+					if($freshmen_tocourse=="Bachelors of Science in Information Technology" || $freshmen_tocourse=="Bachelors of Science in Computer Science")
+					{
+						$department="College of Computer Science";
+					}
+					else{
+						$department="";
+					}
+
 					$freshmenDB=new FreshmenModel;
 					$freshmenDB->userid=$userid;
 					$freshmenDB->highschool=$freshmen_highschool;
 					$freshmenDB->tocourse=$freshmen_tocourse;
 					$freshmenDB->save();
+
+					$freshmen_requirements=new FreshmenRequirementsModel;
+					$freshmen_requirements->requirementsid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."freshmenrequirements";
+					$freshmen_requirements->userid=$userid;
+					$freshmen_requirements->oas_username="";
+					$freshmen_requirements->highschoolcard="false";
+					$freshmen_requirements->GM="false";
+					$freshmen_requirements->NSO="false";
+					$freshmen_requirements->NCAE="false";
+					$freshmen_requirements->save();
+
+					$payment=new PaymentModel;
+					$payment->paymentid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."payment";
+					$payment->userid=$userid;
+					$payment->oas_username="";
+					$payment->paymentreceiptnum="";
+					$payment->receivedpayment="false";
+					$payment->save();
+
+					$identification=new IdentificationModel;
+					$identification->userid=$userid;
+					$identification->oas_username="";
+					$identification->getIdentification="false";
+					$identification->save();
+
+					$examschedule=new ExamScheduleModel;
+					$examschedule->examscheduleid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."examschedule";
+					$examschedule->userid=$userid;
+					$examschedule->schedule="";
+					$examschedule->save();
+
+					$entranceexam=new EntranceExamModel;
+					$entranceexam->entranceexamid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."exam";
+					$entranceexam->userid=$userid;
+					$entranceexam->guidance_username="";
+					$entranceexam->schedule="";
+					$entranceexam->status="false";
+					$entranceexam->save();
+
+					$results=new ResultsModel;
+					$results->resultid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."results";
+					$results->userid=$userid;
+					$results->guidance_username="";
+					$results->IQTest="";
+					$results->MathTest="";
+					$results->EnglishTest="";
+					$results->status="false";
+					$results->save();
+
+					//Step5 interview
+					$interview=new InterviewModel;
+					$interview->interviewid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."interview";
+					$interview->userid=$userid;
+					$interview->schedule="";
+					$interview->sao_username="";
+					$interview->status="false";
+					$interview->interview_comment="";
+					$interview->save();
+
+
+					$studentDB->department=$department;
+					$studentDB->steps_status="requirements";
+					$studentDB->step_number=1;
 				} //end of if($studenttype=="Freshmen")
 				else if($studenttype=="Transferee")
 				{
+
+					$tocourse=Input::get('tocourse');
+					$fromcourse=Input::get('fromcourse');
+					$fromschool=Input::get('fromschool');
+
+					$department="";
+					if($tocourse=="Bachelors of Science in Information Technology" || $tocourse=="Bachelors of Science in Computer Science")
+					{
+						$department="College of Computer Science";
+					}
+					else{
+						$department="";
+					}
+
 					$transfereeDB=new TransfereeModel;
 					$transfereeDB->userid=$userid;
 					$transfereeDB->tocourse=$tocourse;
@@ -117,7 +176,7 @@ class RegistrationController extends BaseController{
 					$evaluation->save();
 
 					$transferee_requirements=new TransfereeRequirementsModel;
-					$transferee_requirements->requirementsid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."evaluation";
+					$transferee_requirements->requirementsid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."transfereerequirements";
 					$transferee_requirements->userid=$userid;
 					$transferee_requirements->sao_username="";
 					$transferee_requirements->NSO="false";
@@ -185,11 +244,6 @@ class RegistrationController extends BaseController{
 				
 				$studentDB->save();
 
-				
-
-
-
-				//return View::make('website.website_home')->with('message','<script language="javascript">'.'alert("Thank you for registering to STEPS! You may now login to your account!")'.'</script>');
 				
 
 				//return Redirect::intended('http://localhost:8000')->with('message','<script language="javascript">'.'alert("Thank you for registering to STEPS! You may now login to your account!")'.'</script>');

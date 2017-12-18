@@ -59,6 +59,7 @@ class AdminController extends BaseController{
 	}
 	public function admin_oas_home()
 	{
+		Session::forget('sess_oas_freshmen_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas = unserialize(serialize($oas)); //added code to unserialize the __PHP_Incomplete_Class
 
@@ -74,9 +75,6 @@ class AdminController extends BaseController{
 
 			$freshmenstudents = DB::table('student')
 			->leftJoin('freshmen', 'student.userid', '=', 'freshmen.userid')
-			->leftJoin('payment','student.userid','=','payment.userid')
-			->leftJoin('identification','student.userid','=','identification.userid')
-			->leftJoin('examschedule','student.userid','=','examschedule.userid')
 			->where('student.studenttype','=','Freshmen')
 			->get();
 

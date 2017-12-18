@@ -12,6 +12,27 @@ class OasController extends BaseController{
 		$transferee=TransfereeModel::where('userid','=',$userid)->first();
 		return View::make('OasAdminDashboard.OasAdminViewStudent')->with('oas',$oas)->with('student',$student)->with('transferee',$transferee);
 	}
+
+	public function oas_get_freshmen_userid()
+	{
+		$userid=Input::get('get_userid');
+		Session::put('sess_oas_freshmen_userid',$userid);
+
+		return Redirect::intended('http://localhost:8000/oasviewfreshmen');
+	}
+	public function oas_view_freshmen_student()
+	{
+		$userid=Session::get('sess_oas_freshmen_userid');
+		$oas=Session::get('sess_admin_oas_arr');
+		$oas=unserialize(serialize($oas));
+
+		$student=StudentModel::where('userid','=',$userid)->first();
+		$freshmen=FreshmenModel::where('userid','=',$userid)->first();
+		
+		return View::make('OasAdminDashboard.OasAdminViewFreshmen')->with('oas',$oas)->with('student',$student)->with('freshmen',$freshmen);
+		
+	}
+
 	public function view_payment()
 	{
 		$userid=Input::get('get_userid');

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Requirements extends Migration {
+class TransfereeRequirements extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class Requirements extends Migration {
 	 */
 	public function up()
 	{
-		/*
+				/*
 Requirements
 -id AI
 -requirementsid
@@ -49,7 +49,7 @@ Requirements
 	 */
 	public function down()
 	{
-		Schema::drop('Requirements');
+		Schema::drop('transferee_requirements');
 	}
 
 }

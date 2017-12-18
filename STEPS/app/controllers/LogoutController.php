@@ -33,6 +33,7 @@ class LogoutController extends BaseController{
 	public function oas_logout()
 	{
 		Session::forget('sess_admin_oas_arr');
+		Session::forget('sess_oas_freshmen_userid');
 		//return View::make('AdminLoginRegister.AdminLoginRegister')->with('message','<font color="green">'.'Thank You for using STEPS!'.'</font>');
 
 
