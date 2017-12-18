@@ -21,6 +21,8 @@ class Freshmenrequirements extends Migration {
 			$table->string('GM'); //Good Moral Certificate
 			$table->string('NSO'); //NSO Birth Certificate
 			$table->string('NCAE'); //NCAE Result
+			$table->string('requirements_comment');
+			$table->string('status');
 			$table->timestamps();
 		});
 	}

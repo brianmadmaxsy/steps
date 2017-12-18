@@ -150,6 +150,10 @@
 										        <div class=" col-md-8 col-lg-8 "> 
 										            <table class="table table-user-information">
 										                <tbody>
+										                	<tr>
+										                        <td>Student Type</td>
+										                        <td>{{ $student['studenttype'] }}</td>
+										                    </tr>
 										                    <tr>
 										                        <td>Student ID</td>
 										                        <td>

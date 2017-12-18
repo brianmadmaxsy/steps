@@ -1,7 +1,7 @@
 <?php
 class OasController extends BaseController{
 
-	//OAS Steps method
+	//Start of functions for Transferee Students
 	public function oas_view_student()
 	{
 		$userid=Input::get('get_userid');
@@ -11,26 +11,6 @@ class OasController extends BaseController{
 		$student=StudentModel::where('userid','=',$userid)->first();
 		$transferee=TransfereeModel::where('userid','=',$userid)->first();
 		return View::make('OasAdminDashboard.OasAdminViewStudent')->with('oas',$oas)->with('student',$student)->with('transferee',$transferee);
-	}
-
-	public function oas_get_freshmen_userid()
-	{
-		$userid=Input::get('get_userid');
-		Session::put('sess_oas_freshmen_userid',$userid);
-
-		return Redirect::intended('http://localhost:8000/oasviewfreshmen');
-	}
-	public function oas_view_freshmen_student()
-	{
-		$userid=Session::get('sess_oas_freshmen_userid');
-		$oas=Session::get('sess_admin_oas_arr');
-		$oas=unserialize(serialize($oas));
-
-		$student=StudentModel::where('userid','=',$userid)->first();
-		$freshmen=FreshmenModel::where('userid','=',$userid)->first();
-		
-		return View::make('OasAdminDashboard.OasAdminViewFreshmen')->with('oas',$oas)->with('student',$student)->with('freshmen',$freshmen);
-		
 	}
 
 	public function view_payment()
@@ -225,7 +205,145 @@ class OasController extends BaseController{
 	}
 	//End of student_schedule_exam
 
+	//
+
+	//End of functions for Transferee Students
+
+	//
+
+	//Start of functions for freshmen students
+	public function oas_get_freshmen_userid()
+	{
+		$steps_status=Input::get('get_steps_status');
+		$userid=Input::get('get_userid');
+		Session::put('sess_oas_freshmen_userid',$userid);
+
+		if($steps_status=="requirements")
+		{
+			return Redirect::intended('http://localhost:8000/oasviewfreshmenrequirements');
+		}
+		else
+		{
+			return Redirect::intended('http://localhost:8000/oasviewfreshmen');
+		}
+		
+	}
+
+	public function oas_view_freshmen_requirements()
+	{
+		$userid=Session::get('sess_oas_freshmen_userid');
+		$oas=Session::get('sess_admin_oas_arr');
+		$oas=unserialize(serialize($oas));
+
+		$student=StudentModel::where('userid','=',$userid)->first();
+		$freshmenrequirements=FreshmenRequirementsModel::where('userid','=',$userid)->first();
+		$freshmen=FreshmenModel::where('userid','=',$userid)->first();
+		
+		return View::make('OasAdminDashboard.OasAdminViewFreshmenRequirements')->with('oas',$oas)->with('student',$student)->with('freshmen',$freshmen)->with('requirements',$freshmenrequirements);
+	}
+
+	public function submit_freshmen_requirements()
+	{
+		$userid=Input::get('get_userid');
+		$oas_username=Input::get('get_oas_username');
+		$highschoolcard=false;
+		$gm=false;
+		$nso=false;
+		$ncae=false;
+
+		if(Input::get('highschoolcard')!="")
+		{
+			//$cot=true;
+			$freshmen_requirements=FreshmenRequirementsModel::where('userid',$userid);
+			$freshmen_requirements->update(['highschoolcard'=>'true']);
+		}
+		if(Input::get('gm')!="")
+		{
+			//$gm=true;
+			$freshmen_requirements=FreshmenRequirementsModel::where('userid',$userid);
+			$freshmen_requirements->update(['GM'=>'true']);
+		}
+		if(Input::get('nso')!="")
+		{
+			//$nso=true;
+			$freshmen_requirements=FreshmenRequirementsModel::where('userid',$userid);
+			$freshmen_requirements->update(['NSO'=>'true']);
+		}
+		if(Input::get('ncae')!="")
+		{
+			//$tor=true;
+			$freshmen_requirements=FreshmenRequirementsModel::where('userid',$userid);
+			$freshmen_requirements->update(['NCAE'=>'true']);
+		}
+		
+		$freshmen_requirements=FreshmenRequirementsModel::where('userid',$userid);
+		$freshmen_requirements->update(['oas_username'=>$oas_username]);
+
+		$student = StudentModel::where('userid','=',$userid)->first();
+		Session::put('sess_student_arr',$student); //replace the old session for student user. So that after this transaction, student can refresh his page and page loads updated data
+		
+		$admin = AdminModel::where('username','=',$oas_username)->first();
+		Session::put('sess_admin_oas_arr',$admin); //same to student, this also replaces the old admin data.
+
+		return Redirect::intended('http://localhost:8000/oasviewfreshmenrequirements');
+	}
+	public function approve_freshmen_requirements()
+	{
+		$button=Input::get('submitted_button');
+
+		if($button=="Approve")
+		{
+			$userid=Input::get('get_userid');
+			$studentid=Input::get('studentid');
+			$comment=Input::get('requirements_comment');
+			$oas_username=Input::get('get_oas_username');
+
+			$freshmen_requirements=FreshmenRequirementsModel::where('userid',$userid);
+			$freshmen_requirements->update(['status'=>'true','requirements_comment'=>$comment,'oas_username'=>$oas_username]);
+			
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'payment','studentid'=>$studentid,'step_number'=>2]);
+
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
 
 
+			return Redirect::intended('http://localhost:8000/oashome');
+		}
+		elseif($button=="Decline")
+		{
+			$userid=Input::get('get_userid');
+			$oas_username=Input::get('get_oas_username');
+
+			$freshmen_requirements=FreshmenRequirementsModel::where('userid',$userid);
+			$freshmen_requirements->update(['status'=>'false','oas_username'=>$oas_username]);
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'declined']);
+
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
+			return Redirect::intended('http://localhost:8000/oashome');
+		}
+	}
+
+	public function oas_view_freshmen_student() //Display freshmen student
+	{
+		$userid=Session::get('sess_oas_freshmen_userid');
+		$oas=Session::get('sess_admin_oas_arr');
+		$oas=unserialize(serialize($oas));
+
+		$student=StudentModel::where('userid','=',$userid)->first();
+		$freshmen=FreshmenModel::where('userid','=',$userid)->first();
+		
+		return View::make('OasAdminDashboard.OasAdminViewFreshmen')->with('oas',$oas)->with('student',$student)->with('freshmen',$freshmen);
+		
+	}
+	//end of functions for freshmen students
 }
 ?>

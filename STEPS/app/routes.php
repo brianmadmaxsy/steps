@@ -97,6 +97,9 @@ Route::post('/studentscheduleexam',array('uses'=>'OasController@student_schedule
 //For freshmen
 Route::post('/oasgetfreshmenuserid',array('uses'=>'OasController@oas_get_freshmen_userid'));
 Route::get('/oasviewfreshmen',array('uses'=>'OasController@oas_view_freshmen_student'));
+Route::get('/oasviewfreshmenrequirements',array('uses'=>'OasController@oas_view_freshmen_requirements'));
+Route::post('/submitfreshmenrequirements',array('uses'=>'OasController@submit_freshmen_requirements'));
+Route::post('/approvefreshmenrequirements',array('uses'=>'OasController@approve_freshmen_requirements'));
 //End of OAS Steps
 
 //Guidance Steps
