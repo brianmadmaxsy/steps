@@ -203,7 +203,7 @@
 										                    </tr>
 										                    <tr>
 										                    	<td>Status</td>
-										                    	<td>{{ $student['steps_status'] }}</td>
+										                    	<td class="alert alert-info">{{ ucfirst($student['steps_status']) }}</td>
 										                    </tr>
 										                    
 										                     
@@ -346,7 +346,574 @@
 								
 								<div class="col-md-1"></div>
 								<div class="col-md-10">
-						        	 
+						        	<div class="card" style="border: 1px solid  #eee;/*box-shadow: 5px 5px 5px #eee;*/ border-radius: 5px;">
+							            <ul class="nav nav-tabs" role="tablist">
+							                <!--
+							                <li role="presentation" class="active"><a href="#home1" aria-controls="home" role="tab" data-toggle="tab">STEPS</a></li>
+											-->
+							                <?php if($student['step_number']==1 OR 1<=$student['step_number'] AND $student['step_number']<=7){ ?><li <?php if($student['step_number']==1){ echo 'class="active"'; } if($student['step_number']!=1 AND $requirements['highschoolcard']=="true" AND $requirements['GM']=="true" AND $requirements['NSO']=="true" AND $requirements['NCAE']=="true"){ echo  'style="background-color: #52be80;"'; }else{ echo 'style="background-color: #cd6155;"'; } ?>><a data-toggle="tab" href="#step1">STEP 1</a></li><?php } ?>
+
+										    <?php if($student['step_number']==2 OR 2<=$student['step_number'] AND $student['step_number']<=7){ ?><li <?php if($student['step_number']==2){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step2">STEP 2</a></li><?php } ?>
+
+										    <?php if($student['step_number']==3 OR 3<=$student['step_number'] AND $student['step_number']<=7){ ?><li <?php if($student['step_number']==3){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step3">STEP 3</a></li><?php } ?>
+
+										    <?php if($student['step_number']==4 OR 4<=$student['step_number'] AND $student['step_number']<=7){ ?><li <?php if($student['step_number']==4){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step4">STEP 4</a></li><?php } ?>
+
+										    <?php if($student['step_number']==5 OR 5<=$student['step_number'] AND $student['step_number']<=7){ ?><li <?php if($student['step_number']==5){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step5">STEP 5</a></li><?php } ?>
+
+										    <?php if($student['step_number']==6 OR 6<=$student['step_number'] AND $student['step_number']<=7){ ?><li <?php if($student['step_number']==6){ echo 'class="active"'; } else{ echo  'style="background-color: #52be80;"'; } ?>><a data-toggle="tab" href="#step6">STEP 6</a></li><?php } ?>
+
+										    <?php if($student['step_number']==7 OR 7<=$student['step_number'] AND $student['step_number']<=7){ ?><li <?php if($student['step_number']==7){ echo 'class="active"'; } ?>><a data-toggle="tab" href="#step7">STEP 7</a></li><?php } ?>
+							            </ul>
+
+							            <!-- Tab panes -->
+							                <div class="tab-content" style="height:auto;">
+
+							                	
+
+
+											    <?php 
+											    if($student['step_number']==1 OR 1<$student['step_number'] AND $student['step_number']<=7)
+											    {
+											    ?>
+											    <?php if($student['step_number']==1){ ?><div id="step1" class="tab-pane active"> <?php } else{ ?> <div id="step1" class="tab-pane fade"> <?php } ?>
+											      	<div class="row">
+											      		<div class="col-md-1"></div>
+											      		<div class="col-md-10">
+											      			<div id="step1and2_div">
+														        <label class="control-label" id="step_label">Step 1</label>
+														        <label class="control-label" id="step_name_label">Application</label>
+														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
+																		<div class="panel-title">Requirements</div>
+																	
+																	<div class="panel-options">
+																		
+																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																	</div>
+													  			</div>
+													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
+													  				<h3>Transferee Documents</h3>
+													  				<div class="alert alert-info" style="margin-left:-10px; margin-right:-10px;">
+																	  <strong>To Do!</strong>Kindly submit the following requirements at Students Affair Office!
+																	</div>
+
+																<?php
+																if($requirements['highschoolcard']=="true" || $requirements['GM']=="true" || $requirements['NSO']=="true" || $requirements['NCAE']=="true")
+																{
+																?>	
+																	<table id="submitted_requirements_table">
+																		<tr id="student_sao_table">
+																		    <td width="300"><font color="#01DF01" size="3"><b>Submitted Requirements</b></font></td>
+																		</tr>
+
+																		<?php
+																		if($requirements['highschoolcard']=="true")
+																		{
+																		?>
+																			<tr id="student_sao_table">
+																			    <td width="300">High School Card (Grades)</td>
+																			</tr>
+																		<?php
+																		}
+																		?>
+
+																		<?php
+																		if($requirements['GM']=="true")
+																		{
+																		?>
+																			<tr id="student_sao_table">
+																			    <td width="300">Good Moral Certificate</td>
+																			</tr>
+																		<?php
+																		}
+																		?>
+
+																		<?php
+																		if($requirements['NSO']=="true")
+																		{
+																		?>
+																			<tr id="student_sao_table">
+																			    <td width="300">NSO Birth Certificate (Original Copy)</td>
+																			</tr>
+																		<?php
+																		}
+																		?>
+
+																		<?php
+																		if($requirements['NCAE']=="true")
+																		{
+																		?>
+																			<tr id="student_sao_table">
+																			    <td width="300">NCAE Result</td>
+																			</tr>
+																		<?php
+																		}
+																		?>
+
+																		
+																	</table>
+																<?php
+																}
+																?>	
+																
+																<?php
+																if($requirements['highschoolcard']=="false" || $requirements['GM']=="false" || $requirements['NSO']=="false" || $requirements['NCAE']=="false")
+																{
+																?>	
+													  				<table id="unsubmitted_requirements_table">
+													  					<tr id="student_sao_table">
+																	    	<td width="300"><font color="#FA5858" size="3"><b>Please submit the following</b></font></td>
+																	    </tr>
+
+																		<?php
+																		if($requirements['highschoolcard']=="false")
+																		{
+																		?>
+																			<tr id="student_sao_table">
+																			    <td width="300">High School Card (Grades)</td>
+																			</tr>
+																		<?php
+																		}
+																		?>
+
+																		<?php
+																		if($requirements['GM']=="false")
+																		{
+																		?>
+																			<tr id="student_sao_table">
+																			    <td width="300">Good Moral Certificate</td>
+																			</tr>
+																		<?php
+																		}
+																		?>
+
+																		<?php
+																		if($requirements['NSO']=="false")
+																		{
+																		?>
+																			<tr id="student_sao_table">
+																			    <td width="300">NSO Birth Certificate (Original)</td>
+																			</tr>
+																		<?php
+																		}
+																		?>
+
+																		<?php
+																		if($requirements['NCAE']=="false")
+																		{
+																		?>
+																			<tr id="student_sao_table">
+																			    <td width="300">NCAE Result</td>
+																			</tr>
+																		<?php
+																		}
+																		?>
+
+																	</table>
+																<?php
+																}
+																?>
+																	<table style="margin-top:10px;">
+																		<tr>
+																	    	<td width="60"><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td>
+																	    		Part 1 of Step 1
+																	    	</td>
+																	    </tr>
+																	</table>
+																</div>
+															</div>
+											      		</div>
+											      		<div class="col-md-1"></div>
+											      		
+											      	</div>
+											    </div> <!--End of div id="step2"-->
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==2 OR 1<$student['step_number'] AND $student['step_number']<=7)
+											    {
+											    ?>
+											    <?php if($student['step_number']==2){ ?><div id="step2" class="tab-pane active"> <?php } else{ ?> <div id="step2" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+											    			<div id="step2and1_div">
+																<label class="control-label" id="step_label">Step 2</label>
+														        <label class="control-label" id="step_name_label">Accounting</label>
+														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
+																		<div class="panel-title">Payment</div>
+																	
+																	<div class="panel-options">
+																		
+																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																	</div>
+													  			</div>
+													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
+													  				<table>
+																	    
+																	    <tr>
+																	    	<td colspan="2"><h2><font color="#FA5858">Transferee Fees</font></h2></td>
+																	    </tr>
+																	    <tr>
+																	    	<td width="150"><h4>Testing Fee</h4></td>
+																	    	<td><h4><b>P300.00</b></h4></td>
+																	    </tr>
+																	    <tr>
+																	    	<td width="150"><h4>Digital Picture</h4></td>
+																	    	<td><h4><b>P50.00</b></h4></td>
+																	    </tr>
+																	    <tr>
+																	    	<td width="100"><h3><b>Total</b></h3></td>
+																	    	<td><h3><b>P350.00</b></h3></td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2"><h2>Your Student ID# is <b>{{ $student['studentid'] }}</b><h2></td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2" class="alert alert-info"><p><b>Take note of your Student ID#, it is required in the payment process.</b></p></td>
+
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2">
+																	    		<img src="dashboard/images/CITU_payment.png" class="img-responsive" alt="/">
+																	    	</td>
+																	    	
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
+																	    </tr>
+																	    <tr>
+																	    	<td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td>
+																	    		Part 1/1 of Step 2
+																	    	</td>
+																	    </tr>
+																	</table>
+																</div>
+															</div>
+											    		</div>
+											    		<div class="col-md-1"></div>
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==3 OR 1<$student['step_number'] AND $student['step_number']<=7)
+											    {
+											    ?>
+											    <?php if($student['step_number']==3){ ?><div id="step3" class="tab-pane active"> <?php } else{ ?> <div id="step3" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+											    			<div id="step3and1_div">
+														        <label class="control-label" id="step_label">Step 3</label>
+														        <label class="control-label" id="step_name_label">OAS</label>
+														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
+																		<div class="panel-title">Student Identification</div>
+																	
+																	<div class="panel-options">
+																		
+																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																	</div>
+													  			</div>
+													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
+													  				<table>
+																	    <tr>
+																	    	<td colspan="2"><b>Please proceed to Office of Academic Scholarship for digital picture...</b></td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2">Located @ Main Building(Near Guidance Office)</td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2">Office Time: 08:00AM-12:00NN and 02:00PM-05:00PM</td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2"><h3><font color="#FA5858">Claim Your Temporary ID</font></h3></td>
+																	    </tr>
+																	    
+																	    <tr>
+																	    	<td>&nbsp;</td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2"><font color="red"><b>Note: Please present your payment receipt to the personel incharge.</b></font></td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
+																	    </tr>
+																	    <tr>
+																	    	<td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td>
+																	    		Part 1/2 of Step 3
+																	    	</td>
+																	    </tr>
+																	</table>
+																</div>
+															</div>
+											    		</div>
+											    		<div class="col-md-1"></div>
+											    		
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==4 OR 1<$student['step_number'] AND $student['step_number']<=7)
+											    {
+											    ?>
+											    <?php if($student['step_number']==4){ ?><div id="step4" class="tab-pane active"> <?php } else{ ?> <div id="step4" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+													    	<div id="step3and2_div">
+														        <label class="control-label" id="step_label">Step 4</label>
+														        <label class="control-label" id="step_name_label">OAS</label>
+														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
+																		<div class="panel-title">Entrance Exam Scheduling</div>
+																	
+																	<div class="panel-options">
+																		
+																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																	</div>
+													  			</div>
+													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
+													  				<form method="post" action="/studentscheduleexam">
+														  				<table style="margin:10px 0px 0px 0px;">
+																		    <tr>
+																		    	<td width="200" height="50"><b>Choose your Schedule</b></td>
+																		    	<td height="50">
+																		    		<?php
+																		    		if($examschedule['schedule']=="")
+																		    		{
+																		    		?>
+																		    		<select name="schedule" style="height:40px; border:1px solid #D8D8D8; border-radius:5px;">
+																					    <option>03/27/17 09:00AM-11:00PM</option>
+																					    <option>03/27/17 01:00PM-03:00PM</option>
+																					    <option>03/27/17 03:00AM-05:00PM</option>
+																					</select>
+																					<?php
+																					}
+																					else
+																					{
+																					?>
+																						<b>{{ $examschedule['schedule'] }}</b>
+																					<?php
+																					}
+																					?>
+																				</td>
+																		    </tr>
+																		    <?php
+																		    if($examschedule['schedule']=="")
+																		    {
+																		    ?>
+																		    <tr>
+																		    	<td colspan="2">
+																		    		<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
+																		    		<input type="submit" name="submit_schedule" value="Submit Schedule" class="btn btn-success">
+																		    	</td>
+																		    </tr>
+																		    <?php
+																			}
+																		    ?>
+																		</table>
+																	</form>
+
+																	<table style="margin:10px 0px 0px 0px;">
+																		<tr>
+																	    	<td colspan="2"><font color="red"><b>Note: Please present your payment receipt to the personel incharge.</b></font></td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
+																	    </tr>
+																	    <tr>
+																	    	<td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td>
+																	    		Part 2/2 of Step 3
+																	    	</td>
+																	    </tr>
+																	</table>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-1"></div>
+													</div>
+												</div>
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==5 OR 1<$student['step_number'] AND $student['step_number']<=7)
+											    {
+											    ?>
+											    <?php if($student['step_number']==5){ ?><div id="step5" class="tab-pane active"> <?php } else{ ?> <div id="step5" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+											    			<div id="step4and1_div">
+														        <label class="control-label" id="step_label">Step 5</label>
+														        <label class="control-label" id="step_name_label">Entrance Exam</label>
+														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
+																		<div class="panel-title">Entrance Examination</div>
+																	
+																	<div class="panel-options">
+																		
+																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																	</div>
+													  			</div>
+													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
+													  				<table>
+																	    <tr>
+																	    	<td colspan="2">
+																	    	<h2><font color="#FA5858">Your exam schedule is on</font></h2>
+																	    	</td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2">
+																	    		<h2><b>{{ $examschedule['schedule'] }}</b></h2>
+																	    	</td>
+																	    </tr>
+																	    
+																	    
+																	    <tr>
+																	    	<td>&nbsp;</td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2"><font color="red">Note: Be on time at the Guidance Office (Located at Ground floor CIT-University Main Building near OAS) and please bring your own pencil and eraser.</font></td>
+																	    </tr>
+																	    <tr>
+																	    	<td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
+																	    </tr>
+																	    <tr>
+																	    	<td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td>
+																	    		Part 1/1 of Step 4
+																	    	</td>
+																	    </tr>
+																	</table>
+																</div>
+															</div>
+											    		</div>
+											    		<div class="col-md-1"></div>
+											    		
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==6 OR 1<$student['step_number'] AND $student['step_number']<=7)
+											    {
+											    ?>
+											    <?php if($student['step_number']==6){ ?><div id="step6" class="tab-pane active"> <?php } else{ ?> <div id="step6" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+											    			<div id="step5and1_div">
+														        <label class="control-label" id="step_label">Step 6</label>
+														        <label class="control-label" id="step_name_label">Interview</label>
+														        <div class="content-box-header" style="background-color:#9FF781; padding-left: 0px; color: black;">
+																		<div class="panel-title">Interview</div>
+																	
+																	<div class="panel-options">
+																		
+																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																	</div>
+													  			</div>
+													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
+													  				
+													  				<table>
+																		<tr>
+																		    <td colspan="2">
+																		    	<h2><font color="#FA5858">Entrance Exam Scores</font></h2>
+																		    </td>
+																		</tr>
+																		<tr>
+																		    <td width="150"><h4>IQ Test: </h4></td>
+																		    <td><h4>{{ $results['IQTest'] }}</h4></td>
+																		</tr>
+																		<tr>
+																		    <td width="150"><h4>Math Test: </h4></td>
+																		    <td><h4>{{ $results['MathTest'] }}</h4></td>
+																		</tr>
+																		<tr>
+																		    <td width="150"><h4>English Test: </h4></td>
+																		    <td><h4>{{ $results['EnglishTest'] }}</h4></td>
+																		</tr>
+																		    
+																		<tr>
+																		    <td colspan="2" class="alert alert-info"><h4>Note: Please proceed to Students Affair Office for your interview</h4></td>
+																		</tr>
+																		
+																	</table>
+
+																	<table style="margin:10px 0px 0px 0px">
+																		<!--
+																		<tr>
+																			<td colspan="2" width="300" class="alert alert-info">
+																				<h3>Be on time at Students Affair Office, they are waiting for you!</h3>
+																			</td>
+																			
+																		</tr>
+																		-->
+																		<tr>
+																		    <td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
+																		</tr>
+																		<tr>
+																		    <td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																		    <td>
+																		    	Part 1/1 of Step 5
+																		    </td>
+																		</tr>
+																	</table>
+													  			</div>
+															</div>
+											    		</div>
+											    		<div class="col-md-1"></div>
+											    		
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
+
+
+											    <?php 
+											    if($student['step_number']==7 OR 1<$student['step_number'] AND $student['step_number']<=7)
+											    {
+											    ?>
+											    <?php if($student['step_number']==7){ ?><div id="step7" class="tab-pane active"> <?php } else{ ?> <div id="step7" class="tab-pane fade"> <?php } ?>
+											    	<div class="row">
+											    		<div class="col-md-1"></div>
+											    		<div class="col-md-10">
+											    			<div class="jumbotron">
+															    <h1>Thank You for using STEPS!</h1>
+															    <p>It's our honor to serve and guide you to the right path. You may now enroll in CIT-University. Once again, thank you! :)</p>
+															</div>
+															<p><a href="#">CIT-University Handbook</a></p>
+															<p><a href="#">CIT-University News</a></p>
+											    		</div>
+											    		<div class="col-md-1"></div>
+											    	</div>
+											    </div>
+											    <?php
+											    }
+											    ?>
+												
+							                </div><!--End of tab content-->
+							        </div> <!--end of class="card" -->  
 						        </div>
 						        <div class="col-md-1"></div>
 							</div><!--end of row for morris chart -->

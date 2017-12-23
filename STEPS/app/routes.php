@@ -100,6 +100,8 @@ Route::get('/oasviewfreshmen',array('uses'=>'OasController@oas_view_freshmen_stu
 Route::get('/oasviewfreshmenrequirements',array('uses'=>'OasController@oas_view_freshmen_requirements'));
 Route::post('/submitfreshmenrequirements',array('uses'=>'OasController@submit_freshmen_requirements'));
 Route::post('/approvefreshmenrequirements',array('uses'=>'OasController@approve_freshmen_requirements'));
+Route::get('/oasviewfreshmenpayment',array('uses'=>'OasController@oas_view_freshmen_payment'));
+Route::post('/receivefreshmenpayment',array('uses'=>'OasController@receive_freshmen_payment'));
 //End of OAS Steps
 
 //Guidance Steps

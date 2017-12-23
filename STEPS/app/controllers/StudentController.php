@@ -61,7 +61,10 @@ class StudentController extends BaseController{
 				$freshmen=Session::get('sess_freshmen_arr');
 				$freshmen = unserialize(serialize($freshmen));
 
-				return View::make('FreshmenDashboard.Freshmen_Home_Dashboard')->with('student',$student)->with('freshmen',$freshmen);
+				$freshmen_requirements= FreshmenRequirementsModel::where('userid','=',$student['userid'])->first();
+				$examschedule= ExamScheduleModel::where('userid','=',$student['userid'])->first();
+				$results = ResultsModel::where('userid','=',$student['userid'])->first();
+				return View::make('FreshmenDashboard.Freshmen_Home_Dashboard')->with('student',$student)->with('freshmen',$freshmen)->with('requirements',$freshmen_requirements)->with('examschedule',$examschedule)->with('results',$results);
 				
 			}
 			

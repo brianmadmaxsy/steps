@@ -222,6 +222,10 @@ class OasController extends BaseController{
 		{
 			return Redirect::intended('http://localhost:8000/oasviewfreshmenrequirements');
 		}
+		elseif($steps_status=="payment") 
+		{
+			return Redirect::intended('http://localhost:8000/oasviewfreshmenpayment');
+		}
 		else
 		{
 			return Redirect::intended('http://localhost:8000/oasviewfreshmen');
@@ -328,6 +332,59 @@ class OasController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
+			return Redirect::intended('http://localhost:8000/oashome');
+		}
+	}
+
+	public function oas_view_freshmen_payment()
+	{
+		$userid=Session::get('sess_oas_freshmen_userid');
+		$oas=Session::get('sess_admin_oas_arr');
+		$oas=unserialize(serialize($oas));
+
+		$student=StudentModel::where('userid','=',$userid)->first();
+		$freshmen=FreshmenModel::where('userid','=',$userid)->first();
+		$payment=PaymentModel::where('userid','=',$userid)->first();
+		
+		return View::make('OasAdminDashboard.OasAdminViewFreshmenPayment')->with('oas',$oas)->with('student',$student)->with('freshmen',$freshmen)->with('payment',$payment);
+	}
+
+	public function receive_freshmen_payment()
+	{
+		$button=Input::get('receivepaymentbutton');
+
+		if($button=="Receive Payment")
+		{
+			$userid=Input::get('get_userid');
+			$oas_username=Input::get('get_oas_username');
+			$receiptnumber=Input::get('receiptnumber');
+
+			$payment=PaymentModel::where('userid',$userid);
+			$payment->update(['paymentreceiptnum'=>$receiptnumber,'receivedpayment'=>'true','oas_username'=>$oas_username]);
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'identification','step_number'=>3]);
+
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
+			return Redirect::intended('http://localhost:8000/oashome');
+		}
+		elseif($button=="Decline")
+		{
+			$userid=Input::get('get_userid');
+			$oas_username=Input::get('get_oas_username');
+			
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'declined']);
+
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
+
 			return Redirect::intended('http://localhost:8000/oashome');
 		}
 	}
