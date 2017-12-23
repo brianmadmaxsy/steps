@@ -102,6 +102,11 @@ Route::post('/submitfreshmenrequirements',array('uses'=>'OasController@submit_fr
 Route::post('/approvefreshmenrequirements',array('uses'=>'OasController@approve_freshmen_requirements'));
 Route::get('/oasviewfreshmenpayment',array('uses'=>'OasController@oas_view_freshmen_payment'));
 Route::post('/receivefreshmenpayment',array('uses'=>'OasController@receive_freshmen_payment'));
+Route::get('/viewfreshmenidentification',array('uses'=>'OasController@get_freshmen_identification'));
+Route::post('/claimfreshmenidentification', array('uses'=>'OasController@claimed_freshmen_identification'));
+Route::post('/freshmenstudentscheduleexam',array('uses'=>'OasController@freshmen_student_schedule_exam'));
+Route::get('/freshmenexamscheduling',array('uses'=>'OasController@oas_freshmen_view_exam_scheduling'));
+Route::post('/oasfreshmenscheduleexam',array('uses'=>'OasController@oas_freshmen_schedule_exam'));
 //End of OAS Steps
 
 //Guidance Steps

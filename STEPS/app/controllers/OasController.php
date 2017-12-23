@@ -130,7 +130,7 @@ class OasController extends BaseController{
 		return View::make('OasAdminDashboard.OasAdminExamScheduling')->with('oas',$oas)->with('student',$student)->with('transferee',$transferee)->with('examschedule',$examschedule);
 	}
 
-	public function oas_schedule_exam() //SAO personnel schedules an exam for student
+	public function oas_schedule_exam() //OAS personnel schedules an exam for student
 	{
 		$button=Input::get('chooseschedulebutton');
 
@@ -225,6 +225,15 @@ class OasController extends BaseController{
 		elseif($steps_status=="payment") 
 		{
 			return Redirect::intended('http://localhost:8000/oasviewfreshmenpayment');
+		}
+		elseif($steps_status=="identification") 
+		{
+			return Redirect::intended('http://localhost:8000/viewfreshmenidentification');
+		}
+		elseif($steps_status=="ExamScheduling")
+		{
+			return Redirect::intended('http://localhost:8000/freshmenexamscheduling');
+			
 		}
 		else
 		{
@@ -388,6 +397,148 @@ class OasController extends BaseController{
 			return Redirect::intended('http://localhost:8000/oashome');
 		}
 	}
+
+	public function get_freshmen_identification()
+	{
+		$userid=Session::get('sess_oas_freshmen_userid');
+		$oas=Session::get('sess_admin_oas_arr');
+		$oas=unserialize(serialize($oas));
+
+		$student=StudentModel::where('userid','=',$userid)->first();
+		$freshmen=FreshmenModel::where('userid','=',$userid)->first();
+		$identification=IdentificationModel::where('userid','=',$userid)->first();
+
+		return View::make('OasAdminDashboard.OasAdminFreshmenIdentification')->with('oas',$oas)->with('student',$student)->with('freshmen',$freshmen)->with('identification',$identification);
+	}
+	public function claimed_freshmen_identification()
+	{
+		$button=Input::get('getidentificationbutton');
+
+		if($button=="Claimed Temporary ID")
+		{
+			$userid=Input::get('get_userid');
+			$oas_username=Input::get('get_oas_username');
+			
+
+			$identification=IdentificationModel::where('userid',$userid);
+			$identification->update(['getIdentification'=>'true','oas_username'=>$oas_username]);
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'ExamScheduling','step_number'=>4]);
+
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
+			return Redirect::intended('http://localhost:8000/oashome');
+		}
+		elseif($button=="Decline")
+		{
+			$userid=Input::get('get_userid');
+			$oas_username=Input::get('get_oas_username');
+			
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'declined']);
+
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
+
+			return Redirect::intended('http://localhost:8000/oashome');
+		}
+	}
+
+	//This is the method if OAS is the one choosing the entrance exam schedule for freshmen student
+
+	public function oas_freshmen_view_exam_scheduling()
+	{
+		$userid=Session::get('sess_oas_freshmen_userid');
+		$oas=Session::get('sess_admin_oas_arr');
+		$oas=unserialize(serialize($oas));
+
+		$student=StudentModel::where('userid','=',$userid)->first();
+		$freshmen=FreshmenModel::where('userid','=',$userid)->first();
+		$examschedule=ExamScheduleModel::where('userid','=',$userid)->first();
+
+		return View::make('OasAdminDashboard.OasAdminViewFreshmenExamScheduling')->with('oas',$oas)->with('student',$student)->with('freshmen',$freshmen)->with('examschedule',$examschedule);
+	}
+	//end of oas_freshmen_view_exam_scheduling
+
+	public function oas_freshmen_schedule_exam() //OAS personnel schedules an exam for freshmen student
+	{
+		$button=Input::get('chooseschedulebutton');
+
+		if($button=="Choose Schedule")
+		{
+			$userid=Input::get('get_userid');
+			$oas_username=Input::get('get_oas_username');
+			$schedule=Input::get('examschedule');
+
+			$examschedule=ExamScheduleModel::where('userid',$userid);
+			$examschedule->update(['schedule'=>$schedule]);
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'EntranceExam','step_number'=>5]);
+
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
+			return Redirect::intended('http://localhost:8000/oashome');
+		}
+		elseif($button=="Decline")
+		{
+			$userid=Input::get('get_userid');
+			$oas_username=Input::get('get_oas_username');
+			
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'declined']);
+
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
+
+			return Redirect::intended('http://localhost:8000/oashome');
+		}
+	}
+
+	//This is the method if freshmen student is the one choosing his/her schedule
+	public function freshmen_student_schedule_exam()
+	{
+		$userid=Input::get('get_userid');
+		$schedule=Input::get('schedule');
+
+		$examschedule=ExamScheduleModel::where('userid',$userid);
+		$examschedule->update(['schedule'=>$schedule]);
+		$student=StudentModel::where('userid',$userid);
+		$student->update(['steps_status'=>'EntranceExam','step_number'=>5]);
+
+		
+		
+		$oas=Session::get('sess_admin_oas_arr');
+		$oas=unserialize(serialize($oas));
+
+		if($oas!="")
+		{
+			$oas_username=$oas['username'];
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
+		}
+		else{
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+		}
+
+		return Redirect::intended('http://localhost:8000/home');
+	}
+	//End of freshmen_student_schedule_exam
 
 	public function oas_view_freshmen_student() //Display freshmen student
 	{

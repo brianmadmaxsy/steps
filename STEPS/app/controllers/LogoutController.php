@@ -3,7 +3,8 @@ class LogoutController extends BaseController{
 
 	public function student_logout()
 	{
-		Session::flush();
+		//Session::flush();
+		Session::forget('sess_student_arr');
 		Auth::logout();
 
 		$message="thank you for using steps";

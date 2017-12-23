@@ -686,7 +686,7 @@
 																	</div>
 													  			</div>
 													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
-													  				<form method="post" action="/studentscheduleexam">
+													  				<form method="post" action="/freshmenstudentscheduleexam">
 														  				<table style="margin:10px 0px 0px 0px;">
 																		    <tr>
 																		    	<td width="200" height="50"><b>Choose your Schedule</b></td>
