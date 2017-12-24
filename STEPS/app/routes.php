@@ -112,6 +112,10 @@ Route::post('/oasfreshmenscheduleexam',array('uses'=>'OasController@oas_freshmen
 //Guidance Steps
 Route::post('/guidanceviewstudent',array('uses'=>'GuidanceController@guidance_view_student'));
 Route::post('/postresults',array('uses'=>'GuidanceController@post_exam_results'));
+
+Route::post('/guidancegetfreshmenuserid',array('uses'=>'GuidanceController@guidance_get_freshmen_userid'));
+Route::get('/guidanceviewfreshmen',array('uses'=>'GuidanceController@guidance_view_freshmen_student'));
+Route::post('/postfreshmenexamresults',array('uses'=>'GuidanceController@post_freshmen_exam_results'));
 //End of Guidance Steps
 
 /*End of Steps Controller Routes*/
