@@ -107,6 +107,8 @@ Route::post('/claimfreshmenidentification', array('uses'=>'OasController@claimed
 Route::post('/freshmenstudentscheduleexam',array('uses'=>'OasController@freshmen_student_schedule_exam'));
 Route::get('/freshmenexamscheduling',array('uses'=>'OasController@oas_freshmen_view_exam_scheduling'));
 Route::post('/oasfreshmenscheduleexam',array('uses'=>'OasController@oas_freshmen_schedule_exam'));
+Route::get('/viewfreshmeninterview',array('uses'=>'OasController@oas_freshmen_view_interview'));
+Route::post('/oasfreshmeninterviewpost',array('uses'=>'OasController@oas_freshmen_interview_post'));
 //End of OAS Steps
 
 //Guidance Steps

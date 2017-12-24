@@ -235,6 +235,10 @@ class OasController extends BaseController{
 			return Redirect::intended('http://localhost:8000/freshmenexamscheduling');
 			
 		}
+		elseif($steps_status=="interview")
+		{
+			return Redirect::intended('http://localhost:8000/viewfreshmeninterview');
+		}
 		else
 		{
 			return Redirect::intended('http://localhost:8000/oasviewfreshmen');
@@ -551,6 +555,60 @@ class OasController extends BaseController{
 		
 		return View::make('OasAdminDashboard.OasAdminViewFreshmen')->with('oas',$oas)->with('student',$student)->with('freshmen',$freshmen);
 		
+	}
+
+	public function oas_freshmen_view_interview()
+	{
+		$userid=Session::get('sess_oas_freshmen_userid');
+		$oas=Session::get('sess_admin_oas_arr');
+		$oas=unserialize(serialize($oas));
+
+		$freshmen_requirements=FreshmenRequirementsModel::where('userid','=',$userid)->first();
+		$results=ResultsModel::where('userid','=',$userid)->first();
+		$student=StudentModel::where('userid','=',$userid)->first();
+		$freshmen=FreshmenModel::where('userid','=',$userid)->first();
+		$interview=InterviewModel::where('userid','=',$userid)->first();
+		return View::make('OasAdminDashboard.OasAdminViewFreshmenInterview')->with('oas',$oas)->with('requirements',$freshmen_requirements)->with('student',$student)->with('freshmen',$freshmen)->with('results',$results)->with('interview',$interview);
+	}
+
+	public function oas_freshmen_interview_post()
+	{
+		$button=Input::get('interview_button');
+
+		if($button=="Approve")
+		{
+			$comment=Input::get('comment');
+			$userid=Input::get('get_userid');
+			$oas_username=Input::get('get_oas_username');
+
+			$interview=InterviewModel::where('userid',$userid);
+			$interview->update(['sao_username'=>$oas_username,'status'=>'true','interview_comment'=>$comment]);
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'Officially Enrolled','step_number'=>7]);
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
+
+
+			return Redirect::intended('http://localhost:8000/oashome');
+		}
+		elseif($button=="Decline")
+		{
+			$userid=Input::get('get_userid');
+			$sao_username=Input::get('get_sao_username');
+
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['steps_status'=>'declined']);
+
+			$student = StudentModel::where('userid','=',$userid)->first();
+			Session::put('sess_student_arr',$student);
+
+			$admin = AdminModel::where('username','=',$oas_username)->first();
+			Session::put('sess_admin_oas_arr',$admin);
+			return Redirect::intended('http://localhost:8000/oashome');
+		}
 	}
 	//end of functions for freshmen students
 }
