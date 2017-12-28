@@ -394,7 +394,7 @@
 													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
 													  				<h3>Transferee Documents</h3>
 													  				<div class="alert alert-info" style="margin-left:-10px; margin-right:-10px;">
-																	  <strong>To Do!</strong>Kindly submit the following requirements at Students Affair Office!
+																	  <strong>To Do!</strong>Kindly submit the following requirements at <b>OAS (Office of Academic Scholarship)</b>!
 																	</div>
 
 																<?php
@@ -560,7 +560,7 @@
 																	    </tr>
 																	    <tr>
 																	    	<td width="150"><h4>Testing Fee</h4></td>
-																	    	<td><h4><b>P300.00</b></h4></td>
+																	    	<td><h4><b>P200.00</b></h4></td>
 																	    </tr>
 																	    <tr>
 																	    	<td width="150"><h4>Digital Picture</h4></td>
@@ -568,7 +568,7 @@
 																	    </tr>
 																	    <tr>
 																	    	<td width="100"><h3><b>Total</b></h3></td>
-																	    	<td><h3><b>P350.00</b></h3></td>
+																	    	<td><h3><b>P250.00</b></h3></td>
 																	    </tr>
 																	    <tr>
 																	    	<td colspan="2"><h2>Your Student ID# is <b>{{ $student['studentid'] }}</b><h2></td>
@@ -626,7 +626,7 @@
 													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
 													  				<table>
 																	    <tr>
-																	    	<td colspan="2"><b>Please proceed to Office of Academic Scholarship for digital picture...</b></td>
+																	    	<td colspan="2"><b>Please proceed to OAS (Office of Academic Scholarship) for digital picture...</b></td>
 																	    </tr>
 																	    <tr>
 																	    	<td colspan="2">Located @ Main Building(Near Guidance Office)</td>
@@ -854,7 +854,7 @@
 																		</tr>
 																		    
 																		<tr>
-																		    <td colspan="2" class="alert alert-info"><h4>Note: Please proceed to Students Affair Office for your interview</h4></td>
+																		    <td colspan="2" class="alert alert-info"><h4>Note: Please proceed to OAS (Office of Academic Scholarship) for your interview</h4></td>
 																		</tr>
 																		
 																	</table>

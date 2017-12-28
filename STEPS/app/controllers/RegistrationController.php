@@ -13,7 +13,7 @@ class RegistrationController extends BaseController{
 			$email=Input::get('email');
 			$password=Input::get('password');
 			$cpassword=Input::get('cpassword');
-
+			$password=md5($password);
 			$birth_month=Input::get('birth-month');
 			$birth_day=Input::get('birth-day');
 			$birth_year=Input::get('birth-year');
@@ -47,7 +47,9 @@ class RegistrationController extends BaseController{
 				$studentDB->lastname=$lastname;
 				$studentDB->username=$username;
 				$studentDB->email=$email;
-				$studentDB->password=Hash::make($password);
+				//$studentDB->password=Hash::make($password);
+				$studentDB->password=$password;
+				
 				$studentDB->birthdate=$birth_month."-".$birth_day."-".$birth_year;
 				$studentDB->birthplace=$birthplace;
 				$studentDB->gender=$gender;

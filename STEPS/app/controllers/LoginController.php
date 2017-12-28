@@ -1,6 +1,7 @@
 <?php
 class LoginController extends BaseController{
 
+	/*
 	public function student_login()
 	{
 
@@ -38,7 +39,44 @@ class LoginController extends BaseController{
 		}
 		
 	}
-	
+	*/
+
+	public function student_login()
+	{
+		$username=Input::get('login_username');
+		$password=Input::get('login_password');
+
+		$password=md5($password);
+
+		$student = StudentModel::where('username','=',$username)->where('password','=',$password)->first();
+
+		if($student!="")
+		{
+			Session::put('sess_student_arr',$student);
+			
+			if($student['studenttype']=="Transferee")
+			{
+				$transferee = TransfereeModel::where('userid','=',$student['userid'])->first();
+				Session::put('sess_transferee_arr',$transferee);
+			}
+			else if($student['studenttype']=="Freshmen")
+			{
+				$freshmen = FreshmenModel::where('userid','=',$student['userid'])->first();
+				Session::put('sess_freshmen_arr',$freshmen);
+			}
+			
+			return Redirect::intended('/home');
+		}
+		else
+		{
+			//echo "try again!";
+			$message='user not found';
+			Session::put('message',$message);
+			return Redirect::intended('http://localhost:8000');
+
+			//return View::make('Website.Website_home')->with('message',$message);
+		}
+	}
 
 	public function admin_login_display()
 	{

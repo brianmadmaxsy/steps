@@ -150,6 +150,14 @@ else if($message!="" AND $message=="thank you for using steps")
 </div>
 <?php
 }
+else if($message!="" AND $message=="user not logged in")
+{
+?>
+<div class="alert alert-danger">
+	<strong>Redirecting Error: </strong>Student was not logged in!
+</div>
+<?php	
+}
 Session::forget('message');
 ?>
 <!-- header -->

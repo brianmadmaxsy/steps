@@ -69,6 +69,16 @@ class StudentController extends BaseController{
 			}
 			
 		}
+		else
+		{
+			//echo "User not logged in";
+			$message='user not logged in';
+			Session::put('message',$message);
+			return Redirect::intended('http://localhost:8000');
+
+			//return View::make('Website.Website_home')->with('message',$message);
+		
+		}
 		
 				//print_r($student);
 	}

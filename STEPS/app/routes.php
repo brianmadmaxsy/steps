@@ -45,8 +45,10 @@
 	Route::get('/facility',array('uses'=>'StudentController@facility'));
 	Route::get('/activities',array('uses'=>'StudentController@activities'));
 	Route::get('/contact',array('uses'=>'StudentController@contact'));
+	
 	//Student Dashboard
-	Route::get('/home',array('before'=>'auth', 'uses'=>'StudentController@student_home'));
+	//Route::get('/home',array('before'=>'auth', 'uses'=>'StudentController@student_home'));
+	Route::get('/home',array('uses'=>'StudentController@student_home'));
 	Route::post('/edittransfereeprofile',array('uses'=>'StudentController@edit_transferee_profile'));
 	Route::post('/editfreshmenprofile',array('uses'=>'StudentController@edit_freshmen_profile'));
 //End of Student Controller Routes
