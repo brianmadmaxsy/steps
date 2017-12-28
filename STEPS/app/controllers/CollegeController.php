@@ -1,9 +1,17 @@
 <?php
 class CollegeController extends BaseController{
 
-	public function evaluate()
+	public function college_get_transferee_userid()
 	{
 		$userid=Input::get('get_userid');
+		Session::put('sess_college_transferee_userid',$userid);
+		return Redirect::intended('http://localhost:8000/evaluate');
+
+	}
+	public function evaluate()
+	{
+		//$userid=Input::get('get_userid');
+		$userid=Session::get('sess_college_transferee_userid');
 		$college=Session::get('sess_admin_college_arr');
 		$college=unserialize(serialize($college));
 

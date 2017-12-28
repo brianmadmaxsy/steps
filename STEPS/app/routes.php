@@ -68,16 +68,18 @@
 /*Steps Controller Routes*/
 
 //College Steps
-Route::post('/evaluate',array('uses'=>'CollegeController@evaluate'));
+Route::post('/collegegettransferee',array('uses'=>'CollegeController@college_get_transferee_userid'));
+Route::get('/evaluate',array('uses'=>'CollegeController@evaluate'));
 Route::post('/evaluation',array('uses'=>'CollegeController@evaluation'));
 //End of College Steps
 
 //SAO Steps
-Route::post('/requirements',array('uses'=>'SaoController@requirements'));
+Route::post('/saogettransferee',array('uses'=>'SaoController@sao_get_transferee_userid'));
+Route::get('/requirements',array('uses'=>'SaoController@requirements'));
 Route::post('/submitrequirements',array('uses'=>'SaoController@submit_requirements'));
 Route::post('/submittedrequirements',array('uses'=>'SaoController@submitted_requirements'));
-
-Route::post('/interview',array('uses'=>'SaoController@interview'));
+Route::get('/saoviewtransferee',array('uses'=>'SaoController@sao_view_transferee'));
+Route::get('/interview',array('uses'=>'SaoController@interview'));
 Route::post('/sao_interview_post',array('uses'=>'SaoController@sao_interview_post'));
 //End of SAO Steps
 

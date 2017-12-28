@@ -302,7 +302,15 @@ class OasController extends BaseController{
 		$admin = AdminModel::where('username','=',$oas_username)->first();
 		Session::put('sess_admin_oas_arr',$admin); //same to student, this also replaces the old admin data.
 
-		return Redirect::intended('http://localhost:8000/oasviewfreshmenrequirements');
+		if($student['steps_status']=="requirements")
+		{
+			return Redirect::intended('http://localhost:8000/oasviewfreshmenrequirements');
+		}
+		else if($student['steps_status']=="interview")
+		{
+			return Redirect::intended('http://localhost:8000/viewfreshmeninterview');
+		}
+		
 	}
 	public function approve_freshmen_requirements()
 	{

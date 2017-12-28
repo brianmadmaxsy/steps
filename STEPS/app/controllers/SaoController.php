@@ -1,9 +1,34 @@
 <?php
 class SaoController extends BaseController{
 
-	public function requirements()
+	public function sao_get_transferee_userid()
 	{
 		$userid=Input::get('get_userid');
+		$steps_status=Input::get('get_steps_status');
+		Session::put('sess_sao_transferee_userid',$userid);
+		/*
+		<form method="post" <?php if($student->steps_status=="requirements"){ ?> action="/requirements"<?php } elseif($student->steps_status=="interview"){ ?> action="/interview" <?php }elseif($student->steps_status=="Officially Enrolled"){ ?> action="/interview" <?php }else{ ?> action="/requirements" <?php } ?> >
+		*/
+
+		if($steps_status=="requirements")
+		{
+			return Redirect::intended('http://localhost:8000/requirements');
+		}
+		elseif($steps_status=="interview")
+		{
+			return Redirect::intended('http://localhost:8000/interview');
+		}
+		else
+		{
+			return Redirect::intended('http://localhost:8000/saoviewtransferee');
+		}
+
+		
+	}
+	public function requirements()
+	{
+		//$userid=Input::get('get_userid');
+		$userid=Session::get('sess_sao_transferee_userid');
 		$sao=Session::get('sess_admin_sao_arr');
 		$sao=unserialize(serialize($sao));
 
@@ -62,7 +87,19 @@ class SaoController extends BaseController{
 		$admin = AdminModel::where('username','=',$sao_username)->first();
 		Session::put('sess_admin_sao_arr',$admin); //same to student, this also replaces the old admin data.
 
-		return Redirect::intended('http://localhost:8000/saohome');
+		if($student['steps_status']=="requirements")
+		{
+			return Redirect::intended('http://localhost:8000/requirements');
+		}
+		else if($student['steps_status']=="interview")
+		{
+			return Redirect::intended('http://localhost:8000/interview');
+		}
+		else
+		{
+			return Redirect::intended('http://localhost:8000/saoviewtransferee');
+		}
+		
 		
 	}
 
@@ -78,7 +115,8 @@ class SaoController extends BaseController{
 
 			$transferee_requirements=TransfereeRequirementsModel::where('userid',$userid);
 			$transferee_requirements->update(['status'=>'true','requirements_comment'=>$comment,'sao_username'=>$sao_username]);
-			$studentid="17-".rand (1000 , 9999)."-".rand(100,999);
+			//$studentid="17-".rand (1000 , 9999)."-".rand(100,999);
+			$studentid=Input::get('studentid');
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'payment','studentid'=>$studentid,'step_number'=>3]);
 
@@ -112,7 +150,8 @@ class SaoController extends BaseController{
 
 	public function interview()
 	{
-		$userid=Input::get('get_userid');
+		//$userid=Input::get('get_userid');
+		$userid=Session::get('sess_sao_transferee_userid');
 		$sao=Session::get('sess_admin_sao_arr');
 		$sao=unserialize(serialize($sao));
 
@@ -162,6 +201,23 @@ class SaoController extends BaseController{
 			Session::put('sess_admin_sao_arr',$admin);
 			return Redirect::intended('http://localhost:8000/saohome');
 		}
+	}
+
+	public function sao_view_transferee()
+	{
+		//$userid=Input::get('get_userid');
+		$userid=Session::get('sess_sao_transferee_userid');
+		$sao=Session::get('sess_admin_sao_arr');
+		$sao=unserialize(serialize($sao));
+
+		$student=StudentModel::where('userid','=',$userid)->first();
+
+		$transferee=TransfereeModel::where('userid','=',$userid)->first();
+		$transferee_requirements=TransfereeRequirementsModel::where('userid','=',$userid)->first();
+		$results=ResultsModel::where('userid','=',$userid)->first();
+		$interview=InterviewModel::where('userid','=',$userid)->first();
+
+		return View::make('SaoAdminDashboard.SaoAdminViewTransferee')->with('sao',$sao)->with('student',$student)->with('transferee',$transferee)->with('requirements',$transferee_requirements)->with('results',$results)->with('interview',$interview);
 	}
 }
 ?>

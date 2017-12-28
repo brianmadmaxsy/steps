@@ -119,7 +119,7 @@
 				<div class="content-box-large" >
 					<div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
 			            <div class="panel-heading" style="background-color:#fefefe; border:none;">
-			              	<h3 class="panel-title" style="color:black">{{ $student['firstname']." ".$student['lastname'] }} </h3>
+			              	<h3 class="panel-title" style="color:black"><b>{{ $student['firstname']." ".$student['lastname'] }} </b></h3>
 			              	<div class="panel-options">
 			              		<a href="#" data-rel="reload" style="color:black" title="View Profile"><i class="glyphicon glyphicon-user"></i></a>
 								<a href="#" data-rel="reload" style="color:black" title="Edit Profile"><i class="glyphicon glyphicon-cog"></i></a>
@@ -486,7 +486,7 @@
 						          	}
 						          	?>  
 
-						          	<a href="http://localhost:8000/oashome" class="back_to_admin_page">Back to Admin Page...</a>  
+						          	<a href="http://localhost:8000/oashome" class="btn btn-info" role="button">Back to Admin Page...</a>  
 						        </div><!-- col-md-8 col-lg-8-->
 						    </div><!--class row-->
 						    

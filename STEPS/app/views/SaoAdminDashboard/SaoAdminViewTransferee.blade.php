@@ -60,7 +60,7 @@
 	              <!-- Logo -->
 	              <div class="logo">
 	                 
-	                 <a href="http://localhost:8000/oashome"><img src="admin/AdminDashboardDesign/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
+	                 <a href="http://localhost:8000/saohome"><img src="admin/AdminDashboardDesign/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
 	              </div>
 	           </div>
 	           
@@ -101,10 +101,10 @@
 	                         </a>
 	                         <!-- Sub menu -->
 	                         <ul>
-	                            <li><a href="http://localhost:8000/oashome">Home</a></li>
+	                            <li><a href="http://localhost:8000/saohome">Home</a></li>
 	                            <li><a href="#">About</a></li>
 	                            <li><a href="#">Support</a></li>
-	                            <li><a href="http://localhost:8000/oaslogout">Logout</a></li>
+	                            <li><a href="http://localhost:8000/saologout">Logout</a></li>
 	                        </ul>
 	                    </li>
 	                    <li><a href="#"><i class="glyphicon glyphicon-calendar"></i>School Calendar</a></li>
@@ -114,7 +114,7 @@
 		  	
 		  	<div class="col-md-10">
 		  		<div class="panel-heading" style="background-color:#89333c;">
-			        <h3 class="panel-title" style="color:#fdca00"><b>{{ $oas['department'] }}</b></h3>
+			        <h3 class="panel-title" style="color:#fdca00"><b>{{ $sao['department'] }}</b></h3>
 				</div>
 				<div class="content-box-large" >
 					<div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
@@ -174,22 +174,33 @@
 						                    </tr>
 						                    <tr>
 						                        <td>Course to Enroll</td>
-						                        <td>{{ $freshmen['tocourse'] }}</td>
+						                        <td>{{ $transferee['tocourse'] }}</td>
 						                    </tr>
 						                    <tr>
 						                        <td>Previous School</td>
-						                        <td>{{ $freshmen['highschool'] }}</td>
+						                        <td>{{ $transferee['fromschool'] }}</td>
 						                    </tr>
 						                    <tr>
 						                    	<td>Status</td>
 						                    	<td class="alert alert-warning">{{ ucfirst($student['steps_status']) }}</td>
 						                    </tr>
 						                    <?php
+						                    if($requirements['requirements_comment']!="")
+						                    {
+						                    ?>
+						                    <tr>
+												<td><h5><b>Requirements Feedback</b></h5></td>
+												<td class="alert alert-info">{{ $requirements['requirements_comment'] }}</td>
+											</tr>
+											<?php
+											}
+											?>
+						                    <?php
 						                    if($interview['interview_comment']!="" && $interview['status']=="true")
 						                    {
 						                    ?>
 							                    <tr>
-							                    	<td><b>Interview Feedback</b></td>
+							                    	<td><h5><b>Interview Feedback</b></h5></td>
 							                    	<td class="alert alert-info">
 														{{ $interview['interview_comment'] }}
 							                    	</td>
@@ -199,9 +210,187 @@
 						                    ?> 
 						                </tbody>
 						            </table>
-						            
+						            <?php
+						            if($student['steps_status']!="evaluation" && $student['steps_status']!="requirements") //if steps_status is not "evaluation"(Step1) and not "requirements"(Step2) show this
+						          	{
+						            ?>
+						            	<table>
+						          			<tr>
+						          				<td colspan="2"><h3 style="color:green;">Submitted Requirements</h3></td>
+						          			</tr>
+						          			<?php
+											if($requirements['NSO']=="true")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">NSO Birth Certificate</td>
+												</tr>
+											<?php
+											}
+											?>
 
-						            <table>
+											<?php
+											if($requirements['COT']=="true")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">Certificate of Transfer</td>
+												</tr>
+											<?php
+											}
+											?>
+
+											<?php
+											if($requirements['GM']=="true")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">Good Moral Certificate</td>
+												</tr>
+											<?php
+											}
+											?>
+
+											<?php
+											if($requirements['TOR']=="true")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">Transcript of Records (TOR)</td>
+												</tr>
+											<?php
+											}
+											?>
+
+											<?php
+											if($requirements['RF']=="true")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">CIT University Residency Form</td>
+												</tr>
+											<?php
+											}
+											?>
+											<tr>
+												<td>&nbsp;</td>
+											</tr>
+										</table>
+										<?php
+							          	if($requirements['NSO']=="false" || $requirements['COT']=="false" || $requirements['GM']=="false" || $requirements['TOR']=="false" || $requirements['RF']=="false")
+							          	{
+							          	?>
+											<form method="post" action="/submitrequirements">
+												<table>
+													<tr>
+								          				<td colspan="2"><h3 style="color:green;">Incomplete Requirements</h3></td>
+								          			</tr>
+								          			<?php
+													if($requirements['NSO']=="false")
+													{
+													?>
+														<tr id="student_sao_table">
+														    <td width="300">
+														    	<label>NSO Birth Certificate</label>
+														    	
+														    </td>
+														    <td>
+														    	<input type="checkbox" name="nso" value="nso">
+														    </td>
+
+														</tr>
+													<?php
+													}
+													?>
+
+													<?php
+													if($requirements['COT']=="false")
+													{
+													?>
+														<tr id="student_sao_table">
+														    <td width="300">
+														    	<label>Certificate of Transfer</label>
+														    	
+														    </td>
+														    <td>
+														    	<input type="checkbox" name="cot" value="cot">
+														    </td>
+														</tr>
+													<?php
+													}
+													?>
+
+													<?php
+													if($requirements['GM']=="false")
+													{
+													?>
+														<tr id="student_sao_table">
+														    <td width="300">
+														    	<label>Good Moral Certificate</label>
+														    	
+														    </td>
+														    <td>
+														    	<input type="checkbox" name="gm" value="gm">
+														    </td>
+														</tr>
+													<?php
+													}
+													?>
+
+													<?php
+													if($requirements['TOR']=="false")
+													{
+													?>
+														<tr id="student_sao_table">
+														    <td width="300">
+														    	<label>Transcript of Records (TOR) </label>
+														    </td>
+														    <td>
+														    	<input type="checkbox" name="tor" value="tor">
+														    </td>
+														</tr>
+													<?php
+													}
+													?>
+
+													<?php
+													if($requirements['RF']=="false")
+													{
+													?>
+														<tr id="student_sao_table">
+														    <td width="300">
+														    	<label>CIT University Residency Form</label>
+														    	
+														    </td>
+														    <td>
+														    	<input type="checkbox" name="rf" value="rf">
+														    </td>
+														</tr>
+													<?php
+													}
+													?>	
+
+														<tr>
+															<td colspan="2">
+																<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
+																<input type="hidden" name="get_sao_username" value="{{ $sao['username'] }}">
+																<input type="submit" name="submit" value="Submit Requirement/s">
+															</td>
+														</tr>
+
+												</table>
+											</form>
+										<?php
+										}
+										?>
+									<?php
+									} //end of if($student['steps_status']!="evaluation" && $student['steps_status']!="requirements")
+									?>
+									<?php
+									if($interview['status']=="true")
+									{
+									?>
+									<table>
 						            	<tr>
 						            		<td colspan="2"><h3>Entrance Examination Results</h3></td>
 						            	</tr>
@@ -225,178 +414,13 @@
 						            		<td><h4><b>{{ $results['guidance_username'] }}</b></h4></td>
 						            	</tr>
 						            </table>
-						        <?php
-						        if($requirements['NSO']=="false" || $requirements['COT']=="false" || $requirements['GM']=="false" || $requirements['TOR']=="false" || $requirements['RF']=="false")
-								{	//If requirements are not complete but steps_status is Interview
-						        ?>
-						        	<form method="post" action="/submitfreshmenrequirements">
-										<table>
-											<tr>
-						          				<td colspan="2"><h3 style="color:green;">Incomplete Requirements</h3></td>
-						          			</tr>
-						          			<?php
-											if($requirements['NSO']=="false")
-											{
-											?>
-												<tr id="student_sao_table">
-												    <td width="300">
-												    	<label>NSO Birth Certificate</label>
-												    	
-												    </td>
-												    <td>
-												    	<input type="checkbox" name="nso" value="nso">
-												    </td>
-
-												</tr>
-											<?php
-											}
-											?>
-
-											<?php
-											if($requirements['COT']=="false")
-											{
-											?>
-												<tr id="student_sao_table">
-												    <td width="300">
-												    	<label>Certificate of Transfer</label>
-												    	
-												    </td>
-												    <td>
-												    	<input type="checkbox" name="cot" value="cot">
-												    </td>
-												</tr>
-											<?php
-											}
-											?>
-
-											<?php
-											if($requirements['GM']=="false")
-											{
-											?>
-												<tr id="student_sao_table">
-												    <td width="300">
-												    	<label>Good Moral Certificate</label>
-												    	
-												    </td>
-												    <td>
-												    	<input type="checkbox" name="gm" value="gm">
-												    </td>
-												</tr>
-											<?php
-											}
-											?>
-
-											<?php
-											if($requirements['TOR']=="false")
-											{
-											?>
-												<tr id="student_sao_table">
-												    <td width="300">
-												    	<label>Transcript of Records (TOR) </label>
-												    </td>
-												    <td>
-												    	<input type="checkbox" name="tor" value="tor">
-												    </td>
-												</tr>
-											<?php
-											}
-											?>
-
-											<?php
-											if($requirements['RF']=="false")
-											{
-											?>
-												<tr id="student_sao_table">
-												    <td width="300">
-												    	<label>CIT University Residency Form</label>
-												    	
-												    </td>
-												    <td>
-												    	<input type="checkbox" name="rf" value="rf">
-												    </td>
-												</tr>
-											<?php
-											}
-											?>	
-												<tr>
-													<td>&nbsp;</td>
-												</tr>
-												<tr>
-													<td colspan="2">
-														<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
-														<input type="hidden" name="get_oas_username" value="{{ $oas['username'] }}">
-														<input type="submit" name="submit" value="Submit Requirement/s" class="btn btn-info btn-sm">
-													</td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-												</tr>
-										</table>
-									</form>
-						        <?php
-						    	}
-						    	else
-						    	{
-						        ?>    
-						            <?php
-									if($student['steps_status']=="Officially Enrolled" && $interview['status']=="true")
-									{
-									?>
-						            <div style="margin-top:10px;">
-						            	<table>
-						            		<tr>
-												<td colspan="2"><h3>Interview</h3></td>
-											</tr>
-											<tr>
-												<td width="150"><h4><b>Interview Feedback</b></h4></td>
-												<td class="alert alert-success"><h4>{{ $interview['interview_comment'] }}</h4></td>
-											</tr>
-											<tr>
-												<td>&nbsp;</td>
-											</tr>
-						            	</table>
-						            </div>
-						            <?php
+									<?php
 									}
-									else
-									{
 									?>
-										<div style="margin-top:10px;">
-										<form method="post" action="/oasfreshmeninterviewpost">
-											<table>
-												<tr>
-													<td colspan="2"><h3>Interview</h3></td>
-												</tr>
-												<tr>
-													<td width="150">Interview Feedback</td>
-													<td><textarea name="comment" class="form-control" placeholder="Textarea" rows="5" style="width:500px;"></textarea></td>
-												</tr>
 
-												<tr>
-													<td>&nbsp;</td>
-												</tr>
-												<tr>
-													<td colspan="2">
-														<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
-														<input type="hidden" name="get_oas_username" value="{{ $oas['username'] }}">
-														<input type="submit" name="interview_button" class="btn btn-success btn-lg" value="Approve">
-														<input type="submit" name="interview_button" class="btn btn-danger btn-lg" value="Decline">
-													</td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-												</tr>
-											</table>		
-										</form>
-										</div>
-							        <?php
-							    	}
-							        ?>
-
-							    <?php
-								}
-							    ?>     	  
-						          	<a href="http://localhost:8000/oashome" class="btn btn-info" role="button">Back to Admin Page...</a>
+						            
+						            
+						            <a href="http://localhost:8000/saohome" class="btn btn-info" role="button">Back to Admin Home...</a>
 						        </div><!-- col-md-8 col-lg-8-->
 						    </div><!--class row-->
 						    

@@ -165,7 +165,7 @@
 								            <td>{{ $student->fromschool }}</td>
 								            <td>{{ $student->steps_status }}</td>
 								            <td>
-								            <form method="post" action="/evaluate">
+								            <form method="post" action="/collegegettransferee">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="open" value="Open" >
 								            </form>
