@@ -28,7 +28,7 @@
 	Route::get('/saologout',array('uses'=>'LogoutController@sao_logout'));
 	Route::get('/oaslogout',array('uses'=>'LogoutController@oas_logout'));
 	Route::get('/guidancelogout',array('uses'=>'LogoutController@guidance_logout'));
-	
+	Route::get('/masteradminlogout',array('uses'=>'LogoutController@master_admin_logout'));
 
 
 //Registration Controller Routes
@@ -62,7 +62,9 @@
 	Route::get('/guidancehome',array('uses'=>'AdminController@admin_guidance_home'));
 //End of Admin Controller Routes
 
-
+//Master Admin Controller Routes
+	Route::get('/masteradminhome',array('uses'=>'MasterAdminController@master_admin_home'));
+//End of Master Admin Controller Routes	
 
 
 /*Steps Controller Routes*/

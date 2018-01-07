@@ -52,5 +52,12 @@ class LogoutController extends BaseController{
 		return Redirect::intended('/adminlogin');
 	}
 
+	public function master_admin_logout()
+	{
+		Session::forget('sess_admin_masteradmin_arr');
+		$message='thank you for using steps';
+		Session::put('adminmessage',$message);
+		return Redirect::intended('/adminlogin');
+	}
 }
 ?>

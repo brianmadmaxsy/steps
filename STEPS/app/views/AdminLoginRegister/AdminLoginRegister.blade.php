@@ -234,6 +234,7 @@
                                         <option value="Office of Academic Scholarship">Office of Academic Scholarship</option>
                                         <option value="Guidance Office">Guidance Office</option>
                                         <option value="ETO">ETO</option>
+                                        <option value="STEPS">STEPS</option>
                                     </select>
                                 </p>
                                 <p>
@@ -246,6 +247,7 @@
                                         <option value="College Chairperson">College Chairperson</option>
                                         <option value="Faculty">Faculty</option>
                                         <option value="Working Staff">Working Staff</option>
+                                        <option value="Master Administrator">Master Administrator</option>
                                     </select>
                                 </p>
                                 <p> 

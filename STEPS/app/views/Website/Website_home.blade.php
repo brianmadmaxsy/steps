@@ -403,7 +403,7 @@ Session::forget('message');
 					
 					<div class="form-group">
 						<label for="exampleInputEmail1">Student Type</label>
-						<select id="studenttype" name="studenttype" class="birthfield">
+						<select id="studenttype" name="studenttype" class="birthfield" required="">
 							<option value="" selected="">Choose...</option>
 					        <option value="Freshmen">Freshmen</option>
 					        <option value="Transferee">Transferee</option>

@@ -129,7 +129,11 @@ class LoginController extends BaseController{
 					Session::put('sess_admin_guidance_arr',$admin);
 					return Redirect::intended('/guidancehome');
 				}
-				
+				elseif($admin['department']=="STEPS" AND $admin['position']=="Master Administrator")
+				{
+					Session::put('sess_admin_masteradmin_arr',$admin);
+					return Redirect::intended('/masteradminhome');
+				}
 				
 			}
 			else{
