@@ -506,7 +506,16 @@
 						</div>
 
 					</div><!--End of div id="Guidance" -->
+					<div id="STEPS_Department" style="display: none;">
+						<div class="form-group">
+						    <label for="exampleInputEmail1">Position</label>
+						    <select name="position" class="birthfield">
+						    	<option value="Department Head">Master Administrator</option>
+                                <option value="Department Assistant">Publisher</option>
+						    </select>
+						</div>
 
+					</div><!--End of div id="Guidance" -->
 					
 					
 					<div class="form-group">
@@ -540,6 +549,7 @@
             	$("#SAO").hide();
             	$("#OAS").hide();
             	$("#Guidance").hide();
+            	$("#STEPS_Department").hide();
                 $("#College").show();
             } 
             else if ($(this).val() == "College of Engineering")
@@ -547,6 +557,7 @@
             	$("#SAO").hide();
             	$("#OAS").hide();
             	$("#Guidance").hide();
+            	$("#STEPS_Department").hide();
                 $("#College").show();
             }
             else if ($(this).val() == "College of Nursing")
@@ -554,6 +565,7 @@
             	$("#SAO").hide();
             	$("#OAS").hide();
             	$("#Guidance").hide();
+            	$("#STEPS_Department").hide();
                 $("#College").show();
             }
             else if ($(this).val() == "Student Affairs Office")
@@ -561,6 +573,7 @@
             	$("#College").hide();
             	$("#OAS").hide();
             	$("#Guidance").hide();
+            	$("#STEPS_Department").hide();
                 $("#SAO").show();
             }
             else if ($(this).val() == "Office of Academic Scholarship")
@@ -568,6 +581,7 @@
             	$("#College").hide();
             	$("#SAO").hide();
             	$("#Guidance").hide();
+            	$("#STEPS_Department").hide();
                 $("#OAS").show();
             }
             else if ($(this).val() == "Guidance Office")
@@ -575,13 +589,23 @@
             	$("#College").hide();
             	$("#SAO").hide();
             	$("#OAS").hide();
+            	$("#STEPS_Department").hide();
                 $("#Guidance").show();
+            }
+            else if ($(this).val() == "STEPS")
+            {
+            	$("#College").hide();
+            	$("#SAO").hide();
+            	$("#OAS").hide();
+                $("#Guidance").hide();
+                $("#STEPS_Department").show();
             }
             else {
             	$("#College").hide();
             	$("#SAO").hide();
             	$("#OAS").hide();
                 $("#Guidance").hide();
+                $("#STEPS_Department").hide();
             }
         });
     });
