@@ -64,6 +64,8 @@
 
 //Master Admin Controller Routes
 	Route::get('/masteradminhome',array('uses'=>'MasterAdminController@master_admin_home'));
+	Route::post('/masteraddadmin',array('uses'=>'MasterAdminController@master_add_admin'));
+	Route::post('/masteraddstudent',array('uses'=>'MasterAdminController@master_add_student'));
 //End of Master Admin Controller Routes	
 
 
@@ -125,6 +127,9 @@ Route::post('/guidancegetfreshmenuserid',array('uses'=>'GuidanceController@guida
 Route::get('/guidanceviewfreshmen',array('uses'=>'GuidanceController@guidance_view_freshmen_student'));
 Route::post('/postfreshmenexamresults',array('uses'=>'GuidanceController@post_freshmen_exam_results'));
 //End of Guidance Steps
+
+
+
 
 /*End of Steps Controller Routes*/
 

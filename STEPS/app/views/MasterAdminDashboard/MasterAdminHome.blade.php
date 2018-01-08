@@ -48,17 +48,88 @@
 			          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 		}
 	</style>
-<script type="text/javascript">
-	$(document).ready(function() {
-	    $('#example').DataTable();
-	} );
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-	    $('#example2').DataTable();
-	} );
-</script>
-
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('#example').DataTable();
+		} );
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('#example2').DataTable();
+		} );
+	</script>
+	<script type="text/javascript">
+	        $(document).ready(function()
+	        {    
+	            $("#uname").keyup(function()
+	            {       
+	                var name = $(this).val();   
+	                
+	                if(name.length > 1)
+	                {       
+	                    $("#result").html('checking...');
+	                    
+	                    /*$.post("username-check.php", $("#reg-form").serialize())
+	                        .done(function(data){
+	                        $("#result").html(data);
+	                    });*/
+	                    
+	                    $.ajax({
+	                        
+	                        type : 'POST',
+	                        url  : 'checkadminusername.php',
+	                        data : $(this).serialize(),
+	                        success : function(data)
+	                                  {
+	                                     $("#result").html(data);
+	                                  }
+	                        });
+	                        return false;
+	                    
+	                }
+	                else
+	                {
+	                    $("#result").html('');
+	                }
+	            });
+	            
+	        });
+	        $(document).ready(function()
+			{    
+				$("#name").keyup(function()
+				{		
+					var name = $(this).val();	
+					
+					if(name.length > 1)
+					{		
+						$("#result2").html('checking...');
+						
+						/*$.post("username-check.php", $("#reg-form").serialize())
+							.done(function(data){
+							$("#result").html(data);
+						});*/
+						
+						$.ajax({
+							
+							type : 'POST',
+							url  : 'username-check.php',
+							data : $(this).serialize(),
+							success : function(data)
+									  {
+								         $("#result2").html(data);
+								      }
+							});
+							return false;
+						
+					}
+					else
+					{
+						$("#result2").html('');
+					}
+				});
+				
+			});
+	</script>
   		
   </head>
   <body>
@@ -362,8 +433,8 @@
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Username</label>
-					    <input type="text" name="username" class="form-control" id="name" aria-describedby="emailHelp" placeholder="johndoe123" required="">
-					    <span id="result"></span>
+					    <input type="text" name="username" class="form-control" id="uname" aria-describedby="emailHelp" placeholder="johndoe123" required="">
+					    <b><span id="result"></span></b>
 					</div>
 					
 					<div class="form-group">
@@ -456,67 +527,22 @@
                             <option value="STEPS">STEPS</option>
 					    </select>
 					</div>
-					
-					<div id="College" style="display: none;">
-						<div class="form-group">
-						    <label for="exampleInputEmail1">Position</label>
-						    <select name="position" class="birthfield">
-						    	<option value="College Dean">College Dean</option>
-                                <option value="College Chairperson">College Chairperson</option>
-                                <option value="Faculty">Faculty</option>
-                                <option value="Working Staff">Working Staff</option>
-						    </select>
-						</div>
 
-					</div><!--End of div id="College" -->
-
-					<div id="SAO" style="display: none;">
-						<div class="form-group">
-						    <label for="exampleInputEmail1">Position</label>
-						    <select name="position" class="birthfield">
-						    	<option value="Department Head">Department Head</option>
-                                <option value="Department Assistant">Department Assistant</option>
-                                <option value="Department Secretary">Department Secretary</option>
-                                <option value="Working Staff">Working Staff</option>
-						    </select>
-						</div>
-
-					</div><!--End of div id="SAO" -->
-					<div id="OAS" style="display: none;">
-						<div class="form-group">
-						    <label for="exampleInputEmail1">Position</label>
-						    <select name="position" class="birthfield">
-						    	<option value="Department Head">Department Head</option>
-                                <option value="Department Assistant">Department Assistant</option>
-                                <option value="Department Secretary">Department Secretary</option>
-                                <option value="Working Staff">Working Staff</option>
-						    </select>
-						</div>
-
-					</div><!--End of div id="OAS" -->
-					<div id="Guidance" style="display: none;">
-						<div class="form-group">
-						    <label for="exampleInputEmail1">Position</label>
-						    <select name="position" class="birthfield">
-						    	<option value="Department Head">Department Head</option>
-                                <option value="Department Assistant">Department Assistant</option>
-                                <option value="Department Secretary">Department Secretary</option>
-                                <option value="Working Staff">Working Staff</option>
-						    </select>
-						</div>
-
-					</div><!--End of div id="Guidance" -->
-					<div id="STEPS_Department" style="display: none;">
-						<div class="form-group">
-						    <label for="exampleInputEmail1">Position</label>
-						    <select name="position" class="birthfield">
-						    	<option value="Department Head">Master Administrator</option>
-                                <option value="Department Assistant">Publisher</option>
-						    </select>
-						</div>
-
-					</div><!--End of div id="Guidance" -->
-					
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Position</label>
+					    <select name="position" class="birthfield">
+					    	<option value="">Choose One</option>
+					    	<option value="College Dean">College Dean</option>
+                            <option value="College Chairperson">College Chairperson</option>
+                            <option value="Faculty">Faculty</option>
+                            <option value="Department Head">Department Head</option>
+                            <option value="Department Assistant">Department Assistant</option>
+                            <option value="Department Secretary">Department Secretary</option>
+                            <option value="Working Staff">Working Staff</option>
+                            <option value="Master Administrator">Master Administrator</option>
+                            <option value="Publisher">Publisher</option>
+					    </select>
+					</div>
 					
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Past University</label>
@@ -531,6 +557,7 @@
 			</div>
 
 		    <div class="modal-footer">
+		    	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		        <input type="submit" class="btn btn-primary" value="Sign Up" name="signup">
 		    </div>
@@ -540,77 +567,7 @@
   	</form>
 </div>
 
-<script type="text/javascript">
-    $(function () {
-        $("#department").change(function () {
 
-        	if ($(this).val() == "College of Computer Science")
-            {
-            	$("#SAO").hide();
-            	$("#OAS").hide();
-            	$("#Guidance").hide();
-            	$("#STEPS_Department").hide();
-                $("#College").show();
-            } 
-            else if ($(this).val() == "College of Engineering")
-            {
-            	$("#SAO").hide();
-            	$("#OAS").hide();
-            	$("#Guidance").hide();
-            	$("#STEPS_Department").hide();
-                $("#College").show();
-            }
-            else if ($(this).val() == "College of Nursing")
-            {
-            	$("#SAO").hide();
-            	$("#OAS").hide();
-            	$("#Guidance").hide();
-            	$("#STEPS_Department").hide();
-                $("#College").show();
-            }
-            else if ($(this).val() == "Student Affairs Office")
-            {
-            	$("#College").hide();
-            	$("#OAS").hide();
-            	$("#Guidance").hide();
-            	$("#STEPS_Department").hide();
-                $("#SAO").show();
-            }
-            else if ($(this).val() == "Office of Academic Scholarship")
-            {
-            	$("#College").hide();
-            	$("#SAO").hide();
-            	$("#Guidance").hide();
-            	$("#STEPS_Department").hide();
-                $("#OAS").show();
-            }
-            else if ($(this).val() == "Guidance Office")
-            {
-            	$("#College").hide();
-            	$("#SAO").hide();
-            	$("#OAS").hide();
-            	$("#STEPS_Department").hide();
-                $("#Guidance").show();
-            }
-            else if ($(this).val() == "STEPS")
-            {
-            	$("#College").hide();
-            	$("#SAO").hide();
-            	$("#OAS").hide();
-                $("#Guidance").hide();
-                $("#STEPS_Department").show();
-            }
-            else {
-            	$("#College").hide();
-            	$("#SAO").hide();
-            	$("#OAS").hide();
-                $("#Guidance").hide();
-                $("#STEPS_Department").hide();
-            }
-        });
-    });
-</script>
-<!--End of Modal for Add Administrator-->    
 
 
 <!-- Modal for Add Student -->
@@ -645,7 +602,7 @@
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Username</label>
 					    <input type="text" name="username" class="form-control" id="name" aria-describedby="emailHelp" placeholder="johndoe123" required="">
-					    <span id="result"></span>
+					    <b><span id="result2"></span></b>
 					</div>
 					
 					<div class="form-group">
@@ -836,6 +793,7 @@
 			</div>
 
 		    <div class="modal-footer">
+		    	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		        <input type="submit" class="btn btn-primary" value="Sign Up" name="signup">
 		    </div>
