@@ -222,6 +222,7 @@
 						                <th>Department</th>
 						                <th>Position</th>
 						                <th>&nbsp;</th>
+						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
 						        <tfoot>
@@ -230,6 +231,7 @@
 						                <th>Username</th>
 						                <th>Department</th>
 						                <th>Position</th>
+						                <th>&nbsp;</th>
 						                <th>&nbsp;</th>
 						            </tr>
 						        </tfoot>
@@ -246,10 +248,18 @@
 								        	<td>{{ $admin->department }}</td>
 								        	<td>{{ $admin->position }}</td>
 								            <td>
-								            <form method="post" action="/masterviewadmin">
+								            <form method="post" action="/mastergetadminuserid">
+								            	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="open" value="Open" >
 								            </form>
+								            </td>
+								            <td>
+								            <form method="post" action="/masterremoveadmin">
+								            	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
+								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
+								                <input type="submit" name="remove" value="Remove" >
+								            </form>	
 								            </td>
 								        </tr>
 								    <?php
@@ -276,6 +286,7 @@
 						                <th>Step Number</th>
 						                <th>Enrollment Status</th>
 						                <th>&nbsp;</th>
+						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
 						        <tfoot>
@@ -287,6 +298,7 @@
 						                <th>Student Type</th>
 						                <th>Step Number</th>
 						                <th>Enrollment Status</th>
+						                <th>&nbsp;</th>
 						                <th>&nbsp;</th>
 						            </tr>
 						        </tfoot>
@@ -306,10 +318,18 @@
 								            <td>{{ $student->step_number }}</td>
 								            <td>{{ $student->steps_status }}</td>
 								            <td>
-								            <form method="post" action="/masterviewstudent">
-								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
+								            <form method="post" action="/mastergetstudentuserid">
+								            	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
+												<input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="open" value="Open" >
 								            </form>
+								            </td>
+								            <td>
+								            <form method="post" action="/masterremovestudent">
+								            	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
+								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
+								                <input type="submit" name="remove" value="Remove" >
+								            </form>	
 								            </td>
 								        </tr>
 								    <?php

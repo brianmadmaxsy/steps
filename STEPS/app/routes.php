@@ -66,6 +66,10 @@
 	Route::get('/masteradminhome',array('uses'=>'MasterAdminController@master_admin_home'));
 	Route::post('/masteraddadmin',array('uses'=>'MasterAdminController@master_add_admin'));
 	Route::post('/masteraddstudent',array('uses'=>'MasterAdminController@master_add_student'));
+	Route::post('/mastergetadminuserid',array('uses'=>'MasterAdminController@master_get_admin_userid'));
+	Route::post('/mastergetstudentuserid',array('uses'=>'MasterAdminController@master_get_student_userid'));
+	Route::get('/masterviewadmin',array('uses'=>'MasterAdminController@master_view_admin'));
+	Route::get('/masterviewstudent',array('uses'=>'MasterAdminController@master_view_student'));
 //End of Master Admin Controller Routes	
 
 

@@ -325,5 +325,63 @@ class MasterAdminController extends BaseController{
 			echo $e;
 		}
 	}
+
+	public function master_get_admin_userid()
+	{
+		$master_admin_username=Input::get('master_admin_username');
+		$userid=Input::get('get_userid');
+
+		Session::put('sess_masteradmin_username',$master_admin_username);
+		Session::put('sess_masteradmin_fetched_admin_userid',$userid);
+
+		return Redirect::intended('http://localhost:8000/masterviewadmin');
+	}
+
+	public function master_get_student_userid()
+	{
+		$master_admin_username=Input::get('master_admin_username');
+		$userid=Input::get('get_userid');
+
+		Session::put('sess_masteradmin_username',$master_admin_username);
+		Session::put('sess_masteradmin_fetched_student_userid',$userid);
+		return Redirect::intended('http://localhost:8000/masterviewstudent');
+	}
+
+	public function master_view_admin()
+	{
+		$userid=Session::get('sess_masteradmin_fetched_admin_userid');
+		$master_admin_username=Session::get('sess_masteradmin_username');
+		
+		$admin=AdminModel::where('userid','=',$userid)->first();
+		print_r($admin);
+
+		Session::forget('sess_masteradmin_fetched_admin_userid');
+		Session::forget('sess_masteradmin_username');
+	}
+
+	public function master_view_student()
+	{
+		$userid=Session::get('sess_masteradmin_fetched_student_userid');
+		$master_admin_username=Session::get('sess_masteradmin_username');
+		
+		$student=StudentModel::where('userid','=',$userid)->first();
+		
+		if($student['studenttype']=="Transferee")
+		{
+			$transferee=TransfereeModel::where('userid','=',$userid)->first();
+
+			echo $student['firstname'];
+			echo "Transferee";
+		}
+		else if($student['studenttype']=="Freshmen")
+		{
+			$freshmen=FreshmenModel::where('userid','=',$userid)->first();
+			echo $student['firstname'];
+			echo "Freshmen";
+		}
+
+		Session::forget('sess_masteradmin_fetched_student_userid');
+		Session::forget('sess_masteradmin_username');
+	}
 }
 ?>
