@@ -326,6 +326,7 @@
 								            </td>
 								            <td>
 								            <form method="post" action="/masterremovestudent">
+								            	<input type="hidden" name="get_studenttype" value="{{ $student->studenttype }}">
 								            	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="remove" value="Remove" >

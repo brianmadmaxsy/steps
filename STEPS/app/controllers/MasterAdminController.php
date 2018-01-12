@@ -513,8 +513,27 @@ class MasterAdminController extends BaseController{
 	{
 		$student_userid=Input::get('get_userid');
 		$masteradmin_username=Input::get('master_admin_username');
+		$studenttype=Input::get('get_studenttype');
 
 		DB::table('student')->where('userid', '=', $student_userid)->delete();
+		DB::table('results')->where('userid', '=', $student_userid)->delete();
+		DB::table('payment')->where('userid', '=', $student_userid)->delete();
+		DB::table('interview')->where('userid', '=', $student_userid)->delete();
+		DB::table('identification')->where('userid', '=', $student_userid)->delete();
+		DB::table('examschedule')->where('userid', '=', $student_userid)->delete();
+		DB::table('evaluation')->where('userid', '=', $student_userid)->delete();
+		DB::table('entranceexam')->where('userid', '=', $student_userid)->delete();
+
+		if($studenttype=="Transferee")
+		{
+			DB::table('transferee')->where('userid', '=', $student_userid)->delete();
+			DB::table('transferee_requirements')->where('userid', '=', $student_userid)->delete();
+		}
+		else if($studenttype=="Freshmen")
+		{
+			DB::table('freshmen')->where('userid', '=', $student_userid)->delete();
+			DB::table('freshmen_requirements')->where('userid', '=', $student_userid)->delete();
+		}
 
 		$masteradmin=AdminModel::where('username','=',$masteradmin_username)->first();
 		Session::put('sess_admin_masteradmin_arr',$masteradmin);
