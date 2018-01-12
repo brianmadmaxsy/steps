@@ -115,6 +115,26 @@ class AdminController extends BaseController{
 			return Redirect::intended('http://localhost:8000/adminlogin');
 		}
 	}
+
+	public function admin_masteradmin_home()
+	{
+		Session::forget('sess_masteradmin_fetched_admin_userid');
+		Session::forget('sess_masteradmin_fetched_student_userid');
+		Session::forget('sess_masteradmin_username');
+		
+		$master=Session::get('sess_admin_masteradmin_arr');
+		$master=unserialize(serialize($master));
+
+		if($master!="")
+		{
+			$students = DB::table('student')->get();
+			$admins = DB::table('admin')
+			->where('username','!=',$master['username'])
+			->get();
+
+			return View::make('MasterAdminDashboard.MasterAdminHome')->with('masteradmin',$master)->with('admins',$admins)->with('students',$students);
+		}
+	}
 }
 
 ?>

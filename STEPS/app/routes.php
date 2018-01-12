@@ -60,16 +60,21 @@
 	Route::get('/saohome',array('uses'=>'AdminController@admin_sao_home'));
 	Route::get('/oashome',array('uses'=>'AdminController@admin_oas_home'));
 	Route::get('/guidancehome',array('uses'=>'AdminController@admin_guidance_home'));
+	Route::get('/masteradminhome',array('uses'=>'AdminController@admin_masteradmin_home'));
 //End of Admin Controller Routes
 
 //Master Admin Controller Routes
-	Route::get('/masteradminhome',array('uses'=>'MasterAdminController@master_admin_home'));
 	Route::post('/masteraddadmin',array('uses'=>'MasterAdminController@master_add_admin'));
 	Route::post('/masteraddstudent',array('uses'=>'MasterAdminController@master_add_student'));
 	Route::post('/mastergetadminuserid',array('uses'=>'MasterAdminController@master_get_admin_userid'));
 	Route::post('/mastergetstudentuserid',array('uses'=>'MasterAdminController@master_get_student_userid'));
 	Route::get('/masterviewadmin',array('uses'=>'MasterAdminController@master_view_admin'));
 	Route::get('/masterviewstudent',array('uses'=>'MasterAdminController@master_view_student'));
+	Route::post('/masteradmineditadminpost',array('uses'=>'MasterAdminController@master_edit_admin'));
+	Route::post('/masteradmineditfreshmenpost',array('uses'=>'MasterAdminController@master_edit_freshmen'));
+	Route::post('/masteradminedittransfereepost',array('uses'=>'MasterAdminController@master_edit_transferee'));
+	Route::post('/masterremoveadmin',array('uses'=>'MasterAdminController@master_remove_admin'));
+	Route::post('/masterremovestudent',array('uses'=>'MasterAdminController@master_remove_student'));
 //End of Master Admin Controller Routes	
 
 

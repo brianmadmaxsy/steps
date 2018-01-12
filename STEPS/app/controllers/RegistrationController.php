@@ -154,7 +154,7 @@ class RegistrationController extends BaseController{
 					$department="";
 					if($tocourse=="Bachelors of Science in Information Technology" || $tocourse=="Bachelors of Science in Computer Science")
 					{
-						$department="College of Computer Science";
+						$department="College of Computer Studies";
 					}
 					else{
 						$department="";

@@ -107,7 +107,7 @@ class StudentController extends BaseController{
 			$department="";
 			if($edited_tocourse=="Bachelors of Science in Information Technology" || $edited_tocourse=="Bachelors of Science in Computer Science")
 			{
-				$department="College of Computer Science";
+				$department="College of Computer Studies";
 			}
 			else{
 				$department="";
@@ -157,7 +157,7 @@ class StudentController extends BaseController{
 			$department="";
 			if($edited_tocourse=="Bachelors of Science in Information Technology" || $edited_tocourse=="Bachelors of Science in Computer Science")
 			{
-				$department="College of Computer Science";
+				$department="College of Computer Studies";
 			}
 			else{
 				$department="";

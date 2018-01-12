@@ -352,8 +352,7 @@
 							            <div class="panel-heading" style="background-color:#fefefe; border:none;">
 							              	<h3 class="panel-title" style="color:black">{{ $masteradmin['firstname'].' '.$masteradmin['middlename'].' '.$masteradmin['lastname'] }} </h3>
 							              	<div class="panel-options">
-							              		<a href="#" data-rel="reload" style="color:black" title="View Profile"><i class="glyphicon glyphicon-user"></i></a>
-												<a href="#" data-rel="reload" style="color:black" title="Edit Profile"><i class="glyphicon glyphicon-cog"></i></a>
+							              		<a href="#" data-rel="reload" style="color:black" title="Edit User" data-toggle="modal" data-target="#myModalforMasterAdminEditProfile"><i class="glyphicon glyphicon-cog"></i></a>
 											</div>
 							            </div>
 							            <div class="panel-body">
@@ -421,6 +420,8 @@
 		  </div>
 		</div>
     </div>
+
+
 
 <!-- Modal for Add Administrator -->
 <div class="modal fade" id="myModalForAddAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -537,7 +538,7 @@
 						<label for="exampleInputEmail1">Department</label>
 						<select id="department" name="department" class="birthfield" required="">
 							<option value="" selected="">Choose...</option>
-					        <option value="College of Computer Science">College of Computer Science</option>
+					        <option value="College of Computer Studies">College of Computer Studies</option>
                             <option value="College of Engineering">College of Engineering</option>
                             <option value="College of Nursing">College of Nursing</option>
                             <option value="Student Affairs Office">Student Affairs Office</option>
@@ -822,6 +823,7 @@
     </div>
   	</form>
 </div>
+
 
 <script type="text/javascript">
     $(function () {

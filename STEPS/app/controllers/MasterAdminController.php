@@ -1,21 +1,7 @@
 <?php
 class MasterAdminController extends BaseController{
 
-	public function master_admin_home()
-	{
-		$master=Session::get('sess_admin_masteradmin_arr');
-		$master=unserialize(serialize($master));
-
-		if($master!="")
-		{
-			$students = DB::table('student')->get();
-			$admins = DB::table('admin')
-			->where('username','!=',$master['username'])
-			->get();
-
-			return View::make('MasterAdminDashboard.MasterAdminHome')->with('masteradmin',$master)->with('admins',$admins)->with('students',$students);
-		}
-	}
+	
 
 	public function master_add_admin()
 	{
@@ -220,7 +206,7 @@ class MasterAdminController extends BaseController{
 					$department="";
 					if($tocourse=="Bachelors of Science in Information Technology" || $tocourse=="Bachelors of Science in Computer Science")
 					{
-						$department="College of Computer Science";
+						$department="College of Computer Studies";
 					}
 					else{
 						$department="";
@@ -353,10 +339,40 @@ class MasterAdminController extends BaseController{
 		$master_admin_username=Session::get('sess_masteradmin_username');
 		
 		$admin=AdminModel::where('userid','=',$userid)->first();
-		print_r($admin);
+		$masteradmin=AdminModel::where('username','=',$master_admin_username)->first();
 
-		Session::forget('sess_masteradmin_fetched_admin_userid');
-		Session::forget('sess_masteradmin_username');
+		//Session::forget('sess_masteradmin_fetched_admin_userid');
+		//Session::forget('sess_masteradmin_username');
+		
+		return View::make('MasterAdminDashboard.MasterAdminViewAdmin')->with('admin',$admin)->with('masteradmin',$masteradmin);
+
+	}
+
+	public function master_edit_admin()
+	{
+		$master_admin_username=Input::get('master_admin_username');
+		$userid=Input::get('get_userid');
+
+		$firstname=Input::get('firstname');
+		$middlename=Input::get('middlename');
+		$lastname=Input::get('lastname');
+		$username=Input::get('username');
+		$birthdate=Input::get('editbirthdate');
+		$email=Input::get('email');
+		$contact=Input::get('contact');
+		$department=Input::get('department');
+		$position=Input::get('position');
+		$pastuniversity=Input::get('pastuniversity');
+		$education=Input::get('education');
+
+		$admin=AdminModel::where('userid',$userid);
+		$admin->update(['firstname'=>$firstname,'middlename'=>$middlename,'lastname'=>$lastname,'username'=>$username,'birthdate'=>$birthdate,'email'=>$email,'contact'=>$contact,'department'=>$department,'position'=>$position,'pastuniversity'=>$pastuniversity,'education'=>$education]);
+
+
+		Session::put('sess_masteradmin_username',$master_admin_username);
+		Session::put('sess_masteradmin_fetched_admin_userid',$userid);
+
+		return Redirect::intended('http://localhost:8000/masterviewadmin');
 	}
 
 	public function master_view_student()
@@ -364,24 +380,146 @@ class MasterAdminController extends BaseController{
 		$userid=Session::get('sess_masteradmin_fetched_student_userid');
 		$master_admin_username=Session::get('sess_masteradmin_username');
 		
+		$masteradmin=AdminModel::where('username','=',$master_admin_username)->first();
 		$student=StudentModel::where('userid','=',$userid)->first();
 		
 		if($student['studenttype']=="Transferee")
 		{
 			$transferee=TransfereeModel::where('userid','=',$userid)->first();
 
-			echo $student['firstname'];
-			echo "Transferee";
+			//Session::forget('sess_masteradmin_fetched_student_userid');
+			//Session::forget('sess_masteradmin_username');
+			
+			return View::make('MasterAdminDashboard.MasterAdminViewTransferee')->with('masteradmin',$masteradmin)->with('student',$student)->with('transferee',$transferee);
 		}
 		else if($student['studenttype']=="Freshmen")
 		{
 			$freshmen=FreshmenModel::where('userid','=',$userid)->first();
-			echo $student['firstname'];
-			echo "Freshmen";
+
+			//Session::forget('sess_masteradmin_fetched_student_userid');
+			//Session::forget('sess_masteradmin_username');
+			
+			return View::make('MasterAdminDashboard.MasterAdminViewFreshmen')->with('masteradmin',$masteradmin)->with('student',$student)->with('freshmen',$freshmen);
+		
+		}
+	}
+
+	public function master_edit_freshmen()
+	{
+		$userid=Input::get('get_userid');
+		$master_admin_username=Input::get('master_admin_username');
+
+		$edited_firstname=Input::get('editfirstname');
+		$edited_middlename=Input::get('editmiddlename');
+		$edited_lastname=Input::get('editlastname');
+		$edited_email=Input::get('editemail');
+		$edited_birthdate=Input::get('editbirthdate');
+		$edited_birthplace=Input::get('editbirthplace');
+		$edited_gender=Input::get('editgender');
+		$edited_civilstatus=Input::get('editcivilstatus');
+		$edited_contact=Input::get('editcontact');
+		$edited_homeaddress=Input::get('edithomeaddress');
+		$edited_provincialaddress=Input::get('editprovincialaddress');
+		$edited_year_entered=Input::get('edityear-entered');
+		$edited_semester=Input::get('editsemester');
+		$edited_tocourse=Input::get('edittocourse');
+		$edited_highschool=Input::get('edithighschool');
+
+		$department="";
+		if($edited_tocourse=="Bachelors of Science in Information Technology" || $edited_tocourse=="Bachelors of Science in Computer Science")
+		{
+			$department="College of Computer Studies";
+		}
+		else{
+			$department="";
 		}
 
-		Session::forget('sess_masteradmin_fetched_student_userid');
-		Session::forget('sess_masteradmin_username');
+		$student=StudentModel::where('userid',$userid);
+			$student->update(['firstname'=>$edited_firstname,'middlename'=>$edited_middlename,'lastname'=>$edited_lastname,'email'=>$edited_email,'birthdate'=>$edited_birthdate,'birthplace'=>$edited_birthplace,'gender'=>$edited_gender,'civilstatus'=>$edited_civilstatus,'contact'=>$edited_contact,'homeaddress'=>$edited_homeaddress,'provincialaddress'=>$edited_provincialaddress,'schoolyear'=>$edited_year_entered,'semester'=>$edited_semester,'department'=>$department]);
+
+		$freshmen=FreshmenModel::where('userid',$userid);
+		$freshmen->update(['highschool'=>$edited_highschool,'tocourse'=>$edited_tocourse]);
+
+		Session::put('sess_masteradmin_username',$master_admin_username);
+		Session::put('sess_masteradmin_fetched_admin_userid',$userid);
+
+		return Redirect::intended('http://localhost:8000/masterviewstudent');
+	}
+
+	public function master_edit_transferee()
+	{
+		try
+		{
+			$userid=Input::get('get_userid');
+			$master_admin_username=Input::get('master_admin_username');
+			$edited_firstname=Input::get('editfirstname');
+			$edited_middlename=Input::get('editmiddlename');
+			$edited_lastname=Input::get('editlastname');
+			$edited_email=Input::get('editemail');
+			$edited_birthdate=Input::get('editbirthdate');
+			$edited_birthplace=Input::get('editbirthplace');
+			$edited_gender=Input::get('editgender');
+			$edited_civilstatus=Input::get('editcivilstatus');
+			$edited_contact=Input::get('editcontact');
+			$edited_homeaddress=Input::get('edithomeaddress');
+			$edited_provincialaddress=Input::get('editprovincialaddress');
+			$edited_year_entered=Input::get('edityear-entered');
+			$edited_semester=Input::get('editsemester');
+			$edited_tocourse=Input::get('edittocourse');
+			$edited_fromcourse=Input::get('editfromcourse');
+			$edited_fromschool=Input::get('editfromschool');
+
+			$department="";
+			if($edited_tocourse=="Bachelors of Science in Information Technology" || $edited_tocourse=="Bachelors of Science in Computer Science")
+			{
+				$department="College of Computer Studies";
+			}
+			else{
+				$department="";
+			}
+
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['firstname'=>$edited_firstname,'middlename'=>$edited_middlename,'lastname'=>$edited_lastname,'email'=>$edited_email,'birthdate'=>$edited_birthdate,'birthplace'=>$edited_birthplace,'gender'=>$edited_gender,'civilstatus'=>$edited_civilstatus,'contact'=>$edited_contact,'homeaddress'=>$edited_homeaddress,'provincialaddress'=>$edited_provincialaddress,'schoolyear'=>$edited_year_entered,'semester'=>$edited_semester,'department'=>$department]);
+
+			$transferee=TransfereeModel::where('userid',$userid);
+			$transferee->update(['tocourse'=>$edited_tocourse,'fromcourse'=>$edited_fromcourse,'fromschool'=>$edited_fromschool]);
+			
+			Session::put('sess_masteradmin_username',$master_admin_username);
+			Session::put('sess_masteradmin_fetched_admin_userid',$userid);
+
+			return Redirect::intended('http://localhost:8000/masterviewstudent');
+			
+		}
+		catch(Exception $e)
+		{
+			echo $e;
+		}
+	}
+
+	public function master_remove_admin()
+	{
+		$admin_userid=Input::get('get_userid');
+		$masteradmin_username=Input::get('master_admin_username');
+
+		DB::table('admin')->where('userid', '=', $admin_userid)->delete();
+
+		$masteradmin=AdminModel::where('username','=',$masteradmin_username)->first();
+		Session::put('sess_admin_masteradmin_arr',$masteradmin);
+
+		return Redirect::intended('/masteradminhome');
+	}
+
+	public function master_remove_student()
+	{
+		$student_userid=Input::get('get_userid');
+		$masteradmin_username=Input::get('master_admin_username');
+
+		DB::table('student')->where('userid', '=', $student_userid)->delete();
+
+		$masteradmin=AdminModel::where('username','=',$masteradmin_username)->first();
+		Session::put('sess_admin_masteradmin_arr',$masteradmin);
+
+		return Redirect::intended('/masteradminhome');
 	}
 }
 ?>

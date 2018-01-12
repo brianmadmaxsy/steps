@@ -227,7 +227,7 @@
                                 <p>
                                     <label for="emailsignup" class="youmail" style="color:#85363c;" >Department</label>
                                     <select name="department" class="semester-class" required="">
-                                        <option value="College of Computer Science">College of Computer Science</option>
+                                        <option value="College of Computer Studies">College of Computer Studies</option>
                                         <option value="College of Engineering">College of Engineering</option>
                                         <option value="College of Nursing">College of Nursing</option>
                                         <option value="Student Affairs Office">Student Affairs Office</option>
