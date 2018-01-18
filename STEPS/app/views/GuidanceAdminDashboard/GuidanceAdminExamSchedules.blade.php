@@ -26,22 +26,75 @@
 
     <link href="admin/AdminDashboardDesign/css/forms.css" rel="stylesheet">
     
-    
-    <script src="admin/AdminDashboardDesign/jquery/jquery.js"></script>
+    <script src="admin/AdminDashboardDesign/jquery/jquery1-11-3.min.js"></script>
   	<script src="admin/AdminDashboardDesign/jquery/jquery-ui.js"></script>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-	    $('#example').DataTable();
-	} );
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-	    $('#example2').DataTable();
-	} );
-</script>
+    <!-- Bootstrap Date-Picker Plugin -->
+	<script type="text/javascript" src="admin/AdminDashboardDesign/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="admin/AdminDashboardDesign/bootstrap/css/bootstrap-datepicker3.css">
+    
+    
+  	<style type="text/css">
+		.birthfield,.semester-class{
+			
+		  	height: 34px;
+		  	padding: 6px 12px;
+		  	font-size: 14px;
+		  	line-height: 1.42857143;
+		  	color: #555;
+		  	background-color: #fff;
+		  	background-image: none;
+		  	border: 1px solid #ccc;
+		  	border-radius: 4px;
+			  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+			       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+			          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+		}
+	</style>
+  	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('#example').DataTable();
+		} );
+	</script>	
 
-  		
+	<script>
+	    $(document).ready(function(){
+
+	    	//To disable the past dates
+			var date = new Date();
+			date.setDate(date.getDate()-1);
+
+			$('#date').datepicker({ 
+			    startDate: date
+			});
+			var date_input=$('input[name="date"]'); //our date input has the name "date"
+	      	var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+	      	var options={
+	        	format: 'mm/dd/yyyy',
+	        	container: container,
+	        	todayHighlight: true,
+	        	autoclose: true,
+	      	};
+	      	
+	      	$('#date').change(function (e) {                
+
+			   var eventDate = $('#date').val();
+
+			   var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+			   var date = new Date(eventDate).getDay();
+
+			   var day = weekday[date];               
+
+			  	$('#scheduleday').val(day);
+			});
+	      	date_input.datepicker(options);
+	    })
+
+
+	</script>
   </head>
   <body>
 
@@ -115,131 +168,75 @@
 			  	<div class="content-box-large" >
 				  	<div id="tabs">
 						<ul>
-							<li><a href="#tabs-1">Transferee</a></li>
-							<li><a href="#tabs-2">Freshmen</a></li>
-						    <li><a href="#tabs-3">Account</a></li>
+							<li><a href="#tabs-1">Exam Schedules</a></li>
+						    <li><a href="#tabs-2">Account</a></li>
 						    
 						</ul>
 						
 						<div id="tabs-1">
 						
 							<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-						    
+						    	<button type="button" class="btn btn-primary btn-sm" style="margin:0px 0px 5px 0px;" data-toggle="modal" data-target="#myModalForAddSchedule">Add Exam Schedule</button>
 						        <thead>
 						            <tr>
-						                <th>Name</th>
-						                <th>School Year</th>
-						                <th>Semister</th>
-						                <th>Course Enrolled</th>
-						                <th>Previous Course</th>
-						                <th>Previous School</th>
-						                <th>Status</th>
+						                <th>Schedule Date</th>
+						                <th>Schedule Time</th>
+						                <th>Facilitator</th>
 						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
 						        <tfoot>
 						            <tr>
-						                <th>Name</th>
-						                <th>School Year</th>
-						                <th>Semister</th>
-						                <th>Course Enrolled</th>
-						                <th>Previous Course</th>
-						                <th>Previous School</th>
-						                <th>Status</th>
+						                <th>Schedule Date</th>
+						                <th>Schedule Time</th>
+						                <th>Facilitator</th>
 						                <th>&nbsp;</th>
 						            </tr>
 						        </tfoot>
 						        <tbody>
-							       
-								    <?php
-								    foreach($transfereestudents as $student)
-								    {
-								    	$userid=$student->userid;
-								    ?>
-								        <tr>
-								        	<td>{{ $student->firstname.' '.$student->middlename.' '.$student->lastname }}</td>
-								        	<td>{{ $student->schoolyear }}</td>
-								        	<td>{{ $student->semester }}</td>
-								        	<td>{{ $student->tocourse }}</td>
-								        	<td>{{ $student->fromcourse }}</td>
-								            <td>{{ $student->fromschool }}</td>
-								            <td>{{ $student->steps_status }}</td>
-								            <td>
-								            <form method="post" action="/guidanceviewstudent">
-								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
-								                <input type="submit" name="open" value="Open" >
-								            </form>
-								            </td>
-								        </tr>
-								    <?php
-								    	$userid="";
-								    }
-								    ?>   
-							    </tbody>
+							       	<tr>
+							        	<td>01/18/2017 Thursday</td>
+							        	<td>10:00AM-12:00PM</td>
+							        	<td>Facilitator A</td>
+							        	<td>
+							            <form method="post" action="">
+							            	<input name="schedule_id" type="hidden" value="">
+							                <input type="submit" name="open" value="View" >
+							                <input type="submit" name="remove" value="Remove" onclick="return confirm('Are you sure?')">
+							            </form>
+							            </td>
+							        </tr>
+							        <tr>
+							        	<td>01/18/2017 Thursday</td>
+							        	<td>01:00PM-03:00PM</td>
+							        	<td>Facilitator B</td>
+							        	<td>
+							            <form method="post" action="">
+							            	<input name="schedule_id" type="hidden" value="">
+							                <input type="submit" name="open" value="View" >
+							                <input type="submit" name="remove" value="Remove" onclick="return confirm('Are you sure?')">
+							            </form>
+							            </td>
+							        </tr>
+							        <tr>
+							        	<td>01/18/2017 Thursday</td>
+							        	<td>03:00PM-05:00PM</td>
+							        	<td>Facilitator C</td>
+							        	<td>
+							            <form method="post" action="">
+							            	<input name="schedule_id" type="hidden" value="">
+							                <input type="submit" name="open" value="View" >
+							                <input type="submit" name="remove" value="Remove" onclick="return confirm('Are you sure?')">
+							            </form>
+							            </td>
+							        </tr>
+								</tbody>
 							</table>
 				  		
 				  			
 						</div> <!-- End of tabs-1 -->
 
 						<div id="tabs-2">
-						
-							<table id="example2" class="table table-striped table-bordered" cellspacing="0" width="100%">
-						    
-						        <thead>
-						            <tr>
-						                <th>Name</th>
-						                <th>School Year</th>
-						                <th>Semister</th>
-						                <th>Course to Enroll</th>
-						                <th>Secondary School</th>
-						                <th>Status</th>
-						                <th>&nbsp;</th>
-						            </tr>
-						        </thead>
-						        <tfoot>
-						            <tr>
-						                <th>Name</th>
-						                <th>School Year</th>
-						                <th>Semister</th>
-						                <th>Course To Enroll</th>
-						                <th>Secondary School</th>
-						                <th>Status</th>
-						                <th>&nbsp;</th>
-						            </tr>
-						        </tfoot>
-						        <tbody>
-							       
-								    <?php
-								    foreach($freshmenstudents as $student)
-								    {
-								    	$userid=$student->userid;
-								    ?>
-								        <tr>
-								        	<td>{{ $student->firstname.' '.$student->middlename.' '.$student->lastname }}</td>
-								        	<td>{{ $student->schoolyear }}</td>
-								        	<td>{{ $student->semester }}</td>
-								        	<td>{{ $student->tocourse }}</td>
-								            <td>{{ $student->highschool }}</td>
-								            <td>{{ $student->steps_status }}</td>
-								            <td>
-								            <form method="post" action="/guidancegetfreshmenuserid">
-								            	<input type="hidden" name="get_steps_status" value="{{ $student->steps_status }}">
-								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
-								                <input type="submit" name="open" value="Open" >
-								            </form>
-								            </td>
-								        </tr>
-								    <?php
-								    	$userid="";
-								    }
-								    ?>   
-							    </tbody>
-							</table>
-				  		
-				  			
-						</div> <!-- End of tabs-2 -->
-
-						<div id="tabs-3">
 							<div class="row">
 						  		<div class="col-md-1">
 						  			<!--no content just to provide space -->
@@ -310,7 +307,7 @@
 							  		<!--no content just to provide space -->
 							  	</div>
 							</div><!--row-->
-						</div><!--End of tabs-3 -->
+						</div><!--End of tabs-2 -->
 
 						
 					</div><!--End of tabs -->
@@ -320,7 +317,66 @@
     </div>
 
 
-    
+<!-- Modal for Add Exam Schedule -->
+<div class="modal fade" id="myModalForAddSchedule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<form method="post" action="/guidanceaddexam">
+  	<div class="modal-dialog" role="document">
+    	
+    	<div class="modal-content">
+    		
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h4 class="modal-title" id="myModalLabel">Add Exam Schedule</h4>
+      		</div>
+      		
+		    <div class="modal-body">
+		      	
+					<div class="form-group"> <!-- Date input -->
+                      	<label class="control-label" for="date">Schedule Date</label>
+                    	<input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" required="" type="text"/>
+                    </div>
+                    <div class="form-group">
+					    <label for="exampleInputEmail1">Day</label>
+					    <input type="text" id="scheduleday" name="scheduleday" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Choose a Schedule Date" required="" disabled="">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Schedule Time</label>
+					    <select name="scheduletime" class="birthfield" required="">
+					    	<option selected="" value="">Choose Time</option>
+					    	<option value="08:00AM-10:00AM">08:00AM-10:00AM</option>
+					    	<option value="10:00AM-12:00PM">10:00AM-12:00PM</option>
+					    	<option value="01:00PM-03:00PM">01:00PM-03:00PM</option>
+					    	<option value="03:00PM-05:00PM">03:00PM-05:00PM</option>
+					    </select>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Facilitator</label>
+					    <select name="facilitator" class="birthfield" required="">
+					    	<option selected="" value="">Choose a Facilitator</option>
+					    	<?php
+					    	foreach($guidance_admins as $guidance_admin)
+					    	{
+					    	?>
+					    		<option value="{{ $guidance_admin->firstname.' '.$guidance_admin->lastname }}">{{ $guidance_admin->firstname.' '.$guidance_admin->lastname }}</option>
+					    	<?php
+					    	}
+					    	?>
+					    </select>
+					</div>
+			</div>
+
+		    <div class="modal-footer">
+		    	<input type="hidden" name="guidance_username" value="">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="return confirm('Do you want to close?')">Close</button>
+		        <input type="submit" class="btn btn-primary" value="Add Exam" name="addexamschedule">
+		    </div>
+		    
+    	</div>
+    </div>
+  	</form>
+</div>   
 
 
    
@@ -351,7 +407,5 @@
 	<script src="admin/AdminDashboardDesign/js/tables.js"></script>
 
 
-
-	
   </body>
 </html>

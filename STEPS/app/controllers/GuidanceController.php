@@ -105,5 +105,21 @@ class GuidanceController extends BaseController{
 
 		return Redirect::intended('http://localhost:8000/guidancehome');
 	}
+
+
+	public function display_exam_schedules()
+	{
+		$guidance=Session::get('sess_admin_guidance_arr');
+		$guidance = unserialize(serialize($guidance)); //added code to unserialize the __PHP_Incomplete_Class
+
+		$guidance_admins = DB::table('admin')
+			->where('department','=',"Guidance Office")
+			->get();
+		if($guidance!="")
+		{
+			return View::make('GuidanceAdminDashboard.GuidanceAdminExamSchedules')->with('guidance',$guidance)->with('guidance_admins',$guidance_admins);
+		}
+		
+	}
 }
 ?>

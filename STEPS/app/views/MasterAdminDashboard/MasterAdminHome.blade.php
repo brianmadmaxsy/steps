@@ -258,7 +258,7 @@
 								            <form method="post" action="/masterremoveadmin">
 								            	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
-								                <input type="submit" name="remove" value="Remove" >
+								                <input type="submit" name="remove" value="Remove" onclick="return confirm('Delete {{ $admin->firstname.' '.$admin->lastname }}?')">
 								            </form>	
 								            </td>
 								        </tr>
@@ -329,7 +329,7 @@
 								            	<input type="hidden" name="get_studenttype" value="{{ $student->studenttype }}">
 								            	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
-								                <input type="submit" name="remove" value="Remove" >
+								                <input type="submit" name="remove" value="Remove" onclick="return confirm('Delete {{ $student->firstname.' '.$student->lastname }}?')">
 								            </form>	
 								            </td>
 								        </tr>
@@ -581,7 +581,7 @@
 		    <div class="modal-footer">
 		    	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        <input type="submit" class="btn btn-primary" value="Sign Up" name="signup">
+		        <input type="submit" class="btn btn-primary" value="Add" name="signup">
 		    </div>
 		    
     	</div>
@@ -817,7 +817,7 @@
 		    <div class="modal-footer">
 		    	<input type="hidden" name="master_admin_username" value="{{ $masteradmin['username'] }}">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        <input type="submit" class="btn btn-primary" value="Sign Up" name="signup">
+		        <input type="submit" class="btn btn-primary" value="Add" name="signup">
 		    </div>
 		    
     	</div>

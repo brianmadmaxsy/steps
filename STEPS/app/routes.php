@@ -11,25 +11,25 @@
 |
 */
 
-
-//Login Controller Routes for Student
+//LoginController Routes
+	//Login Controller Routes for Student
 	Route::post('/login',array('uses'=>'LoginController@student_login'));
-//Login Controller Routes for admin
+	//Login Controller Routes for admin
 	Route::get('/adminlogin',array('uses'=>'LoginController@admin_login_display'));
 	Route::post('/adminloginpost',array('uses'=>'LoginController@admin_login_post'));
 //End of LoginController Routes
 
 
-
-//Logout Controller for Student
+//LogoutController Routes
+	//Logout Controller for Student
 	Route::get('/logout',array('uses'=>'LogoutController@student_logout'));
-//Logout Controller for Admin
+	//Logout Controller for Admin
 	Route::get('/collegelogout',array('uses'=>'LogoutController@college_logout'));
 	Route::get('/saologout',array('uses'=>'LogoutController@sao_logout'));
 	Route::get('/oaslogout',array('uses'=>'LogoutController@oas_logout'));
 	Route::get('/guidancelogout',array('uses'=>'LogoutController@guidance_logout'));
 	Route::get('/masteradminlogout',array('uses'=>'LogoutController@master_admin_logout'));
-
+//End of LogoutController Routes
 
 //Registration Controller Routes
 	Route::post('/register',array('uses'=>'RegistrationController@student_register'));
@@ -131,10 +131,10 @@ Route::post('/oasfreshmeninterviewpost',array('uses'=>'OasController@oas_freshme
 //Guidance Steps
 Route::post('/guidanceviewstudent',array('uses'=>'GuidanceController@guidance_view_student'));
 Route::post('/postresults',array('uses'=>'GuidanceController@post_exam_results'));
-
 Route::post('/guidancegetfreshmenuserid',array('uses'=>'GuidanceController@guidance_get_freshmen_userid'));
 Route::get('/guidanceviewfreshmen',array('uses'=>'GuidanceController@guidance_view_freshmen_student'));
 Route::post('/postfreshmenexamresults',array('uses'=>'GuidanceController@post_freshmen_exam_results'));
+Route::get('/examschedules',array('uses'=>'GuidanceController@display_exam_schedules'));
 //End of Guidance Steps
 
 
