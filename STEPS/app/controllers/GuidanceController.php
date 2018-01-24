@@ -115,11 +115,39 @@ class GuidanceController extends BaseController{
 		$guidance_admins = DB::table('admin')
 			->where('department','=',"Guidance Office")
 			->get();
+
+		$examschedulelist = DB::table('examschedulelist')->get();
+
 		if($guidance!="")
 		{
-			return View::make('GuidanceAdminDashboard.GuidanceAdminExamSchedules')->with('guidance',$guidance)->with('guidance_admins',$guidance_admins);
+			return View::make('GuidanceAdminDashboard.GuidanceAdminExamSchedules')->with('guidance',$guidance)->with('guidance_admins',$guidance_admins)->with('examschedulelist',$examschedulelist);
 		}
 		
+	}
+
+	public function guidance_add_exam_schedule()
+	{
+		$scheduledate=Input::get('date');
+		$scheduleday=Input::get('scheduleday');
+		$scheduletime=Input::get('scheduletime');
+		$facilitator=Input::get('facilitator');
+		$guidance_username=Input::get('guidance_username');
+
+		//echo $scheduledate." ".$scheduleday." ".$scheduletime." ".$facilitator." ".$guidance_username;
+		$examschedulelist=new ExamScheduleListModel;
+		$examschedulelist->scheduleid=bin2hex(mcrypt_create_iv(20, MCRYPT_DEV_URANDOM));
+		$examschedulelist->schedule_day=$scheduleday;
+		$examschedulelist->schedule_date=$scheduledate;
+		$examschedulelist->schedule_time=$scheduletime;
+		$examschedulelist->facilitator=$facilitator;
+		$examschedulelist->guidance_username=$guidance_username;
+		$examschedulelist->save();
+
+
+		$admin = AdminModel::where('username','=',$guidance_username)->first();
+		Session::put('sess_admin_guidance_arr',$admin);
+
+		return Redirect::intended('http://localhost:8000/examschedules');
 	}
 }
 ?>

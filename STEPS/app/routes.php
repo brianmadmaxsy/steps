@@ -135,6 +135,7 @@ Route::post('/guidancegetfreshmenuserid',array('uses'=>'GuidanceController@guida
 Route::get('/guidanceviewfreshmen',array('uses'=>'GuidanceController@guidance_view_freshmen_student'));
 Route::post('/postfreshmenexamresults',array('uses'=>'GuidanceController@post_freshmen_exam_results'));
 Route::get('/examschedules',array('uses'=>'GuidanceController@display_exam_schedules'));
+Route::post('/guidanceaddexam',array('uses'=>'GuidanceController@guidance_add_exam_schedule'));
 //End of Guidance Steps
 
 

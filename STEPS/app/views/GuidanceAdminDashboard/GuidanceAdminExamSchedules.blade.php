@@ -194,42 +194,25 @@
 						            </tr>
 						        </tfoot>
 						        <tbody>
+						        	<?php
+						        	foreach($examschedulelist as $examschedule)
+						        	{
+						        	?>
 							       	<tr>
-							        	<td>01/18/2017 Thursday</td>
-							        	<td>10:00AM-12:00PM</td>
-							        	<td>Facilitator A</td>
+							        	<td>{{ $examschedule->schedule_date." ".$examschedule->schedule_day }} </td>
+							        	<td>{{ $examschedule->schedule_time }}</td>
+							        	<td>{{ $examschedule->facilitator }}</td>
 							        	<td>
 							            <form method="post" action="">
-							            	<input name="schedule_id" type="hidden" value="">
+							            	<input name="schedule_id" type="hidden" value="{{ $examschedule->scheduleid }}">
 							                <input type="submit" name="open" value="View" >
 							                <input type="submit" name="remove" value="Remove" onclick="return confirm('Are you sure?')">
 							            </form>
 							            </td>
 							        </tr>
-							        <tr>
-							        	<td>01/18/2017 Thursday</td>
-							        	<td>01:00PM-03:00PM</td>
-							        	<td>Facilitator B</td>
-							        	<td>
-							            <form method="post" action="">
-							            	<input name="schedule_id" type="hidden" value="">
-							                <input type="submit" name="open" value="View" >
-							                <input type="submit" name="remove" value="Remove" onclick="return confirm('Are you sure?')">
-							            </form>
-							            </td>
-							        </tr>
-							        <tr>
-							        	<td>01/18/2017 Thursday</td>
-							        	<td>03:00PM-05:00PM</td>
-							        	<td>Facilitator C</td>
-							        	<td>
-							            <form method="post" action="">
-							            	<input name="schedule_id" type="hidden" value="">
-							                <input type="submit" name="open" value="View" >
-							                <input type="submit" name="remove" value="Remove" onclick="return confirm('Are you sure?')">
-							            </form>
-							            </td>
-							        </tr>
+							       	<?php
+							       	}
+							       	?>
 								</tbody>
 							</table>
 				  		
@@ -339,7 +322,7 @@
                     </div>
                     <div class="form-group">
 					    <label for="exampleInputEmail1">Day</label>
-					    <input type="text" id="scheduleday" name="scheduleday" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Choose a Schedule Date" required="" disabled="">
+					    <input type="text" id="scheduleday" name="scheduleday" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Choose a Schedule Date" required="" readonly="">
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Schedule Time</label>
@@ -368,7 +351,7 @@
 			</div>
 
 		    <div class="modal-footer">
-		    	<input type="hidden" name="guidance_username" value="">
+		    	<input type="hidden" name="guidance_username" value="{{ $guidance['username'] }}">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="return confirm('Do you want to close?')">Close</button>
 		        <input type="submit" class="btn btn-primary" value="Add Exam" name="addexamschedule">
 		    </div>
