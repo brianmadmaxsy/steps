@@ -62,7 +62,7 @@
 	              <!-- Logo -->
 	              <div class="logo">
 	                 
-	                 <a href="http://localhost:8000/home"><img src="dashboard/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
+	                 <a href="{{ URL::to('/home') }}"><img src="dashboard/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
 	              </div>
 	           </div>
 	           
@@ -74,7 +74,7 @@
 	                  <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
 	                    <ul class="nav navbar-nav">
 	                      <li class="dropdown">
-	                        <a href="http://localhost:8000/logout"><b><font color="#fdca00">Logout</font><!-- class="dropdown-toggle" data-toggle="dropdown" <b class="caret"> --></b></a>
+	                        <a href="{{ URL::to('/logout') }}"><b><font color="#fdca00">Logout</font><!-- class="dropdown-toggle" data-toggle="dropdown" <b class="caret"> --></b></a>
 	                        <!--
 	                        <ul class="dropdown-menu animated fadeInUp">
 	                          <li><a href="profile.html">Settings</a></li>
@@ -97,7 +97,7 @@
                 	<ul class="nav">
 	                    <!-- Main menu -->
 	                    <li class="submenu">
-	                         <a href="http://localhost:8000/home">
+	                         <a href="{{ URL::to('/home') }}">
 	                            <i class="glyphicon glyphicon-dashboard"></i>Dashboard
 	                            <span class="caret pull-right"></span>
 	                         </a>
@@ -107,7 +107,7 @@
 	                            <li><a href="#">About</a></li>
 	                            <li><a href="#">Support</a></li>
 	                            <li><a href="#">Settings</a></li>
-	                            <li><a href="http://localhost:8000/logout">Logout</a></li>
+	                            <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
 	                        </ul>
 	                    </li>
 	                    <li><a href="#"><i class="glyphicon glyphicon-calendar"></i>School Calendar</a></li>
@@ -427,7 +427,7 @@
 																	    	<td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
 																	    </tr>
 																	    <tr>
-																	    	<td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td><a href="{{ URL::to('/home') }}" id="refresh_button">Refresh</a></td>
 																	    	<td>
 																	    		Part 1/2 of Step 1
 																	    	</td>
@@ -607,7 +607,7 @@
 																?>
 																	<table style="margin-top:10px;">
 																		<tr>
-																	    	<td width="60"><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td width="60"><a href="{{ URL::to('/home') }}" id="refresh_button">Refresh</a></td>
 																	    	<td>
 																	    		Part 2/2 of Step 1
 																	    	</td>
@@ -679,7 +679,7 @@
 																	    	<td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
 																	    </tr>
 																	    <tr>
-																	    	<td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td><a href="{{ URL::to('/home') }}" id="refresh_button">Refresh</a></td>
 																	    	<td>
 																	    		Part 1/1 of Step 2
 																	    	</td>
@@ -740,7 +740,7 @@
 																	    	<td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
 																	    </tr>
 																	    <tr>
-																	    	<td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td><a href="{{ URL::to('/home') }}" id="refresh_button">Refresh</a></td>
 																	    	<td>
 																	    		Part 1/2 of Step 3
 																	    	</td>
@@ -827,7 +827,7 @@
 																	    	<td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
 																	    </tr>
 																	    <tr>
-																	    	<td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td><a href="{{ URL::to('/home') }}" id="refresh_button">Refresh</a></td>
 																	    	<td>
 																	    		Part 2/2 of Step 3
 																	    	</td>
@@ -887,7 +887,7 @@
 																	    	<td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
 																	    </tr>
 																	    <tr>
-																	    	<td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																	    	<td><a href="{{ URL::to('/home') }}" id="refresh_button">Refresh</a></td>
 																	    	<td>
 																	    		Part 1/1 of Step 4
 																	    	</td>
@@ -964,7 +964,7 @@
 																		    <td colspan="2"><font color="green">Once you're finished with this transaction, kindly refresh this page to proceed to the next step.</font></td>
 																		</tr>
 																		<tr>
-																		    <td><a href="http://localhost:8000/home" id="refresh_button">Refresh</a></td>
+																		    <td><a href="{{ URL::to('/home') }}" id="refresh_button">Refresh</a></td>
 																		    <td>
 																		    	Part 1/1 of Step 5
 																		    </td>

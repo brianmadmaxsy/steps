@@ -27,7 +27,7 @@ class AdminController extends BaseController{
 			return View::make('CollegeAdminDashboard.CollegeAdminHome')->with('college',$college)->with('transfereestudents',$transfereestudents)->with('freshmenstudents',$freshmenstudents);
 		}
 		else{
-			return Redirect::intended('http://localhost:8000/adminlogin');
+			return Redirect::intended('/adminlogin');
 		}
 	}
 	public function admin_sao_home()
@@ -54,7 +54,7 @@ class AdminController extends BaseController{
 			return View::make('SaoAdminDashboard.SaoAdminHome')->with('sao',$sao)->with('transfereestudents',$transfereestudents)->with('freshmenstudents',$freshmenstudents);
 		}
 		else{
-			return Redirect::intended('http://localhost:8000/adminlogin');
+			return Redirect::intended('/adminlogin');
 		}
 	}
 	public function admin_oas_home()
@@ -82,7 +82,7 @@ class AdminController extends BaseController{
 			return View::make('OasAdminDashboard.OasAdminHome')->with('oas',$oas)->with('transfereestudents',$transfereestudents)->with('freshmenstudents',$freshmenstudents);
 		}
 		else{
-			return Redirect::intended('http://localhost:8000/adminlogin');
+			return Redirect::intended('/adminlogin');
 		}
 	}
 	public function admin_guidance_home()
@@ -112,7 +112,7 @@ class AdminController extends BaseController{
 			return View::make('GuidanceAdminDashboard.GuidanceAdminHome')->with('guidance',$guidance)->with('transfereestudents',$transfereestudents)->with('freshmenstudents',$freshmenstudents)->with('examschedulelist',$examschedulelist);
 		}
 		else{
-			return Redirect::intended('http://localhost:8000/adminlogin');
+			return Redirect::intended('/adminlogin');
 		}
 	}
 

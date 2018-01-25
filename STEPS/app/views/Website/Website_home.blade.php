@@ -181,11 +181,11 @@ Session::forget('message');
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<nav>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="http://localhost:8000/"><span data-hover="Home">Home</span></a></li>
-							<li><a href="http://localhost:8000/about"><span data-hover="About">About</span></a></li>
-							<li><a href="http://localhost:8000/facility"><span data-hover="Timbers">Facility</span></a></li>
-							<li><a href="http://localhost:8000/activities"><span data-hover="Enquiries">Activities</span></a></li>
-							 <li><a  href="http://localhost:8000/contact"><span data-hover="Contact">Contact</span></a></li>
+							<li class="active"><a href="{{ URL::to('/') }}"><span data-hover="Home">Home</span></a></li>
+							<li><a href="{{ URL::to('/about') }}"><span data-hover="About">About</span></a></li>
+							<li><a href="{{ URL::to('/facility') }}"><span data-hover="Timbers">Facility</span></a></li>
+							<li><a href="{{ URL::to('/activities') }}"><span data-hover="Enquiries">Activities</span></a></li>
+							 <li><a  href="{{ URL::to('/contact') }}"><span data-hover="Contact">Contact</span></a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 						        <!-- <li><p class="navbar-text">Already have an account?</p></li> -->

@@ -5,7 +5,7 @@ class CollegeController extends BaseController{
 	{
 		$userid=Input::get('get_userid');
 		Session::put('sess_college_transferee_userid',$userid);
-		return Redirect::intended('http://localhost:8000/evaluate');
+		return Redirect::intended('/evaluate');
 
 	}
 	public function evaluate()
@@ -42,7 +42,7 @@ class CollegeController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$evaluator_name)->first();
 			Session::put('sess_admin_college_arr',$admin);
-			return Redirect::intended('http://localhost:8000/collegehome');
+			return Redirect::intended('/collegehome');
 		}
 		elseif($button=="Decline")
 		{
@@ -55,7 +55,7 @@ class CollegeController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'declined']);
 
-			return Redirect::intended('http://localhost:8000/collegehome');
+			return Redirect::intended('/collegehome');
 		}
 	}
 }

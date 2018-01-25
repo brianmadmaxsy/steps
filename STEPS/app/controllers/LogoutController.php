@@ -9,7 +9,7 @@ class LogoutController extends BaseController{
 
 		$message="thank you for using steps";
 		Session::put('message',$message);
-		return Redirect::intended('http://localhost:8000');
+		return Redirect::intended('/');
 	}
 
 	public function college_logout()

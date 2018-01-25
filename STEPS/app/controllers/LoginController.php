@@ -33,7 +33,7 @@ class LoginController extends BaseController{
 			//echo "try again!";
 			$message='user not found';
 			Session::put('message',$message);
-			return Redirect::intended('http://localhost:8000');
+			return Redirect::intended('/');
 
 			//return View::make('Website.Website_home')->with('message',$message);
 		}
@@ -54,6 +54,7 @@ class LoginController extends BaseController{
 		{
 			Session::put('sess_student_arr',$student);
 			
+			/*
 			if($student['studenttype']=="Transferee")
 			{
 				$transferee = TransfereeModel::where('userid','=',$student['userid'])->first();
@@ -64,7 +65,7 @@ class LoginController extends BaseController{
 				$freshmen = FreshmenModel::where('userid','=',$student['userid'])->first();
 				Session::put('sess_freshmen_arr',$freshmen);
 			}
-			
+			*/
 			return Redirect::intended('/home');
 		}
 		else
@@ -72,7 +73,7 @@ class LoginController extends BaseController{
 			//echo "try again!";
 			$message='user not found';
 			Session::put('message',$message);
-			return Redirect::intended('http://localhost:8000');
+			return Redirect::intended('/');
 
 			//return View::make('Website.Website_home')->with('message',$message);
 		}
@@ -89,7 +90,7 @@ class LoginController extends BaseController{
 		}
 		else
 		{
-			return Redirect::intended('http://localhost:8000/adminhome');
+			return Redirect::intended('/adminhome');
 		}
 		
 	}

@@ -53,11 +53,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<nav>
 						<ul class="nav navbar-nav ">
-							<li><a href="http://localhost:8000/">Home </a></li>
-							<li  class="active"><a href="http://localhost:8000/about">About</a></li>
-							<li><a href="http://localhost:8000/facility">Facility</a></li>
-							<li><a href="http://localhost:8000/activities">Activities</a></li>
-							 <li><a  href="http://localhost:8000/contact">Contact</a></li>
+							<li><a href="{{ URL::to('/') }}">Home </a></li>
+							<li  class="active"><a href="{{ URL::to('/about') }}">About</a></li>
+							<li><a href="{{ URL::to('/facility') }}">Facility</a></li>
+							<li><a href="{{ URL::to('/activities') }}">Activities</a></li>
+							 <li><a  href="{{ URL::to('/contact') }}">Contact</a></li>
 							 
 						</ul>
 						<ul class="nav navbar-nav navbar-right">

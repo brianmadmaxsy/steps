@@ -36,7 +36,7 @@ class RegistrationController extends BaseController{
 			{
 				$message="username already existed";
 				Session::put('message',$message);
-				return Redirect::intended('http://localhost:8000');
+				return Redirect::intended('/');
 			}
 			else{
 				$studentDB=new StudentModel;
@@ -248,10 +248,10 @@ class RegistrationController extends BaseController{
 
 				
 
-				//return Redirect::intended('http://localhost:8000')->with('message','<script language="javascript">'.'alert("Thank you for registering to STEPS! You may now login to your account!")'.'</script>');
+				//return Redirect::intended('/')->with('message','<script language="javascript">'.'alert("Thank you for registering to STEPS! You may now login to your account!")'.'</script>');
 				$message="registration successful";
 				Session::put('message',$message);
-				return Redirect::intended('http://localhost:8000');
+				return Redirect::intended('/');
 				
 			}
 			

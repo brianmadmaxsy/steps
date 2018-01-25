@@ -42,7 +42,7 @@ class GuidanceController extends BaseController{
 
 		$admin = AdminModel::where('username','=',$guidance_username)->first();
 		Session::put('sess_admin_guidance_arr',$admin);
-		return Redirect::intended('http://localhost:8000/guidancehome');
+		return Redirect::intended('/guidancehome');
 	}
 
 
@@ -55,11 +55,11 @@ class GuidanceController extends BaseController{
 
 		if($steps_status=="EntranceExam")
 		{
-			return Redirect::intended('http://localhost:8000/guidanceviewfreshmen');
+			return Redirect::intended('/guidanceviewfreshmen');
 		}
 		else
 		{
-			return Redirect::intended('http://localhost:8000/guidanceviewfreshmen');
+			return Redirect::intended('/guidanceviewfreshmen');
 		}
 		
 	}
@@ -103,7 +103,7 @@ class GuidanceController extends BaseController{
 		$admin = AdminModel::where('username','=',$guidance_username)->first();
 		Session::put('sess_admin_guidance_arr',$admin);
 
-		return Redirect::intended('http://localhost:8000/guidancehome');
+		return Redirect::intended('/guidancehome');
 	}
 
 
@@ -147,7 +147,7 @@ class GuidanceController extends BaseController{
 		$admin = AdminModel::where('username','=',$guidance_username)->first();
 		Session::put('sess_admin_guidance_arr',$admin);
 
-		return Redirect::intended('http://localhost:8000/examschedules');
+		return Redirect::intended('/examschedules');
 	}
 }
 ?>

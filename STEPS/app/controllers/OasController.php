@@ -45,7 +45,7 @@ class OasController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 		elseif($button=="Decline")
 		{
@@ -61,7 +61,7 @@ class OasController extends BaseController{
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
 
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 	}
 
@@ -97,7 +97,7 @@ class OasController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 		elseif($button=="Decline")
 		{
@@ -113,7 +113,7 @@ class OasController extends BaseController{
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
 
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 	}
 
@@ -150,7 +150,7 @@ class OasController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 		elseif($button=="Decline")
 		{
@@ -166,7 +166,7 @@ class OasController extends BaseController{
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
 
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 	}
 	//End of OAS Steps method
@@ -201,7 +201,7 @@ class OasController extends BaseController{
 			Session::put('sess_student_arr',$student);
 		}
 
-		return Redirect::intended('http://localhost:8000/home');
+		return Redirect::intended('/home');
 	}
 	//End of student_schedule_exam
 
@@ -220,28 +220,28 @@ class OasController extends BaseController{
 
 		if($steps_status=="requirements")
 		{
-			return Redirect::intended('http://localhost:8000/oasviewfreshmenrequirements');
+			return Redirect::intended('/oasviewfreshmenrequirements');
 		}
 		elseif($steps_status=="payment") 
 		{
-			return Redirect::intended('http://localhost:8000/oasviewfreshmenpayment');
+			return Redirect::intended('/oasviewfreshmenpayment');
 		}
 		elseif($steps_status=="identification") 
 		{
-			return Redirect::intended('http://localhost:8000/viewfreshmenidentification');
+			return Redirect::intended('/viewfreshmenidentification');
 		}
 		elseif($steps_status=="ExamScheduling")
 		{
-			return Redirect::intended('http://localhost:8000/freshmenexamscheduling');
+			return Redirect::intended('/freshmenexamscheduling');
 			
 		}
 		elseif($steps_status=="interview")
 		{
-			return Redirect::intended('http://localhost:8000/viewfreshmeninterview');
+			return Redirect::intended('/viewfreshmeninterview');
 		}
 		else
 		{
-			return Redirect::intended('http://localhost:8000/oasviewfreshmen');
+			return Redirect::intended('/oasviewfreshmen');
 		}
 		
 	}
@@ -304,11 +304,11 @@ class OasController extends BaseController{
 
 		if($student['steps_status']=="requirements")
 		{
-			return Redirect::intended('http://localhost:8000/oasviewfreshmenrequirements');
+			return Redirect::intended('/oasviewfreshmenrequirements');
 		}
 		else if($student['steps_status']=="interview")
 		{
-			return Redirect::intended('http://localhost:8000/viewfreshmeninterview');
+			return Redirect::intended('/viewfreshmeninterview');
 		}
 		
 	}
@@ -336,7 +336,7 @@ class OasController extends BaseController{
 			Session::put('sess_admin_oas_arr',$admin);
 
 
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 		elseif($button=="Decline")
 		{
@@ -353,7 +353,7 @@ class OasController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 	}
 
@@ -390,7 +390,7 @@ class OasController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 		elseif($button=="Decline")
 		{
@@ -406,7 +406,7 @@ class OasController extends BaseController{
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
 
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 	}
 
@@ -442,7 +442,7 @@ class OasController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 		elseif($button=="Decline")
 		{
@@ -458,7 +458,7 @@ class OasController extends BaseController{
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
 
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 	}
 
@@ -498,7 +498,7 @@ class OasController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 		elseif($button=="Decline")
 		{
@@ -514,7 +514,7 @@ class OasController extends BaseController{
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
 
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 	}
 
@@ -548,7 +548,7 @@ class OasController extends BaseController{
 			Session::put('sess_student_arr',$student);
 		}
 
-		return Redirect::intended('http://localhost:8000/home');
+		return Redirect::intended('/home');
 	}
 	//End of freshmen_student_schedule_exam
 
@@ -600,7 +600,7 @@ class OasController extends BaseController{
 			Session::put('sess_admin_oas_arr',$admin);
 
 
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 		elseif($button=="Decline")
 		{
@@ -615,7 +615,7 @@ class OasController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
-			return Redirect::intended('http://localhost:8000/oashome');
+			return Redirect::intended('/oashome');
 		}
 	}
 	//end of functions for freshmen students

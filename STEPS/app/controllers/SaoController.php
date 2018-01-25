@@ -12,15 +12,15 @@ class SaoController extends BaseController{
 
 		if($steps_status=="requirements")
 		{
-			return Redirect::intended('http://localhost:8000/requirements');
+			return Redirect::intended('/requirements');
 		}
 		elseif($steps_status=="interview")
 		{
-			return Redirect::intended('http://localhost:8000/interview');
+			return Redirect::intended('/interview');
 		}
 		else
 		{
-			return Redirect::intended('http://localhost:8000/saoviewtransferee');
+			return Redirect::intended('/saoviewtransferee');
 		}
 
 		
@@ -89,15 +89,15 @@ class SaoController extends BaseController{
 
 		if($student['steps_status']=="requirements")
 		{
-			return Redirect::intended('http://localhost:8000/requirements');
+			return Redirect::intended('/requirements');
 		}
 		else if($student['steps_status']=="interview")
 		{
-			return Redirect::intended('http://localhost:8000/interview');
+			return Redirect::intended('/interview');
 		}
 		else
 		{
-			return Redirect::intended('http://localhost:8000/saoviewtransferee');
+			return Redirect::intended('/saoviewtransferee');
 		}
 		
 		
@@ -127,7 +127,7 @@ class SaoController extends BaseController{
 			Session::put('sess_admin_sao_arr',$admin);
 
 
-			return Redirect::intended('http://localhost:8000/saohome');
+			return Redirect::intended('/saohome');
 		}
 		elseif($button=="Decline")
 		{
@@ -144,7 +144,7 @@ class SaoController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$sao_username)->first();
 			Session::put('sess_admin_sao_arr',$admin);
-			return Redirect::intended('http://localhost:8000/saohome');
+			return Redirect::intended('/saohome');
 		}
 	}
 
@@ -184,7 +184,7 @@ class SaoController extends BaseController{
 			Session::put('sess_admin_sao_arr',$admin);
 
 
-			return Redirect::intended('http://localhost:8000/saohome');
+			return Redirect::intended('/saohome');
 		}
 		elseif($button=="Decline")
 		{
@@ -199,7 +199,7 @@ class SaoController extends BaseController{
 
 			$admin = AdminModel::where('username','=',$sao_username)->first();
 			Session::put('sess_admin_sao_arr',$admin);
-			return Redirect::intended('http://localhost:8000/saohome');
+			return Redirect::intended('/saohome');
 		}
 	}
 

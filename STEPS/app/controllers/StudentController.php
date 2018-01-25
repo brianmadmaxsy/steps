@@ -11,7 +11,7 @@ class StudentController extends BaseController{
 		}
 		else if($student!="")
 		{
-			return Redirect::intended('http://localhost:8000/home');
+			return Redirect::intended('/home');
 		}
 		
 	}
@@ -40,16 +40,21 @@ class StudentController extends BaseController{
 	{
 		
 		
-		$student = Session::get('sess_student_arr');
-		$student = unserialize(serialize($student)); //added code to unserialize the __PHP_Incomplete_Class
+		$student_sess = Session::get('sess_student_arr');
+		$student_sess = unserialize(serialize($student_sess)); //added code to unserialize the __PHP_Incomplete_Class
 		
+		$student = StudentModel::where('username','=',$student_sess['username'])->where('password','=',$student_sess['password'])->first(); //recall student row
 		
+
 		if($student!="")
 		{
 			if($student['studenttype']=="Transferee")
 			{
-				$transferee=Session::get('sess_transferee_arr');
-				$transferee = unserialize(serialize($transferee));
+				//$transferee_sess=Session::get('sess_transferee_arr');
+				//$transferee_sess = unserialize(serialize($transferee_sess));
+
+				$transferee = TransfereeModel::where('userid','=',$student['userid'])->first();
+
 				//select all requirements
 				$transferee_requirements= TransfereeRequirementsModel::where('userid','=',$student['userid'])->first();
 				$examschedule= ExamScheduleModel::where('userid','=',$student['userid'])->first();
@@ -58,8 +63,10 @@ class StudentController extends BaseController{
 			}
 			else if($student['studenttype']=="Freshmen")
 			{
-				$freshmen=Session::get('sess_freshmen_arr');
-				$freshmen = unserialize(serialize($freshmen));
+				//$freshmen_sess=Session::get('sess_freshmen_arr');
+				//$freshmen_sess = unserialize(serialize($freshmen_sess));
+
+				$freshmen = FreshmenModel::where('userid','=',$student['userid'])->first();
 
 				$freshmen_requirements= FreshmenRequirementsModel::where('userid','=',$student['userid'])->first();
 				$examschedule= ExamScheduleModel::where('userid','=',$student['userid'])->first();
@@ -74,7 +81,7 @@ class StudentController extends BaseController{
 			//echo "User not logged in";
 			$message='user not logged in';
 			Session::put('message',$message);
-			return Redirect::intended('http://localhost:8000');
+			return Redirect::intended('/');
 
 			//return View::make('Website.Website_home')->with('message',$message);
 		
@@ -124,7 +131,7 @@ class StudentController extends BaseController{
 			Session::put('sess_student_arr',$student);
 			$freshmen = FreshmenModel::where('userid','=',$userid)->first();
 			Session::put('sess_freshmen_arr',$freshmen);
-			return Redirect::intended('http://localhost:8000/home');
+			return Redirect::intended('/home');
 		}
 		catch(Exception $e)
 		{
@@ -174,7 +181,7 @@ class StudentController extends BaseController{
 			Session::put('sess_student_arr',$student);
 			$transferee = TransfereeModel::where('userid','=',$userid)->first();
 			Session::put('sess_transferee_arr',$transferee);
-			return Redirect::intended('http://localhost:8000/home');
+			return Redirect::intended('/home');
 		}
 		catch(Exception $e)
 		{

@@ -49,7 +49,7 @@ class MasterAdminController extends BaseController{
 			//$message="Thank you for registering to STEPS!";
 			$admin = AdminModel::where('username','=',$master_admin_username)->first();
 			Session::put('sess_admin_masteradmin_arr',$admin);
-			return Redirect::intended('http://localhost:8000/masteradminhome');
+			return Redirect::intended('/masteradminhome');
 		}
 	}
 
@@ -88,7 +88,7 @@ class MasterAdminController extends BaseController{
 			{
 				$message="username already existed";
 				Session::put('message',$message);
-				return Redirect::intended('http://localhost:8000');
+				return Redirect::intended('/masteradminhome');
 			}
 			else{
 				$studentDB=new StudentModel;
@@ -301,7 +301,7 @@ class MasterAdminController extends BaseController{
 				//$message="Thank you for registering to STEPS!";
 				$admin = AdminModel::where('username','=',$master_admin_username)->first();
 				Session::put('sess_admin_masteradmin_arr',$admin);
-				return Redirect::intended('http://localhost:8000/masteradminhome');
+				return Redirect::intended('/masteradminhome');
 				
 			}
 			
@@ -320,7 +320,7 @@ class MasterAdminController extends BaseController{
 		Session::put('sess_masteradmin_username',$master_admin_username);
 		Session::put('sess_masteradmin_fetched_admin_userid',$userid);
 
-		return Redirect::intended('http://localhost:8000/masterviewadmin');
+		return Redirect::intended('/masterviewadmin');
 	}
 
 	public function master_get_student_userid()
@@ -330,7 +330,7 @@ class MasterAdminController extends BaseController{
 
 		Session::put('sess_masteradmin_username',$master_admin_username);
 		Session::put('sess_masteradmin_fetched_student_userid',$userid);
-		return Redirect::intended('http://localhost:8000/masterviewstudent');
+		return Redirect::intended('/masterviewstudent');
 	}
 
 	public function master_view_admin()
@@ -372,7 +372,7 @@ class MasterAdminController extends BaseController{
 		Session::put('sess_masteradmin_username',$master_admin_username);
 		Session::put('sess_masteradmin_fetched_admin_userid',$userid);
 
-		return Redirect::intended('http://localhost:8000/masterviewadmin');
+		return Redirect::intended('/masterviewadmin');
 	}
 
 	public function master_view_student()
@@ -443,7 +443,7 @@ class MasterAdminController extends BaseController{
 		Session::put('sess_masteradmin_username',$master_admin_username);
 		Session::put('sess_masteradmin_fetched_admin_userid',$userid);
 
-		return Redirect::intended('http://localhost:8000/masterviewstudent');
+		return Redirect::intended('/masterviewstudent');
 	}
 
 	public function master_edit_transferee()
@@ -487,7 +487,7 @@ class MasterAdminController extends BaseController{
 			Session::put('sess_masteradmin_username',$master_admin_username);
 			Session::put('sess_masteradmin_fetched_admin_userid',$userid);
 
-			return Redirect::intended('http://localhost:8000/masterviewstudent');
+			return Redirect::intended('/masterviewstudent');
 			
 		}
 		catch(Exception $e)

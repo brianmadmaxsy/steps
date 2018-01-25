@@ -60,7 +60,7 @@
 	              <!-- Logo -->
 	              <div class="logo">
 	                 
-	                 <a href="http://localhost:8000/saohome"><img src="admin/AdminDashboardDesign/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
+	                 <a href="{{ URL::to('/saohome') }}"><img src="admin/AdminDashboardDesign/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
 	              </div>
 	           </div>
 	           
@@ -72,7 +72,7 @@
 	                  <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
 	                    <ul class="nav navbar-nav">
 	                      <li class="dropdown">
-	                        <a href="http://localhost:8000/collegelogout"><b><font color="#fdca00">Logout</font><!-- class="dropdown-toggle" data-toggle="dropdown" <b class="caret"> --></b></a>
+	                        <a href="{{ URL::to('/saologout') }}"><b><font color="#fdca00">Logout</font><!-- class="dropdown-toggle" data-toggle="dropdown" <b class="caret"> --></b></a>
 	                        <!--
 	                        <ul class="dropdown-menu animated fadeInUp">
 	                          <li><a href="profile.html">Settings</a></li>
@@ -95,16 +95,16 @@
                 	<ul class="nav">
 	                    <!-- Main menu -->
 	                    <li class="submenu">
-	                         <a href="http://localhost:8000/home">
+	                         <a href="{{ URL::to('/saohome') }}">
 	                            <i class="glyphicon glyphicon-dashboard"></i>Dashboard
 	                            <span class="caret pull-right"></span>
 	                         </a>
 	                         <!-- Sub menu -->
 	                         <ul>
-	                            <li><a href="http://localhost:8000/saohome">Home</a></li>
+	                            <li><a href="{{ URL::to('/saohome') }}">Home</a></li>
 	                            <li><a href="#">About</a></li>
 	                            <li><a href="#">Support</a></li>
-	                            <li><a href="http://localhost:8000/saologout">Logout</a></li>
+	                            <li><a href="{{ URL::to('/saologout') }}">Logout</a></li>
 	                        </ul>
 	                    </li>
 	                    <li><a href="#"><i class="glyphicon glyphicon-calendar"></i>School Calendar</a></li>
@@ -420,7 +420,7 @@
 
 						            
 						            
-						            <a href="http://localhost:8000/saohome" class="btn btn-info" role="button">Back to Admin Home...</a>
+						            <a href="{{ URL::to('/saohome') }}" class="btn btn-info" role="button">Back to Admin Home...</a>
 						        </div><!-- col-md-8 col-lg-8-->
 						    </div><!--class row-->
 						    
