@@ -60,6 +60,7 @@ class AdminController extends BaseController{
 	public function admin_oas_home()
 	{
 		Session::forget('sess_oas_freshmen_userid');
+		Session::forget('sess_oas_transferee_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas = unserialize(serialize($oas)); //added code to unserialize the __PHP_Incomplete_Class
 
@@ -87,6 +88,8 @@ class AdminController extends BaseController{
 	}
 	public function admin_guidance_home()
 	{
+		Session::forget('sess_guidance_freshmen_userid');
+		Session::forget('sess_guidance_transferee_userid');
 		$guidance=Session::get('sess_admin_guidance_arr');
 		$guidance = unserialize(serialize($guidance)); //added code to unserialize the __PHP_Incomplete_Class
 		

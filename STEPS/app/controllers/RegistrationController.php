@@ -69,7 +69,7 @@ class RegistrationController extends BaseController{
 					$department="";
 					if($freshmen_tocourse=="Bachelors of Science in Information Technology" || $freshmen_tocourse=="Bachelors of Science in Computer Science")
 					{
-						$department="College of Computer Science";
+						$department="College of Computer Studies";
 					}
 					else{
 						$department="";
@@ -107,6 +107,7 @@ class RegistrationController extends BaseController{
 
 					$examschedule=new ExamScheduleModel;
 					$examschedule->examscheduleid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."examschedule";
+					$examschedule->scheduleid="";
 					$examschedule->userid=$userid;
 					$examschedule->schedule="";
 					$examschedule->save();
@@ -206,6 +207,7 @@ class RegistrationController extends BaseController{
 
 					$examschedule=new ExamScheduleModel;
 					$examschedule->examscheduleid=bin2hex(mcrypt_create_iv(15, MCRYPT_DEV_URANDOM))."examschedule";
+					$examschedule->scheduleid="";
 					$examschedule->userid=$userid;
 					$examschedule->schedule="";
 					$examschedule->save();

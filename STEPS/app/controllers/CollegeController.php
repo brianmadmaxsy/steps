@@ -37,8 +37,8 @@ class CollegeController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'requirements','step_number'=>2]);
 
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$evaluator_name)->first();
 			Session::put('sess_admin_college_arr',$admin);

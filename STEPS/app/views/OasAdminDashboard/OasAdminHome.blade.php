@@ -165,10 +165,11 @@
 								            <td>{{ $student->fromschool }}</td>
 								            <td>{{ $student->steps_status }}</td>
 								            <td>
-								            <form method="post" <?php if($student->steps_status=="payment"){ ?> action="/payment" <?php }elseif($student->steps_status=="identification"){ ?> action="/identification" <?php }elseif($student->steps_status=="ExamScheduling"){ ?> action="/examscheduling "<?php }else{ ?> action="/oasviewstudent" <?php } ?> >
-								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
+								            
+								        	<form method="post" action="/oasgettransfereeuserid">
+								        		<input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="open" value="Open" >
-								            </form>
+								        	</form>
 								            </td>
 								        </tr>
 								    <?php
@@ -223,7 +224,7 @@
 								            <td>
 								            <form method="post" action="/oasgetfreshmenuserid">
 
-								            	<input type="hidden" name="get_steps_status" value="{{ $student->steps_status }}">
+								            	<!--<input type="hidden" name="get_steps_status" value="{{ $student->steps_status }}">-->
 								                <input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="open" value="Open" >
 								            </form>

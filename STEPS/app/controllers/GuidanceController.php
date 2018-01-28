@@ -4,9 +4,22 @@ class GuidanceController extends BaseController{
 	
 	//GUIDANCE STEPS
 
+	public function guidance_get_transferee_userid()
+	{
+		//$steps_status=Input::get('get_steps_status');
+		$userid=Input::get('get_userid');
+		Session::put('sess_guidance_transferee_userid',$userid);
+
+		$student=StudentModel::where('userid','=',$userid)->first();
+		
+		
+		return Redirect::intended('/guidanceviewstudent');
+		
+	}
 	public function guidance_view_student()
 	{
-		$userid=Input::get('get_userid');
+		//$userid=Input::get('get_userid');
+		$userid=Session::get('sess_guidance_transferee_userid');
 		$guidance=Session::get('sess_admin_guidance_arr');
 		$guidance=unserialize(serialize($guidance));
 
@@ -37,8 +50,8 @@ class GuidanceController extends BaseController{
 		$student=StudentModel::where('userid',$userid);
 		$student->update(['steps_status'=>'interview','step_number'=>7]);
 
-		$student = StudentModel::where('userid','=',$userid)->first();
-		Session::put('sess_student_arr',$student);
+		//$student = StudentModel::where('userid','=',$userid)->first();
+		//Session::put('sess_student_arr',$student);
 
 		$admin = AdminModel::where('username','=',$guidance_username)->first();
 		Session::put('sess_admin_guidance_arr',$admin);
@@ -49,11 +62,13 @@ class GuidanceController extends BaseController{
 	//For freshmen student
 	public function guidance_get_freshmen_userid()
 	{
-		$steps_status=Input::get('get_steps_status');
+		//$steps_status=Input::get('get_steps_status');
 		$userid=Input::get('get_userid');
 		Session::put('sess_guidance_freshmen_userid',$userid);
 
-		if($steps_status=="EntranceExam")
+		$student=StudentModel::where('userid','=',$userid)->first();
+		
+		if($student['steps_status']=="EntranceExam")
 		{
 			return Redirect::intended('/guidanceviewfreshmen');
 		}
@@ -97,8 +112,8 @@ class GuidanceController extends BaseController{
 		$student=StudentModel::where('userid',$userid);
 		$student->update(['steps_status'=>'interview','step_number'=>6]);
 
-		$student = StudentModel::where('userid','=',$userid)->first();
-		Session::put('sess_student_arr',$student);
+		//$student = StudentModel::where('userid','=',$userid)->first();
+		//Session::put('sess_student_arr',$student);
 
 		$admin = AdminModel::where('username','=',$guidance_username)->first();
 		Session::put('sess_admin_guidance_arr',$admin);

@@ -2,9 +2,42 @@
 class OasController extends BaseController{
 
 	//Start of functions for Transferee Students
-	public function oas_view_student()
+
+	public function oas_get_transferee_userid()
 	{
 		$userid=Input::get('get_userid');
+		$student=StudentModel::where('userid','=',$userid)->first();
+		Session::put('sess_oas_transferee_userid',$userid);
+
+		/*
+		<form method="post" <?php if($student->steps_status=="payment"){ ?> action="/payment" <?php }elseif($student->steps_status=="identification"){ ?> action="/identification" <?php }elseif($student->steps_status=="ExamScheduling"){ ?> action="/examscheduling "<?php }else{ ?> action="/oasviewstudent" <?php } ?> >
+								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
+								                <input type="submit" name="open" value="Open" >
+								            </form>
+		*/						            
+		if($student['steps_status']=="payment")
+		{
+			return Redirect::intended('/payment');
+		}
+		elseif($student['steps_status']=="identification")
+		{
+			return Redirect::intended('/identification');
+		}
+		elseif($student['steps_status']=="ExamScheduling")
+		{
+			return Redirect::intended('/examscheduling');	
+		}
+		else
+		{
+			return Redirect::intended('/oasviewstudent');
+		}
+
+	}
+	public function oas_view_student()
+	{
+		//$userid=Input::get('get_userid');
+		$userid=Session::get('sess_oas_transferee_userid');
+		//Session::forget('sess_oas_transferee_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas=unserialize(serialize($oas));
 
@@ -15,7 +48,9 @@ class OasController extends BaseController{
 
 	public function view_payment()
 	{
-		$userid=Input::get('get_userid');
+		//$userid=Input::get('get_userid');
+		$userid=Session::get('sess_oas_transferee_userid');
+		//Session::forget('sess_oas_transferee_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas=unserialize(serialize($oas));
 
@@ -40,8 +75,8 @@ class OasController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'identification','step_number'=>4]);
 
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -55,8 +90,8 @@ class OasController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'declined']);
 
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -67,7 +102,9 @@ class OasController extends BaseController{
 
 	public function get_identification()
 	{
-		$userid=Input::get('get_userid');
+		//$userid=Input::get('get_userid');
+		$userid=Session::get('sess_oas_transferee_userid');
+		//Session::forget('sess_oas_transferee_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas=unserialize(serialize($oas));
 
@@ -92,8 +129,8 @@ class OasController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'ExamScheduling','step_number'=>5]);
 
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -107,8 +144,8 @@ class OasController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'declined']);
 
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -119,7 +156,9 @@ class OasController extends BaseController{
 
 	public function exam_scheduling()
 	{
-		$userid=Input::get('get_userid');
+		//$userid=Input::get('get_userid');
+		$userid=Session::get('sess_oas_transferee_userid');
+		//Session::forget('sess_oas_transferee_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas=unserialize(serialize($oas));
 
@@ -145,8 +184,8 @@ class OasController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'EntranceExam','step_number'=>6]);
 
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -160,8 +199,8 @@ class OasController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'declined']);
 
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -214,28 +253,31 @@ class OasController extends BaseController{
 	//Start of functions for freshmen students
 	public function oas_get_freshmen_userid()
 	{
-		$steps_status=Input::get('get_steps_status');
+		//$steps_status=Input::get('get_steps_status');
 		$userid=Input::get('get_userid');
 		Session::put('sess_oas_freshmen_userid',$userid);
 
-		if($steps_status=="requirements")
+		$student = StudentModel::where('userid','=',$userid)->first();
+		//$steps_status=$student['steps_status'];
+
+		if($student['steps_status']=="requirements")
 		{
 			return Redirect::intended('/oasviewfreshmenrequirements');
 		}
-		elseif($steps_status=="payment") 
+		elseif($student['steps_status']=="payment") 
 		{
 			return Redirect::intended('/oasviewfreshmenpayment');
 		}
-		elseif($steps_status=="identification") 
+		elseif($student['steps_status']=="identification") 
 		{
 			return Redirect::intended('/viewfreshmenidentification');
 		}
-		elseif($steps_status=="ExamScheduling")
+		elseif($student['steps_status']=="ExamScheduling")
 		{
 			return Redirect::intended('/freshmenexamscheduling');
 			
 		}
-		elseif($steps_status=="interview")
+		elseif($student['steps_status']=="interview")
 		{
 			return Redirect::intended('/viewfreshmeninterview');
 		}
@@ -249,6 +291,7 @@ class OasController extends BaseController{
 	public function oas_view_freshmen_requirements()
 	{
 		$userid=Session::get('sess_oas_freshmen_userid');
+		//Session::forget('sess_oas_freshmen_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas=unserialize(serialize($oas));
 
@@ -297,7 +340,7 @@ class OasController extends BaseController{
 		$freshmen_requirements->update(['oas_username'=>$oas_username]);
 
 		$student = StudentModel::where('userid','=',$userid)->first();
-		Session::put('sess_student_arr',$student); //replace the old session for student user. So that after this transaction, student can refresh his page and page loads updated data
+		//Session::put('sess_student_arr',$student); //replace the old session for student user. So that after this transaction, student can refresh his page and page loads updated data
 		
 		$admin = AdminModel::where('username','=',$oas_username)->first();
 		Session::put('sess_admin_oas_arr',$admin); //same to student, this also replaces the old admin data.
@@ -330,7 +373,7 @@ class OasController extends BaseController{
 			$student->update(['steps_status'=>'payment','studentid'=>$studentid,'step_number'=>2]);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -349,7 +392,7 @@ class OasController extends BaseController{
 			$student->update(['steps_status'=>'declined']);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -360,6 +403,7 @@ class OasController extends BaseController{
 	public function oas_view_freshmen_payment()
 	{
 		$userid=Session::get('sess_oas_freshmen_userid');
+		//Session::forget('sess_oas_freshmen_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas=unserialize(serialize($oas));
 
@@ -386,7 +430,7 @@ class OasController extends BaseController{
 			$student->update(['steps_status'=>'identification','step_number'=>3]);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -401,7 +445,7 @@ class OasController extends BaseController{
 			$student->update(['steps_status'=>'declined']);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -413,6 +457,7 @@ class OasController extends BaseController{
 	public function get_freshmen_identification()
 	{
 		$userid=Session::get('sess_oas_freshmen_userid');
+		//Session::forget('sess_oas_freshmen_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas=unserialize(serialize($oas));
 
@@ -438,7 +483,7 @@ class OasController extends BaseController{
 			$student->update(['steps_status'=>'ExamScheduling','step_number'=>4]);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -453,7 +498,7 @@ class OasController extends BaseController{
 			$student->update(['steps_status'=>'declined']);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -467,6 +512,7 @@ class OasController extends BaseController{
 	public function oas_freshmen_view_exam_scheduling()
 	{
 		$userid=Session::get('sess_oas_freshmen_userid');
+		//Session::forget('sess_oas_freshmen_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas=unserialize(serialize($oas));
 
@@ -494,7 +540,7 @@ class OasController extends BaseController{
 			$student->update(['steps_status'=>'EntranceExam','step_number'=>5]);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -509,7 +555,7 @@ class OasController extends BaseController{
 			$student->update(['steps_status'=>'declined']);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -538,14 +584,14 @@ class OasController extends BaseController{
 		{
 			$oas_username=$oas['username'];
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
 		}
 		else{
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 		}
 
 		return Redirect::intended('/home');
@@ -555,6 +601,7 @@ class OasController extends BaseController{
 	public function oas_view_freshmen_student() //Display freshmen student
 	{
 		$userid=Session::get('sess_oas_freshmen_userid');
+		//Session::forget('sess_oas_freshmen_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas=unserialize(serialize($oas));
 
@@ -568,6 +615,7 @@ class OasController extends BaseController{
 	public function oas_freshmen_view_interview()
 	{
 		$userid=Session::get('sess_oas_freshmen_userid');
+		//Session::forget('sess_oas_freshmen_userid');
 		$oas=Session::get('sess_admin_oas_arr');
 		$oas=unserialize(serialize($oas));
 
@@ -593,8 +641,9 @@ class OasController extends BaseController{
 			$interview->update(['sao_username'=>$oas_username,'status'=>'true','interview_comment'=>$comment]);
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'Officially Enrolled','step_number'=>7]);
+			
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);
@@ -611,7 +660,7 @@ class OasController extends BaseController{
 			$student->update(['steps_status'=>'declined']);
 
 			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$oas_username)->first();
 			Session::put('sess_admin_oas_arr',$admin);

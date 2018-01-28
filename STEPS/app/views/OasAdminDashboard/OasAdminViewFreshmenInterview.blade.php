@@ -133,6 +133,10 @@
 						        <div class=" col-md-8 col-lg-8 "> 
 						            <table class="table table-user-information">
 						                <tbody>
+						                	<tr>
+						                		<td>Student Type</td>
+						                		<td>{{ $student['studenttype'] }}</td>
+						                	</tr>
 						                    <tr>
 						                        <td>Student ID</td>
 						                        <td>
@@ -182,7 +186,20 @@
 						                    </tr>
 						                    <tr>
 						                    	<td>Status</td>
-						                    	<td class="alert alert-warning">{{ ucfirst($student['steps_status']) }}</td>
+						                    	<?php
+						                    	if($student['steps_status']!="Officially Enrolled")
+						                    	{
+						                    	?>
+						                    	<td class="alert alert-info">{{ ucfirst($student['steps_status']) }}</td>
+						                    	<?php
+						                    	}
+						                    	else
+						                    	{
+						                    	?>
+						                    	<td class="alert alert-success">{{ ucfirst($student['steps_status']) }}</td>
+						                    	<?php
+						                    	}
+						                    	?>
 						                    </tr>
 						                    <?php
 						                    if($interview['interview_comment']!="" && $interview['status']=="true")
@@ -226,7 +243,7 @@
 						            	</tr>
 						            </table>
 						        <?php
-						        if($requirements['NSO']=="false" || $requirements['COT']=="false" || $requirements['GM']=="false" || $requirements['TOR']=="false" || $requirements['RF']=="false")
+						        if($requirements['highschoolcard']=="false" || $requirements['GM']=="false" || $requirements['NSO']=="false" || $requirements['NCAE']=="false")
 								{	//If requirements are not complete but steps_status is Interview
 						        ?>
 						        	<form method="post" action="/submitfreshmenrequirements">
@@ -235,6 +252,24 @@
 						          				<td colspan="2"><h3 style="color:green;">Incomplete Requirements</h3></td>
 						          			</tr>
 						          			<?php
+											if($requirements['highschoolcard']=="false")
+											{
+											?>
+												<tr id="student_sao_table">
+												    <td width="300">
+												    	<label>High School Card (Grade)</label>
+												    	
+												    </td>
+												    <td>
+												    	<input type="checkbox" name="highschoolcard" value="highschoolcard">
+												    </td>
+
+												</tr>
+											<?php
+											}
+											?>
+
+											<?php
 											if($requirements['NSO']=="false")
 											{
 											?>
@@ -245,24 +280,6 @@
 												    </td>
 												    <td>
 												    	<input type="checkbox" name="nso" value="nso">
-												    </td>
-
-												</tr>
-											<?php
-											}
-											?>
-
-											<?php
-											if($requirements['COT']=="false")
-											{
-											?>
-												<tr id="student_sao_table">
-												    <td width="300">
-												    	<label>Certificate of Transfer</label>
-												    	
-												    </td>
-												    <td>
-												    	<input type="checkbox" name="cot" value="cot">
 												    </td>
 												</tr>
 											<?php
@@ -287,37 +304,22 @@
 											?>
 
 											<?php
-											if($requirements['TOR']=="false")
+											if($requirements['NCAE']=="false")
 											{
 											?>
 												<tr id="student_sao_table">
 												    <td width="300">
-												    	<label>Transcript of Records (TOR) </label>
+												    	<label>NCAE Result</label>
 												    </td>
 												    <td>
-												    	<input type="checkbox" name="tor" value="tor">
+												    	<input type="checkbox" name="ncae" value="ncae">
 												    </td>
 												</tr>
 											<?php
 											}
 											?>
 
-											<?php
-											if($requirements['RF']=="false")
-											{
-											?>
-												<tr id="student_sao_table">
-												    <td width="300">
-												    	<label>CIT University Residency Form</label>
-												    	
-												    </td>
-												    <td>
-												    	<input type="checkbox" name="rf" value="rf">
-												    </td>
-												</tr>
-											<?php
-											}
-											?>	
+											
 												<tr>
 													<td>&nbsp;</td>
 												</tr>

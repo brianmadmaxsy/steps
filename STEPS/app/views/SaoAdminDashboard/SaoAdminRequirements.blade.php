@@ -133,6 +133,10 @@
 						        <div class=" col-md-8 col-lg-8 "> 
 						            <table class="table table-user-information">
 						                <tbody>
+						                	<tr>
+						                		<td>Student Type</td>
+						                		<td>{{ $student['studenttype'] }}</td>
+						                	</tr>
 						                    <tr>
 						                        <td>Student ID</td>
 						                        <td>
@@ -181,18 +185,17 @@
 						                        <td>{{ $transferee['fromschool'] }}</td>
 						                    </tr>
 						                    <tr>
+						                    	<td>Status</td>
 						                    	<?php
-						                    	if($student['steps_status']=="requirements")
+						                    	if($student['steps_status']!="Officially Enrolled")
 						                    	{
 						                    	?>
-						                    	<td>Status</td>
-						                    	<td class="alert alert-warning">{{ ucfirst($student['steps_status']) }}</td>
+						                    	<td class="alert alert-info">{{ ucfirst($student['steps_status']) }}</td>
 						                    	<?php
 						                    	}
 						                    	else
 						                    	{
 						                    	?>
-						                    	<td>Status</td>
 						                    	<td class="alert alert-success">{{ ucfirst($student['steps_status']) }}</td>
 						                    	<?php
 						                    	}

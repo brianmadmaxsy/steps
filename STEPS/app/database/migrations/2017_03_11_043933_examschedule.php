@@ -22,6 +22,7 @@ ExamSchedule
 		Schema::create('ExamSchedule',function($table){
 			$table->increments('id');
 			$table->string('examscheduleid');
+			$table->string('scheduleid');
 			$table->string('userid');
 			$table->string('schedule');
 			$table->timestamps();

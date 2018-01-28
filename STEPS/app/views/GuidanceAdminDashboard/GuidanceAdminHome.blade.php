@@ -101,7 +101,7 @@
 	                            <li><a href="{{ URL::to('/guidancelogout') }}">Logout</a></li>
 	                        </ul>
 	                    </li>
-	                    <li><a href="{{ URL::to('/examschedule') }}"><i class="glyphicon glyphicon-calendar"></i>Exam Schedules</a></li>
+	                    <li><a href="{{ URL::to('/examschedules') }}"><i class="glyphicon glyphicon-calendar"></i>Exam Schedules</a></li>
                     </ul>
              	</div>
 		  	</div>
@@ -165,7 +165,7 @@
 								            <td>{{ $student->fromschool }}</td>
 								            <td>{{ $student->steps_status }}</td>
 								            <td>
-								            <form method="post" action="/guidanceviewstudent">
+								            <form method="post" action="/guidancegettransfereeuserid">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="open" value="Open" >
 								            </form>
@@ -223,7 +223,6 @@
 								            <td>{{ $student->steps_status }}</td>
 								            <td>
 								            <form method="post" action="/guidancegetfreshmenuserid">
-								            	<input type="hidden" name="get_steps_status" value="{{ $student->steps_status }}">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="open" value="Open" >
 								            </form>

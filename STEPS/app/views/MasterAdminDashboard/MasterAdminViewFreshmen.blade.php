@@ -206,16 +206,16 @@
 						                    <tr>
 						                    	<td>Status</td>
 						                    	<?php
-						                    	if($student['steps_status']=="payment")
+						                    	if($student['steps_status']!="Officially Enrolled")
 						                    	{
 						                    	?>
-						                    		<td class="alert alert-warning">{{ ucfirst($student['steps_status']) }}</td>
+						                    	<td class="alert alert-info">{{ ucfirst($student['steps_status']) }}</td>
 						                    	<?php
 						                    	}
 						                    	else
 						                    	{
-												?>
-													<td class="alert alert-success">{{ ucfirst($student['steps_status']) }}</td>
+						                    	?>
+						                    	<td class="alert alert-success">{{ ucfirst($student['steps_status']) }}</td>
 						                    	<?php
 						                    	}
 						                    	?>

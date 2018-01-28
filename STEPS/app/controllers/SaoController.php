@@ -4,17 +4,18 @@ class SaoController extends BaseController{
 	public function sao_get_transferee_userid()
 	{
 		$userid=Input::get('get_userid');
-		$steps_status=Input::get('get_steps_status');
+		//$steps_status=Input::get('get_steps_status');
+		$student=StudentModel::where('userid','=',$userid)->first();
+		
+		//echo $userid." -> ".$student['steps_status'];
 		Session::put('sess_sao_transferee_userid',$userid);
-		/*
-		<form method="post" <?php if($student->steps_status=="requirements"){ ?> action="/requirements"<?php } elseif($student->steps_status=="interview"){ ?> action="/interview" <?php }elseif($student->steps_status=="Officially Enrolled"){ ?> action="/interview" <?php }else{ ?> action="/requirements" <?php } ?> >
-		*/
-
-		if($steps_status=="requirements")
+		
+		
+		if($student['steps_status']=="requirements")
 		{
 			return Redirect::intended('/requirements');
 		}
-		elseif($steps_status=="interview")
+		elseif($student['steps_status']=="interview")
 		{
 			return Redirect::intended('/interview');
 		}
@@ -22,6 +23,7 @@ class SaoController extends BaseController{
 		{
 			return Redirect::intended('/saoviewtransferee');
 		}
+		
 
 		
 	}
@@ -82,7 +84,7 @@ class SaoController extends BaseController{
 		$transferee_requirements->update(['sao_username'=>$sao_username]);
 
 		$student = StudentModel::where('userid','=',$userid)->first();
-		Session::put('sess_student_arr',$student); //replace the old session for student user. So that after this transaction, student can refresh his page and page loads updated data
+		//Session::put('sess_student_arr',$student); //replace the old session for student user. So that after this transaction, student can refresh his page and page loads updated data
 		
 		$admin = AdminModel::where('username','=',$sao_username)->first();
 		Session::put('sess_admin_sao_arr',$admin); //same to student, this also replaces the old admin data.
@@ -120,8 +122,8 @@ class SaoController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'payment','studentid'=>$studentid,'step_number'=>3]);
 
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$sao_username)->first();
 			Session::put('sess_admin_sao_arr',$admin);
@@ -139,8 +141,8 @@ class SaoController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'declined']);
 
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$sao_username)->first();
 			Session::put('sess_admin_sao_arr',$admin);
@@ -177,8 +179,8 @@ class SaoController extends BaseController{
 			$interview->update(['sao_username'=>$sao_username,'status'=>'true','interview_comment'=>$comment]);
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'Officially Enrolled','step_number'=>8]);
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$sao_username)->first();
 			Session::put('sess_admin_sao_arr',$admin);
@@ -194,8 +196,8 @@ class SaoController extends BaseController{
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'declined']);
 
-			$student = StudentModel::where('userid','=',$userid)->first();
-			Session::put('sess_student_arr',$student);
+			//$student = StudentModel::where('userid','=',$userid)->first();
+			//Session::put('sess_student_arr',$student);
 
 			$admin = AdminModel::where('username','=',$sao_username)->first();
 			Session::put('sess_admin_sao_arr',$admin);

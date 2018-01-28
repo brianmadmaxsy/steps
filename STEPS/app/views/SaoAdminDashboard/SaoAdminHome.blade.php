@@ -166,7 +166,7 @@
 								            <td>{{ $student->steps_status }}</td>
 								            <td>
 								            <form method="post" action="/saogettransferee">
-								            	<input type="hidden" name="get_steps_status" value="{{ $student->steps_status }}">
+								            	<!--<input type="hidden" name="get_steps_status" value="{{ $student->steps_status }}">-->
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
 								                <input type="submit" name="open" value="Open" >
 								            </form>

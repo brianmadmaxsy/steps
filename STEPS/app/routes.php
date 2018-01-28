@@ -98,16 +98,17 @@ Route::post('/sao_interview_post',array('uses'=>'SaoController@sao_interview_pos
 
 
 //OAS Steps
-Route::post('/oasviewstudent',array('uses'=>'OasController@oas_view_student'));
+Route::post('/oasgettransfereeuserid',array('uses'=>'OasController@oas_get_transferee_userid'));
+Route::get('/oasviewstudent',array('uses'=>'OasController@oas_view_student'));
 
 
-Route::post('/payment',array('uses'=>'OasController@view_payment'));
+Route::get('/payment',array('uses'=>'OasController@view_payment'));
 Route::post('/receivepayment',array('uses'=>'OasController@receive_payment'));
 
-Route::post('/identification',array('uses'=>'OasController@get_identification'));
+Route::get('/identification',array('uses'=>'OasController@get_identification'));
 Route::post('/claimidentification', array('uses'=>'OasController@claimed_identification'));
 
-Route::post('/examscheduling',array('uses'=>'OasController@exam_scheduling'));
+Route::get('/examscheduling',array('uses'=>'OasController@exam_scheduling'));
 Route::post('/oasscheduleexam',array('uses'=>'OasController@oas_schedule_exam'));
 Route::post('/studentscheduleexam',array('uses'=>'OasController@student_schedule_exam'));
 
@@ -129,7 +130,8 @@ Route::post('/oasfreshmeninterviewpost',array('uses'=>'OasController@oas_freshme
 //End of OAS Steps
 
 //Guidance Steps
-Route::post('/guidanceviewstudent',array('uses'=>'GuidanceController@guidance_view_student'));
+Route::post('/guidancegettransfereeuserid',array('uses'=>'GuidanceController@guidance_get_transferee_userid'));
+Route::get('/guidanceviewstudent',array('uses'=>'GuidanceController@guidance_view_student'));
 Route::post('/postresults',array('uses'=>'GuidanceController@post_exam_results'));
 Route::post('/guidancegetfreshmenuserid',array('uses'=>'GuidanceController@guidance_get_freshmen_userid'));
 Route::get('/guidanceviewfreshmen',array('uses'=>'GuidanceController@guidance_view_freshmen_student'));
