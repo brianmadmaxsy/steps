@@ -59,7 +59,10 @@ class StudentController extends BaseController{
 				$transferee_requirements= TransfereeRequirementsModel::where('userid','=',$student['userid'])->first();
 				$examschedule= ExamScheduleModel::where('userid','=',$student['userid'])->first();
 				$results = ResultsModel::where('userid','=',$student['userid'])->first();
-				return View::make('TransfereeDashboard.Transferee_Home_Dashboard')->with('student',$student)->with('transferee',$transferee)->with('requirements',$transferee_requirements)->with('examschedule',$examschedule)->with('results',$results);
+				//$examschedulelist = DB::table('examschedulelist')->where('username','!=',$master['username'])->get();
+				$examschedulelist = DB::table('examschedulelist')->get();
+				
+				return View::make('TransfereeDashboard.Transferee_Home_Dashboard')->with('student',$student)->with('transferee',$transferee)->with('requirements',$transferee_requirements)->with('examschedule',$examschedule)->with('examschedulelist',$examschedulelist)->with('results',$results);
 			}
 			else if($student['studenttype']=="Freshmen")
 			{
@@ -71,7 +74,10 @@ class StudentController extends BaseController{
 				$freshmen_requirements= FreshmenRequirementsModel::where('userid','=',$student['userid'])->first();
 				$examschedule= ExamScheduleModel::where('userid','=',$student['userid'])->first();
 				$results = ResultsModel::where('userid','=',$student['userid'])->first();
-				return View::make('FreshmenDashboard.Freshmen_Home_Dashboard')->with('student',$student)->with('freshmen',$freshmen)->with('requirements',$freshmen_requirements)->with('examschedule',$examschedule)->with('results',$results);
+				//$examschedulelist = DB::table('examschedulelist')->where('username','!=',$master['username'])->get();
+				$examschedulelist = DB::table('examschedulelist')->get();
+				
+				return View::make('FreshmenDashboard.Freshmen_Home_Dashboard')->with('student',$student)->with('freshmen',$freshmen)->with('requirements',$freshmen_requirements)->with('examschedule',$examschedule)->with('examschedulelist',$examschedulelist)->with('results',$results);
 				
 			}
 			

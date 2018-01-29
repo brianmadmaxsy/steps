@@ -696,9 +696,16 @@
 																		    		{
 																		    		?>
 																		    		<select name="schedule" style="height:40px; border:1px solid #D8D8D8; border-radius:5px;">
-																					    <option>03/27/17 09:00AM-11:00PM</option>
-																					    <option>03/27/17 01:00PM-03:00PM</option>
-																					    <option>03/27/17 03:00AM-05:00PM</option>
+																		    			
+																		    			<?php
+																		    			foreach($examschedulelist as $examsched)
+																		    			{
+																		    			?>
+																		    			<option value="{{ $examsched->scheduleid }}"><?php echo $examsched->schedule_day." ".$examsched->schedule_date." ".$examsched->schedule_time; ?></option>
+																		    			<?php
+																		    			}
+																		    			?>
+																					    
 																					</select>
 																					<?php
 																					}

@@ -165,8 +165,10 @@ class OasController extends BaseController{
 		$student=StudentModel::where('userid','=',$userid)->first();
 		$transferee=TransfereeModel::where('userid','=',$userid)->first();
 		$examschedule=ExamScheduleModel::where('userid','=',$userid)->first();
+		//$examschedulelist = DB::table('examschedulelist')->where('username','!=',$master['username'])->get();
+		$examschedulelist = DB::table('examschedulelist')->get();
 
-		return View::make('OasAdminDashboard.OasAdminExamScheduling')->with('oas',$oas)->with('student',$student)->with('transferee',$transferee)->with('examschedule',$examschedule);
+		return View::make('OasAdminDashboard.OasAdminExamScheduling')->with('oas',$oas)->with('student',$student)->with('transferee',$transferee)->with('examschedule',$examschedule)->with('examschedulelist',$examschedulelist);
 	}
 
 	public function oas_schedule_exam() //OAS personnel schedules an exam for student
@@ -177,10 +179,13 @@ class OasController extends BaseController{
 		{
 			$userid=Input::get('get_userid');
 			$oas_username=Input::get('get_oas_username');
-			$schedule=Input::get('examschedule');
+			$scheduleid=Input::get('examschedule');
+
+			$examsched=ExamScheduleListModel::where('scheduleid','=',$scheduleid)->first();
+			$schedule=$examsched['schedule_day']." ".$examsched['schedule_date']." ".$examsched['schedule_time'];
 
 			$examschedule=ExamScheduleModel::where('userid',$userid);
-			$examschedule->update(['schedule'=>$schedule]);
+			$examschedule->update(['scheduleid'=>$scheduleid,'schedule'=>$schedule]);
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'EntranceExam','step_number'=>6]);
 
@@ -214,10 +219,13 @@ class OasController extends BaseController{
 	public function student_schedule_exam()
 	{
 		$userid=Input::get('get_userid');
-		$schedule=Input::get('schedule');
-
+		$scheduleid=Input::get('schedule');
+		
+		$examsched=ExamScheduleListModel::where('scheduleid','=',$scheduleid)->first();
+		$schedule=$examsched['schedule_day']." ".$examsched['schedule_date']." ".$examsched['schedule_time'];
+		
 		$examschedule=ExamScheduleModel::where('userid',$userid);
-		$examschedule->update(['schedule'=>$schedule]);
+		$examschedule->update(['scheduleid'=>$scheduleid,'schedule'=>$schedule]);
 		$student=StudentModel::where('userid',$userid);
 		$student->update(['steps_status'=>'EntranceExam','step_number'=>6]);
 
@@ -519,8 +527,10 @@ class OasController extends BaseController{
 		$student=StudentModel::where('userid','=',$userid)->first();
 		$freshmen=FreshmenModel::where('userid','=',$userid)->first();
 		$examschedule=ExamScheduleModel::where('userid','=',$userid)->first();
+		//$examschedulelist = DB::table('examschedulelist')->where('username','!=',$master['username'])->get();
+		$examschedulelist = DB::table('examschedulelist')->get();
 
-		return View::make('OasAdminDashboard.OasAdminViewFreshmenExamScheduling')->with('oas',$oas)->with('student',$student)->with('freshmen',$freshmen)->with('examschedule',$examschedule);
+		return View::make('OasAdminDashboard.OasAdminViewFreshmenExamScheduling')->with('oas',$oas)->with('student',$student)->with('freshmen',$freshmen)->with('examschedule',$examschedule)->with('examschedulelist',$examschedulelist);
 	}
 	//end of oas_freshmen_view_exam_scheduling
 
@@ -532,10 +542,13 @@ class OasController extends BaseController{
 		{
 			$userid=Input::get('get_userid');
 			$oas_username=Input::get('get_oas_username');
-			$schedule=Input::get('examschedule');
+			$scheduleid=Input::get('examschedule');
+
+			$examsched=ExamScheduleListModel::where('scheduleid','=',$scheduleid)->first();
+			$schedule=$examsched['schedule_day']." ".$examsched['schedule_date']." ".$examsched['schedule_time'];
 
 			$examschedule=ExamScheduleModel::where('userid',$userid);
-			$examschedule->update(['schedule'=>$schedule]);
+			$examschedule->update(['scheduleid'=>$scheduleid,'schedule'=>$schedule]);
 			$student=StudentModel::where('userid',$userid);
 			$student->update(['steps_status'=>'EntranceExam','step_number'=>5]);
 
@@ -568,10 +581,12 @@ class OasController extends BaseController{
 	public function freshmen_student_schedule_exam()
 	{
 		$userid=Input::get('get_userid');
-		$schedule=Input::get('schedule');
+		$scheduleid=Input::get('schedule');
 
+		$examsched=ExamScheduleListModel::where('scheduleid','=',$scheduleid)->first();
+		$schedule=$examsched['schedule_day']." ".$examsched['schedule_date']." ".$examsched['schedule_time'];
 		$examschedule=ExamScheduleModel::where('userid',$userid);
-		$examschedule->update(['schedule'=>$schedule]);
+		$examschedule->update(['scheduleid'=>$scheduleid,'schedule'=>$schedule]);
 		$student=StudentModel::where('userid',$userid);
 		$student->update(['steps_status'=>'EntranceExam','step_number'=>5]);
 
