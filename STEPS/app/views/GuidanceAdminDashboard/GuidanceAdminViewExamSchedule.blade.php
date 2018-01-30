@@ -26,22 +26,48 @@
 
     <link href="admin/AdminDashboardDesign/css/forms.css" rel="stylesheet">
     
-    
-    <script src="admin/AdminDashboardDesign/jquery/jquery.js"></script>
+    <script src="admin/AdminDashboardDesign/jquery/jquery1-11-3.min.js"></script>
   	<script src="admin/AdminDashboardDesign/jquery/jquery-ui.js"></script>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-	    $('#example').DataTable();
-	} );
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-	    $('#example2').DataTable();
-	} );
-</script>
+    <!-- Bootstrap Date-Picker Plugin -->
+	<script type="text/javascript" src="admin/AdminDashboardDesign/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="admin/AdminDashboardDesign/bootstrap/css/bootstrap-datepicker3.css">
+    
+    
+  	<style type="text/css">
+		.birthfield,.semester-class{
+			
+		  	height: 34px;
+		  	padding: 6px 12px;
+		  	font-size: 14px;
+		  	line-height: 1.42857143;
+		  	color: #555;
+		  	background-color: #fff;
+		  	background-image: none;
+		  	border: 1px solid #ccc;
+		  	border-radius: 4px;
+			  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+			       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+			          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+		}
+		.table caption button{
+		    float:right;
+		}
+		.table caption{
+		    border: inherit; 
+		    background-color: lightgrey;
+		}
+	</style>
 
-  		
+  	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('#example').DataTable();
+		} );
+	</script>	
+
+	
   </head>
   <body>
 
@@ -54,7 +80,7 @@
 	              <!-- Logo -->
 	              <div class="logo">
 	                 
-	                 <a href="{{ URL::to('/saohome') }}"><img src="admin/AdminDashboardDesign/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
+	                 <a href="{{ URL::to('/guidancehome') }}"><img src="admin/AdminDashboardDesign/images/STEPS_header_3.png" class="img-responsive" alt="/" height="110" width="125" style="margin-top:3px;" /></a>
 	              </div>
 	           </div>
 	           
@@ -66,7 +92,7 @@
 	                  <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
 	                    <ul class="nav navbar-nav">
 	                      <li class="dropdown">
-	                        <a href="{{ URL::to('/saologout') }}"><b><font color="#fdca00">Logout</font><!-- class="dropdown-toggle" data-toggle="dropdown" <b class="caret"> --></b></a>
+	                        <a href="{{ URL::to('/guidancehome') }}"><b><font color="#fdca00">Logout</font><!-- class="dropdown-toggle" data-toggle="dropdown" <b class="caret"> --></b></a>
 	                        <!--
 	                        <ul class="dropdown-menu animated fadeInUp">
 	                          <li><a href="profile.html">Settings</a></li>
@@ -89,50 +115,63 @@
                 	<ul class="nav">
 	                    <!-- Main menu -->
 	                    <li class="submenu">
-	                         <a href="{{ URL::to('/saohome') }}">
+	                         <a href="{{ URL::to('/guidancehome') }}">
 	                            <i class="glyphicon glyphicon-dashboard"></i>Dashboard
 	                            <span class="caret pull-right"></span>
 	                         </a>
 	                         <!-- Sub menu -->
 	                         <ul>
-	                            <li><a href="{{ URL::to('/saohome') }}">Home</a></li>
+	                            <li><a href="{{ URL::to('/guidancehome') }}">Home</a></li>
 	                            <li><a href="#">About</a></li>
 	                            <li><a href="#">Support</a></li>
-	                            <li><a href="{{ URL::to('/saologout') }}">Logout</a></li>
+	                            <li><a href="{{ URL::to('/guidancelogout') }}">Logout</a></li>
 	                        </ul>
 	                    </li>
-	                    <li><a href="#"><i class="glyphicon glyphicon-calendar"></i>School Calendar</a></li>
+	                    <li><a href="{{ URL::to('/examschedules') }}"><i class="glyphicon glyphicon-calendar"></i>Exam Schedules</a></li>
                     </ul>
              	</div>
 		  	</div>
 		  	
 		  	<div class="col-md-10">
 		  		<div class="panel-heading" style="background-color:#89333c;">
-			        <h3 class="panel-title" style="color:#fdca00"><b>{{ $sao['department'] }}</b></h3>
+			        <h2 class="panel-title" style="color:#fdca00"><b>{{ $guidance['department'] }}</b></h2>
 				</div>
 				<script src="dashboard/js/tabs.js" ></script>
 
 			  	<div class="content-box-large" >
 				  	<div id="tabs">
 						<ul>
-							<li><a href="#tabs-1">Transferees</a></li>
-							<li><a href="#tabs-2">Freshmen</a></li>
-						    <li><a href="#tabs-3">Account</a></li>
+							<li><a href="#tabs-1">Students</a></li>
+						    <li><a href="#tabs-2">Account</a></li>
 						    
 						</ul>
 						
 						<div id="tabs-1">
-						
+							<table>
+								<tr>
+									<td width="100"><h5><b>Schedule</b></h5></td>
+									<td><h5>{{ $examschedule['schedule_date']." ".$examschedule['schedule_day']." ".$examschedule['schedule_time'] }}</h5></td>
+								</tr>
+								
+								<tr>
+									<td width="100"><h5><b>Facilitator</b></h5></td>
+									<td><h5>{{ $examschedule['facilitator'] }}</h5></td>
+								</tr>
+							</table>
 							<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-						    
+						    	<caption>
+						            <span><strong><font size="4">Entrace Examinees</font></strong></span>
+						            <button type="button" id="printBtn" class="btn btn-default btn-sm" title="Print">
+						                <span class="glyphicon glyphicon-print"></span>
+						            </button>
+					       		</caption>
 						        <thead>
 						            <tr>
 						                <th>Name</th>
 						                <th>School Year</th>
-						                <th>Semister</th>
+						                <th>Semester</th>
 						                <th>Course Enrolled</th>
-						                <th>Previous Course</th>
-						                <th>Previous School</th>
+						                <th>Student Type</th>
 						                <!--<th>Status</th>-->
 						                <th>&nbsp;</th>
 						            </tr>
@@ -141,103 +180,61 @@
 						            <tr>
 						                <th>Name</th>
 						                <th>School Year</th>
-						                <th>Semister</th>
+						                <th>Semester</th>
 						                <th>Course Enrolled</th>
-						                <th>Previous Course</th>
-						                <th>Previous School</th>
+						                <th>Student Type</th>
 						                <!--<th>Status</th>-->
 						                <th>&nbsp;</th>
 						            </tr>
 						        </tfoot>
 						        <tbody>
-							       
-								    <?php
-								    foreach($transfereestudents as $student)
-								    {
-								    	$userid=$student->userid;
-								    ?>
-								        <tr>
-								        	<td>{{ $student->firstname.' '.$student->middlename.' '.$student->lastname }}</td>
-								        	<td>{{ $student->schoolyear }}</td>
-								        	<td>{{ $student->semester }}</td>
-								        	<td>{{ $student->tocourse }}</td>
-								        	<td>{{ $student->fromcourse }}</td>
-								            <td>{{ $student->fromschool }}</td>
-								            <!--<td>{{ $student->steps_status }}</td>-->
-								            <td>
-								            <form method="post" action="/saogettransferee">
-								            	<!--<input type="hidden" name="get_steps_status" value="{{ $student->steps_status }}">-->
-								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
-								                <input type="submit" name="open" value="Open" >
-								            </form>
-								            </td>
-								        </tr>
-								    <?php
-								    	$userid="";
-								    }
-								    ?>   
-							    </tbody>
+						        	<?php
+						        	foreach($exam_transferee_students as $student)
+						        	{
+						        	?>
+							       	<tr>
+							        	<td>{{ $student->firstname." ".$student->middlename." ".$student->lastname }} </td>
+							        	<td>{{ $student->schoolyear }}</td>
+							        	<td>{{ $student->semester }}</td>
+							        	<td>{{ $student->tocourse }}</td>
+							        	<td>{{ $student->studenttype }}</td>
+							        	<td>
+							            <form method="post" action="/guidancegettransfereeuserid">
+							            	<input name="get_userid" type="hidden" value="{{ $student->userid }}">
+							            	<input type="submit" name="open" value="Open" >
+							            </form>
+							            </td>
+							        </tr>
+							       	<?php
+							       	}
+							       	?>
+							       	<?php
+						        	foreach($exam_freshmen_students as $student)
+						        	{
+						        	?>
+							       	<tr>
+							        	<td>{{ $student->firstname." ".$student->middlename." ".$student->lastname }} </td>
+							        	<td>{{ $student->schoolyear }}</td>
+							        	<td>{{ $student->semester }}</td>
+							        	<td>{{ $student->tocourse }}</td>
+							        	<td>{{ $student->studenttype }}</td>
+							        	<td>
+							            <form method="post" action="/guidancegetfreshmenuserid">
+							            	<input name="get_userid" type="hidden" value="{{ $student->userid }}">
+							            	<input type="submit" name="open" value="Open" >
+							            </form>
+							            </td>
+							        </tr>
+							       	<?php
+							       	}
+							       	?>
+								</tbody>
 							</table>
 				  		
 				  			
 						</div> <!-- End of tabs-1 -->
+
 						<div id="tabs-2">
-						
-							<table id="example2" class="table table-striped table-bordered" cellspacing="0" width="100%">
-						    
-						        <thead>
-						            <tr>
-						                <th>Name</th>
-						                <th>School Year</th>
-						                <th>Semister</th>
-						                <th>Course Enrolled</th>
-						                <th>High School</th>
-						                <!--<th>Status</th>-->
-						                <th>&nbsp;</th>
-						            </tr>
-						        </thead>
-						        <tfoot>
-						            <tr>
-						                <th>Name</th>
-						                <th>School Year</th>
-						                <th>Semister</th>
-						                <th>Course Enrolled</th>
-						                <th>High School</th>
-						                <!--<th>Status</th>-->
-						                <th>&nbsp;</th>
-						            </tr>
-						        </tfoot>
-						        <tbody>
-							       
-								    <?php
-								    foreach($freshmenstudents as $student)
-								    {
-								    	$userid=$student->userid;
-								    ?>
-								        <tr>
-								        	<td>{{ $student->firstname.' '.$student->middlename.' '.$student->lastname }}</td>
-								        	<td>{{ $student->schoolyear }}</td>
-								        	<td>{{ $student->semester }}</td>
-								        	<td>{{ $student->tocourse }}</td>
-								            <td>{{ $student->highschool }}</td>
-								            <!--<td>{{ $student->steps_status }}</td>-->
-								            <td>
-								            <form method="post" <?php if($student->steps_status=="requirements"){ ?> action="/requirements"<?php } elseif($student->steps_status=="interview"){ ?> action="/interview" <?php }elseif($student->steps_status=="Officially Enrolled"){ ?> action="/interview" <?php }else{ ?> action="/requirements" <?php } ?> >
-								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
-								                <input type="submit" name="open" value="Open" >
-								            </form>
-								            </td>
-								        </tr>
-								    <?php
-								    	$userid="";
-								    }
-								    ?>   
-							    </tbody>
-							</table>
-				  		
-				  			
-						</div> <!-- End of tabs-1 -->
-						<div id="tabs-3">
 							<div class="row">
 						  		<div class="col-md-1">
 						  			<!--no content just to provide space -->
@@ -245,7 +242,7 @@
 							  	<div class="col-md-10">
 								    <div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
 							            <div class="panel-heading" style="background-color:#fefefe; border:none;">
-							              	<h3 class="panel-title" style="color:black">{{ $sao['firstname'].' '.$sao['middlename'].' '.$sao['lastname'] }} </h3>
+							              	<h3 class="panel-title" style="color:black">{{ $guidance['firstname'].' '.$guidance['middlename'].' '.$guidance['lastname'] }} </h3>
 							              	<div class="panel-options">
 							              		<a href="#" data-rel="reload" style="color:black" title="View Profile"><i class="glyphicon glyphicon-user"></i></a>
 												<a href="#" data-rel="reload" style="color:black" title="Edit Profile"><i class="glyphicon glyphicon-cog"></i></a>
@@ -261,35 +258,35 @@
 										                <tbody>
 										                	<tr>
 										                        <td>Position</td>
-										                        <td>{{ $sao['position'] }}</td>
+										                        <td>{{ $guidance['position'] }}</td>
 										                    </tr>
 										                    <tr>
 										                        <td>Admin ID</td>
 										                        <td>
-										                        {{ $sao['adminid'] }}
+										                        {{ $guidance['adminid'] }}
 										                        </td>
 										                    </tr>
 										                    
 										                    <tr>
 										                        <td>Email</td>
-										                        <td>{{ $sao['email'] }}</td>
+										                        <td>{{ $guidance['email'] }}</td>
 										                    </tr>
 										                    
 										                    <tr>
 										                        <td>Contact Number</td>
-										                        <td>{{ $sao['contact'] }}</td>
+										                        <td>{{ $guidance['contact'] }}</td>
 										                    </tr>
 										                    <tr>
 										                        <td>Birthdate</td>
-										                        <td>{{ $sao['birthdate'] }}</td>
+										                        <td>{{ $guidance['birthdate'] }}</td>
 										                    </tr>
 										                    <tr>
 										                        <td>Education</td>
-										                        <td>{{ $sao['education'] }}</td>
+										                        <td>{{ $guidance['education'] }}</td>
 										                    </tr>
 										                    <tr>
 										                        <td>Past University</td>
-										                        <td>{{ $sao['pastuniversity'] }}</td>
+										                        <td>{{ $guidance['pastuniversity'] }}</td>
 										                    </tr>
 										                    
 										                    
@@ -311,14 +308,14 @@
 						</div><!--End of tabs-2 -->
 
 						
+						<a href="{{ URL::to('/examschedules') }}" class="btn btn-info" role="button" style="margin:0px 0px 10px 20px; color:white;">Back to Exam Schedules...</a>
+						
 					</div><!--End of tabs -->
 				</div><!--content-box-large -->
 		  </div>
 		</div>
     </div>
 
-
-    
 
 
    
@@ -349,7 +346,5 @@
 	<script src="admin/AdminDashboardDesign/js/tables.js"></script>
 
 
-
-	
   </body>
 </html>

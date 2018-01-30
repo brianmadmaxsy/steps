@@ -133,7 +133,7 @@
 						                <th>Course Enrolled</th>
 						                <th>Previous Course</th>
 						                <th>Previous School</th>
-						                <th>Status</th>
+						                <!--<th>Status</th>-->
 						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
@@ -145,7 +145,7 @@
 						                <th>Course Enrolled</th>
 						                <th>Previous Course</th>
 						                <th>Previous School</th>
-						                <th>Status</th>
+						                <!--<th>Status</th>-->
 						                <th>&nbsp;</th>
 						            </tr>
 						        </tfoot>
@@ -163,7 +163,7 @@
 								        	<td>{{ $student->tocourse }}</td>
 								        	<td>{{ $student->fromcourse }}</td>
 								            <td>{{ $student->fromschool }}</td>
-								            <td>{{ $student->steps_status }}</td>
+								            <!--<td>{{ $student->steps_status }}</td>-->
 								            <td>
 								            
 								        	<form method="post" action="/oasgettransfereeuserid">
@@ -192,7 +192,7 @@
 						                <th>Semister</th>
 						                <th>Course To Enroll</th>
 						                <th>High School</th>
-						                <th>Status</th>
+						                <!--<th>Status</th>-->
 						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
@@ -203,7 +203,7 @@
 						                <th>Semister</th>
 						                <th>Course To Enroll</th>
 						                <th>High School</th>
-						                <th>Status</th>
+						                <!--<th>Status</th>-->
 						                <th>&nbsp;</th>
 						            </tr>
 						        </tfoot>
@@ -220,7 +220,7 @@
 								        	<td>{{ $student->semester }}</td>
 								        	<td>{{ $student->tocourse }}</td>
 								            <td>{{ $student->highschool }}</td>
-								            <td>{{ $student->steps_status }}</td>
+								            <!--<td>{{ $student->steps_status }}</td>-->
 								            <td>
 								            <form method="post" action="/oasgetfreshmenuserid">
 

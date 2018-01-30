@@ -90,6 +90,7 @@ class AdminController extends BaseController{
 	{
 		Session::forget('sess_guidance_freshmen_userid');
 		Session::forget('sess_guidance_transferee_userid');
+		Session::forget('sess_guidance_get_exam_scheduleid');
 		$guidance=Session::get('sess_admin_guidance_arr');
 		$guidance = unserialize(serialize($guidance)); //added code to unserialize the __PHP_Incomplete_Class
 		

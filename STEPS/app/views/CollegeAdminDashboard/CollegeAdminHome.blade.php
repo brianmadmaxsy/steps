@@ -135,7 +135,7 @@
 						                <th>Course Enrolled</th>
 						                <th>Previous Course</th>
 						                <th>Previous School</th>
-						                <th>Status</th>
+						                <!--<th>Status</th>-->
 						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
@@ -147,7 +147,7 @@
 						                <th>Course Enrolled</th>
 						                <th>Previous Course</th>
 						                <th>Previous School</th>
-						                <th>Status</th>
+						                <!--<th>Status</th>-->
 						                <th>&nbsp;</th>
 						            </tr>
 						        </tfoot>
@@ -165,7 +165,7 @@
 								        	<td>{{ $student->tocourse }}</td>
 								        	<td>{{ $student->fromcourse }}</td>
 								            <td>{{ $student->fromschool }}</td>
-								            <td>{{ $student->steps_status }}</td>
+								            <!--<td>{{ $student->steps_status }}</td>-->
 								            <td>
 								            <form method="post" action="/collegegettransferee">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
@@ -193,7 +193,7 @@
 						                <th>Semister</th>
 						                <th>Course Enrolled</th>
 						                <th>High School</th>
-						                <th>Status</th>
+						                <!--<th>Status</th>-->
 						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
@@ -204,7 +204,7 @@
 						                <th>Semister</th>
 						                <th>Course Enrolled</th>
 						                <th>High School</th>
-						                <th>Status</th>
+						                <!--<th>Status</th>-->
 						                <th>&nbsp;</th>
 						            </tr>
 						        </tfoot>
@@ -221,7 +221,7 @@
 								        	<td>{{ $student->semester }}</td>
 								        	<td>{{ $student->tocourse }}</td>
 								            <td>{{ $student->highschool }}</td>
-								            <td>{{ $student->steps_status }}</td>
+								            <!--<td>{{ $student->steps_status }}</td>-->
 								            <td>
 								            <form method="post" action="/evaluate">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">

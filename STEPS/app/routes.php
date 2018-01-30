@@ -138,6 +138,8 @@ Route::get('/guidanceviewfreshmen',array('uses'=>'GuidanceController@guidance_vi
 Route::post('/postfreshmenexamresults',array('uses'=>'GuidanceController@post_freshmen_exam_results'));
 Route::get('/examschedules',array('uses'=>'GuidanceController@display_exam_schedules'));
 Route::post('/guidanceaddexam',array('uses'=>'GuidanceController@guidance_add_exam_schedule'));
+Route::post('/getexamscheduleid',array('uses'=>'GuidanceController@guidance_get_exam_scheduleid'));
+Route::get('/guidanceviewexamschedule',array('uses'=>'GuidanceController@guidance_view_exam_schedule'));
 //End of Guidance Steps
 
 

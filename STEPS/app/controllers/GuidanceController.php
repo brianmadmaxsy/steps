@@ -124,6 +124,7 @@ class GuidanceController extends BaseController{
 
 	public function display_exam_schedules()
 	{
+		Session::forget('sess_guidance_get_exam_scheduleid');
 		$guidance=Session::get('sess_admin_guidance_arr');
 		$guidance = unserialize(serialize($guidance)); //added code to unserialize the __PHP_Incomplete_Class
 
@@ -163,6 +164,57 @@ class GuidanceController extends BaseController{
 		Session::put('sess_admin_guidance_arr',$admin);
 
 		return Redirect::intended('/examschedules');
+	}
+
+	public function guidance_get_exam_scheduleid()
+	{
+		$scheduleid=Input::get('schedule_id');
+		$guidance_username=Input::get('guidance_username');
+		$button=Input::get('exambutton'); //Values are either 'open' or 'remove'
+		
+		if($button=="View")
+		{
+			Session::put('sess_guidance_get_exam_scheduleid',$scheduleid);
+			return Redirect::intended('/guidanceviewexamschedule');
+		}
+		elseif($button=="Remove")
+		{
+			
+			DB::table('examschedulelist')->where('scheduleid', '=', $scheduleid)->delete();
+
+			$admin = AdminModel::where('username','=',$guidance_username)->first();
+			Session::put('sess_admin_guidance_arr',$admin);
+
+			return Redirect::intended('/examschedules');
+		}
+	}
+
+	public function guidance_view_exam_schedule()
+	{
+		$guidance=Session::get('sess_admin_guidance_arr');
+		$guidance = unserialize(serialize($guidance)); //added code to unserialize the __PHP_Incomplete_Class
+		
+		$scheduleid=Session::get('sess_guidance_get_exam_scheduleid');
+
+		$examschedule=ExamScheduleListModel::where('scheduleid','=',$scheduleid)->first();
+
+		$exam_freshmen_students = DB::table('student')
+			->leftJoin('freshmen','student.userid','=','freshmen.userid')
+            ->leftJoin('examschedule', 'student.userid', '=', 'examschedule.userid')
+            ->leftJoin('examschedulelist','examschedule.scheduleid','=','examschedulelist.scheduleid')
+            ->where('examschedule.scheduleid','=',$scheduleid)
+            ->where('student.studenttype','=','freshmen')
+            ->get();
+        
+        $exam_transferee_students = DB::table('student')
+			->leftJoin('transferee','student.userid','=','transferee.userid')
+            ->leftJoin('examschedule', 'student.userid', '=', 'examschedule.userid')
+            ->leftJoin('examschedulelist','examschedule.scheduleid','=','examschedulelist.scheduleid')
+            ->where('examschedule.scheduleid','=',$scheduleid)
+            ->where('student.studenttype','=','transferee')
+            ->get();    
+
+        return View::make('GuidanceAdminDashboard.GuidanceAdminViewExamSchedule')->with('guidance',$guidance)->with('examschedule',$examschedule)->with('exam_transferee_students',$exam_transferee_students)->with('exam_freshmen_students',$exam_freshmen_students);  
 	}
 }
 ?>

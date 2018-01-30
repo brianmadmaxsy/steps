@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2018 at 04:25 PM
+-- Generation Time: Jan 30, 2018 at 04:40 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -237,15 +237,30 @@ CREATE TABLE `examschedulelist` (
 --
 
 INSERT INTO `examschedulelist` (`id`, `scheduleid`, `schedule_day`, `schedule_date`, `schedule_time`, `facilitator`, `guidance_username`, `created_at`, `updated_at`) VALUES
-(1, '4cf9b17f4065796815cc8dd90a79493a2eb7ef89', 'Wednesday', '01/24/2018', '08:00AM-10:00AM', 'Joseph Villacorta', 'guidance', '2018-01-24 02:35:40', '2018-01-24 02:35:40'),
-(2, '2ae4bd92606c49bac1567380633106958f2aff43', 'Wednesday', '01/24/2018', '10:00AM-12:00PM', 'Joseph Villacorta', 'guidance', '2018-01-24 02:35:49', '2018-01-24 02:35:49'),
-(3, 'b0e4b3249fe7bd955da1afdb302110139420a407', 'Wednesday', '01/24/2018', '01:00PM-03:00PM', 'Joseph Villacorta', 'guidance', '2018-01-24 02:36:00', '2018-01-24 02:36:00'),
-(4, '2baedffb20d1fb0e954683b4e1ba664ee3ee4bde', 'Wednesday', '01/24/2018', '03:00PM-05:00PM', 'Joseph Villacorta', 'guidance', '2018-01-24 02:36:08', '2018-01-24 02:36:08'),
 (5, 'ebccea932c92d81e1504f5dc48179719baabfedd', 'Thursday', '01/25/2018', '08:00AM-10:00AM', 'guidance guidance', 'josephvillacorta', '2018-01-24 02:37:12', '2018-01-24 02:37:12'),
 (6, '141d79d40dd50af2f30e4e77a0c43c7e5708a6bc', 'Thursday', '01/25/2018', '10:00AM-12:00PM', 'guidance guidance', 'josephvillacorta', '2018-01-24 02:37:21', '2018-01-24 02:37:21'),
 (7, '3156c8d4b55897de410537484a78901440f8c162', 'Thursday', '01/25/2018', '01:00PM-03:00PM', 'guidance guidance', 'josephvillacorta', '2018-01-24 02:37:33', '2018-01-24 02:37:33'),
 (8, '971011ec206937eca8ab43ef9c960ba13b8803a5', 'Thursday', '01/25/2018', '03:00PM-05:00PM', 'guidance guidance', 'josephvillacorta', '2018-01-24 02:37:41', '2018-01-24 02:37:41'),
-(9, '28abdffffe54db8364bbd12ada5f0317e58aefa2', 'Monday', '01/29/2018', '08:00AM-10:00AM', 'Joseph Villacorta', 'guidance', '2018-01-28 06:01:57', '2018-01-28 06:01:57');
+(9, '28abdffffe54db8364bbd12ada5f0317e58aefa2', 'Monday', '01/29/2018', '08:00AM-10:00AM', 'Joseph Villacorta', 'guidance', '2018-01-28 06:01:57', '2018-01-28 06:01:57'),
+(10, '7ce9454a147f107dae18098e0ff7397763336fcf', 'Thursday', '02/01/2018', '08:00AM-10:00AM', 'guidance guidance', 'guidance', '2018-01-30 04:47:54', '2018-01-30 04:47:54'),
+(11, '66d12d8a6d12182bf0774dcf5f975d59296ca461', 'Thursday', '02/01/2018', '10:00AM-12:00PM', 'guidance guidance', 'guidance', '2018-01-30 04:48:02', '2018-01-30 04:48:02'),
+(12, '6e0fb83f339832821a2439f458421646a6e76c66', 'Thursday', '02/01/2018', '01:00PM-03:00PM', 'Joseph Villacorta', 'guidance', '2018-01-30 04:48:26', '2018-01-30 04:48:26'),
+(13, '6ddc3ae96467eb6ad859e84e02f4ed155d903199', 'Thursday', '02/01/2018', '03:00PM-05:00PM', 'Joseph Villacorta', 'guidance', '2018-01-30 04:48:35', '2018-01-30 04:48:35'),
+(14, '8fb9ddaa8da7bab7a96d3d0866fa64f52925801d', 'Friday', '02/02/2018', '08:00AM-10:00AM', 'Joseph Villacorta', 'guidance', '2018-01-30 04:48:51', '2018-01-30 04:48:51'),
+(15, '0164f1261659928af5c8da2c432c568633ce9bba', 'Friday', '02/02/2018', '10:00AM-12:00PM', 'guidance guidance', 'guidance', '2018-01-30 04:48:58', '2018-01-30 04:48:58'),
+(16, '3355867f5a722387b091e54494383f19873e67e3', 'Friday', '02/02/2018', '01:00PM-03:00PM', 'Joseph Villacorta', 'guidance', '2018-01-30 04:49:05', '2018-01-30 04:49:05'),
+(17, 'a3c6afcb23d34e5669d1eef3b8358bc875d2a7b0', 'Saturday', '02/03/2018', '08:00AM-10:00AM', 'guidance guidance', 'guidance', '2018-01-30 04:49:15', '2018-01-30 04:49:15'),
+(18, 'e439ec6768df1595e26d18991c83b6b4ddc06533', 'Saturday', '02/03/2018', '10:00AM-12:00PM', 'guidance guidance', 'guidance', '2018-01-30 04:49:22', '2018-01-30 04:49:22'),
+(19, '540b3493813f350c7f0a24ade22bf93c8df704f5', 'Saturday', '02/03/2018', '01:00PM-03:00PM', 'guidance guidance', 'guidance', '2018-01-30 04:49:38', '2018-01-30 04:49:38'),
+(20, '33235fc40b9b010fd5777c4b0ef1cfb3f3f43a75', 'Saturday', '02/03/2018', '03:00PM-05:00PM', 'guidance guidance', 'guidance', '2018-01-30 04:49:44', '2018-01-30 04:49:44'),
+(21, '44c748a13490b4463bfbb18a44d4dd5fdee1d7d7', 'Sunday', '02/04/2018', '08:00AM-10:00AM', 'guidance guidance', 'guidance', '2018-01-30 04:50:33', '2018-01-30 04:50:33'),
+(22, '973701ddf894b71decd2f96d7c5f5b9f8d05d75d', 'Sunday', '02/04/2018', '10:00AM-12:00PM', 'Joseph Villacorta', 'guidance', '2018-01-30 04:50:40', '2018-01-30 04:50:40'),
+(23, '33bef4352674e005a7af6bb4e9bc38b5e05cc1f8', 'Sunday', '02/04/2018', '01:00PM-03:00PM', 'guidance guidance', 'guidance', '2018-01-30 04:50:47', '2018-01-30 04:50:47'),
+(24, 'c0bbb3721f838cb143293cbbd34e7149241bf20d', 'Sunday', '02/04/2018', '03:00PM-05:00PM', 'guidance guidance', 'guidance', '2018-01-30 04:50:53', '2018-01-30 04:50:53'),
+(25, '8b2e150b430a22b2f582e72c0c1f94a196b0c2dd', 'Monday', '02/05/2018', '08:00AM-10:00AM', 'guidance guidance', 'guidance', '2018-01-30 04:51:09', '2018-01-30 04:51:09'),
+(26, '4f2c97d1359126822c8945901dc942918849d0a3', 'Monday', '02/05/2018', '10:00AM-12:00PM', 'guidance guidance', 'guidance', '2018-01-30 04:51:17', '2018-01-30 04:51:17'),
+(27, 'c021e12ef97611336c51b42bce01249a545a5ebe', 'Monday', '02/05/2018', '01:00PM-03:00PM', 'Joseph Villacorta', 'guidance', '2018-01-30 04:51:25', '2018-01-30 04:51:25'),
+(28, '5df4a6c3658e7e40ccffa09f9d6c8923702630ae', 'Monday', '02/05/2018', '03:00PM-05:00PM', 'guidance guidance', 'guidance', '2018-01-30 04:51:39', '2018-01-30 04:51:39');
 
 -- --------------------------------------------------------
 
@@ -849,7 +864,7 @@ ALTER TABLE `examschedule`
 -- AUTO_INCREMENT for table `examschedulelist`
 --
 ALTER TABLE `examschedulelist`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `freshmen`
 --

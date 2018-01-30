@@ -203,10 +203,11 @@
 							        	<td>{{ $examschedule->schedule_time }}</td>
 							        	<td>{{ $examschedule->facilitator }}</td>
 							        	<td>
-							            <form method="post" action="">
+							            <form method="post" action="/getexamscheduleid">
 							            	<input name="schedule_id" type="hidden" value="{{ $examschedule->scheduleid }}">
-							                <input type="submit" name="open" value="View" >
-							                <input type="submit" name="remove" value="Remove" onclick="return confirm('Are you sure?')">
+							            	<input name="guidance_username" type="hidden" value="{{ $guidance['username'] }}">
+							                <input type="submit" name="exambutton" value="View" >
+							                <input type="submit" name="exambutton" value="Remove" onclick="return confirm('Are you sure?')">
 							            </form>
 							            </td>
 							        </tr>
