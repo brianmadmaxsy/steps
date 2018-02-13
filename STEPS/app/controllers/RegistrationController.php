@@ -243,6 +243,7 @@ class RegistrationController extends BaseController{
 					$studentDB->department=$department;
 					$studentDB->steps_status="evaluation";
 					$studentDB->step_number=1;
+					$studentDB->picture="";
 				} //end of else if($studenttype=="Transferee")
 				
 				

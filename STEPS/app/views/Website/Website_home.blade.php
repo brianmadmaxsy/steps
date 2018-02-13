@@ -173,7 +173,7 @@ Session::forget('message');
 					<span class="icon-bar"></span>
 				  </button>
 					<div class="logo">
-						<a href="http://localhost:8000/"><img src="website/images/STEPS.jpg" class="img-responsive" /></a>
+						<a href="{{ URL::to('/') }}"><img src="website/images/STEPS.jpg" class="img-responsive" /></a>
 					</div>
 				</div>
 

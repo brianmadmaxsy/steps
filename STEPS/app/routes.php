@@ -51,6 +51,8 @@
 	Route::get('/home',array('uses'=>'StudentController@student_home'));
 	Route::post('/edittransfereeprofile',array('uses'=>'StudentController@edit_transferee_profile'));
 	Route::post('/editfreshmenprofile',array('uses'=>'StudentController@edit_freshmen_profile'));
+	Route::post('/edittransfereeavatar',array('uses'=>'StudentController@edit_transferee_avatar'));
+	Route::post('/editfreshmenavatar',array('uses'=>'StudentController@edit_freshmen_avatar'));
 //End of Student Controller Routes
 
 

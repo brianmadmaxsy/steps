@@ -57,6 +57,7 @@ class CreateStudentTable extends Migration {
 			$table->string('studenttype');
 			$table->string('steps_status');
 			$table->integer('step_number');
+			$table->string('picture');
 			$table->rememberToken();
 			$table->timestamps();
 		});

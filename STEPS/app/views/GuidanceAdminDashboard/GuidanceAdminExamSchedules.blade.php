@@ -293,7 +293,7 @@
 							</div><!--row-->
 						</div><!--End of tabs-2 -->
 
-						
+						<a href="{{ URL::to('/guidancehome') }}" class="btn btn-info" role="button" style="margin:0px 0px 10px 20px; color:white;">Back to Admin Page...</a>
 					</div><!--End of tabs -->
 				</div><!--content-box-large -->
 		  </div>

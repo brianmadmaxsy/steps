@@ -167,6 +167,7 @@
 								            <td>
 								            <form method="post" action="/guidancegettransfereeuserid">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
+								            	<input type="hidden" name="from_link" value="/guidancehome">
 								                <input type="submit" name="open" value="Open" >
 								            </form>
 								            </td>
@@ -224,6 +225,7 @@
 								            <td>
 								            <form method="post" action="/guidancegetfreshmenuserid">
 								            	<input name="get_userid" type="hidden" value="{{ $userid }}">
+								            	<input type="hidden" name="from_link" value="/guidancehome">
 								                <input type="submit" name="open" value="Open" >
 								            </form>
 								            </td>
@@ -246,7 +248,7 @@
 							  	<div class="col-md-10">
 								    <div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
 							            <div class="panel-heading" style="background-color:#fefefe; border:none;">
-							              	<h3 class="panel-title" style="color:black">{{ $guidance['firstname'].' '.$guidance['middlename'].' '.$guidance['lastname'] }} </h3>
+							              	<h3 class="panel-title" style="color:black"><b>{{ $guidance['firstname'].' '.$guidance['middlename'].' '.$guidance['lastname'] }} </b></h3>
 							              	<div class="panel-options">
 							              		<a href="#" data-rel="reload" style="color:black" title="View Profile"><i class="glyphicon glyphicon-user"></i></a>
 												<a href="#" data-rel="reload" style="color:black" title="Edit Profile"><i class="glyphicon glyphicon-cog"></i></a>

@@ -8,8 +8,9 @@ class GuidanceController extends BaseController{
 	{
 		//$steps_status=Input::get('get_steps_status');
 		$userid=Input::get('get_userid');
+		$fromlink=Input::get('from_link');
 		Session::put('sess_guidance_transferee_userid',$userid);
-
+		Session::put('sess_guidance_get_from_link',$fromlink);
 		$student=StudentModel::where('userid','=',$userid)->first();
 		
 		
@@ -20,6 +21,7 @@ class GuidanceController extends BaseController{
 	{
 		//$userid=Input::get('get_userid');
 		$userid=Session::get('sess_guidance_transferee_userid');
+		$from_link=Session::get('sess_guidance_get_from_link');
 		$guidance=Session::get('sess_admin_guidance_arr');
 		$guidance=unserialize(serialize($guidance));
 
@@ -28,7 +30,7 @@ class GuidanceController extends BaseController{
 		$examschedule=ExamScheduleModel::where('userid','=',$userid)->first();
 		$results=ResultsModel::where('userid','=',$userid)->first();
 		$entranceexam=EntranceExamModel::where('userid','=',$userid)->first();
-		return View::make('GuidanceAdminDashboard.GuidanceAdminViewStudent')->with('guidance',$guidance)->with('student',$student)->with('transferee',$transferee)->with('examschedule',$examschedule)->with('results',$results)->with('entranceexam',$entranceexam);
+		return View::make('GuidanceAdminDashboard.GuidanceAdminViewStudent')->with('guidance',$guidance)->with('student',$student)->with('transferee',$transferee)->with('examschedule',$examschedule)->with('results',$results)->with('entranceexam',$entranceexam)->with('fromlink',$from_link);
 	}
 
 	public function post_exam_results()
@@ -64,8 +66,9 @@ class GuidanceController extends BaseController{
 	{
 		//$steps_status=Input::get('get_steps_status');
 		$userid=Input::get('get_userid');
+		$fromlink=Input::get('from_link');
 		Session::put('sess_guidance_freshmen_userid',$userid);
-
+		Session::put('sess_guidance_get_from_link',$fromlink);
 		$student=StudentModel::where('userid','=',$userid)->first();
 		
 		if($student['steps_status']=="EntranceExam")
@@ -82,6 +85,7 @@ class GuidanceController extends BaseController{
 	public function guidance_view_freshmen_student()
 	{
 		$userid=Session::get('sess_guidance_freshmen_userid');
+		$from_link=Session::get('sess_guidance_get_from_link');
 		$guidance=Session::get('sess_admin_guidance_arr');
 		$guidance=unserialize(serialize($guidance));
 
@@ -90,7 +94,7 @@ class GuidanceController extends BaseController{
 		$examschedule=ExamScheduleModel::where('userid','=',$userid)->first();
 		$results=ResultsModel::where('userid','=',$userid)->first();
 		$entranceexam=EntranceExamModel::where('userid','=',$userid)->first();
-		return View::make('GuidanceAdminDashboard.GuidanceAdminViewFreshmenStudent')->with('guidance',$guidance)->with('student',$student)->with('freshmen',$freshmen)->with('examschedule',$examschedule)->with('results',$results)->with('entranceexam',$entranceexam);
+		return View::make('GuidanceAdminDashboard.GuidanceAdminViewFreshmenStudent')->with('guidance',$guidance)->with('student',$student)->with('freshmen',$freshmen)->with('examschedule',$examschedule)->with('results',$results)->with('entranceexam',$entranceexam)->with('fromlink',$from_link);
 	}
 
 	public function post_freshmen_exam_results()
@@ -125,6 +129,7 @@ class GuidanceController extends BaseController{
 	public function display_exam_schedules()
 	{
 		Session::forget('sess_guidance_get_exam_scheduleid');
+		Session::forget('sess_guidance_get_from_link');
 		$guidance=Session::get('sess_admin_guidance_arr');
 		$guidance = unserialize(serialize($guidance)); //added code to unserialize the __PHP_Incomplete_Class
 

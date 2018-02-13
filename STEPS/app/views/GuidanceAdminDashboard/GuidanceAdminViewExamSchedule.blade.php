@@ -201,6 +201,7 @@
 							        	<td>
 							            <form method="post" action="/guidancegettransfereeuserid">
 							            	<input name="get_userid" type="hidden" value="{{ $student->userid }}">
+							            	<input type="hidden" name="from_link" value="/guidanceviewexamschedule">
 							            	<input type="submit" name="open" value="Open" >
 							            </form>
 							            </td>
@@ -221,6 +222,7 @@
 							        	<td>
 							            <form method="post" action="/guidancegetfreshmenuserid">
 							            	<input name="get_userid" type="hidden" value="{{ $student->userid }}">
+							            	<input type="hidden" name="from_link" value="/guidanceviewexamschedule">
 							            	<input type="submit" name="open" value="Open" >
 							            </form>
 							            </td>

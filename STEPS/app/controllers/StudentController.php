@@ -194,6 +194,104 @@ class StudentController extends BaseController{
 			echo $e;
 		}
 	}
+
+	public function edit_transferee_avatar()
+	{
+		try
+		{
+			if(Input::hasFile('file')) //If this is a file uploaded
+			{
+				
+
+				$userid=Input::get('get_userid');
+
+				//delete old picture from server
+				$student = StudentModel::where('userid','=',$userid)->first();
+				$filename = public_path().'/profilepics/'.$student['picture'];
+
+				if (File::exists($filename)) {
+				    File::delete($filename);
+				} 
+				//end of delete old picture from server
+
+				//upload new picture and update database
+				$file=Input::file('file');
+				$filename=$userid."-".$file->getClientOriginalName();
+				$file->move('public/profilepics/',$filename);
+
+				$picture=$filename;
+
+				$student=StudentModel::where('userid',$userid);
+				$student->update(['picture'=>$picture]);
+				
+				$student = StudentModel::where('userid','=',$userid)->first();
+				Session::put('sess_student_arr',$student);
+				$transferee = TransfereeModel::where('userid','=',$userid)->first();
+				Session::put('sess_transferee_arr',$transferee);
+				return Redirect::intended('/home');
+
+
+			}
+			else
+			{
+				//set picture to null
+				return Redirect::intended('/home');
+			}
+		}	
+		catch(Exception $e)
+		{
+			echo $e;
+		}
+	}
+	public function edit_freshmen_avatar()
+	{
+		try
+		{
+			if(Input::hasFile('file')) //If this is a file uploaded
+			{
+				
+
+				$userid=Input::get('get_userid');
+				
+				//delete old picture from server
+				$student = StudentModel::where('userid','=',$userid)->first();
+				$filename = public_path().'/profilepics/'.$student['picture'];
+
+				if (File::exists($filename)) {
+				    File::delete($filename);
+				}
+				//end of delete old picture from server
+
+				//upload new picture and update database
+				$file=Input::file('file');
+				$filename=$userid."-".$file->getClientOriginalName();
+				$file->move('public/profilepics/',$filename);
+
+				$picture=$filename;
+
+
+				$student=StudentModel::where('userid',$userid);
+				$student->update(['picture'=>$picture]);
+				
+				$student = StudentModel::where('userid','=',$userid)->first();
+				Session::put('sess_student_arr',$student);
+				$freshmen = FreshmenModel::where('userid','=',$userid)->first();
+				Session::put('sess_freshmen_arr',$freshmen);
+				return Redirect::intended('/home');
+
+
+			}
+			else
+			{
+				//set picture to null
+				return Redirect::intended('/home');
+			}
+		}
+		catch(Exception $e)
+		{
+			echo $e;
+		}
+	}
 }
 
 ?>

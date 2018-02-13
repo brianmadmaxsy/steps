@@ -146,7 +146,22 @@
 			            <div class="panel-body">
 						    <div class="row">
 						    
-						    	<div class="col-md-4 col-lg-4 " align="center" > <img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-circle img-responsive" > </div>
+						    	<div class="col-md-4 col-lg-4 " align="center" > 
+						    		<?php
+					    			if($student['picture']=="")
+					    			{
+					    			?>
+					    			<img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-circle img-responsive" > 
+					    			<?php
+					    			}
+					    			else
+					    			{
+					    			?>
+					    			<img alt="User Pic" src="<?php echo "profilepics/".$student['picture']; ?>" class="img-circle img-responsive" > 
+					    			<?php
+					    			}
+					    			?>
+						    	</div>
 						        
 						        <div class=" col-md-8 col-lg-8 "> 
 						            <table class="table table-user-information">
