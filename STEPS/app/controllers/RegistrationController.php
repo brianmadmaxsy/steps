@@ -305,6 +305,7 @@ class RegistrationController extends BaseController{
 			$admin->birthdate=$birthday;
 			$admin->education=$education;
 			$admin->pastuniversity=$past_university;
+			$admin->picture="";
 			$admin->save();
 
 			$message="Thank you for registering to STEPS!";

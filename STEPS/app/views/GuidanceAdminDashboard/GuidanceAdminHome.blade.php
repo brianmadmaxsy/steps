@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="admin/AdminDashboardDesign/css/jquerycss.css" />
     <link rel="stylesheet" type="text/css" href="admin/AdminDashboardDesign/css/user.css">
    	<link rel="stylesheet" type="text/css" href="admin/AdminDashboardDesign/css/homedashboard.css">
-   	<!-- Morris Charts CSS -->
-    <link href="admin/AdminDashboardDesign/css/plugins/morris.css" rel="stylesheet">
+
 
     <!-- Custom Fonts -->
     <link href="admin/AdminDashboardDesign/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -257,7 +256,24 @@
 							            <div class="panel-body">
 										    <div class="row">
 										    
-										    	<div class="col-md-4 col-lg-4 " align="center" > <img alt="User Pic" src="admin/AdminDashboardDesign/images/userpc.jpg" class="img-circle img-responsive" > </div>
+										    	<a href="#" data-rel="reload" style="color:black" title="My Avatar" data-toggle="modal" data-target="#myModalForPicture">
+										    	<div class="col-md-4 col-lg-4 " align="center" > 
+										    		<?php
+									    			if($guidance['picture']=="")
+									    			{
+									    			?>
+									    			<img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-circle img-responsive" > 
+									    			<?php
+									    			}
+									    			else
+									    			{
+									    			?>
+									    			<img alt="User Pic" src="<?php echo "profilepics/".$guidance['picture']; ?>" class="img-circle img-responsive" > 
+									    			<?php
+									    			}
+									    			?>
+										    	</div>
+										    	</a>
 										        
 										        <div class=" col-md-8 col-lg-8 "> 
 										            <table class="table table-user-information">
@@ -312,7 +328,55 @@
 							  	</div>
 							</div><!--row-->
 						</div><!--End of tabs-3 -->
-
+<div class="modal fade" id="myModalForPicture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h3 class="modal-title" id="myModalLabel">My Avatar</h3>
+      		</div>
+		    <div class="modal-body">
+		    	<div>
+		    		<?php
+	    			if($guidance['picture']=="")
+	    			{
+	    			?>
+	    			<img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-rounded img-responsive" style="margin:0px auto 0px auto;"> 
+	    			<?php
+	    			}
+	    			else
+	    			{
+	    			?>
+	    			<img alt="User Pic" src="<?php echo "profilepics/".$guidance['picture']; ?>" class="img-rounded img-responsive" style="margin:0px auto 0px auto;"> 
+	    			<?php
+	    			}
+	    			?>
+		 		</div>
+		 		<div style="margin-top:10px;">
+		 			{{ Form::open(array('url' => '/editadminavatar', 'enctype' => 'multipart/form-data')) }}
+		 				<table>
+		 					<tr>
+		 						<td><label>Change Avatar</label></td>
+		 						<td>
+		 							<input type="file" name="file" required="">
+		 							<input type="hidden" name="get_userid" value="{{ $guidance['userid'] }}">
+		 							<input type="hidden" name="get_position" value="{{ $guidance['position'] }}">
+		 							<input type="hidden" name="get_department" value="{{ $guidance['department'] }}">
+		 						</td>
+		 						<td><input type="submit" name="upload" value="Upload" class="btn btn-primary"></td>
+		 					</tr>
+		 				</table>
+		 			{{ Form::close() }}
+				</div>
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		    </div>
+		</div>
+	</div>
+</div>
 						
 					</div><!--End of tabs -->
 				</div><!--content-box-large -->
@@ -334,16 +398,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="admin/AdminDashboardDesign/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="admin/AdminDashboardDesign/js/plugins/morris/raphael.min.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/morris/morris.min.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/morris/morris-data.js"></script>
-
-    <script src="admin/AdminDashboardDesign/js/plugins/flot/jquery.flot.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/flot/flot-data.js"></script>
 
 
     <link href="admin/AdminDashboardDesign/vendors/datatables/dataTables.bootstrap.css" rel="stylesheet" media="screen">

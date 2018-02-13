@@ -63,6 +63,7 @@
 	Route::get('/oashome',array('uses'=>'AdminController@admin_oas_home'));
 	Route::get('/guidancehome',array('uses'=>'AdminController@admin_guidance_home'));
 	Route::get('/masteradminhome',array('uses'=>'AdminController@admin_masteradmin_home'));
+	Route::post('/editadminavatar',array('uses'=>'AdminController@edit_admin_avatar'));
 //End of Admin Controller Routes
 
 //Master Admin Controller Routes

@@ -140,6 +140,82 @@ class AdminController extends BaseController{
 			return View::make('MasterAdminDashboard.MasterAdminHome')->with('masteradmin',$master)->with('admins',$admins)->with('students',$students);
 		}
 	}
+
+	public function edit_admin_avatar()
+	{
+		try
+		{
+			
+			if(Input::hasFile('file')) //If this is a file uploaded
+			{
+				$userid=Input::get('get_userid');
+				$department=Input::get('get_department');
+				$position=Input::get('get_position');
+
+
+				
+				//delete old picture from server
+				$admin = AdminModel::where('userid','=',$userid)->first();
+				$filename = public_path().'/profilepics/'.$admin['picture'];
+
+				if (File::exists($filename)) {
+				    File::delete($filename);
+				} 
+				//end of delete old picture from server
+
+				//upload new picture and update database
+				$file=Input::file('file');
+				$filename=$userid."-".$department."-".$position."-".$file->getClientOriginalName();
+				$file->move('public/profilepics/',$filename);
+
+				$picture=$filename;
+
+				$admin=AdminModel::where('userid',$userid);
+				$admin->update(['picture'=>$picture]);
+				
+				$admin = AdminModel::where('userid','=',$userid)->first();
+				
+
+				if(strpos($department, 'College') !== false)
+				{
+					Session::put('sess_admin_college_arr',$admin);
+					return Redirect::intended('/collegehome');
+				}
+				elseif($department=="Student Affairs Office")
+				{
+					Session::put('sess_admin_sao_arr',$admin);
+					return Redirect::intended('/saohome');
+				}
+				elseif($department=="Office of Academic Scholarship")
+				{
+					Session::put('sess_admin_oas_arr',$admin);
+					return Redirect::intended('/oashome');
+				}
+				elseif($department=="Guidance Office")
+				{
+					Session::put('sess_admin_guidance_arr',$admin);
+					return Redirect::intended('/guidancehome');
+				}
+				elseif($department=="STEPS" AND $position=="Master Administrator")
+				{
+					Session::put('sess_admin_masteradmin_arr',$admin);
+					return Redirect::intended('/masteradminhome');
+				}
+				
+
+			}
+			else
+			{
+				echo "no file uploaded";
+			}
+
+
+		}	
+		catch(Exception $e)
+		{
+			echo $e;
+		}
+	}
 }
 
 ?>
