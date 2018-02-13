@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="admin/AdminDashboardDesign/css/jquerycss.css" />
     <link rel="stylesheet" type="text/css" href="admin/AdminDashboardDesign/css/user.css">
    	<link rel="stylesheet" type="text/css" href="admin/AdminDashboardDesign/css/homedashboard.css">
-   	<!-- Morris Charts CSS -->
-    <link href="admin/AdminDashboardDesign/css/plugins/morris.css" rel="stylesheet">
+   	
 
     <!-- Custom Fonts -->
     <link href="admin/AdminDashboardDesign/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -145,7 +144,22 @@
 			            <div class="panel-body">
 						    <div class="row">
 						    
-						    	<div class="col-md-4 col-lg-4 " align="center" > <img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-circle img-responsive" > </div>
+						    	<div class="col-md-4 col-lg-4 " align="center" >
+						    		<?php
+					    			if($admin['picture']=="")
+					    			{
+					    			?>
+					    			<img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-circle img-responsive" > 
+					    			<?php
+					    			}
+					    			else
+					    			{
+					    			?>
+					    			<img alt="User Pic" src="<?php echo "profilepics/".$admin['picture']; ?>" class="img-circle img-responsive" > 
+					    			<?php
+					    			}
+					    			?>
+						    	</div>
 						        
 						        <div class=" col-md-8 col-lg-8 "> 
 						            <table class="table table-user-information">
@@ -325,18 +339,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="admin/AdminDashboardDesign/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="admin/AdminDashboardDesign/js/plugins/morris/raphael.min.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/morris/morris.min.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/morris/morris-data.js"></script>
-
-    <script src="admin/AdminDashboardDesign/js/plugins/flot/jquery.flot.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="admin/AdminDashboardDesign/js/plugins/flot/flot-data.js"></script>
-
 
     <link href="admin/AdminDashboardDesign/vendors/datatables/dataTables.bootstrap.css" rel="stylesheet" media="screen">
 	<script src="admin/AdminDashboardDesign/vendors/datatables/js/jquery.dataTables.min.js"></script>

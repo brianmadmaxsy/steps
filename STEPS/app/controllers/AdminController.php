@@ -216,6 +216,65 @@ class AdminController extends BaseController{
 			echo $e;
 		}
 	}
+
+	public function edit_admin_profile()
+	{
+		try
+		{
+			$userid=Input::get('get_userid');
+			$department=Input::get('get_department');
+			$position=Input::get('get_position');
+
+
+			$firstname=Input::get('firstname');
+			$middlename=Input::get('middlename');
+			$lastname=Input::get('lastname');
+			$birthdate=Input::get('editbirthdate');
+			$email=Input::get('email');
+			$contact=Input::get('contact');
+			$department=Input::get('department');
+			$position=Input::get('position');
+			$pastuniversity=Input::get('pastuniversity');
+			$education=Input::get('education');
+
+			$admin=AdminModel::where('userid',$userid);
+			$admin->update(['firstname'=>$firstname,'middlename'=>$middlename,'lastname'=>$lastname,'birthdate'=>$birthdate,'email'=>$email,'contact'=>$contact,'department'=>$department,'position'=>$position,'pastuniversity'=>$pastuniversity,'education'=>$education]);
+
+			$admin = AdminModel::where('userid','=',$userid)->first();
+				
+
+			if(strpos($department, 'College') !== false)
+			{
+				Session::put('sess_admin_college_arr',$admin);
+				return Redirect::intended('/collegehome');
+			}
+			elseif($department=="Student Affairs Office")
+			{
+				Session::put('sess_admin_sao_arr',$admin);
+				return Redirect::intended('/saohome');
+			}
+			elseif($department=="Office of Academic Scholarship")
+			{
+				Session::put('sess_admin_oas_arr',$admin);
+				return Redirect::intended('/oashome');
+			}
+			elseif($department=="Guidance Office")
+			{
+				Session::put('sess_admin_guidance_arr',$admin);
+				return Redirect::intended('/guidancehome');
+			}
+			elseif($department=="STEPS" AND $position=="Master Administrator")
+			{
+				Session::put('sess_admin_masteradmin_arr',$admin);
+				return Redirect::intended('/masteradminhome');
+			}
+			
+		}
+		catch(Exception $e)
+		{
+			echo $e;
+		}
+	}
 }
 
 ?>

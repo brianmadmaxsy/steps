@@ -250,7 +250,7 @@
 							              	<h3 class="panel-title" style="color:black"><b>{{ $guidance['firstname'].' '.$guidance['middlename'].' '.$guidance['lastname'] }} </b></h3>
 							              	<div class="panel-options">
 							              		<a href="#" data-rel="reload" style="color:black" title="View Profile"><i class="glyphicon glyphicon-user"></i></a>
-												<a href="#" data-rel="reload" style="color:black" title="Edit Profile"><i class="glyphicon glyphicon-cog"></i></a>
+												<a href="#" data-rel="reload" style="color:black" title="Edit User" data-toggle="modal" data-target="#myModalforEditGUIDANCEprofile"><i class="glyphicon glyphicon-cog"></i></a>
 											</div>
 							            </div>
 							            <div class="panel-body">
@@ -376,6 +376,107 @@
 		    </div>
 		</div>
 	</div>
+</div>
+
+<div class="modal fade" id="myModalforEditGUIDANCEprofile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<form method="post" action="/editadminprofile">
+  	<div class="modal-dialog" role="document">
+    	
+    	<div class="modal-content">
+    		
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h4 class="modal-title" id="myModalLabel">Edit Administrator Profile</h4>
+      		</div>
+      		
+		    <div class="modal-body">
+		      	
+					<div class="form-group">
+					    <label for="exampleInputEmail1">First Name</label>
+					    <input type="text" name="firstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John" required="" value="{{ $guidance['firstname'] }}">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Middle Name</label>
+					    <input type="text" name="middlename" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Moe" required="" value="{{ $guidance['middlename'] }}">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Last Name</label>
+					    <input type="text" name="lastname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Doe" required="" value="{{ $guidance['lastname'] }}">
+					    
+					</div>
+					
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Birthdate</label>
+					    <input type="text" name="editbirthdate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Los Angeles California, USA" required="" value="{{ $guidance['birthdate'] }}">
+					    
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Email Address</label>
+					    <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johnmoedoe@mail.com" required="" value="{{ $guidance['email'] }}">
+					    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Contact</label>
+					    <input type="text" name="contact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="101223487553" required="" value="{{ $guidance['contact'] }}">
+					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
+					</div>
+
+					<div class="form-group">
+						<label for="exampleInputEmail1">Department</label>
+						<select id="department" name="department" class="birthfield" required="">
+							<option value="" selected="">Choose...</option>
+					        <option value="College of Computer Studies" <?php if($guidance['department']=="College of Computer Studies"){ echo 'selected=""'; } ?>>College of Computer Studies</option>
+                            <option value="College of Engineering" <?php if($guidance['department']=="College of Engineering"){ echo 'selected=""'; } ?>>College of Engineering</option>
+                            <option value="College of Nursing" <?php if($guidance['department']=="College of Nursing"){ echo 'selected=""'; } ?>>College of Nursing</option>
+                            <option value="Student Affairs Office" <?php if($guidance['department']=="Student Affairs Office"){ echo 'selected=""'; } ?>>Student Affairs Office</option>
+                            <option value="Office of Academic Scholarship" <?php if($guidance['department']=="Office of Academic Scholarship"){ echo 'selected=""'; } ?>>Office of Academic Scholarship</option>
+                            <option value="Guidance Office" <?php if($guidance['department']=="Guidance Office"){ echo 'selected=""'; } ?>>Guidance Office</option>
+                            <option value="ETO" <?php if($guidance['department']=="ETO"){ echo 'selected=""'; } ?>>ETO</option>
+                            <option value="STEPS" <?php if($guidance['department']=="STEPS"){ echo 'selected=""'; } ?>>STEPS</option>
+					    </select>
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Position</label>
+					    <select name="position" class="birthfield">
+					    	<option value="">Choose One</option>
+					    	<option value="College Dean" <?php if($guidance['position']=="College Dean"){ echo 'selected=""'; } ?>>College Dean</option>
+                            <option value="College Chairperson" <?php if($guidance['position']=="College Chairperson"){ echo 'selected=""'; } ?>>College Chairperson</option>
+                            <option value="Faculty" <?php if($guidance['position']=="Faculty"){ echo 'selected=""'; } ?>>Faculty</option>
+                            <option value="Department Head" <?php if($guidance['position']=="Department Head"){ echo 'selected=""'; } ?>>Department Head</option>
+                            <option value="Department Assistant" <?php if($guidance['position']=="Department Assistant"){ echo 'selected=""'; } ?>>Department Assistant</option>
+                            <option value="Department Secretary" <?php if($guidance['position']=="Department Secretary"){ echo 'selected=""'; } ?>>Department Secretary</option>
+                            <option value="Working Staff" <?php if($guidance['position']=="Working Staff"){ echo 'selected=""'; } ?>>Working Staff</option>
+                            <option value="Master Administrator" <?php if($guidance['position']=="Master Administrator"){ echo 'selected=""'; } ?>>Master Administrator</option>
+                            <option value="Publisher" <?php if($guidance['position']=="Publisher"){ echo 'selected=""'; } ?>>Publisher</option>
+					    </select>
+					</div>
+					
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Past University</label>
+					    <input type="text" name="pastuniversity" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $guidance['pastuniversity'] }}">
+					    <small><font color="#85363c">(If many, please separate using comma ",")</font></small>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Education Attained</label>
+					    <input type="text" name="education" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $guidance['education'] }}">
+					    <small><font color="#85363c">(If many, please separate using comma ",")</font></small>
+					</div>
+			</div>
+
+		    <div class="modal-footer">
+		    	<input type="hidden" name="get_userid" value="{{ $guidance['userid'] }}">
+				<input type="hidden" name="get_position" value="{{ $guidance['position'] }}">
+				<input type="hidden" name="get_department" value="{{ $guidance['department'] }}">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <input type="submit" class="btn btn-primary" value="Edit Profile" name="editadmin">
+		    </div>
+		    
+    	</div>
+    </div>
+  	</form>
 </div>
 						
 					</div><!--End of tabs -->

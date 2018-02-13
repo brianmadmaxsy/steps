@@ -245,10 +245,10 @@
 							  	<div class="col-md-10">
 								    <div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
 							            <div class="panel-heading" style="background-color:#fefefe; border:none;">
-							              	<h3 class="panel-title" style="color:black">{{ $college['firstname'].' '.$college['middlename'].' '.$college['lastname'] }} </h3>
+							              	<h3 class="panel-title" style="color:black"><b>{{ $college['firstname'].' '.$college['middlename'].' '.$college['lastname'] }}</b></h3>
 							              	<div class="panel-options">
 							              		<a href="#" data-rel="reload" style="color:black" title="View Profile"><i class="glyphicon glyphicon-user"></i></a>
-												<a href="#" data-rel="reload" style="color:black" title="Edit Profile"><i class="glyphicon glyphicon-cog"></i></a>
+												<a href="#" data-rel="reload" style="color:black" title="Edit User" data-toggle="modal" data-target="#myModalforEditCOLLEGEprofile"><i class="glyphicon glyphicon-cog"></i></a>
 											</div>
 							            </div>
 							            <div class="panel-body">
@@ -374,6 +374,106 @@
 		    </div>
 		</div>
 	</div>
+</div>
+<div class="modal fade" id="myModalforEditCOLLEGEprofile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<form method="post" action="/editadminprofile">
+  	<div class="modal-dialog" role="document">
+    	
+    	<div class="modal-content">
+    		
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h4 class="modal-title" id="myModalLabel">Edit Administrator Profile</h4>
+      		</div>
+      		
+		    <div class="modal-body">
+		      	
+					<div class="form-group">
+					    <label for="exampleInputEmail1">First Name</label>
+					    <input type="text" name="firstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John" required="" value="{{ $college['firstname'] }}">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Middle Name</label>
+					    <input type="text" name="middlename" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Moe" required="" value="{{ $college['middlename'] }}">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Last Name</label>
+					    <input type="text" name="lastname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Doe" required="" value="{{ $college['lastname'] }}">
+					    
+					</div>
+					
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Birthdate</label>
+					    <input type="text" name="editbirthdate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Los Angeles California, USA" required="" value="{{ $college['birthdate'] }}">
+					    
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Email Address</label>
+					    <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johnmoedoe@mail.com" required="" value="{{ $college['email'] }}">
+					    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Contact</label>
+					    <input type="text" name="contact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="101223487553" required="" value="{{ $college['contact'] }}">
+					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
+					</div>
+
+					<div class="form-group">
+						<label for="exampleInputEmail1">Department</label>
+						<select id="department" name="department" class="birthfield" required="">
+							<option value="" selected="">Choose...</option>
+					        <option value="College of Computer Studies" <?php if($college['department']=="College of Computer Studies"){ echo 'selected=""'; } ?>>College of Computer Studies</option>
+                            <option value="College of Engineering" <?php if($college['department']=="College of Engineering"){ echo 'selected=""'; } ?>>College of Engineering</option>
+                            <option value="College of Nursing" <?php if($college['department']=="College of Nursing"){ echo 'selected=""'; } ?>>College of Nursing</option>
+                            <option value="Student Affairs Office" <?php if($college['department']=="Student Affairs Office"){ echo 'selected=""'; } ?>>Student Affairs Office</option>
+                            <option value="Office of Academic Scholarship" <?php if($college['department']=="Office of Academic Scholarship"){ echo 'selected=""'; } ?>>Office of Academic Scholarship</option>
+                            <option value="Guidance Office" <?php if($college['department']=="Guidance Office"){ echo 'selected=""'; } ?>>Guidance Office</option>
+                            <option value="ETO" <?php if($college['department']=="ETO"){ echo 'selected=""'; } ?>>ETO</option>
+                            <option value="STEPS" <?php if($college['department']=="STEPS"){ echo 'selected=""'; } ?>>STEPS</option>
+					    </select>
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Position</label>
+					    <select name="position" class="birthfield">
+					    	<option value="">Choose One</option>
+					    	<option value="College Dean" <?php if($college['position']=="College Dean"){ echo 'selected=""'; } ?>>College Dean</option>
+                            <option value="College Chairperson" <?php if($college['position']=="College Chairperson"){ echo 'selected=""'; } ?>>College Chairperson</option>
+                            <option value="Faculty" <?php if($college['position']=="Faculty"){ echo 'selected=""'; } ?>>Faculty</option>
+                            <option value="Department Head" <?php if($college['position']=="Department Head"){ echo 'selected=""'; } ?>>Department Head</option>
+                            <option value="Department Assistant" <?php if($college['position']=="Department Assistant"){ echo 'selected=""'; } ?>>Department Assistant</option>
+                            <option value="Department Secretary" <?php if($college['position']=="Department Secretary"){ echo 'selected=""'; } ?>>Department Secretary</option>
+                            <option value="Working Staff" <?php if($college['position']=="Working Staff"){ echo 'selected=""'; } ?>>Working Staff</option>
+                            <option value="Master Administrator" <?php if($college['position']=="Master Administrator"){ echo 'selected=""'; } ?>>Master Administrator</option>
+                            <option value="Publisher" <?php if($college['position']=="Publisher"){ echo 'selected=""'; } ?>>Publisher</option>
+					    </select>
+					</div>
+					
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Past University</label>
+					    <input type="text" name="pastuniversity" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $college['pastuniversity'] }}">
+					    <small><font color="#85363c">(If many, please separate using comma ",")</font></small>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Education Attained</label>
+					    <input type="text" name="education" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $college['education'] }}">
+					    <small><font color="#85363c">(If many, please separate using comma ",")</font></small>
+					</div>
+			</div>
+
+		    <div class="modal-footer">
+		    	<input type="hidden" name="get_userid" value="{{ $college['userid'] }}">
+				<input type="hidden" name="get_position" value="{{ $college['position'] }}">
+				<input type="hidden" name="get_department" value="{{ $college['department'] }}">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <input type="submit" class="btn btn-primary" value="Edit Profile" name="editadmin">
+		    </div>
+		    
+    	</div>
+    </div>
+  	</form>
 </div>
 						
 					</div><!--End of tabs -->
