@@ -143,7 +143,8 @@
 			            </div>
 			            <div class="panel-body">
 						    <div class="row">
-						    
+						    	
+						    	<a href="#" data-rel="reload" style="color:black" title="My Avatar" data-toggle="modal" data-target="#myModalForMasterEditAdminPicture">
 						    	<div class="col-md-4 col-lg-4 " align="center" >
 						    		<?php
 					    			if($admin['picture']=="")
@@ -160,7 +161,8 @@
 					    			}
 					    			?>
 						    	</div>
-						        
+						        </a>
+
 						        <div class=" col-md-8 col-lg-8 "> 
 						            <table class="table table-user-information">
 						                <tbody>
@@ -222,7 +224,56 @@
 		</div>
     </div>
 
-
+<div class="modal fade" id="myModalForMasterEditAdminPicture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h3 class="modal-title" id="myModalLabel">My Avatar</h3>
+      		</div>
+		    <div class="modal-body">
+		    	<div>
+		    		<?php
+	    			if($admin['picture']=="")
+	    			{
+	    			?>
+	    			<img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-rounded img-responsive" style="margin:0px auto 0px auto;"> 
+	    			<?php
+	    			}
+	    			else
+	    			{
+	    			?>
+	    			<img alt="User Pic" src="<?php echo "profilepics/".$admin['picture']; ?>" class="img-rounded img-responsive" style="margin:0px auto 0px auto;"> 
+	    			<?php
+	    			}
+	    			?>
+		 		</div>
+		 		<div style="margin-top:10px;">
+		 			{{ Form::open(array('url' => '/masteradmineditadminavatarpost', 'enctype' => 'multipart/form-data')) }}
+		 				<table>
+		 					<tr>
+		 						<td><label>Change Avatar</label></td>
+		 						<td>
+		 							<input type="file" name="file" required="">
+		 							<input type="hidden" name="get_master_admin_username" value="{{ $masteradmin['username'] }}">
+		 							<input type="hidden" name="get_userid" value="{{ $admin['userid'] }}">
+		 							<input type="hidden" name="get_position" value="{{ $admin['position'] }}">
+		 							<input type="hidden" name="get_department" value="{{ $admin['department'] }}">
+		 						</td>
+		 						<td><input type="submit" name="upload" value="Upload" class="btn btn-primary"></td>
+		 					</tr>
+		 				</table>
+		 			{{ Form::close() }}
+				</div>
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		    </div>
+		</div>
+	</div>
+</div>
 <div class="modal fade" id="myModalforMasterAdminEditAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   	<form method="post" action="/masteradmineditadminpost">
   	<div class="modal-dialog" role="document">
@@ -330,8 +381,6 @@
 
 
 <!--End of MasterAdminEditAdmin Modal-->
-   
-    
 
 
     <script src="admin/AdminDashboardDesign/js/custom.js"></script>

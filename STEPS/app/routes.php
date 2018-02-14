@@ -75,8 +75,10 @@
 	Route::get('/masterviewadmin',array('uses'=>'MasterAdminController@master_view_admin'));
 	Route::get('/masterviewstudent',array('uses'=>'MasterAdminController@master_view_student'));
 	Route::post('/masteradmineditadminpost',array('uses'=>'MasterAdminController@master_edit_admin'));
+	Route::post('/masteradmineditadminavatarpost',array('uses'=>'MasterAdminController@master_edit_admin_avatar'));
 	Route::post('/masteradmineditfreshmenpost',array('uses'=>'MasterAdminController@master_edit_freshmen'));
 	Route::post('/masteradminedittransfereepost',array('uses'=>'MasterAdminController@master_edit_transferee'));
+	Route::post('/masteradmineditstudentavatarpost',array('uses'=>'MasterAdminController@master_edit_student_avatar'));
 	Route::post('/masterremoveadmin',array('uses'=>'MasterAdminController@master_remove_admin'));
 	Route::post('/masterremovestudent',array('uses'=>'MasterAdminController@master_remove_student'));
 //End of Master Admin Controller Routes	

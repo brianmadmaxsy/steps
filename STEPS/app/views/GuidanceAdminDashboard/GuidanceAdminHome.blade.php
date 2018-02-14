@@ -11,11 +11,9 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="admin/AdminDashboardDesign/css/styles.css">
-    
     <link rel="stylesheet" href="admin/AdminDashboardDesign/css/jquerycss.css" />
     <link rel="stylesheet" type="text/css" href="admin/AdminDashboardDesign/css/user.css">
    	<link rel="stylesheet" type="text/css" href="admin/AdminDashboardDesign/css/homedashboard.css">
-
 
     <!-- Custom Fonts -->
     <link href="admin/AdminDashboardDesign/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -498,8 +496,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="admin/AdminDashboardDesign/bootstrap/js/bootstrap.min.js"></script>
-
-
 
     <link href="admin/AdminDashboardDesign/vendors/datatables/dataTables.bootstrap.css" rel="stylesheet" media="screen">
 	<script src="admin/AdminDashboardDesign/vendors/datatables/js/jquery.dataTables.min.js"></script>

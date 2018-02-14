@@ -377,6 +377,58 @@ class MasterAdminController extends BaseController{
 		return Redirect::intended('/masterviewadmin');
 	}
 
+	public function master_edit_admin_avatar()
+	{
+		try
+		{
+			
+			if(Input::hasFile('file')) //If this is a file uploaded
+			{
+				$master_admin_username=Input::get('get_master_admin_username');
+				$userid=Input::get('get_userid'); //userid of the admin that master admin wishes to edit.
+				$department=Input::get('get_department');
+				$position=Input::get('get_position');
+
+
+				
+				//delete old picture from server
+				$admin = AdminModel::where('userid','=',$userid)->first();
+				$filename = public_path().'/profilepics/'.$admin['picture'];
+
+				if (File::exists($filename)) {
+				    File::delete($filename);
+				} 
+				//end of delete old picture from server
+
+				//upload new picture and update database
+				$file=Input::file('file');
+				$filename=$userid."-".$department."-".$position."-".$file->getClientOriginalName();
+				$file->move('public/profilepics/',$filename);
+
+				$picture=$filename;
+
+				$admin=AdminModel::where('userid',$userid);
+				$admin->update(['picture'=>$picture]);
+
+				
+				Session::put('sess_masteradmin_username',$master_admin_username);
+				Session::put('sess_masteradmin_fetched_admin_userid',$userid);
+
+				return Redirect::intended('/masterviewadmin');
+
+			}
+			else
+			{
+				echo "no file uploaded";
+			}
+
+
+		}	
+		catch(Exception $e)
+		{
+			echo $e;
+		}
+	}
 	public function master_view_student()
 	{
 		$userid=Session::get('sess_masteradmin_fetched_student_userid');
@@ -443,7 +495,7 @@ class MasterAdminController extends BaseController{
 		$freshmen->update(['highschool'=>$edited_highschool,'tocourse'=>$edited_tocourse]);
 
 		Session::put('sess_masteradmin_username',$master_admin_username);
-		Session::put('sess_masteradmin_fetched_admin_userid',$userid);
+		Session::put('sess_masteradmin_fetched_student_userid',$userid);
 
 		return Redirect::intended('/masterviewstudent');
 	}
@@ -487,11 +539,60 @@ class MasterAdminController extends BaseController{
 			$transferee->update(['tocourse'=>$edited_tocourse,'fromcourse'=>$edited_fromcourse,'fromschool'=>$edited_fromschool]);
 			
 			Session::put('sess_masteradmin_username',$master_admin_username);
-			Session::put('sess_masteradmin_fetched_admin_userid',$userid);
+			Session::put('sess_masteradmin_fetched_student_userid',$userid);
 
 			return Redirect::intended('/masterviewstudent');
 			
 		}
+		catch(Exception $e)
+		{
+			echo $e;
+		}
+	}
+
+	public function master_edit_student_avatar()
+	{
+		try
+		{
+			
+			if(Input::hasFile('file')) //If this is a file uploaded
+			{
+				$master_admin_username=Input::get('get_master_admin_username');
+				$userid=Input::get('get_userid'); //userid of the student that master admin wishes to edit.
+				
+				//delete old picture from server
+				$student = StudentModel::where('userid','=',$userid)->first();
+				$filename = public_path().'/profilepics/'.$student['picture'];
+
+				if (File::exists($filename)) {
+				    File::delete($filename);
+				} 
+				//end of delete old picture from server
+
+				//upload new picture and update database
+				$file=Input::file('file');
+				$filename=$userid."-".$file->getClientOriginalName();
+				$file->move('public/profilepics/',$filename);
+
+				$picture=$filename;
+
+				$student=StudentModel::where('userid',$userid);
+				$student->update(['picture'=>$picture]);
+
+				
+				Session::put('sess_masteradmin_username',$master_admin_username);
+				Session::put('sess_masteradmin_fetched_student_userid',$userid);
+
+				return Redirect::intended('/masterviewstudent');
+
+			}
+			else
+			{
+				echo "no file uploaded";
+			}
+
+
+		}	
 		catch(Exception $e)
 		{
 			echo $e;
