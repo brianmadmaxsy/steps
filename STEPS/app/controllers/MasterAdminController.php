@@ -359,6 +359,8 @@ class MasterAdminController extends BaseController{
 		$middlename=Input::get('middlename');
 		$lastname=Input::get('lastname');
 		$username=Input::get('username');
+		$edited_password=Input::get('editpassword');
+		$edited_cpassword=Input::get('editcpassword');
 		$birthdate=Input::get('editbirthdate');
 		$email=Input::get('email');
 		$contact=Input::get('contact');
@@ -370,6 +372,12 @@ class MasterAdminController extends BaseController{
 		$admin=AdminModel::where('userid',$userid);
 		$admin->update(['firstname'=>$firstname,'middlename'=>$middlename,'lastname'=>$lastname,'username'=>$username,'birthdate'=>$birthdate,'email'=>$email,'contact'=>$contact,'department'=>$department,'position'=>$position,'pastuniversity'=>$pastuniversity,'education'=>$education]);
 
+		if($edited_password!="" && $edited_password==$edited_cpassword)
+		{
+			$password=md5($edited_password);
+			$admin=AdminModel::where('userid',$userid);
+			$admin->update(['password'=>$password]);
+		}
 
 		Session::put('sess_masteradmin_username',$master_admin_username);
 		Session::put('sess_masteradmin_fetched_admin_userid',$userid);
@@ -642,6 +650,52 @@ class MasterAdminController extends BaseController{
 		Session::put('sess_admin_masteradmin_arr',$masteradmin);
 
 		return Redirect::intended('/masteradminhome');
+	}
+
+	public function master_reset_student_login_credential()
+	{
+		$master_admin_username=Input::get('get_master_admin_username');
+		$student_userid=Input::get('get_userid');
+
+		//setting the default username and password to firstname.middlename.lastname
+		$student_user=StudentModel::where('userid','=',$student_userid)->first();
+
+		$default=strtolower($student_user['firstname'].".".$student_user['middlename'].".".$student_user['lastname']);
+		$default=str_replace(' ', '', $default);
+		$new_username=$default;
+		$new_password = md5($default);
+		
+
+		//updating username and password of user to default username and password
+		$student=StudentModel::where('userid',$student_userid);
+		$student->update(['username'=>$new_username,'password'=>$new_password]);
+		
+		Session::put('sess_masteradmin_username',$master_admin_username);
+		Session::put('sess_masteradmin_fetched_student_userid',$student_userid);
+
+		return Redirect::intended('/masterviewstudent');
+	}
+	public function master_reset_admin_login_credential()
+	{
+		$master_admin_username=Input::get('get_master_admin_username');
+		$admin_userid=Input::get('get_userid');
+
+		//setting the default username and password to firstname.middlename.lastname
+		$admin_user=AdminModel::where('userid','=',$admin_userid)->first();
+		
+		$default=strtolower($admin_user['firstname'].".".$admin_user['middlename'].".".$admin_user['lastname']);
+		$default=str_replace(' ','',$default);
+		$new_username=$default;
+		$new_password=md5($default);
+		
+		//updating username and password of user to default username and password
+		$admin=AdminModel::where('userid',$admin_userid);
+		$admin->update(['username'=>$new_username,'password'=>$new_password]);
+
+		Session::put('sess_masteradmin_username',$master_admin_username);
+		Session::put('sess_masteradmin_fetched_admin_userid',$admin_userid);
+
+		return Redirect::intended('/masterviewadmin');
 	}
 }
 ?>

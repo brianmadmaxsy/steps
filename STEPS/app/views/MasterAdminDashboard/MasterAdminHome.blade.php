@@ -127,6 +127,54 @@
 				
 			});
 	</script>
+	
+	<script type="text/javascript">
+		window.onload = function () {
+			document.getElementById("adminpassword1").onchange = validatePassword;
+			document.getElementById("adminpassword2").onchange = validatePassword;
+		}
+		function validatePassword(){
+		var pass2=document.getElementById("adminpassword2").value;
+		var pass1=document.getElementById("adminpassword1").value;
+		if(pass1!=pass2)
+			document.getElementById("adminpassword2").setCustomValidity("Both Passwords Don't Match");
+		else
+			document.getElementById("adminpassword2").setCustomValidity('');	 
+		//empty string means no validation error
+		}
+	</script>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			document.getElementById("password1").onchange = validatePassword;
+			document.getElementById("password2").onchange = validatePassword;
+		}
+		function validatePassword(){
+		var pass2=document.getElementById("password2").value;
+		var pass1=document.getElementById("password1").value;
+		if(pass1!=pass2)
+			document.getElementById("password2").setCustomValidity("Both Passwords Don't Match");
+		else
+			document.getElementById("password2").setCustomValidity('');	 
+		//empty string means no validation error
+		}
+	</script>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			document.getElementById("editpassword1").onchange = validatePassword;
+			document.getElementById("editpassword2").onchange = validatePassword;
+		}
+		function validatePassword(){
+		var pass2=document.getElementById("editpassword2").value;
+		var pass1=document.getElementById("editpassword1").value;
+		if(pass1!=pass2)
+			document.getElementById("editpassword2").setCustomValidity("Both Passwords Don't Match");
+		else
+			document.getElementById("editpassword2").setCustomValidity('');	 
+		//empty string means no validation error
+		}
+	</script>
   		
   </head>
   <body>
@@ -475,11 +523,11 @@
 					
 					<div class="form-group">
 					    <label for="exampleInputPassword1">Password</label>
-					    <input type="password" name="password" class="form-control" id="password1" placeholder="Password1234*" required="">
+					    <input type="password" name="password" class="form-control" id="adminpassword1" placeholder="Password1234*" required="">
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputPassword1">Confirm Password</label>
-					    <input type="password" name="confirmpassword" class="form-control" id="password2" placeholder="Password1234*" required="">
+					    <input type="password" name="confirmpassword" class="form-control" id="adminpassword2" placeholder="Password1234*" required="">
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Birthdate</label>
@@ -954,6 +1002,14 @@
 					    <label for="exampleInputEmail1">Username</label>
 					    <input type="text" name="username" class="form-control" id="uname" aria-describedby="emailHelp" placeholder="johndoe123" required="" value="{{ $masteradmin['username'] }}">
 					    <b><span id="result"></span></b>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputPassword1">Password</label>
+					    <input type="password" name="editpassword" class="form-control" id="editpassword1" placeholder="Password1234*">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputPassword1">Confirm Password</label>
+					    <input type="password" name="editcpassword" class="form-control" id="editpassword2" placeholder="Password1234*">
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Birthdate</label>

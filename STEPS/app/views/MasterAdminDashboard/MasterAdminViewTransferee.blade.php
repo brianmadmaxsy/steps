@@ -136,7 +136,7 @@
 				<div class="content-box-large" >
 					<div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
 			            <div class="panel-heading" style="background-color:#fefefe; border:none;">
-			              	<h2 class="panel-title" style="color:black"><b>{{ $student['firstname']." ".$student['lastname'] }}</b></h2>
+			              	<h2 class="panel-title" style="color:black"><b>{{ $student['firstname']." ".$student['middlename']." ".$student['lastname'] }}</b></h2>
 			              	<div class="panel-options">
 								<a href="#" data-rel="reload" style="color:black" title="Edit User" data-toggle="modal" data-target="#myModalforMasterAdminEditTransferee"><i class="glyphicon glyphicon-cog"></i></a>
 							</div>
@@ -237,7 +237,23 @@
 						                </tbody>
 						            </table>
 						            
-						          	<a href="{{ URL::to('/masteradminhome') }}" class="btn btn-info" role="button">Back to Admin Page...</a>  
+						          	<table>
+						            	<tr>
+					                    	<td>&nbsp;</td>
+					                    </tr>
+					                    <tr>
+					                    	<td>
+					                    		<a href="{{ URL::to('/masteradminhome') }}" class="btn btn-info" role="button">Back to Admin Page...</a> 
+					                    	</td>
+					                    	<td>
+					                    		<form action="/masterresetstudentlogincredential" method="post">
+					                    			<input type="hidden" name="get_master_admin_username" value="{{ $masteradmin['username'] }}">
+		 											<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
+									          		<input type="submit" name="resetaccountlogin" value="Reset Login Credentials" class="btn btn-success" onclick="return confirm('Reset login credentials for {{ $student->firstname.' '.$student->lastname }}?')">
+									          	</form>
+					                    	</td>
+					                    </tr>
+						            </table>
 						        </div><!-- col-md-8 col-lg-8-->
 						    </div><!--class row-->
 						    

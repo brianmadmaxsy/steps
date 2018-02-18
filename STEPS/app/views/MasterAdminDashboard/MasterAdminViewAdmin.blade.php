@@ -64,7 +64,22 @@
 			       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 			          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 		}
-	</style>	
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			document.getElementById("password1").onchange = validatePassword;
+			document.getElementById("password2").onchange = validatePassword;
+		}
+		function validatePassword(){
+		var pass2=document.getElementById("password2").value;
+		var pass1=document.getElementById("password1").value;
+		if(pass1!=pass2)
+			document.getElementById("password2").setCustomValidity("Both Passwords Don't Match");
+		else
+			document.getElementById("password2").setCustomValidity('');	 
+		//empty string means no validation error
+		}
+	</script>	
   </head>
   <body>
 
@@ -210,7 +225,23 @@
 						                </tbody>
 						            </table>
 						            
-						          	<a href="{{ URL::to('/masteradminhome') }}" class="btn btn-info" role="button">Back to Admin Page...</a>  
+						          	<table>
+						            	<tr>
+					                    	<td>&nbsp;</td>
+					                    </tr>
+					                    <tr>
+					                    	<td>
+					                    		<a href="{{ URL::to('/masteradminhome') }}" class="btn btn-info" role="button">Back to Admin Page...</a> 
+					                    	</td>
+					                    	<td>
+					                    		<form action="/masterresetadminlogincredential" method="post">
+					                    			<input type="hidden" name="get_master_admin_username" value="{{ $masteradmin['username'] }}">
+		 											<input type="hidden" name="get_userid" value="{{ $admin['userid'] }}">
+									          		<input type="submit" name="resetaccountlogin" value="Reset Login Credentials" class="btn btn-success" onclick="return confirm('Reset login credentials for {{ $admin->firstname.' '.$admin->lastname }}?')">
+									          	</form>
+					                    	</td>
+					                    </tr>
+						            </table>  
 						        </div><!-- col-md-8 col-lg-8-->
 						    </div><!--class row-->
 						    
@@ -306,6 +337,15 @@
 					    <label for="exampleInputEmail1">Username</label>
 					    <input type="text" name="username" class="form-control" id="uname" aria-describedby="emailHelp" placeholder="johndoe123" required="" value="{{ $admin['username'] }}">
 					    <b><span id="result"></span></b>
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputPassword1">Password</label>
+					    <input type="password" name="editpassword" class="form-control" id="password1" placeholder="Password1234*">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputPassword1">Confirm Password</label>
+					    <input type="password" name="editcpassword" class="form-control" id="password2" placeholder="Password1234*">
 					</div>
 					
 					<div class="form-group">

@@ -47,6 +47,21 @@
 		}
 	</style>
 
+	<script type="text/javascript">
+		window.onload = function () {
+			document.getElementById("password1").onchange = validatePassword;
+			document.getElementById("password2").onchange = validatePassword;
+		}
+		function validatePassword(){
+		var pass2=document.getElementById("password2").value;
+		var pass1=document.getElementById("password1").value;
+		if(pass1!=pass2)
+			document.getElementById("password2").setCustomValidity("Both Passwords Don't Match");
+		else
+			document.getElementById("password2").setCustomValidity('');	 
+		//empty string means no validation error
+		}
+	</script>
   		
   </head>
   <body>
@@ -308,8 +323,21 @@
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Last Name</label>
 					    <input type="text" name="editlastname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Doe" required="" value="{{ $student['lastname'] }}">
-					    
 					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">User Name</label>
+					    <input type="text" name="editusername" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johndoe" required="" value="{{ $student['username'] }}">
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputPassword1">Password</label>
+					    <input type="password" name="editpassword" class="form-control" id="password1" placeholder="Password1234*">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputPassword1">Confirm Password</label>
+					    <input type="password" name="editcpassword" class="form-control" id="password2" placeholder="Password1234*">
+					</div>
+
 					<div class="form-group">
 					    <label for="exampleInputEmail1">Email Address</label>
 					    <input type="text" name="editemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johnmoedoe@mail.com" required="" value="{{ $student['email'] }}">

@@ -229,6 +229,9 @@ class AdminController extends BaseController{
 			$firstname=Input::get('firstname');
 			$middlename=Input::get('middlename');
 			$lastname=Input::get('lastname');
+			$username=Input::get('username');
+			$edited_password=Input::get('editpassword');
+			$edited_cpassword=Input::get('editcpassword');
 			$birthdate=Input::get('editbirthdate');
 			$email=Input::get('email');
 			$contact=Input::get('contact');
@@ -238,7 +241,14 @@ class AdminController extends BaseController{
 			$education=Input::get('education');
 
 			$admin=AdminModel::where('userid',$userid);
-			$admin->update(['firstname'=>$firstname,'middlename'=>$middlename,'lastname'=>$lastname,'birthdate'=>$birthdate,'email'=>$email,'contact'=>$contact,'department'=>$department,'position'=>$position,'pastuniversity'=>$pastuniversity,'education'=>$education]);
+			$admin->update(['firstname'=>$firstname,'middlename'=>$middlename,'lastname'=>$lastname,'username'=>$username,'birthdate'=>$birthdate,'email'=>$email,'contact'=>$contact,'department'=>$department,'position'=>$position,'pastuniversity'=>$pastuniversity,'education'=>$education]);
+			
+			if($edited_password!="" && $edited_password==$edited_cpassword)
+			{
+				$password=md5($edited_password);
+				$admin=AdminModel::where('userid',$userid);
+				$admin->update(['password'=>$password]);
+			}
 
 			$admin = AdminModel::where('userid','=',$userid)->first();
 				

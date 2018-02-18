@@ -81,6 +81,8 @@
 	Route::post('/masteradmineditstudentavatarpost',array('uses'=>'MasterAdminController@master_edit_student_avatar'));
 	Route::post('/masterremoveadmin',array('uses'=>'MasterAdminController@master_remove_admin'));
 	Route::post('/masterremovestudent',array('uses'=>'MasterAdminController@master_remove_student'));
+	Route::post('/masterresetstudentlogincredential',array('uses'=>'MasterAdminController@master_reset_student_login_credential'));
+	Route::post('/masterresetadminlogincredential',array('uses'=>'MasterAdminController@master_reset_admin_login_credential'));
 //End of Master Admin Controller Routes	
 
 
