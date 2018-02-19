@@ -151,7 +151,7 @@
 				<div class="content-box-large" >
 					<div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
 			            <div class="panel-heading" style="background-color:#fefefe; border:none;">
-			              	<h3 class="panel-title" style="color:black"><b>{{ $admin['firstname']." ".$admin['lastname'] }}</b></h3>
+			              	<h3 class="panel-title" style="color:black"><b>{{ $admin['firstname']." ".$admin['middlename']." ".$admin['lastname'] }}</b></h3>
 			              	<div class="panel-options">
 								<a href="#" data-rel="reload" style="color:black" title="Edit User" data-toggle="modal" data-target="#myModalforMasterAdminEditAdmin"><i class="glyphicon glyphicon-cog"></i></a>
 							</div>

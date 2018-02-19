@@ -474,6 +474,9 @@ class MasterAdminController extends BaseController{
 		$edited_firstname=Input::get('editfirstname');
 		$edited_middlename=Input::get('editmiddlename');
 		$edited_lastname=Input::get('editlastname');
+		$edited_username=Input::get('editusername');
+		$edited_password=Input::get('editpassword');
+		$edited_cpassword=Input::get('editcpassword');
 		$edited_email=Input::get('editemail');
 		$edited_birthdate=Input::get('editbirthdate');
 		$edited_birthplace=Input::get('editbirthplace');
@@ -497,7 +500,14 @@ class MasterAdminController extends BaseController{
 		}
 
 		$student=StudentModel::where('userid',$userid);
-			$student->update(['firstname'=>$edited_firstname,'middlename'=>$edited_middlename,'lastname'=>$edited_lastname,'email'=>$edited_email,'birthdate'=>$edited_birthdate,'birthplace'=>$edited_birthplace,'gender'=>$edited_gender,'civilstatus'=>$edited_civilstatus,'contact'=>$edited_contact,'homeaddress'=>$edited_homeaddress,'provincialaddress'=>$edited_provincialaddress,'schoolyear'=>$edited_year_entered,'semester'=>$edited_semester,'department'=>$department]);
+			$student->update(['firstname'=>$edited_firstname,'middlename'=>$edited_middlename,'lastname'=>$edited_lastname,'username'=>$edited_username,'email'=>$edited_email,'birthdate'=>$edited_birthdate,'birthplace'=>$edited_birthplace,'gender'=>$edited_gender,'civilstatus'=>$edited_civilstatus,'contact'=>$edited_contact,'homeaddress'=>$edited_homeaddress,'provincialaddress'=>$edited_provincialaddress,'schoolyear'=>$edited_year_entered,'semester'=>$edited_semester,'department'=>$department]);
+
+		if($edited_password!="" && $edited_password==$edited_cpassword)
+		{
+			$password=md5($edited_password);
+			$student=StudentModel::where('userid',$userid);
+			$student->update(['password'=>$password]);
+		}
 
 		$freshmen=FreshmenModel::where('userid',$userid);
 		$freshmen->update(['highschool'=>$edited_highschool,'tocourse'=>$edited_tocourse]);
@@ -517,6 +527,9 @@ class MasterAdminController extends BaseController{
 			$edited_firstname=Input::get('editfirstname');
 			$edited_middlename=Input::get('editmiddlename');
 			$edited_lastname=Input::get('editlastname');
+			$edited_username=Input::get('editusername');
+			$edited_password=Input::get('editpassword');
+			$edited_cpassword=Input::get('editcpassword');
 			$edited_email=Input::get('editemail');
 			$edited_birthdate=Input::get('editbirthdate');
 			$edited_birthplace=Input::get('editbirthplace');
@@ -541,8 +554,15 @@ class MasterAdminController extends BaseController{
 			}
 
 			$student=StudentModel::where('userid',$userid);
-			$student->update(['firstname'=>$edited_firstname,'middlename'=>$edited_middlename,'lastname'=>$edited_lastname,'email'=>$edited_email,'birthdate'=>$edited_birthdate,'birthplace'=>$edited_birthplace,'gender'=>$edited_gender,'civilstatus'=>$edited_civilstatus,'contact'=>$edited_contact,'homeaddress'=>$edited_homeaddress,'provincialaddress'=>$edited_provincialaddress,'schoolyear'=>$edited_year_entered,'semester'=>$edited_semester,'department'=>$department]);
+			$student->update(['firstname'=>$edited_firstname,'middlename'=>$edited_middlename,'lastname'=>$edited_lastname,'username'=>$edited_username,'email'=>$edited_email,'birthdate'=>$edited_birthdate,'birthplace'=>$edited_birthplace,'gender'=>$edited_gender,'civilstatus'=>$edited_civilstatus,'contact'=>$edited_contact,'homeaddress'=>$edited_homeaddress,'provincialaddress'=>$edited_provincialaddress,'schoolyear'=>$edited_year_entered,'semester'=>$edited_semester,'department'=>$department]);
 
+			if($edited_password!="" && $edited_password==$edited_cpassword)
+			{
+				$password=md5($edited_password);
+				$student=StudentModel::where('userid',$userid);
+				$student->update(['password'=>$password]);
+			}
+		
 			$transferee=TransfereeModel::where('userid',$userid);
 			$transferee->update(['tocourse'=>$edited_tocourse,'fromcourse'=>$edited_fromcourse,'fromschool'=>$edited_fromschool]);
 			
