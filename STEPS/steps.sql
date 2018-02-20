@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2018 at 05:17 AM
+-- Generation Time: Feb 20, 2018 at 01:45 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -53,16 +53,18 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `userid`, `adminid`, `firstname`, `middlename`, `lastname`, `username`, `password`, `email`, `contact`, `department`, `position`, `birthdate`, `education`, `pastuniversity`, `picture`, `created_at`, `updated_at`) VALUES
 (1, '976b013f7e36aed500b1b72c3531cbe6b117cd99eee7-larmie', '976b013f7e36aed500b1b72c3531cbe6b117cd99eee7-larmie', 'Larmie', 'Santos', 'Feliscuzo', 'larmie', '5f4dcc3b5aa765d61d8327deb882cf99', 'larmie_feliscuzo@mail.com', '1234567890', 'College of Computer Studies', 'College Chairperson', 'January-1-1990', 'MIT,BSIT', 'Cebu Institute Of Technology University', '976b013f7e36aed500b1b72c3531cbe6b117cd99eee7-larmie-College of Computer Studies-College Chairperson-larmie.jpg', '2017-12-17 20:41:11', '2018-02-13 08:36:37'),
-(2, 'dd959dd9305121642f25cbaa47cf9e2ca5050948372c-sao', 'dd959dd9305121642f25cbaa47cf9e2ca5050948372c-sao', 'Saofirst', 'Saomiddle', 'Saolast', 'sao', '5f4dcc3b5aa765d61d8327deb882cf99', 'sao@cit.edu.ph', '0987654321', 'Student Affairs Office', 'Department Secretary', 'January-1-1980', 'MBA,BSBA', 'University Of Cebu', 'dd959dd9305121642f25cbaa47cf9e2ca5050948372c-sao-Student Affairs Office-Department Secretary-oas.jpg', '2017-12-17 20:42:37', '2018-02-18 10:20:19'),
-(3, '5fa3db58e927f350efd88897f8aebc9bff02b697dc02-oas', '5fa3db58e927f350efd88897f8aebc9bff02b697dc02-oas', 'OASFirst', 'OASMiddle', 'OASLast', 'oas', '5f4dcc3b5aa765d61d8327deb882cf99', 'oas_office@cit.edu.ph', '0987654321', 'Office of Academic Scholarship', 'Department Head', 'January-1-1991', 'BSBA,BSA,BSIT', 'Cebu Institute Of Technology University', '5fa3db58e927f350efd88897f8aebc9bff02b697dc02-oas-Office of Academic Scholarship-Department Assistant-1834920.jpg', '2017-12-17 20:43:32', '2018-02-18 10:18:12'),
-(4, 'a3c93e0d998f5ec336eb107fe1b2bb661329b3e818b3-guidance', 'a3c93e0d998f5ec336eb107fe1b2bb661329b3e818b3-guidance', 'guidancefirst', 'guidancemiddle', 'guidancelast', 'guidance', '5f4dcc3b5aa765d61d8327deb882cf99', 'guidance_office@cit.edu.ph', '0987654321', 'Guidance Office', 'Department Secretary', 'January-1-1991', 'MBA, BSBA, MIT, BSIT', 'University Of San Carlos', 'a3c93e0d998f5ec336eb107fe1b2bb661329b3e818b3-guidance-Guidance Office-Department Secretary-guidance.jpg', '2017-12-17 20:44:20', '2018-02-18 10:21:23'),
-(5, '9ec5b7e195f525e28d149346ac910412f2df47e30133-masteradmin', '9ec5b7e195f525e28d149346ac910412f2df47e30133-masteradmin', 'Robert Anthony', 'A', 'De Niro Jr.', 'masteradmin', '9f706ab85924bd1aa5f9b3c79f7490bd', 'robertdeniro@mail.com', '0987654321', 'STEPS', 'Master Administrator', 'August-17-1943', 'MIT, BSIT, BSCS', 'Cebu Institute Of Technology University', '9ec5b7e195f525e28d149346ac910412f2df47e30133-masteradmin-STEPS-Master Administrator-robertdeniro.jpg', '2018-01-07 00:36:23', '2018-02-18 10:25:26'),
+(2, 'dd959dd9305121642f25cbaa47cf9e2ca5050948372c-sao', 'dd959dd9305121642f25cbaa47cf9e2ca5050948372c-sao', 'Saofirst', 'Saomiddle', 'Saolast', 'sao', '5f4dcc3b5aa765d61d8327deb882cf99', 'sao@cit.edu.ph', '0987654321', 'Student Affairs Office', 'Department Secretary', 'January-1-1980', 'MBA,BSBA', 'University Of Cebu', 'dd959dd9305121642f25cbaa47cf9e2ca5050948372c-sao-Student Affairs Office-Department Secretary-oas.jpg', '2017-12-17 20:42:37', '2018-02-13 08:40:20'),
+(3, '5fa3db58e927f350efd88897f8aebc9bff02b697dc02-oas', '5fa3db58e927f350efd88897f8aebc9bff02b697dc02-oas', 'OASFirst', 'OASMiddle', 'OASLast', 'oas', '5f4dcc3b5aa765d61d8327deb882cf99', 'oas_office@cit.edu.ph', '0987654321', 'Office of Academic Scholarship', 'Department Head', 'January-1-1991', 'BSBA,BSA,BSIT', 'Cebu Institute Of Technology University', '5fa3db58e927f350efd88897f8aebc9bff02b697dc02-oas-Office of Academic Scholarship-Department Assistant-1834920.jpg', '2017-12-17 20:43:32', '2018-02-13 08:41:19'),
+(4, 'a3c93e0d998f5ec336eb107fe1b2bb661329b3e818b3-guidance', 'a3c93e0d998f5ec336eb107fe1b2bb661329b3e818b3-guidance', 'guidancefirst', 'guidancemiddle', 'guidancelast', 'guidance', '5f4dcc3b5aa765d61d8327deb882cf99', 'guidance_office@cit.edu.ph', '0987654321', 'Guidance Office', 'Department Secretary', 'January-1-1991', 'MBA, BSBA, MIT, BSIT', 'University Of San Carlos', 'a3c93e0d998f5ec336eb107fe1b2bb661329b3e818b3-guidance-Guidance Office-Department Secretary-guidance.jpg', '2017-12-17 20:44:20', '2018-02-14 03:27:11'),
+(5, '9ec5b7e195f525e28d149346ac910412f2df47e30133-masteradmin', '9ec5b7e195f525e28d149346ac910412f2df47e30133-masteradmin', 'Robert Anthony', 'A', 'De Niro Jr.', 'masteradmin', '9f706ab85924bd1aa5f9b3c79f7490bd', 'robertdeniro@mail.com', '0987654321', 'STEPS', 'Master Administrator', 'August-17-1943', 'MIT, BSIT, BSCS', 'Cebu Institute Of Technology University', '9ec5b7e195f525e28d149346ac910412f2df47e30133-masteradmin-STEPS-Master Administrator-robertdeniro.jpg', '2018-01-07 00:36:23', '2018-02-13 08:57:08'),
 (9, 'b7f29f6d30cd561daf494415a8b55333784f053a4f6a-mannypacquiao', 'b7f29f6d30cd561daf494415a8b55333784f053a4f6a-mannypacquiao', 'Manny', 'Dapigran', 'Pacquiao', 'mannypacquiao', '5f4dcc3b5aa765d61d8327deb882cf99', 'manny_pacquiao@gmail.com', '1234567890', 'Student Affairs Office', 'Working Staff', 'January-1-1994', 'MIT, BSIT', 'Cebu Institute Of Technology University', '', '2018-01-08 06:11:11', '2018-01-08 06:11:11'),
 (11, '5075193458f9dceb7c84e2b8d3bb197f0d737514840e-ralphlaviste', '5075193458f9dceb7c84e2b8d3bb197f0d737514840e-ralphlaviste', 'Ralph', 'A', 'Laviste', 'ralphlaviste', '5f4dcc3b5aa765d61d8327deb882cf99', 'rlaviste@gmail.com', '1234567890', 'College of Computer Studies', 'Faculty', 'January-1-1970', 'BSCS, MIT', 'CIT University', '5075193458f9dceb7c84e2b8d3bb197f0d737514840e-ralphlaviste-College of Computer Studies-Faculty-ralph.jpg', '2018-01-11 23:52:52', '2018-02-14 03:43:17'),
-(13, 'efc33f26c938bcd4ac845aada41528370dc5ee0433c8-eugine', 'efc33f26c938bcd4ac845aada41528370dc5ee0433c8-eugine', 'Eugene', 'A', 'Busico', 'eugene', '5f4dcc3b5aa765d61d8327deb882cf99', 'eugene_busico@mail.com', '1234567890', 'College of Computer Studies', 'Faculty', 'January-1-1980', 'BSCS, MIT', 'Cebu Technological University', 'efc33f26c938bcd4ac845aada41528370dc5ee0433c8-eugine-College of Computer Studies-Faculty-eugene.jpg', '2018-01-12 06:24:29', '2018-02-18 20:09:01'),
+(13, 'efc33f26c938bcd4ac845aada41528370dc5ee0433c8-eugine', 'efc33f26c938bcd4ac845aada41528370dc5ee0433c8-eugine', 'Eugene', 'A', 'Busico', 'eugine', '5f4dcc3b5aa765d61d8327deb882cf99', 'eugene_busico@mail.com', '1234567890', 'College of Computer Studies', 'Faculty', 'January-1-1980', 'BSCS, MIT', 'Cebu Technological University', '', '2018-01-12 06:24:29', '2018-01-12 07:43:09'),
 (14, '1447c1ee6b4a75baec9120d8650f4e48a618075e5e1b-greg', '1447c1ee6b4a75baec9120d8650f4e48a618075e5e1b-greg', 'Greg Victor', 'A', 'Gabison', 'greg', '5f4dcc3b5aa765d61d8327deb882cf99', 'greg_gabison@mail.com', '1234567890', 'STEPS', 'Master Administrator', 'January-1-1970', 'BSCS, MIT, BSBA', 'Cebu Institute Of Technology University', '', '2018-01-12 08:27:08', '2018-01-12 08:27:08'),
-(15, '26d03db4d63c9e3739af14f7708842a5b0fcab6fd6e4-josephvillacorta', '26d03db4d63c9e3739af14f7708842a5b0fcab6fd6e4-josephvillacorta', 'Josephh', 'A', 'Villacorta', 'josephvillacorta', '5f4dcc3b5aa765d61d8327deb882cf99', 'joseph_villacorta@mail.com', '1234567890', 'Guidance Office', 'Department Head', 'January-1-1994', 'BSCS, MIT, BSBA', 'CIT University', '', '2018-01-17 09:36:55', '2018-02-18 05:14:57'),
-(16, '7e7e61491ef26672641d9bad3fc73dbe6f9b08a63e5e-johnwick', '7e7e61491ef26672641d9bad3fc73dbe6f9b08a63e5e-johnwick', 'John', 'A', 'Wick', 'johnwick', '5f4dcc3b5aa765d61d8327deb882cf99', 'john.a.wick@mail.com', '0987654321', 'Office of Academic Scholarship', 'Working Staff', 'January-1-1990', 'MIT, BSBA', 'University Of Cebu', '', '2018-01-25 05:16:06', '2018-01-25 05:16:06');
+(15, '26d03db4d63c9e3739af14f7708842a5b0fcab6fd6e4-josephvillacorta', '26d03db4d63c9e3739af14f7708842a5b0fcab6fd6e4-josephvillacorta', 'Joseph', 'A', 'Villacorta', 'josephvillacorta', '5f4dcc3b5aa765d61d8327deb882cf99', 'joseph_villacorta@mail.com', '1234567890', 'Guidance Office', 'Department Head', 'January-1-1994', 'BSCS, MIT, BSBA', 'CIT University', '', '2018-01-17 09:36:55', '2018-01-17 09:36:55'),
+(16, '7e7e61491ef26672641d9bad3fc73dbe6f9b08a63e5e-johnwick', '7e7e61491ef26672641d9bad3fc73dbe6f9b08a63e5e-johnwick', 'John', 'A', 'Wick', 'johnwick', '5f4dcc3b5aa765d61d8327deb882cf99', 'john.a.wick@mail.com', '0987654321', 'Office of Academic Scholarship', 'Working Staff', 'January-1-1990', 'MIT, BSBA', 'University Of Cebu', '', '2018-01-25 05:16:06', '2018-01-25 05:16:06'),
+(17, '6d8803c60acbaa770486c483b16693108632058fb8fe-publisher', '6d8803c60acbaa770486c483b16693108632058fb8fe-publisher', 'Errol', 'A', 'Spence Jr.', 'errol', '5f4dcc3b5aa765d61d8327deb882cf99', 'publisher@gmail.com', '0932131312312', 'STEPS', 'Publisher', 'January-1-1989', 'MIT', 'USJR', '', '2018-02-16 07:10:17', '2018-02-21 04:35:39'),
+(18, 'c75bc457fdd2ab744b2ea6edaf4f79f710a1734fca1c-piolopascual', 'c75bc457fdd2ab744b2ea6edaf4f79f710a1734fca1c-piolopascual', 'Piolo', 'A', 'Pascual', 'piolo', '5f4dcc3b5aa765d61d8327deb882cf99', 'piolo_pascual@mail.com', '1234567890', 'STEPS', 'Publisher', 'January-1-1990', 'BSCS, MIT, BSBA', 'Cebu Institute Of Technology University', 'c75bc457fdd2ab744b2ea6edaf4f79f710a1734fca1c-piolopascual-STEPS-Publisher-084.png', '2018-02-20 03:49:49', '2018-02-20 04:42:00');
 
 -- --------------------------------------------------------
 
@@ -120,8 +122,8 @@ INSERT INTO `entranceexam` (`id`, `entranceexamid`, `userid`, `guidance_username
 (45, 'd70c4d4fdc32e5682edd25fbf8b39eexam', '7f7140fe589c24544160fb450333e53168dac19f3e95-katenitro', 'guidance', '', 'true', '2018-01-31 00:45:51', '2018-01-31 00:55:45'),
 (46, '257ac153926756b42f4902d9a809f1exam', '403b873541be65e70d4af04be0ffebad9d017e66f4d1-markapilyedo', 'guidance', '', 'true', '2018-02-01 19:09:26', '2018-02-01 19:43:34'),
 (47, '1e4ea2f9ae5686b81b0e2beaf4b362exam', 'fa046616e7e66368d992d1c212192dc6669b584410c0-johnjames', 'guidance', '', 'true', '2018-02-01 19:11:58', '2018-02-01 20:03:33'),
-(49, 'd0f38b51ceed525cb2368564bb0b53exam', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'guidance', '', 'true', '2018-02-02 16:32:09', '2018-02-18 07:07:18'),
-(50, 'eaf8c1355c021968d9a48d76b201ebexam', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'guidance', '', 'true', '2018-02-02 16:34:02', '2018-02-18 07:22:06'),
+(49, 'd0f38b51ceed525cb2368564bb0b53exam', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'guidance', '', 'true', '2018-02-02 16:32:09', '2018-02-21 05:07:38'),
+(50, 'eaf8c1355c021968d9a48d76b201ebexam', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'guidance', '', 'true', '2018-02-02 16:34:02', '2018-02-21 04:55:38'),
 (51, 'cae588b5c315e12e414d88513d013bexam', 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz', 'guidance', '', 'true', '2018-02-02 16:35:45', '2018-02-05 20:26:15'),
 (52, 'acbc11b21cd60477f667005a69fb9aexam', '921ff824189bc9f991f465a66f323c0308a6088dd47c-pedrodelacruz', 'guidance', '', 'true', '2018-02-02 16:36:57', '2018-02-05 20:03:23'),
 (54, '9183607469e57110d5e3f04075bbe6exam', '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', '', '', 'false', '2018-02-02 19:32:24', '2018-02-02 19:32:24'),
@@ -169,9 +171,29 @@ INSERT INTO `evaluation` (`id`, `evaluationid`, `userid`, `evaluator_name`, `cou
 (19, 'f0a47e97c19058d9e25fc61fadb5ffevaluation', '5897ad779b67e1ca7e15327842853978c54f8f3fc3e0-albert123', 'ralphlaviste', 'Bachelors of Science in Information Technology', 'College of Computer Studies', 'true', 'good to proceed', '2018-01-29 06:56:08', '2018-01-29 07:00:23'),
 (20, '0340d8cb0900d60072f2faa21dceb5evaluation', '7f7140fe589c24544160fb450333e53168dac19f3e95-katenitro', 'ralphlaviste', 'Bachelors of Science in Information Technology', 'College of Computer Studies', 'true', 'Good to proceed', '2018-01-31 00:45:51', '2018-01-31 00:48:59'),
 (21, 'cd7dc313099e8a4c3fb1445b54542aevaluation', 'fa046616e7e66368d992d1c212192dc6669b584410c0-johnjames', 'larmie', 'Bachelors of Science in Information Technology', 'College of Computer Studies', 'true', 'Good', '2018-02-01 19:11:58', '2018-02-01 19:50:36'),
-(23, '1ecfbc000010d418890bbb0719d04aevaluation', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'larmie', 'Bachelors of Science in Information Technology', 'College of Computer Studies', 'true', '', '2018-02-02 16:34:02', '2018-02-18 07:19:21'),
+(23, '1ecfbc000010d418890bbb0719d04aevaluation', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'larmie', 'Bachelors of Science in Information Technology', 'College of Computer Studies', 'true', 'Good to proceed!', '2018-02-02 16:34:02', '2018-02-21 04:52:28'),
 (24, 'da0ca6e63581d62dbf08163506104cevaluation', 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz', 'ralphlaviste', 'Bachelors of Science in Information Technology', 'College of Computer Studies', 'true', 'Good to proceed! ', '2018-02-02 16:35:45', '2018-02-05 20:19:36'),
 (26, '165ab896f72296708131cd553cada1evaluation', '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', '', 'Bachelors of Science in Information Technology', 'College of Computer Studies', 'false', '', '2018-02-02 19:32:24', '2018-02-02 19:32:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `title` varchar(256) NOT NULL,
+  `start` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `title`, `start`) VALUES
+(5, 'FINAL DEFENSE', '2018-02-21 08:00:00'),
+(6, 'Final Defense to all IT', '2018-02-28 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -228,8 +250,8 @@ INSERT INTO `examschedule` (`id`, `examscheduleid`, `scheduleid`, `userid`, `sch
 (45, '1de32151bba56ceafd7ebdc63af866examschedule', '7ce9454a147f107dae18098e0ff7397763336fcf', '7f7140fe589c24544160fb450333e53168dac19f3e95-katenitro', 'Thursday 02/01/2018 08:00AM-10:00AM', '2018-01-31 00:45:51', '2018-01-31 00:54:43'),
 (46, '10694a6d5a7b90e23df9142bbd9f3cexamschedule', 'a3c6afcb23d34e5669d1eef3b8358bc875d2a7b0', '403b873541be65e70d4af04be0ffebad9d017e66f4d1-markapilyedo', 'Saturday 02/03/2018 08:00AM-10:00AM', '2018-02-01 19:09:26', '2018-02-01 19:40:41'),
 (47, '60221b698db37b34baf25614e1f17eexamschedule', 'e439ec6768df1595e26d18991c83b6b4ddc06533', 'fa046616e7e66368d992d1c212192dc6669b584410c0-johnjames', 'Saturday 02/03/2018 10:00AM-12:00PM', '2018-02-01 19:11:58', '2018-02-01 20:01:38'),
-(49, '4e9f227a24b9ec628a10f3aaabddd5examschedule', '5df4a6c3658e7e40ccffa09f9d6c8923702630ae', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'Monday 02/05/2018 03:00PM-05:00PM', '2018-02-02 16:32:09', '2018-02-18 07:06:23'),
-(50, 'e36ce0f3609e6d0332e96c875caba9examschedule', 'ebccea932c92d81e1504f5dc48179719baabfedd', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'Thursday 01/25/2018 08:00AM-10:00AM', '2018-02-02 16:34:02', '2018-02-18 07:21:10'),
+(49, '4e9f227a24b9ec628a10f3aaabddd5examschedule', '28abdffffe54db8364bbd12ada5f0317e58aefa2', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'Monday 01/29/2018 08:00AM-10:00AM', '2018-02-02 16:32:09', '2018-02-21 05:06:39'),
+(50, 'e36ce0f3609e6d0332e96c875caba9examschedule', '5df4a6c3658e7e40ccffa09f9d6c8923702630ae', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'Monday 02/05/2018 03:00PM-05:00PM', '2018-02-02 16:34:02', '2018-02-21 04:54:49'),
 (51, '36c32075f71bc9f2382880f9689a6aexamschedule', '4f2c97d1359126822c8945901dc942918849d0a3', 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz', 'Monday 02/05/2018 10:00AM-12:00PM', '2018-02-02 16:35:45', '2018-02-05 20:25:19'),
 (52, '87d6e6ba1a68b8e229e789406f5f86examschedule', '4f2c97d1359126822c8945901dc942918849d0a3', '921ff824189bc9f991f465a66f323c0308a6088dd47c-pedrodelacruz', 'Monday 02/05/2018 10:00AM-12:00PM', '2018-02-02 16:36:57', '2018-02-05 20:01:45'),
 (54, 'fac1d25c96374e1e249eaf146f5901examschedule', '', '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', '', '2018-02-02 19:32:24', '2018-02-02 19:32:24'),
@@ -319,7 +341,7 @@ INSERT INTO `freshmen` (`id`, `userid`, `highschool`, `tocourse`, `created_at`, 
 (27, '4f0417eef7a88faf8baab379b353a5ec3131002432d6-mattstafford', 'Cebu Cherish School', 'Bachelors of Science in Information Technology', '2018-01-29 01:40:34', '2018-01-29 01:40:34'),
 (28, '869c1146cd3858f987540759eb2dac18ab9d7b33d8d1-johnnynitro', 'Cebu Cherish School', 'Bachelors of Science in Computer Science', '2018-01-31 00:30:22', '2018-01-31 00:30:22'),
 (29, '403b873541be65e70d4af04be0ffebad9d017e66f4d1-markapilyedo', 'Cebu Institute of Technology University', 'Bachelors of Science in Computer Science', '2018-02-01 19:09:26', '2018-02-01 19:09:26'),
-(30, 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'Cebu Institute of Technology University', 'Bachelors of Science in Information Technology', '2018-02-02 16:32:09', '2018-02-18 20:06:32'),
+(30, 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'Cebu Institute of Technology University', 'Bachelors of Science in Information Technology', '2018-02-02 16:32:09', '2018-02-21 05:04:01'),
 (31, '921ff824189bc9f991f465a66f323c0308a6088dd47c-pedrodelacruz', 'Cebu Institute of Technology University', 'Bachelors of Science in Information Technology', '2018-02-02 16:36:57', '2018-02-02 16:36:57'),
 (32, '36cf9889518f5ce82ee83840b34009a7a92a545b4477-zackdelarocha', 'Cebu Cherish School', 'Bachelors of Science in Computer Science', '2018-02-13 00:33:51', '2018-02-13 00:33:51');
 
@@ -365,7 +387,7 @@ INSERT INTO `freshmen_requirements` (`id`, `requirementsid`, `userid`, `oas_user
 (24, '77563e66fe76507b8f158d1c46ca20freshmenrequirements', '4f0417eef7a88faf8baab379b353a5ec3131002432d6-mattstafford', 'oas', 'true', 'true', 'true', 'true', 'Good to proceed!!!!', 'true', '2018-01-29 01:40:35', '2018-01-29 01:42:52'),
 (25, '5ddeac8b36bbf5b459bbd4ca00c06efreshmenrequirements', '869c1146cd3858f987540759eb2dac18ab9d7b33d8d1-johnnynitro', 'oas', 'true', 'true', 'true', 'true', 'Good to proceed!', 'true', '2018-01-31 00:30:22', '2018-01-31 00:34:03'),
 (26, 'da5fe757e1d5d1bfcdef489bdf854bfreshmenrequirements', '403b873541be65e70d4af04be0ffebad9d017e66f4d1-markapilyedo', 'oas', 'true', 'true', 'true', 'true', 'Good to proceed!', 'true', '2018-02-01 19:09:26', '2018-02-01 19:36:32'),
-(27, '25cd3d3502977e94c93c79b7d85d32freshmenrequirements', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'oas', 'true', 'true', 'true', 'true', 'Good to go!', 'true', '2018-02-02 16:32:09', '2018-02-18 07:05:22'),
+(27, '25cd3d3502977e94c93c79b7d85d32freshmenrequirements', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'oas', 'true', 'true', 'true', 'true', 'Good to go', 'true', '2018-02-02 16:32:09', '2018-02-21 05:05:46'),
 (28, '78963ea73a6990e3a15e6e62327800freshmenrequirements', '921ff824189bc9f991f465a66f323c0308a6088dd47c-pedrodelacruz', 'oas', 'true', 'true', 'true', 'true', 'Good to proceed! Completed requirements', 'true', '2018-02-02 16:36:57', '2018-02-05 19:59:40'),
 (29, 'b0be4d4d3d19aa95c3aabee8db1756freshmenrequirements', '36cf9889518f5ce82ee83840b34009a7a92a545b4477-zackdelarocha', 'oas', 'true', 'true', 'true', 'true', 'Good to proceed!', 'true', '2018-02-13 00:33:52', '2018-02-13 00:47:30');
 
@@ -423,8 +445,8 @@ INSERT INTO `identification` (`id`, `userid`, `oas_username`, `getIdentification
 (45, '7f7140fe589c24544160fb450333e53168dac19f3e95-katenitro', 'oas', 'true', '2018-01-31 00:45:51', '2018-01-31 00:54:11'),
 (46, '403b873541be65e70d4af04be0ffebad9d017e66f4d1-markapilyedo', 'oas', 'true', '2018-02-01 19:09:26', '2018-02-01 19:39:57'),
 (47, 'fa046616e7e66368d992d1c212192dc6669b584410c0-johnjames', 'oas', 'true', '2018-02-01 19:11:58', '2018-02-01 19:59:15'),
-(49, 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'oas', 'true', '2018-02-02 16:32:09', '2018-02-18 07:05:53'),
-(50, '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'oas', 'true', '2018-02-02 16:34:02', '2018-02-18 07:20:42'),
+(49, 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'oas', 'true', '2018-02-02 16:32:09', '2018-02-21 05:06:16'),
+(50, '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'oas', 'true', '2018-02-02 16:34:02', '2018-02-21 04:54:24'),
 (51, 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz', 'oas', 'true', '2018-02-02 16:35:45', '2018-02-05 20:24:40'),
 (52, '921ff824189bc9f991f465a66f323c0308a6088dd47c-pedrodelacruz', 'oas', 'true', '2018-02-02 16:36:57', '2018-02-05 20:01:06'),
 (54, '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', '', 'false', '2018-02-02 19:32:24', '2018-02-02 19:32:24'),
@@ -487,8 +509,8 @@ INSERT INTO `interview` (`id`, `interviewid`, `userid`, `schedule`, `sao_usernam
 (45, '19dd245f6980ef7639c9d5d352223dinterview', '7f7140fe589c24544160fb450333e53168dac19f3e95-katenitro', '', 'sao', 'true', 'Good to proceed!', '2018-01-31 00:45:51', '2018-01-31 00:56:23'),
 (46, '323d4b2d4a9079ec3b4ac391702c6finterview', '403b873541be65e70d4af04be0ffebad9d017e66f4d1-markapilyedo', '', 'oas', 'true', 'Good to go', '2018-02-01 19:09:26', '2018-02-01 19:44:27'),
 (47, '87dc98225da664dc33289b85c0f075interview', 'fa046616e7e66368d992d1c212192dc6669b584410c0-johnjames', '', 'sao', 'true', 'Good', '2018-02-01 19:11:58', '2018-02-01 20:04:40'),
-(49, '37a4a99f13026ca932d85695964de8interview', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', '', 'oas', 'true', 'Good to go!', '2018-02-02 16:32:10', '2018-02-18 07:07:36'),
-(50, '9d06e4e655367b3cec508ee958fc94interview', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', '', 'sao', 'true', 'Good to go', '2018-02-02 16:34:03', '2018-02-18 07:22:36'),
+(49, '37a4a99f13026ca932d85695964de8interview', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', '', 'oas', 'true', 'Good to go', '2018-02-02 16:32:10', '2018-02-21 05:08:13'),
+(50, '9d06e4e655367b3cec508ee958fc94interview', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', '', 'sao', 'true', 'Good to proceed!', '2018-02-02 16:34:03', '2018-02-21 04:56:11'),
 (51, 'fb75d5e004cf1dca994e244a057a8einterview', 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz', '', 'sao', 'true', 'Good to proceed to next step', '2018-02-02 16:35:45', '2018-02-05 20:26:46'),
 (52, 'b408de58c54140dba3b35881a0e1abinterview', '921ff824189bc9f991f465a66f323c0308a6088dd47c-pedrodelacruz', '', 'oas', 'true', 'Very good scored! Good to proceed!', '2018-02-02 16:36:58', '2018-02-05 20:04:36'),
 (54, '464b0f76e33365103b2bdb796e2ec1interview', '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', '', '', 'false', '', '2018-02-02 19:32:24', '2018-02-02 19:32:24'),
@@ -524,6 +546,27 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2017_12_17_121411_transferee', 1),
 ('2017_12_18_041211_freshmenrequirements', 1),
 ('2017_12_18_043642_transferee_requirements', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `title` varchar(256) NOT NULL,
+  `description` text NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `image` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `title`, `description`, `date`, `image`) VALUES
+(1, 'CIT Tops in Engineering', 'CIT University is well known for their best engineers and tops at board exam 2018!!!', '2018-02-20 16:00:00', 'citu.jpg');
 
 -- --------------------------------------------------------
 
@@ -581,8 +624,8 @@ INSERT INTO `payment` (`id`, `paymentid`, `userid`, `oas_username`, `paymentrece
 (45, '178c3bc659ae8bfca605220d4924f5payment', '7f7140fe589c24544160fb450333e53168dac19f3e95-katenitro', 'oas', '123456789', 'true', '2018-01-31 00:45:51', '2018-01-31 00:53:55'),
 (46, '0dc9f62dac017b9500fa546b5ec328payment', '403b873541be65e70d4af04be0ffebad9d017e66f4d1-markapilyedo', 'oas', '1234567890', 'true', '2018-02-01 19:09:26', '2018-02-01 19:38:35'),
 (47, 'bb1812782bdbda9f724201503bad9cpayment', 'fa046616e7e66368d992d1c212192dc6669b584410c0-johnjames', 'oas', '12345', 'true', '2018-02-01 19:11:58', '2018-02-01 19:54:37'),
-(49, '0ecd1e98c5e45e18300b96a914032epayment', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'oas', '1234567890', 'true', '2018-02-02 16:32:09', '2018-02-18 07:05:39'),
-(50, '9e5fe3bc7396c0fba991c830783ac3payment', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'oas', '1234567890', 'true', '2018-02-02 16:34:02', '2018-02-18 07:20:33'),
+(49, '0ecd1e98c5e45e18300b96a914032epayment', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'oas', '12345678900', 'true', '2018-02-02 16:32:09', '2018-02-21 05:06:00'),
+(50, '9e5fe3bc7396c0fba991c830783ac3payment', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'oas', '1234398070', 'true', '2018-02-02 16:34:02', '2018-02-21 04:54:01'),
 (51, '93bc7c56c76b9773b9d6332e02143bpayment', 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz', 'oas', '12345', 'true', '2018-02-02 16:35:45', '2018-02-05 20:24:27'),
 (52, '9e98183d6ce6847118140d9c9e19f8payment', '921ff824189bc9f991f465a66f323c0308a6088dd47c-pedrodelacruz', 'oas', '12345', 'true', '2018-02-02 16:36:57', '2018-02-05 20:00:35'),
 (54, '93f10804cac17f9139ee5c8097838bpayment', '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', '', '', 'false', '2018-02-02 19:32:24', '2018-02-02 19:32:24'),
@@ -646,8 +689,8 @@ INSERT INTO `results` (`id`, `resultid`, `userid`, `guidance_username`, `IQTest`
 (45, 'bf7515f5acfa2f5ddac2fd2f00fa37results', '7f7140fe589c24544160fb450333e53168dac19f3e95-katenitro', 'guidance', 'Average', 'Average', 'Average', 'true', '2018-01-31 00:45:51', '2018-01-31 00:55:45'),
 (46, '167551ee3e3fd5f76be95e5b32abaeresults', '403b873541be65e70d4af04be0ffebad9d017e66f4d1-markapilyedo', 'guidance', 'Average', 'Average', 'Average', 'true', '2018-02-01 19:09:26', '2018-02-01 19:43:33'),
 (47, '73601a619f1772660ae508c5d738daresults', 'fa046616e7e66368d992d1c212192dc6669b584410c0-johnjames', 'guidance', 'Average', 'Average', 'Average', 'true', '2018-02-01 19:11:58', '2018-02-01 20:03:33'),
-(49, '2dc5a6c793c8012d268eac30de3e65results', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'guidance', 'Average', 'Above Average', 'Average', 'true', '2018-02-02 16:32:09', '2018-02-18 07:07:18'),
-(50, '8530281393d0c6140b20caf16e94e7results', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'guidance', 'Average', 'Average', 'Average', 'true', '2018-02-02 16:34:03', '2018-02-18 07:22:06'),
+(49, '2dc5a6c793c8012d268eac30de3e65results', 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', 'guidance', 'Average', 'Average', 'Average', 'true', '2018-02-02 16:32:09', '2018-02-21 05:07:37'),
+(50, '8530281393d0c6140b20caf16e94e7results', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'guidance', 'Average', 'Average', 'Average', 'true', '2018-02-02 16:34:03', '2018-02-21 04:55:38'),
 (51, 'c6c530387f89b1a152c79322e8f898results', 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz', 'guidance', 'Average', 'Average', 'Average', 'true', '2018-02-02 16:35:45', '2018-02-05 20:26:15'),
 (52, '3e7e1114c87a4bd7e66bdf89860cc8results', '921ff824189bc9f991f465a66f323c0308a6088dd47c-pedrodelacruz', 'guidance', 'Average', 'Average', 'Average', 'true', '2018-02-02 16:36:57', '2018-02-05 20:03:23'),
 (54, 'cf960916ad308324192101e1862ae7results', '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', '', '', '', '', 'false', '2018-02-02 19:32:24', '2018-02-02 19:32:24'),
@@ -727,11 +770,11 @@ INSERT INTO `student` (`id`, `userid`, `studentid`, `firstname`, `middlename`, `
 (46, '7f7140fe589c24544160fb450333e53168dac19f3e95-katenitro', '19-0002-001', 'Kate', 'A', 'Nitro', 'katenitro', 'kate_nitro@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'March-9-1994', 'Cebu City Cebu Philippines', 'Male', 'Single', '1234567890', 'Cebu City Cebu Philippines', 'Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Transferee', 'Officially Enrolled', 8, '', NULL, '2018-01-31 00:45:51', '2018-01-31 00:56:24'),
 (47, '403b873541be65e70d4af04be0ffebad9d017e66f4d1-markapilyedo', '19-0001-000', 'Mark Anthony', 'A', 'Apilyedo', 'markapilyedo', 'mark_apilyedo@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'April-9-1994', 'Cebu City Cebu Philippines', 'Male', 'Single', '1234567890', 'Cebu City Cebu Philippines', 'Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Freshmen', 'Officially Enrolled', 7, '', NULL, '2018-02-01 19:09:26', '2018-02-01 19:44:27'),
 (48, 'fa046616e7e66368d992d1c212192dc6669b584410c0-johnjames', '19-0001-002', 'John James', 'A', 'Apilyedo', 'johnjames', 'john_apilyedo@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'March-10-1994', 'Cebu City Cebu Philippines', 'Male', 'Single', '1234567890', 'Cebu City Cebu Philippines', 'Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Transferee', 'Officially Enrolled', 8, '', NULL, '2018-02-01 19:11:58', '2018-02-01 20:04:41'),
-(50, 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', '18-9000-000', 'Rian Christopher', 'Fiel', 'Segarra', 'rian', 'rianfielsegarra@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'January-10-1997', 'Cebu City Cebu Philippines', 'Male', 'Single', '09320123456', 'Pardo Cebu City Cebu Philippines', 'Pardo Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Freshmen', 'Officially Enrolled', 7, 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian-rian.jpg', NULL, '2018-02-02 16:32:10', '2018-02-18 20:06:32'),
-(51, '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', '18-9000-001', 'Ronnelo', 'Aldave', 'Mernilo', 'ronnelo', 'ronnelo_mernilo@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'April-10-1997', 'Cebu City Cebu Philippines', 'Male', 'Single', '09200123456', 'Labangon Cebu City Cebu Philippines', 'Labangon Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Transferee', 'Officially Enrolled', 8, '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo-15109552_1305008506186986_2651104425894692384_n.jpg', NULL, '2018-02-02 16:34:03', '2018-02-18 20:03:59'),
+(50, 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian', '18-0000-001', 'Rian Christopher', 'Fiel', 'Segarra', 'yanyan', 'rianfielsegarra@mail.com', '078bbb4bf0f7117fb131ec45f15b5b87', 'January-10-1997', 'Cebu City Cebu Philippines', 'Male', 'Single', '09320123456', 'Pardo Cebu City Cebu Philippines', 'Pardo Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Freshmen', 'Officially Enrolled', 7, 'f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian-f3dfeb30e8dd92c7de2386f481147e483c79bb9856ec-rian-rian.jpg', NULL, '2018-02-02 16:32:10', '2018-02-21 05:08:14'),
+(51, '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', '18-0000-000', 'Ronnelo', 'Aldave', 'Mernilo', 'ronnelo', 'ronnelo_mernilo@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'April-10-1997', 'Cebu City Cebu Philippines', 'Male', 'Single', '09200123456', 'Labangon Cebu City Cebu Philippines', 'Labangon Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Transferee', 'Officially Enrolled', 8, '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo-11021268_1551971471748584_373651433348220526_n.jpg', NULL, '2018-02-02 16:34:03', '2018-02-21 04:56:11'),
 (52, 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz', '19-1000-200', 'Juan', 'Santos', 'Dela Cruz', 'juandelacruz', 'juan_tamadz@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'January-1-1994', 'Cebu City Cebu Philippines', 'Male', 'Single', '09320123456', 'Cebu City Cebu Philippines', 'Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Transferee', 'Officially Enrolled', 8, 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz-black lion.jpg', NULL, '2018-02-02 16:35:45', '2018-02-13 00:28:31'),
 (53, '921ff824189bc9f991f465a66f323c0308a6088dd47c-pedrodelacruz', '19-1000-000', 'Pedro', 'Santos', 'Dela Cruz', 'pedrodelacruz', 'pedro_delacruz@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'June-8-1994', 'Cebu City Cebu Philippines', 'Male', 'Single', '09320123456', 'Cebu City Cebu Philippines', 'Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Freshmen', 'Officially Enrolled', 7, '', NULL, '2018-02-02 16:36:58', '2018-02-05 20:04:36'),
-(55, '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', '', 'Lauren Brian', 'Lao', 'Sy', 'madmax', 'brianmadmaxsy@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'May-27-1994', 'Cebu City Cebu Philippines', 'Male', 'Single', '0987654321', 'Cebu City Cebu Philippines', 'Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Transferee', 'evaluation', 1, '250ad8edada57a4fc80008db928ae8516910e897e013-madmax-me and diko.jpg', NULL, '2018-02-02 19:32:24', '2018-02-18 09:41:30'),
+(55, '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', '', 'Lauren Brian', 'Lao', 'Sy', 'madmax', 'brianmadmaxsy@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'May-27-1994', 'Cebu City Cebu Philippines', 'Male', 'Single', '0987654321', 'Cebu City Cebu Philippines', 'Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Transferee', 'evaluation', 1, '250ad8edada57a4fc80008db928ae8516910e897e013-madmax-13239263_1298360523559178_1042022114980215678_n.jpg', NULL, '2018-02-02 19:32:24', '2018-02-20 03:48:11'),
 (56, '36cf9889518f5ce82ee83840b34009a7a92a545b4477-zackdelarocha', '19-1000-001', 'Zack', 'Manuel', 'Dela Rocha', 'zackdelarocha', 'zack_rage@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'January-12-1970', 'Cebu City Cebu Philippines', 'Male', 'Single', '1234567890', 'Cebu City Cebu Philippines', 'Cebu City Cebu Philippines', '2018', '1st Semester', 'College of Computer Studies', 'Freshmen', 'Officially Enrolled', 7, '36cf9889518f5ce82ee83840b34009a7a92a545b4477-zackdelarocha-zackdelarocha.jpg', NULL, '2018-02-13 00:33:52', '2018-02-13 00:52:55');
 
 -- --------------------------------------------------------
@@ -773,9 +816,9 @@ INSERT INTO `transferee` (`id`, `userid`, `tocourse`, `fromcourse`, `fromschool`
 (19, '5897ad779b67e1ca7e15327842853978c54f8f3fc3e0-albert123', 'Bachelors of Science in Information Technology', 'Bachelors of Science in Information Technology', 'Don Bosco University', '2018-01-29 06:56:08', '2018-01-29 06:56:08'),
 (20, '7f7140fe589c24544160fb450333e53168dac19f3e95-katenitro', 'Bachelors of Science in Information Technology', 'Bachelors of Science in Information Technology', 'University Of San Jose Recoletos', '2018-01-31 00:45:51', '2018-01-31 00:45:51'),
 (21, 'fa046616e7e66368d992d1c212192dc6669b584410c0-johnjames', 'Bachelors of Science in Information Technology', 'Bachelors of Science in Information Technology', 'University Of San Jose Recoletos', '2018-02-01 19:11:58', '2018-02-01 19:11:58'),
-(23, '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'Bachelors of Science in Information Technology', 'Bachelors of Science in Information Technology', 'University Of San Jose Recoletos', '2018-02-02 16:34:02', '2018-02-18 20:03:08'),
+(23, '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'Bachelors of Science in Information Technology', 'Bachelors of Science in Information Technology', 'University Of San Jose Recoletos', '2018-02-02 16:34:02', '2018-02-02 16:34:02'),
 (24, 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz', 'Bachelors of Science in Information Technology', 'Bachelors of Science in Information Technology', 'University Of San Jose Recoletos', '2018-02-02 16:35:45', '2018-02-02 16:35:45'),
-(26, '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', 'Bachelors of Science in Information Technology', 'Bachelors of Science in Information Technology', 'University Of San Jose Recoletos', '2018-02-02 19:32:24', '2018-02-18 09:41:30');
+(26, '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', 'Bachelors of Science in Information Technology', 'Bachelors of Science in Information Technology', 'University Of San Jose Recoletos', '2018-02-02 19:32:24', '2018-02-20 07:00:05');
 
 -- --------------------------------------------------------
 
@@ -822,7 +865,7 @@ INSERT INTO `transferee_requirements` (`id`, `requirementsid`, `userid`, `sao_us
 (19, 'c18303ded636db8590e991b70e913btransfereerequirements', '5897ad779b67e1ca7e15327842853978c54f8f3fc3e0-albert123', 'sao', 'true', 'true', 'true', 'true', 'true', 'Good', 'true', '2018-01-29 06:56:08', '2018-01-29 07:05:59'),
 (20, '9d924eb7adca16a05a514aba10cf0ftransfereerequirements', '7f7140fe589c24544160fb450333e53168dac19f3e95-katenitro', 'sao', 'true', 'true', 'true', 'true', 'true', 'Good to proceed!', 'true', '2018-01-31 00:45:51', '2018-01-31 00:52:58'),
 (21, '13948fd461bf0b1ff9252bac7e34d2transfereerequirements', 'fa046616e7e66368d992d1c212192dc6669b584410c0-johnjames', 'sao', 'true', 'true', 'true', 'true', 'true', 'Good', 'true', '2018-02-01 19:11:58', '2018-02-01 19:53:14'),
-(23, '4c3afc345b600c0f0384e1d7181053transfereerequirements', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'sao', 'true', 'true', 'true', 'true', 'true', 'Please submit good moral', 'true', '2018-02-02 16:34:02', '2018-02-18 07:22:31'),
+(23, '4c3afc345b600c0f0384e1d7181053transfereerequirements', '060ecec0edbe97547a69cce8941682168139287c06bb-ronnelo', 'sao', 'true', 'true', 'true', 'true', 'true', 'Good to proceed', 'true', '2018-02-02 16:34:02', '2018-02-21 04:56:00'),
 (24, 'a9f50b830b054b5794644d10e3002atransfereerequirements', 'a0887fd83e7dcf7fcda003bbb7c7bc08405cda74185a-juandelacruz', 'sao', 'true', 'true', 'true', 'true', 'true', 'Good to go!', 'true', '2018-02-02 16:35:45', '2018-02-05 20:21:53'),
 (26, '96b4d17faf0469e7b27119c0d7be21transfereerequirements', '250ad8edada57a4fc80008db928ae8516910e897e013-madmax', '', 'false', 'false', 'false', 'false', 'false', '', 'false', '2018-02-02 19:32:24', '2018-02-02 19:32:24');
 
@@ -846,6 +889,12 @@ ALTER TABLE `entranceexam`
 -- Indexes for table `evaluation`
 --
 ALTER TABLE `evaluation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -882,6 +931,12 @@ ALTER TABLE `identification`
 -- Indexes for table `interview`
 --
 ALTER TABLE `interview`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -922,7 +977,7 @@ ALTER TABLE `transferee_requirements`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `entranceexam`
 --
@@ -933,6 +988,11 @@ ALTER TABLE `entranceexam`
 --
 ALTER TABLE `evaluation`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `examschedule`
 --
@@ -963,6 +1023,11 @@ ALTER TABLE `identification`
 --
 ALTER TABLE `interview`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `payment`
 --

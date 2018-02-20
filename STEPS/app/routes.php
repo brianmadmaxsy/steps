@@ -151,6 +151,26 @@ Route::get('/guidanceviewexamschedule',array('uses'=>'GuidanceController@guidanc
 //End of Guidance Steps
 
 
+//Publisher STEPS
+Route::get('/viewcalendar',array('uses'=>'StudentController@view_calendar')); //student controller
+Route::get('/viewnews',array('uses' =>'StudentController@view_news')); //student controller
+Route::get('/load_events', array('uses'=>'PublisherController@load_events'));
+Route::post('/add_event',array 	('uses'=>'PublisherController@add_event'));
+Route::post('/edit_event',array 	('uses'=>'PublisherController@edit_event'));
+Route::post('/delete_event',array ('uses'=>'PublisherController@delete_event'));
+Route::get('/publishernews',array('uses'=>'PublisherController@publisher_news','as' => 'publisher_news'));
+Route::get('/publisherprofile',array('uses'=>'PublisherController@publisherprofile'));
+Route::post('/publisher_add_news',array	('uses'=>'PublisherController@publisher_add_news'));
+Route::post('/publisher_edit_news',array	('uses'=>'PublisherController@publisher_edit_news'));
+
+Route::get('/publish/delete/{id}', ['uses'=>'PublisherController@delete_new']);
+Route::get('/get_singe_news', ['uses'=>'PublisherController@get_singe_news']);
+
+Route::get('/publisherhome',array('uses'=>'AdminController@admin_publisher_home')); //Admin controller
+Route::get('/publisherlogout',array('uses'=>'LogoutController@publisher_logout')); //logout controller
+
+
+
 
 
 /*End of Steps Controller Routes*/

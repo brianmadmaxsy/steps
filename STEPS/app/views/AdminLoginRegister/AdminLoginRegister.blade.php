@@ -247,6 +247,7 @@
                                         <option value="College Chairperson">College Chairperson</option>
                                         <option value="Faculty">Faculty</option>
                                         <option value="Working Staff">Working Staff</option>
+                                        <option value="Publisher">Publisher</option>
                                         <option value="Master Administrator">Master Administrator</option>
                                     </select>
                                 </p>

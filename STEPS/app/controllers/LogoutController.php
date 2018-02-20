@@ -59,5 +59,14 @@ class LogoutController extends BaseController{
 		Session::put('adminmessage',$message);
 		return Redirect::intended('/adminlogin');
 	}
+
+	public function publisher_logout()
+	{
+		Session::forget('sess_admin_publisher_arr');
+
+		$message='thank you for using steps';
+		Session::put('adminmessage',$message);
+		return Redirect::intended('/adminlogin');
+	}
 }
 ?>

@@ -201,6 +201,11 @@ class AdminController extends BaseController{
 					Session::put('sess_admin_masteradmin_arr',$admin);
 					return Redirect::intended('/masteradminhome');
 				}
+				elseif($department=="STEPS" AND $position=="Publisher")
+				{
+					Session::put('sess_admin_publisher_arr',$admin);
+					return Redirect::intended('/publisherprofile');
+				}
 				
 
 			}
@@ -278,12 +283,40 @@ class AdminController extends BaseController{
 				Session::put('sess_admin_masteradmin_arr',$admin);
 				return Redirect::intended('/masteradminhome');
 			}
+			elseif($department=="STEPS" AND $position=="Publisher")
+			{
+				Session::put('sess_admin_publisher_arr',$admin);
+				return Redirect::intended('/publisherprofile');
+			}
 			
 		}
 		catch(Exception $e)
 		{
 			echo $e;
 		}
+	}
+
+	public function admin_publisher_home()
+	{
+		Session::forget('sess_publisher_freshmen_userid');
+		Session::forget('sess_publisher_transferee_userid');
+		Session::forget('sess_publisher_get_exam_scheduleid');
+		Session::forget('sess_publisher_get_from_link');
+		$publisher=Session::get('sess_admin_publisher_arr');
+		$publisher = unserialize(serialize($publisher)); //added code to unserialize the __PHP_Incomplete_Class
+
+
+		if($publisher!="")
+		{
+
+			return View::make('PublisherAdminDashboard.PublisherAdminHome')->with('publisher',$publisher)->with('events', EventModel::all());
+		}
+		else
+		{
+			return Redirect::intended('/adminlogin');
+		}
+
+		
 	}
 }
 

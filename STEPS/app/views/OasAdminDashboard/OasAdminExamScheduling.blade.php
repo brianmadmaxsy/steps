@@ -105,7 +105,8 @@
 	                            <li><a href="{{ URL::to('/oaslogout') }}">Logout</a></li>
 	                        </ul>
 	                    </li>
-	                    <li><a href="#"><i class="glyphicon glyphicon-calendar"></i>School Calendar</a></li>
+	                    <li><a href="{{ URL::to('/viewcalendar') }}"><i class="glyphicon glyphicon-calendar"></i>School Calendar</a></li>
+	                    <li><a href="{{ URL::to('/viewnews') }}"><i class="fa fa-newspaper-o"></i>News</a></li>
                     </ul>
              	</div>
 		  	</div>

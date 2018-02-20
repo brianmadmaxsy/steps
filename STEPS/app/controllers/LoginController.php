@@ -135,6 +135,11 @@ class LoginController extends BaseController{
 					Session::put('sess_admin_masteradmin_arr',$admin);
 					return Redirect::intended('/masteradminhome');
 				}
+				elseif($admin['position']=="Publisher")
+				{
+					Session::put('sess_admin_publisher_arr',$admin);
+					return Redirect::intended('/publisherhome');
+				}
 				
 			}
 			else{

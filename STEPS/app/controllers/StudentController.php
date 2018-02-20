@@ -313,6 +313,15 @@ class StudentController extends BaseController{
 			echo $e;
 		}
 	}
+
+	public function view_calendar() {
+		return View::make('TransfereeDashboard.Transferee_Calendar_Dashboard');
+	}
+
+	public function view_news() {
+		$news = NewsModel::all();
+		return View::make('TransfereeDashboard.Transferee_News_Dashboard', compact('news'));
+	}
 }
 
 ?>
