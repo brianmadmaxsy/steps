@@ -244,6 +244,7 @@ class RegistrationController extends BaseController{
 					$studentDB->steps_status="evaluation";
 					$studentDB->step_number=1;
 					$studentDB->picture="";
+					$studentDB->account_status="active";
 				} //end of else if($studenttype=="Transferee")
 				
 				
@@ -306,6 +307,7 @@ class RegistrationController extends BaseController{
 			$admin->education=$education;
 			$admin->pastuniversity=$past_university;
 			$admin->picture="";
+			$admin->account_status="active";
 			$admin->save();
 
 			$message="Thank you for registering to STEPS!";

@@ -48,6 +48,7 @@ School Admin
 			$table->string('education');
 			$table->string('pastuniversity');
 			$table->string('picture');
+			$table->string('account_status');
 			$table->timestamps();
 		});
 	}

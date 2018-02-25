@@ -45,6 +45,7 @@ class MasterAdminController extends BaseController{
 			$admin->education=$education;
 			$admin->pastuniversity=$past_university;
 			$admin->picture="";
+			$admin->account_status="active";
 			$admin->save();
 
 			//$message="Thank you for registering to STEPS!";
@@ -295,6 +296,7 @@ class MasterAdminController extends BaseController{
 					$studentDB->steps_status="evaluation";
 					$studentDB->step_number=1;
 					$studentDB->picture="";
+					$studentDB->account_status="active";
 				} //end of else if($studenttype=="Transferee")
 				
 				
@@ -646,6 +648,8 @@ class MasterAdminController extends BaseController{
 		$masteradmin_username=Input::get('master_admin_username');
 		$studenttype=Input::get('get_studenttype');
 
+		//If you enable this function, the student's data will be removed entirely. 
+		/*
 		DB::table('student')->where('userid', '=', $student_userid)->delete();
 		DB::table('results')->where('userid', '=', $student_userid)->delete();
 		DB::table('payment')->where('userid', '=', $student_userid)->delete();
@@ -665,6 +669,11 @@ class MasterAdminController extends BaseController{
 			DB::table('freshmen')->where('userid', '=', $student_userid)->delete();
 			DB::table('freshmen_requirements')->where('userid', '=', $student_userid)->delete();
 		}
+		*/
+
+		//This function is for soft deletion, meaning the student will be deleted but data stays in database.
+		$student=StudentModel::where('userid',$student_userid);
+		$student->update(['account_status'=>'deactivated']);
 
 		$masteradmin=AdminModel::where('username','=',$masteradmin_username)->first();
 		Session::put('sess_admin_masteradmin_arr',$masteradmin);

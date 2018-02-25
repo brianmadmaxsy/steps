@@ -50,7 +50,7 @@ class LoginController extends BaseController{
 
 		$student = StudentModel::where('username','=',$username)->where('password','=',$password)->first();
 
-		if($student!="" && $student['username']==$username && $student['password']==$password)
+		if($student!="" && $student['username']==$username && $student['password']==$password && $student['account_status']=="active")
 		{
 			Session::put('sess_student_arr',$student);
 			
@@ -105,7 +105,7 @@ class LoginController extends BaseController{
 			$password=md5($pw);
 			$admin = AdminModel::where('username','=',$username)->where('password','=',$password)->first();
 
-			if($admin!="" && $admin['username']==$username && $admin['password']==$password)//if sessionfile is not empty
+			if($admin!="" && $admin['username']==$username && $admin['password']==$password && $admin['account_status']=="active")
 			{
 				//session, get data using the inputed username and password
 				$admin = AdminModel::where('username','=',$username)->first();

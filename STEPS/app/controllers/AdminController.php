@@ -15,6 +15,7 @@ class AdminController extends BaseController{
             ->leftJoin('evaluation', 'student.userid', '=', 'evaluation.userid')
             ->where('student.department','=',$college['department'])
             ->where('student.studenttype','=','Transferee')
+            ->where('student.account_status','=','active')
             ->get();
 
             $freshmenstudents = DB::table('student')
@@ -22,6 +23,7 @@ class AdminController extends BaseController{
             ->leftJoin('evaluation', 'student.userid', '=', 'evaluation.userid')
             ->where('student.department','=',$college['department'])
             ->where('student.studenttype','=','Freshmen')
+            ->where('student.account_status','=','active')
             ->get();
             
 			return View::make('CollegeAdminDashboard.CollegeAdminHome')->with('college',$college)->with('transfereestudents',$transfereestudents)->with('freshmenstudents',$freshmenstudents);
@@ -42,6 +44,7 @@ class AdminController extends BaseController{
 			->leftJoin('transferee_requirements','student.userid','=','transferee_requirements.userid')
 			->leftJoin('interview','student.userid','=','interview.userid')
 			->where('student.studenttype','=','Transferee')
+			->where('student.account_status','=','active')
 			->get();
 
 			$freshmenstudents = DB::table('student')
@@ -49,6 +52,7 @@ class AdminController extends BaseController{
 			->leftJoin('transferee_requirements','student.userid','=','transferee_requirements.userid')
 			->leftJoin('interview','student.userid','=','interview.userid')
 			->where('student.studenttype','=','Freshmen')
+			->where('student.account_status','=','active')
 			->get();
 
 			return View::make('SaoAdminDashboard.SaoAdminHome')->with('sao',$sao)->with('transfereestudents',$transfereestudents)->with('freshmenstudents',$freshmenstudents);
@@ -72,11 +76,13 @@ class AdminController extends BaseController{
 			->leftJoin('identification','student.userid','=','identification.userid')
 			->leftJoin('examschedule','student.userid','=','examschedule.userid')
 			->where('student.studenttype','=','Transferee')
+			->where('student.account_status','=','active')
 			->get();
 
 			$freshmenstudents = DB::table('student')
 			->leftJoin('freshmen', 'student.userid', '=', 'freshmen.userid')
 			->where('student.studenttype','=','Freshmen')
+			->where('student.account_status','=','active')
 			->get();
 
 
@@ -103,6 +109,7 @@ class AdminController extends BaseController{
 			->leftJoin('entranceexam','student.userid','=','entranceexam.userid')
 			->leftJoin('results','student.userid','=','results.userid')
 			->where('student.studenttype','=','Transferee')
+			->where('student.account_status','=','active')
 			->get();
 
 			$freshmenstudents = DB::table('student')
@@ -111,6 +118,7 @@ class AdminController extends BaseController{
 			->leftJoin('entranceexam','student.userid','=','entranceexam.userid')
 			->leftJoin('results','student.userid','=','results.userid')
 			->where('student.studenttype','=','Freshmen')
+			->where('student.account_status','=','active')
 			->get();
 
 			$examschedulelist = ExamScheduleListModel::all();
@@ -132,9 +140,13 @@ class AdminController extends BaseController{
 
 		if($master!="")
 		{
-			$students = DB::table('student')->get();
+			$students = DB::table('student')
+			->where('account_status','=','active')
+			->get();
+
 			$admins = DB::table('admin')
 			->where('username','!=',$master['username'])
+			->where('account_status','=','active')
 			->get();
 
 			return View::make('MasterAdminDashboard.MasterAdminHome')->with('masteradmin',$master)->with('admins',$admins)->with('students',$students);
