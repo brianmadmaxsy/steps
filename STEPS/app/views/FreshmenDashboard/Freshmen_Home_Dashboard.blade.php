@@ -138,300 +138,14 @@
 			  	<div class="content-box-large" >
 				  	<div id="tabs">
 						<ul>
-						    <li><a href="#tabs-1">Account</a></li>
+						    <li><a href="#tabs-1">STEPS</a></li>
+						    <li><a href="#tabs-2">Profile</a></li>
 						    
 						</ul>
 						
 						<div id="tabs-1">
-							<div class="row">
-						  		<div class="col-md-1">
-						  			<!--no content just to provide space -->
-						  		</div>
-							  	<div class="col-md-10">
-								    <div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
-							            <div class="panel-heading" style="background-color:#fefefe; border:none;">
-							              	<h2 class="panel-title" style="color:black;"><b>{{ $student['firstname']." ".$student['lastname'] }} </b></h2>
-							              	<div class="panel-options">
-							              		<a href="#" data-rel="reload" style="color:black" title="View Profile"><i class="glyphicon glyphicon-user"></i></a>
-												<a href="#" data-rel="reload" style="color:black" title="Edit Profile" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-cog"></i></a>
-											</div>
-							            </div>
-							            <div class="panel-body">
-										    <div class="row">
-										    	<a href="#" data-rel="reload" style="color:black" title="My Avatar" data-toggle="modal" data-target="#myModalForPicture">
-										    	<div class="col-md-4 col-lg-4 " align="center" >
-										    	 	<?php
-									    			if($student['picture']=="")
-									    			{
-									    			?>
-									    			<img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-circle img-responsive" > 
-									    			<?php
-									    			}
-									    			else
-									    			{
-									    			?>
-									    			<img alt="User Pic" src="<?php echo "profilepics/".$student['picture']; ?>" class="img-circle img-responsive" > 
-									    			<?php
-									    			}
-									    			?>
-										    	</div>
-										        </a>
-
-										        <div class=" col-md-8 col-lg-8 "> 
-										            <table class="table table-user-information">
-										                <tbody>
-										                	<tr>
-										                        <td>Student Type</td>
-										                        <td>{{ $student['studenttype'] }}</td>
-										                    </tr>
-										                    <tr>
-										                        <td>Student ID</td>
-										                        <td>
-										                        <?php 
-										                        	if($student['studentid']=="")
-										                        	{
-										                        		echo "N/A";
-										                        	}
-										                        	else
-										                        	{
-										                        		echo $student['studentid'];
-										                        	}
-										                        ?>
-										                        </td>
-										                    </tr>
-										                    <tr>
-										                        <td>Date of Birth</td>
-										                        <td>{{ $student['birthdate'] }}</td>
-										                    </tr>
-										                    <tr>
-										                        <td>Gender</td>
-										                        <td>{{ $student['gender'] }}</td>
-										                    </tr>
-										                    <tr>
-										                        <td>Civil Status</td>
-										                        <td>{{ $student['civilstatus'] }}</td>
-										                    </tr>
-										                    <tr>
-										                        <td>Contact Number</td>
-										                        <td>{{ $student['contact'] }}</td>
-										                    </tr>
-										                    <tr>
-										                        <td>Home Address</td>
-										                        <td>{{ $student['homeaddress'] }}</td>
-										                    </tr>
-										                    <tr>
-										                        <td>Provincial Address</td>
-										                        <td>{{ $student['provincialaddress'] }}</td>
-										                    </tr>
-										                    <tr>
-										                        <td>Course to Enroll</td>
-										                        <td>{{ $freshmen['tocourse'] }}</td>
-										                    </tr>
-										                    <tr>
-										                        <td>Secondary School</td>
-										                        <td>{{ $freshmen['highschool'] }}</td>
-										                    </tr>
-										                    <tr>
-										                    	<td>Status</td>
-										                    	<td class="alert alert-info">{{ ucfirst($student['steps_status']) }}</td>
-										                    </tr>
-										                    
-										                     
-										                </tbody>
-										            </table>
-										            
-										        </div><!-- col-md-8 col-lg-8-->
-										    </div><!--class row-->
-										    
-									    </div><!--panel-body-->
-									    
-								    </div><!--panel panel-info-->
-							    </div><!--col-md-10 -->
-								<div class="col-md-1">
-							  		<!--no content just to provide space -->
-							  	</div>
-							</div><!--row-->
-<div class="modal fade" id="myModalForPicture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  	<div class="modal-dialog" role="document">
-    	<div class="modal-content">
-      		<div class="modal-header">
-        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          			<span aria-hidden="true">&times;</span>
-        		</button>
-        		<h3 class="modal-title" id="myModalLabel">My Avatar</h3>
-      		</div>
-		    <div class="modal-body">
-		    	<div>
-		    		<?php
-	    			if($student['picture']=="")
-	    			{
-	    			?>
-	    			<img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-rounded img-responsive" style="margin:0px auto 0px auto;"> 
-	    			<?php
-	    			}
-	    			else
-	    			{
-	    			?>
-	    			<img alt="User Pic" src="<?php echo "profilepics/".$student['picture']; ?>" class="img-rounded img-responsive" style="margin:0px auto 0px auto;"> 
-	    			<?php
-	    			}
-	    			?>
-		 		</div>
-		 		<div style="margin-top:10px;">
-		 			{{ Form::open(array('url' => '/editfreshmenavatar', 'enctype' => 'multipart/form-data')) }}
-		 				<table>
-		 					<tr>
-		 						<td><label>Change Avatar</label></td>
-		 						<td>
-		 							<input type="file" name="file" required="">
-		 							<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
-		 						</td>
-		 						<td><input type="submit" name="upload" value="Upload" class="btn btn-primary"></td>
-		 					</tr>
-		 				</table>
-		 			{{ Form::close() }}
-				</div>
-		    </div>
-		    <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		    </div>
-		</div>
-	</div>
-</div>							
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  	<div class="modal-dialog" role="document">
-    	<div class="modal-content">
-      		<div class="modal-header">
-        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          			<span aria-hidden="true">&times;</span>
-        		</button>
-        		<h3 class="modal-title" id="myModalLabel">Edit Profile</h3>
-      		</div>
-      		<form method="post" action="/editfreshmenprofile">
-		    <div class="modal-body">
-		      	
-					<div class="form-group">
-					    <label for="exampleInputEmail1">First Name</label>
-					    <input type="text" name="editfirstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John" required="" value="{{ $student['firstname'] }}">
-					</div>
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Middle Name</label>
-					    <input type="text" name="editmiddlename" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Moe" required="" value="{{ $student['middlename'] }}">
-					</div>
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Last Name</label>
-					    <input type="text" name="editlastname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Doe" required="" value="{{ $student['lastname'] }}">
-					</div>
-					<div class="form-group">
-					    <label for="exampleInputEmail1">User Name</label>
-					    <input type="text" name="editusername" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johndoe" required="" value="{{ $student['username'] }}">
-					</div>
-
-					<div class="form-group">
-					    <label for="exampleInputPassword1">Password</label>
-					    <input type="password" name="editpassword" class="form-control" id="password1" placeholder="Password1234*">
-					</div>
-					<div class="form-group">
-					    <label for="exampleInputPassword1">Confirm Password</label>
-					    <input type="password" name="editcpassword" class="form-control" id="password2" placeholder="Password1234*">
-					</div>
-
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Email Address</label>
-					    <input type="text" name="editemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johnmoedoe@mail.com" required="" value="{{ $student['email'] }}">
-					    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-					</div>
-					
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Birth Date</label>
-					    <input type="text" name="editbirthdate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Los Angeles California, USA" required="" value="{{ $student['birthdate'] }}">
-					    
-					</div>
-
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Birth Place</label>
-					    <input type="text" name="editbirthplace" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Los Angeles California, USA" required="" value="{{ $student['birthplace'] }}">
-					    
-					</div>
-					<div class="form-group">
-						<table>
-							<tr>
-								<td>
-									{{ Form::label('gender-label', 'Gender', array('class' => '')) }}
-			                        <select name="editgender" class="birthfield" required="">
-			                        	<option value="Male"  <?php if($student['gender']=="Male"){ echo 'selected=""'; } ?>>Male</option>
-										<option value="Female" <?php if($student['gender']=="Female"){ echo 'selected=""'; } ?>>Female</option>
-									</select>
-								</td>
-								<td style="width:100px;">
-									&nbsp;
-								</td>
-								<td>
-									<label for="exampleInputEmail1">Civil Status</label>
-									<select name="editcivilstatus" class="birthfield" required="">
-			                        	<option value="Single" <?php if($student['civilstatus']=="Single"){ echo 'selected=""'; } ?>>Single</option>
-										<option value="Married" <?php if($student['civilstatus']=="Married"){ echo 'selected=""'; } ?>>Married</option>
-										<option value="Separated" <?php if($student['civilstatus']=="Separated"){ echo 'selected=""'; } ?>>Separated</option>
-										<option value="Widowed" <?php if($student['civilstatus']=="Widowed"){ echo 'selected=""'; } ?>>Widowed</option>
-										<option value="Divorced" <?php if($student['civilstatus']=="Divorced"){ echo 'selected=""'; } ?>>Divorced</option>
-									</select>
-								</td>
-							</tr>
-						</table>
-					</div>
-					
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Contact</label>
-					    <input type="text" name="editcontact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="101223487553" required="" value="{{ $student['contact'] }}">
-					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
-					</div>
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Home Address</label>
-					    <input type="text" name="edithomeaddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $student['homeaddress'] }}">
-					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
-					</div>
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Provincial Address</label>
-					    <input type="text" name="editprovincialaddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $student['provincialaddress'] }}">
-					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
-					</div>
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Term Entered</label>
-					    <input type="text" name="edityear-entered" class="semester-class" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="School Year (ex. 2017)" style="border-radius:2px;" required="" value="{{ $student['schoolyear'] }}">
-					    <select name="editsemester" class="semester-class" required="">
-			                <option value="1st Semester" <?php if($student['semester']=="1st Semester"){ echo 'selected=""'; } ?>>1st Semester</option>
-							<option value="2nd Semester" <?php if($student['semester']=="2nd Semester"){ echo 'selected=""'; } ?>>2nd Semester</option>
-							<option value="Summer" <?php if($student['semester']=="Summer"){ echo 'selected=""'; } ?>>Summer</option>
 							
-						</select>
-					</div>
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Course To Enroll</label>
-					    <select name="edittocourse" class="semester-class" style="width:100%;" required="">
-					    	<option value="" selected="">Choose a course</option>
-			                <option value="Bachelors of Science in Computer Science" <?php if($freshmen['tocourse']=="Bachelors of Science in Computer Science"){ echo 'selected=""'; } ?>>Bachelors of Science in Computer Science</option>
-							<option value="Bachelors of Science in Information Technology" <?php if($freshmen['tocourse']=="Bachelors of Science in Information Technology"){ echo 'selected=""'; } ?>>Bachelors of Science in Information Technology</option>
 							
-						</select>
-					</div>
-					
-					<div class="form-group">
-					    <label for="exampleInputEmail1">Secondary School</label>
-					    <input type="text" name="edithighschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="" value="{{ $freshmen['highschool'] }}">
-					    <small id="emailHelp" class="form-text text-muted">Kindly state the name of your previous school</small>
-					</div>
-				
-		    </div>
-		    <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        <input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
-		        <input type="submit" class="btn btn-primary" value="Save" name="editstudentprofilebutton">
-		    </div>
-		    </form>
-    	</div>
-  	</div>
-</div>
-<!--End of Modal for registration -->							
 							<div class="row" style="margin-top:10px;"> <!--row for the morris chart -->
 								
 								<div class="col-md-1"></div>
@@ -1016,6 +730,299 @@
 							</div><!--end of row for morris chart -->
 
 						</div><!--End of tabs-1 -->
+						
+						<div id="tabs-2">
+							<div class="row">
+						  		<div class="col-md-1">
+						  			<!--no content just to provide space -->
+						  		</div>
+							  	<div class="col-md-10">
+								    <div class="panel panel-info" style=" border:1px solid #eee; margin:10px 0px 0px 0px; border-radius:10px;">
+							            <div class="panel-heading" style="background-color:#fefefe; border:none;">
+							              	<h2 class="panel-title" style="color:black;"><b>{{ $student['firstname']." ".$student['lastname'] }} </b></h2>
+							              	<div class="panel-options">
+							              		<a href="#" data-rel="reload" style="color:black" title="View Profile"><i class="glyphicon glyphicon-user"></i></a>
+												<a href="#" data-rel="reload" style="color:black" title="Edit Profile" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-cog"></i></a>
+											</div>
+							            </div>
+							            <div class="panel-body">
+										    <div class="row">
+										    	<a href="#" data-rel="reload" style="color:black" title="My Avatar" data-toggle="modal" data-target="#myModalForPicture">
+										    	<div class="col-md-4 col-lg-4 " align="center" >
+										    	 	<?php
+									    			if($student['picture']=="")
+									    			{
+									    			?>
+									    			<img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-circle img-responsive" > 
+									    			<?php
+									    			}
+									    			else
+									    			{
+									    			?>
+									    			<img alt="User Pic" src="<?php echo "profilepics/".$student['picture']; ?>" class="img-circle img-responsive" > 
+									    			<?php
+									    			}
+									    			?>
+										    	</div>
+										        </a>
+
+										        <div class=" col-md-8 col-lg-8 "> 
+										            <table class="table table-user-information">
+										                <tbody>
+										                	<tr>
+										                        <td>Student Type</td>
+										                        <td>{{ $student['studenttype'] }}</td>
+										                    </tr>
+										                    <tr>
+										                        <td>Student ID</td>
+										                        <td>
+										                        <?php 
+										                        	if($student['studentid']=="")
+										                        	{
+										                        		echo "N/A";
+										                        	}
+										                        	else
+										                        	{
+										                        		echo $student['studentid'];
+										                        	}
+										                        ?>
+										                        </td>
+										                    </tr>
+										                    <tr>
+										                        <td>Date of Birth</td>
+										                        <td>{{ $student['birthdate'] }}</td>
+										                    </tr>
+										                    <tr>
+										                        <td>Gender</td>
+										                        <td>{{ $student['gender'] }}</td>
+										                    </tr>
+										                    <tr>
+										                        <td>Civil Status</td>
+										                        <td>{{ $student['civilstatus'] }}</td>
+										                    </tr>
+										                    <tr>
+										                        <td>Contact Number</td>
+										                        <td>{{ $student['contact'] }}</td>
+										                    </tr>
+										                    <tr>
+										                        <td>Home Address</td>
+										                        <td>{{ $student['homeaddress'] }}</td>
+										                    </tr>
+										                    <tr>
+										                        <td>Provincial Address</td>
+										                        <td>{{ $student['provincialaddress'] }}</td>
+										                    </tr>
+										                    <tr>
+										                        <td>Course to Enroll</td>
+										                        <td>{{ $freshmen['tocourse'] }}</td>
+										                    </tr>
+										                    <tr>
+										                        <td>Secondary School</td>
+										                        <td>{{ $freshmen['highschool'] }}</td>
+										                    </tr>
+										                    <tr>
+										                    	<td>Status</td>
+										                    	<td class="alert alert-info">{{ ucfirst($student['steps_status']) }}</td>
+										                    </tr>
+										                    
+										                     
+										                </tbody>
+										            </table>
+										            
+										        </div><!-- col-md-8 col-lg-8-->
+										    </div><!--class row-->
+										    
+									    </div><!--panel-body-->
+									    
+								    </div><!--panel panel-info-->
+							    </div><!--col-md-10 -->
+								<div class="col-md-1">
+							  		<!--no content just to provide space -->
+							  	</div>
+							</div><!--row-->
+						</div><!--end of tabs-2 -->
+
+<div class="modal fade" id="myModalForPicture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h3 class="modal-title" id="myModalLabel">My Avatar</h3>
+      		</div>
+		    <div class="modal-body">
+		    	<div>
+		    		<?php
+	    			if($student['picture']=="")
+	    			{
+	    			?>
+	    			<img alt="User Pic" src="dashboard/images/userpc.jpg" class="img-rounded img-responsive" style="margin:0px auto 0px auto;"> 
+	    			<?php
+	    			}
+	    			else
+	    			{
+	    			?>
+	    			<img alt="User Pic" src="<?php echo "profilepics/".$student['picture']; ?>" class="img-rounded img-responsive" style="margin:0px auto 0px auto;"> 
+	    			<?php
+	    			}
+	    			?>
+		 		</div>
+		 		<div style="margin-top:10px;">
+		 			{{ Form::open(array('url' => '/editfreshmenavatar', 'enctype' => 'multipart/form-data')) }}
+		 				<table>
+		 					<tr>
+		 						<td><label>Change Avatar</label></td>
+		 						<td>
+		 							<input type="file" name="file" required="">
+		 							<input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
+		 						</td>
+		 						<td><input type="submit" name="upload" value="Upload" class="btn btn-primary"></td>
+		 					</tr>
+		 				</table>
+		 			{{ Form::close() }}
+				</div>
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		    </div>
+		</div>
+	</div>
+</div>							
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h3 class="modal-title" id="myModalLabel">Edit Profile</h3>
+      		</div>
+      		<form method="post" action="/editfreshmenprofile">
+		    <div class="modal-body">
+		      	
+					<div class="form-group">
+					    <label for="exampleInputEmail1">First Name</label>
+					    <input type="text" name="editfirstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John" required="" value="{{ $student['firstname'] }}">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Middle Name</label>
+					    <input type="text" name="editmiddlename" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Moe" required="" value="{{ $student['middlename'] }}">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Last Name</label>
+					    <input type="text" name="editlastname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Doe" required="" value="{{ $student['lastname'] }}">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">User Name</label>
+					    <input type="text" name="editusername" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johndoe" required="" value="{{ $student['username'] }}">
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputPassword1">Password</label>
+					    <input type="password" name="editpassword" class="form-control" id="password1" placeholder="Password1234*">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputPassword1">Confirm Password</label>
+					    <input type="password" name="editcpassword" class="form-control" id="password2" placeholder="Password1234*">
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Email Address</label>
+					    <input type="text" name="editemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="johnmoedoe@mail.com" required="" value="{{ $student['email'] }}">
+					    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					</div>
+					
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Birth Date</label>
+					    <input type="text" name="editbirthdate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Los Angeles California, USA" required="" value="{{ $student['birthdate'] }}">
+					    
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Birth Place</label>
+					    <input type="text" name="editbirthplace" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Los Angeles California, USA" required="" value="{{ $student['birthplace'] }}">
+					    
+					</div>
+					<div class="form-group">
+						<table>
+							<tr>
+								<td>
+									{{ Form::label('gender-label', 'Gender', array('class' => '')) }}
+			                        <select name="editgender" class="birthfield" required="">
+			                        	<option value="Male"  <?php if($student['gender']=="Male"){ echo 'selected=""'; } ?>>Male</option>
+										<option value="Female" <?php if($student['gender']=="Female"){ echo 'selected=""'; } ?>>Female</option>
+									</select>
+								</td>
+								<td style="width:100px;">
+									&nbsp;
+								</td>
+								<td>
+									<label for="exampleInputEmail1">Civil Status</label>
+									<select name="editcivilstatus" class="birthfield" required="">
+			                        	<option value="Single" <?php if($student['civilstatus']=="Single"){ echo 'selected=""'; } ?>>Single</option>
+										<option value="Married" <?php if($student['civilstatus']=="Married"){ echo 'selected=""'; } ?>>Married</option>
+										<option value="Separated" <?php if($student['civilstatus']=="Separated"){ echo 'selected=""'; } ?>>Separated</option>
+										<option value="Widowed" <?php if($student['civilstatus']=="Widowed"){ echo 'selected=""'; } ?>>Widowed</option>
+										<option value="Divorced" <?php if($student['civilstatus']=="Divorced"){ echo 'selected=""'; } ?>>Divorced</option>
+									</select>
+								</td>
+							</tr>
+						</table>
+					</div>
+					
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Contact</label>
+					    <input type="text" name="editcontact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="101223487553" required="" value="{{ $student['contact'] }}">
+					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Home Address</label>
+					    <input type="text" name="edithomeaddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $student['homeaddress'] }}">
+					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Provincial Address</label>
+					    <input type="text" name="editprovincialaddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Orange County Los Angeles California USA" required="" value="{{ $student['provincialaddress'] }}">
+					    <small id="emailHelp" class="form-text text-muted">We'll never share your contact number with anyone else.</small>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Term Entered</label>
+					    <input type="text" name="edityear-entered" class="semester-class" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="School Year (ex. 2017)" style="border-radius:2px;" required="" value="{{ $student['schoolyear'] }}">
+					    <select name="editsemester" class="semester-class" required="">
+			                <option value="1st Semester" <?php if($student['semester']=="1st Semester"){ echo 'selected=""'; } ?>>1st Semester</option>
+							<option value="2nd Semester" <?php if($student['semester']=="2nd Semester"){ echo 'selected=""'; } ?>>2nd Semester</option>
+							<option value="Summer" <?php if($student['semester']=="Summer"){ echo 'selected=""'; } ?>>Summer</option>
+							
+						</select>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Course To Enroll</label>
+					    <select name="edittocourse" class="semester-class" style="width:100%;" required="">
+					    	<option value="" selected="">Choose a course</option>
+			                <option value="Bachelors of Science in Computer Science" <?php if($freshmen['tocourse']=="Bachelors of Science in Computer Science"){ echo 'selected=""'; } ?>>Bachelors of Science in Computer Science</option>
+							<option value="Bachelors of Science in Information Technology" <?php if($freshmen['tocourse']=="Bachelors of Science in Information Technology"){ echo 'selected=""'; } ?>>Bachelors of Science in Information Technology</option>
+							
+						</select>
+					</div>
+					
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Secondary School</label>
+					    <input type="text" name="edithighschool" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="University of California Los Angeles" required="" value="{{ $freshmen['highschool'] }}">
+					    <small id="emailHelp" class="form-text text-muted">Kindly state the name of your previous school</small>
+					</div>
+				
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <input type="hidden" name="get_userid" value="{{ $student['userid'] }}">
+		        <input type="submit" class="btn btn-primary" value="Save" name="editstudentprofilebutton">
+		    </div>
+		    </form>
+    	</div>
+  	</div>
+</div>
+<!--End of Modal for edit freshmen profile -->
 
 						
 					</div><!--End of tabs -->
