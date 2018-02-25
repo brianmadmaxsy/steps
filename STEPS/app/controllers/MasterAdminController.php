@@ -634,7 +634,14 @@ class MasterAdminController extends BaseController{
 		$admin_userid=Input::get('get_userid');
 		$masteradmin_username=Input::get('master_admin_username');
 
+		//If you enable this function, the administrator's data will be removed entirely.
+		/*
 		DB::table('admin')->where('userid', '=', $admin_userid)->delete();
+		*/
+
+		//This function is for soft deletion, meaning the admin will be deleted but data stays in database.
+		$admin=AdminModel::where('userid',$admin_userid);
+		$admin->update(['account_status'=>'deactivated']);
 
 		$masteradmin=AdminModel::where('username','=',$masteradmin_username)->first();
 		Session::put('sess_admin_masteradmin_arr',$masteradmin);
