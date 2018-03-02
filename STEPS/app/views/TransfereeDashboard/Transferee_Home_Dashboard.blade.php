@@ -193,7 +193,7 @@
 																	
 																	<div class="panel-options">
 																		
-																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																		<a href="#" data-rel="reload" style="color:blue; text-decoration: underline;" title="Edit Profile" data-toggle="modal" data-target="#myModalForCollegeLocation">Show Map</a>
 																	</div>
 													  			</div>
 													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
@@ -258,7 +258,7 @@
 																	
 																	<div class="panel-options">
 																		
-																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																		<a href="#" data-rel="reload" style="color:blue; text-decoration: underline;" title="Edit Profile" data-toggle="modal" data-target="#myModalForSAOLocation">Show Map</a>
 																	</div>
 													  			</div>
 													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
@@ -439,7 +439,7 @@
 																	
 																	<div class="panel-options">
 																		
-																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																		<a href="#" data-rel="reload" style="color:blue; text-decoration: underline;" title="Edit Profile" data-toggle="modal" data-target="#myModalForAccountingLocation">Show Map</a>
 																	</div>
 													  			</div>
 													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
@@ -510,7 +510,7 @@
 																	
 																	<div class="panel-options">
 																		
-																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																		<a href="#" data-rel="reload" style="color:blue; text-decoration: underline;" title="Edit Profile" data-toggle="modal" data-target="#myModalForOASLocation">Show Map</a>
 																	</div>
 													  			</div>
 													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
@@ -572,7 +572,7 @@
 																	
 																	<div class="panel-options">
 																		
-																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																		<a href="#" data-rel="reload" style="color:blue; text-decoration: underline;" title="Edit Profile" data-toggle="modal" data-target="#myModalForGuidanceLocation">Show Map</a>
 																	</div>
 													  			</div>
 													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
@@ -663,7 +663,7 @@
 																	
 																	<div class="panel-options">
 																		
-																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																		<a href="#" data-rel="reload" style="color:blue; text-decoration: underline;" title="Edit Profile" data-toggle="modal" data-target="#myModalForGuidanceLocation">Show Map</a>
 																	</div>
 													  			</div>
 													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
@@ -724,7 +724,7 @@
 																	
 																	<div class="panel-options">
 																		
-																		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-question-sign" title="Where is it located?"></i></a>
+																		<a href="#" data-rel="reload" style="color:blue; text-decoration: underline;" title="Edit Profile" data-toggle="modal" data-target="#myModalForSAOLocation">Show Map</a>
 																	</div>
 													  			</div>
 													  			<div class="content-box-large box-with-header" style="padding-bottom: 20px;">
@@ -932,6 +932,8 @@
 							</div><!--row-->
 						</div><!--end of tabs-2 -->
 
+
+
 <div class="modal fade" id="myModalForPicture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   	<div class="modal-dialog" role="document">
     	<div class="modal-content">
@@ -1128,6 +1130,109 @@
 		  </div>
 		</div>
     </div>
+
+<!--Show map modals-->
+<div class="modal fade" id="myModalForCollegeLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h3 class="modal-title" id="myModalLabel">{{ $student['department'] }}</h3>
+      		</div>
+		    <div class="modal-body">
+		    	<?php
+		    	if($student['department']=="College Of Computer Studies")
+		    	?>
+		    		<img src="CIT-University Map/JPEG/S&T Bldg - Ground Floor.jpg" class="img-responsive">
+		    	<?php
+
+		    	?>
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="myModalForSAOLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h3 class="modal-title" id="myModalLabel">Student Affairs Office (SAO)</h3>
+      		</div>
+		    <div class="modal-body">
+		    	<img src="CIT-University Map/JPEG/Main Building-2nd Floor.jpg" class="img-responsive">
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="myModalForAccountingLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h3 class="modal-title" id="myModalLabel">Accounting Office</h3>
+      		</div>
+		    <div class="modal-body">
+		    	<img src="CIT-University Map/JPEG/Main Building-Ground Floor.jpg" class="img-responsive">
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="myModalForOASLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h3 class="modal-title" id="myModalLabel">Office Of Academic Scholarship (OAS)</h3>
+      		</div>
+		    <div class="modal-body">
+		    	<img src="CIT-University Map/JPEG/Main Building-Ground Floor.jpg" class="img-responsive">
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="myModalForGuidanceLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<h3 class="modal-title" id="myModalLabel">Guidance Office</h3>
+      		</div>
+		    <div class="modal-body">
+		    	<img src="CIT-University Map/JPEG/Main Building-Ground Floor.jpg" class="img-responsive">
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		    </div>
+		</div>
+	</div>
+</div>
+<!--End of Show map Modals -->
 
 <script type="text/javascript">
 function aa(){
