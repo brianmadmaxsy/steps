@@ -535,28 +535,74 @@ Session::forget('message');
 
 <!-- banner -->
 	<div class="example-animation">
-		<div data-lazy-background="website/images/banner.jpg" class="banner">
+		<div data-lazy-background="website/images/banner new/banner.jpg" class="banner">
 			<div class="container">
 				<div class="banner-info">
+					<!--
 					<h3>Student and Teachers friendly</h3>
 					<p>CIT University maintained a student and teachers friendly environment for a better facility to learn</p>
+					-->
 				</div>
 			</div>
 		</div>
-		<div data-lazy-background="website/images/banner1.jpg" class="banner2">
+		<div data-lazy-background="website/images/banner new/banner2.jpg" class="banner2">
 			<div class="container">
 				<div class="banner-info">
+					<!--
 					<h3>Center of Excellence!</h3>
 					<p>In 2007, CIT was awarded by the Commission on Higher Education as Center of Excellence in Information Technology Education, one out of nine schools in the Philippines.</p>
 					<p>In 2006, Government Recognition for the Master in Computer Science was granted by CHED.</p>
+					-->
 				</div>
 			</div>
 		</div>
-		<div data-lazy-background="website/images/banner3.jpg" class="banner3">
+		<div data-lazy-background="website/images/banner new/banner3.jpg" class="banner3">
 			<div class="container">
 				<div class="banner-info">
+					<!--
 					<h3>Competition Ready!</h3>
 					<p>CIT University is ready to win any competitions out there! hahaha</p>
+					-->
+				</div>
+			</div>
+		</div>
+		<div data-lazy-background="website/images/banner new/banner4.jpg" class="banner4">
+			<div class="container">
+				<div class="banner-info">
+					<!--
+					<h3>Competition Ready!</h3>
+					<p>CIT University is ready to win any competitions out there! hahaha</p>
+					-->
+				</div>
+			</div>
+		</div>
+		<div data-lazy-background="website/images/banner new/banner5.jpg" class="banner5">
+			<div class="container">
+				<div class="banner-info">
+					<!--
+					<h3>Competition Ready!</h3>
+					<p>CIT University is ready to win any competitions out there! hahaha</p>
+					-->
+				</div>
+			</div>
+		</div>
+		<div data-lazy-background="website/images/banner new/banner6.jpg" class="banner6">
+			<div class="container">
+				<div class="banner-info">
+					<!--
+					<h3>Competition Ready!</h3>
+					<p>CIT University is ready to win any competitions out there! hahaha</p>
+					-->
+				</div>
+			</div>
+		</div>
+		<div data-lazy-background="website/images/banner new/banner7.jpg" class="banner7">
+			<div class="container">
+				<div class="banner-info">
+					<!--
+					<h3>Competition Ready!</h3>
+					<p>CIT University is ready to win any competitions out there! hahaha</p>
+					-->
 				</div>
 			</div>
 		</div>
@@ -575,32 +621,32 @@ Session::forget('message');
 				<div class="container">
 					<div class="welcome-head">
 						<h2 class="tittle">Student, Transferee Enrollment Processing System</h2>
-							<p>Fast, convenient and accessible transferee processing system. <br/>Started with a STEP, ended with success!</p>
+							<p>Fast, convenient and accessible for new students<br/>Started with a STEP, ended with success!</p>
 					</div>
 					<div class="welcome-grids">
 						<div class="col-md-3 welcome-grid test1">
-						<img src="website/images/w.jpg" class="img-responsive" alt="/">
+						<img src="website/images/vision.jpg" class="img-responsive" alt="/">
 							<div class="textbox">
 								<h4>Vision</h4>
 								<p>A top academic institution continuously developing Values-driven, highly Competent, and Innovative Technologian.</p>
 							</div>
 						</div>
 						<div class="col-md-3 welcome-grid test1" >
-						<img src="website/images/classroom.jpg" class="img-responsive" alt="/">
+						<img src="website/images/mission.jpg" class="img-responsive" alt="/">
 							<div class="textbox">
 								<h4 style="margin-top:-50px;">Mission</h4>
 								<p>To ensure quality instruction, research, and community extension for the total development of Technologians commited in practicing professionalism and in meeting the demands of local, national and global communities.</p>
 							</div>
 						</div>
 						<div class="col-md-3 welcome-grid test1">
-						<img src="website/images/citu-image.jpg" class="img-responsive" alt="/">
+						<img src="website/images/competency.jpg" class="img-responsive" alt="/">
 							<div class="textbox">
 								<h4 style="margin-top:-70px;">State of Core Competency</h4>
 								<p>Science & Technology is a way of academic life among administrators, faculty, and students. In the design, administration, and implementation of curricular programs, technology is embedded, articulated and actuated.</p>
 							</div>
 						</div>
 						<div class="col-md-3 welcome-grid test1">
-						<img src="website/images/citu-image.jpg" class="img-responsive" alt="/">
+						<img src="website/images/corevalues.jpg" class="img-responsive" alt="/">
 							<div class="textbox">
 								<h4>Core Values</h4>
 								<p>SPIRITT (Spirit of Altruism, Passion for Excellence, Integrity, Responsibility, Innovativeness, Teamwork, Tenacity.</p>
@@ -630,7 +676,7 @@ Session::forget('message');
 									</div>
 								<div class="right-grid">
 									<h4>Student Monitoring</h4>
-									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
+									<p>This is system benefits both students and offices by providing a feature for office to monitor the status of student during their application and enrolment.</p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -641,8 +687,8 @@ Session::forget('message');
 										<i class="glyphicon glyphicon-list" aria-hidden="true"></i>
 									</div>
 								<div class="right-grid">
-									<h4>Enrollment Guidance</h4>
-									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
+									<h4>Enrolment Guidance</h4>
+									<p>STEPS will serve as a guide for new students during enrolment because Enrolment guidance equals brighter future and will lead them to excellence in the future!</p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -654,7 +700,7 @@ Session::forget('message');
 									</div>
 								<div class="right-grid">
 									<h4>Web Portal</h4>
-									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
+									<p>With the use of modern technology, STEPS provides a web portal for new students to use during their enrolment/application.</p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -669,7 +715,7 @@ Session::forget('message');
 									</div>
 								<div class="right-grid">
 									<h4>News and WhatsUp</h4>
-									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
+									<p>Good news! This application is not only used during enrolment but also provides the updated News for new or old students to be aware of. </p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -681,7 +727,7 @@ Session::forget('message');
 									</div>
 								<div class="right-grid">
 									<h4>School Events</h4>
-									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
+									<p>STEPS provides the list of School events for new and old students to be aware of. It is important for new students to know and be aware of the school events.</p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -693,7 +739,7 @@ Session::forget('message');
 									</div>
 								<div class="right-grid">
 									<h4>Mobile Responsive</h4>
-									<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
+									<p>Students can use STEPS using their mobile phones. All they need to do is connect to the CIT University wifi and they are one click away to excellence!</p>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -749,124 +795,20 @@ Session::forget('message');
 			<div class="what-section">
 				<div class="container">
 					<div class="what-grids">
-						<div class="col-md-6 test-list">
-							<h3 class="tittle1">What we do</h3>
-							<div class="tab1 wow bounceIn" data-wow-delay="0.4s">
-								<ul>
-									<li><span> </span></li>
-									<li class="text">Olypian quarrel  gorilla congolium</li>
-								</ul>
-								<p>Lorem ipsum dolor amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, 
-									porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis.</p>
-							</div>
-							<div class="tab2 wow bounceIn" data-wow-delay="0.4s">
-								<ul>
-									<li><span> </span></li>
-									<li class="text">Defacto lingo est igpay atinlay quee</li>
-								
-								</ul>
-								<p>Lorem ipsum dolor amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, 
-									porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis.</p>
-							</div>
-							<div class="tab3 wow bounceIn" data-wow-delay="0.4s">
-								<ul>
-									<li><span> </span></li>
-									<li class="text">How to install Wordpress</li>
-									
-								</ul>
-								<p>Lorem ipsum dolor amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, 
-									porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis.</p>
-							</div>
-							<div class="tab4 wow bounceIn" data-wow-delay="0.4s">
-								<ul>
-									<li><span> </span></li>
-									<li class="text">Epsum factorial non deposit </li>
-								</ul>
-								<p>Lorem ipsum dolor amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, 
-									porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis.</p>
-							</div>
-							<div class="tab5 wow bounceIn" data-wow-delay="0.4s">
-								<ul>
-									<li><span> </span></li>
-									<li class="text">Quid pro quo hic escorol</li>
-								</ul>
-								<p>Lorem ipsum dolor amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, 
-									porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis.</p>
-							</div>
-							<div class="tab6 wow bounceIn" data-wow-delay="0.4s">
-								<ul>
-									<li><span> </span></li>
-									<li class="text">Can the Theme be translated?</li>
-								</ul>
-								<p>Lorem ipsum dolor amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, 
-									porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis.</p>
-
-							</div>
-						</div>
-						<!-- script for tabs -->
-							<script>
-								$(document).ready(function(){
-									$(".tab1 p").hide();
-									$(".tab2 p").hide();
-									$(".tab3 p").hide();
-									$(".tab4 p").hide();
-									$(".tab5 p").hide();
-									$(".tab6 p").hide();
-									$(".tab1 ul").click(function(){
-										$(".tab1 p").slideToggle(300);
-										$(".tab2 p").hide();
-										$(".tab3 p").hide();
-										$(".tab4 p").hide();
-										$(".tab5 p").hide();
-										$(".tab6 p").hide();
-									})
-									$(".tab2 ul").click(function(){
-										$(".tab2 p").slideToggle(300);
-										$(".tab1 p").hide();
-										$(".tab3 p").hide();
-										$(".tab4 p").hide();
-										$(".tab5 p").hide();
-										$(".tab6 p").hide();
-									})
-									$(".tab3 ul").click(function(){
-										$(".tab3 p").slideToggle(300);
-										$(".tab4 p").hide();
-										$(".tab2 p").hide();
-										$(".tab1 p").hide();
-										$(".tab5 p").hide();
-										$(".tab6 p").hide();
-									})
-									$(".tab4 ul").click(function(){
-										$(".tab4 p").slideToggle(300);
-										$(".tab3 p").hide();
-										$(".tab2 p").hide();
-										$(".tab1 p").hide();
-										$(".tab5 p").hide();
-										$(".tab6 p").hide();									
-									})	
-									$(".tab5 ul").click(function(){
-										$(".tab5 p").slideToggle(300);
-										$(".tab3 p").hide();
-										$(".tab2 p").hide();
-										$(".tab1 p").hide();
-										$(".tab4 p").hide();
-										$(".tab6 p").hide();									
-									})
-									$(".tab6 ul").click(function(){
-										$(".tab6 p").slideToggle(300);
-										$(".tab3 p").hide();
-										$(".tab2 p").hide();
-										$(".tab1 p").hide();
-										$(".tab5 p").hide();
-										$(".tab4 p").hide();									
-									})
-								});
-							</script>
-						<!-- script for tabs -->
 						<div class="col-md-6 development">
-								<h3 class="tittle1">Video Instruction</h3>
+								<h3 class="tittle1">CIT-University</h3>
 								<div class="embed-responsive embed-responsive-4by3">
-									<iframe src="https://www.youtube.com/embed/bKSdZJavesM" allowfullscreen></iframe>
+									<video width="640" height="360" controls>
+									    <source src="videos/CIT Senior High.mp4" type="video/mp4">
+									</video>
+								</div>
+						</div>
+						<div class="col-md-6 development">
+								<h3 class="tittle1">STEPS</h3>
+								<div class="embed-responsive embed-responsive-4by3">
+									<video width="640" height="360" controls autoplay>
+									    <source src="videos/STEPS.mp4" type="video/mp4">
+									</video>
 								</div>
 						</div>
 						<div class="clearfix"></div>

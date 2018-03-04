@@ -1146,6 +1146,9 @@
 		    	if($student['department']=="College Of Computer Studies")
 		    	?>
 		    		<img src="CIT-University Map/JPEG/S&T Bldg - Ground Floor.jpg" class="img-responsive">
+		    		<img src="STEPS Offices/College Of Computer Studies/ccs1.jpg" class="img-responsive">
+		    		<img src="STEPS Offices/College Of Computer Studies/ccs2.jpg" class="img-responsive">
+		    		<img src="STEPS Offices/College Of Computer Studies/ccs3.jpg" class="img-responsive">
 		    	<?php
 
 		    	?>
@@ -1206,6 +1209,8 @@
       		</div>
 		    <div class="modal-body">
 		    	<img src="CIT-University Map/JPEG/Main Building-Ground Floor.jpg" class="img-responsive">
+		    	<img src="STEPS Offices/OAS/oas1.jpg" class="img-responsive">
+		    	<img src="STEPS Offices/OAS/oas2.jpg" class="img-responsive">
 		    </div>
 		    <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1225,6 +1230,8 @@
       		</div>
 		    <div class="modal-body">
 		    	<img src="CIT-University Map/JPEG/Main Building-Ground Floor.jpg" class="img-responsive">
+		    	<img src="STEPS Offices/Guidance/guidance1.jpg" class="img-responsive">
+		    	<img src="STEPS Offices/Guidance/guidance2.jpg" class="img-responsive">
 		    </div>
 		    <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
